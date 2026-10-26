@@ -2,9 +2,9 @@
 
 ## 当前文件
 
-- `01_literature/papers.csv`：每个独立研究作品一行，Paper ID 永久不随排序变化。P001–P003 已固定；新增论文取下一个未使用编号。空白元数据表示尚未在馆藏中确认。
-- `01_literature/zotero_mapping.csv`：每条 Zotero 文献记录一行，连接 Paper ID、Item Key、Collection、附件 Key、重复证据和读取状态。重复文献条目保留映射，不在 Zotero 内自动合并。
-- `01_literature/sources.csv`：每个来源或版本一行，记录 DOI、官方 PDF 链接和原文核验状态。`官方PDF链接`为空表示尚未确认；可读本地附件不等于研究内容已核验。
+- `01_literature/papers.csv`：每个独立研究作品一行，`当前馆藏状态` 区分在用与仅回收站历史作品，Paper ID 永久不随排序变化。P001–P003 已固定；新增论文取下一个未使用编号。空白元数据表示尚未在馆藏中确认。
+- `01_literature/zotero_mapping.csv`：每条 Zotero 文献记录一行，连接 Paper ID、Item Key、Collection、附件 Key、重复证据、读取状态和当前/回收站状态。数据库中的历史 Collection 关系不得直接当作在用馆藏。重复文献条目保留映射，不在 Zotero 内自动合并。
+- `01_literature/sources.csv`：每个来源或版本一行，记录 DOI、官方 PDF 链接、馆藏状态和原文核验状态。`官方PDF链接`为空表示尚未确认；可读本地附件不等于研究内容已核验。
 - `01_literature/cards/`：已核验的逐篇阅读卡片；`batches/` 保存阶段性总表和审计。
 
 ## 版本与证据
