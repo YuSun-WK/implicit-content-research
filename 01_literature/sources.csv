@@ -18,7 +18,7 @@ S-P016-01,P016,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内
 S-P017-01,P017,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
 S-P018-01,P018,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
 S-P019-01,P019,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
-S-P020-01,P020,当前馆藏,ACL 2025 Main 正式发表记录；arXiv 2506.09301v1 作为全文核验版,10.18653/v1/2025.acl-long.1019,https://aclanthology.org/2025.acl-long.1019/,https://aclanthology.org/2025.acl-long.1019.pdf,ACL 元数据及 arXiv HTML §1–6 附录 A–D 已交叉核对；正式 PDF 过大无法视觉比对；原文版本一致性待补审,ACL Anthology 发表记录；arXiv https://arxiv.org/html/2506.09301v1；作者 GitHub https://github.com/cesare-spinoso/rsa_square
+S-P020-01,P020,当前馆藏,ACL 2025 Main 正式发表记录；arXiv 2506.09301v1 作为全文核验版,10.18653/v1/2025.acl-long.1019,https://aclanthology.org/2025.acl-long.1019/,https://aclanthology.org/2025.acl-long.1019.pdf,ACL 元数据与 arXiv HTML §1–6 附录 A–D、代码已做初审；P020 已撤销定稿并处于方法复核中；正式 PDF 版本一致性仍待补审,ACL Anthology 发表记录；arXiv https://arxiv.org/html/2506.09301v1；作者 GitHub https://github.com/cesare-spinoso/rsa_square
 S-P021-01,P021,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
 S-P022-01,P022,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
 S-P023-01,P023,当前馆藏,ACL 2026 Main Conference 正式版,10.18653/v1/2026.acl-long.426,https://aclanthology.org/2026.acl-long.426/,https://aclanthology.org/2026.acl-long.426.pdf,ACL 正式 PDF 14 页全文及图1表1-6附录已核验；阅读卡已定稿,ACL Anthology DOI、正式 PDF §1–9及附录、作者 GitHub README
