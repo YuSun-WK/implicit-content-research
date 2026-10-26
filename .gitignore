@@ -1,0 +1,14 @@
+# 本仓库只保存研究文本、索引与轻量配置
+*.pdf
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+.zotero-ft-cache
+.env
+.env.*
+__pycache__/
+*.pyc
+models/
+checkpoints/
+datasets/

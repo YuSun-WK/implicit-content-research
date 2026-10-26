@@ -1,0 +1,15 @@
+# 隐晦信息检测研究：第一批论文总表
+
+核对范围：3 篇本地 PDF，均可打开和逐页阅读。ToxiGen 为 18 页，修辞手法综述为 35 页，MultiMM 为 17 页。后两篇中的 ToxiGen 与 MultiMM PDF 主要为页面图像，阅读卡片同时对照同版论文的可检索正文与本地页面。**表中“隐式”只按各论文自己的操作定义使用，不能视为统一标签体系。**
+
+| 论文标题 | 年份与载体 | 任务类别 | 研究问题 | 核心方法 | 创新贡献类型 | 主要数据集 | 关键结果 | 局限性 / 证据边界 | 可借鉴机制 | 代码与数据 | 与广义隐晦信息检测的关系 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| ToxiGen: A Large-Scale Machine-Generated Dataset for Adversarial and Implicit Hate Speech Detection | 2022；ACL Long Papers | 隐式仇恨言论 / 有害语言；数据构建与对抗评测 | 身份群体词与毒性标签虚假相关，隐式有害样本稀缺，分类器易漏检隐式表达并误报无害提及 | 按 13 个群体和有害/无害两类构造示例提示，用 GPT-3 生成；ALICE 在 beam search 中结合语言模型分数和目标分类器分数，产生难例；以人工标注评估并微调 HateBERT、ToxDectRoBERTa | 新数据集 + 对抗生成/评测机制；不是新检测器架构 | ToxiGen 274,186 条（top-k 260,012；ALICE 14,174）；792 条 HumanVal；外测 SocialBiasFrames、ImplicitHateCorpus、DynaHate | 98.2% 无显式粗口/辱称（词表指标）；HumanVal 中 94.56% 的有害样本被标为仇恨；HateBERT 经两类样本微调后外测 AUC 由 0.60/0.60/0.47 升至 0.71/0.67/0.66（按上述三个外测集顺序） | 作者承认只覆盖 13 类群体、标签主观且数据有噪声；“无粗口”不等于语义上必然隐式；ALICE 用于难例生成时会降低部分提示标签与人工标签的一致性 | 群体×标签平衡生成；分类器参与解码；人工验证与跨来源外测；等量消融 | 官方生成代码、提示种子、数据及两种微调分类器检查点公开；GPT-3 原始生成需外部 API | **直接相关**：隐式有害表达与检测鲁棒性，但只覆盖仇恨言论子域 |
+| Computational Approaches to the Detection of Lesser-Known Rhetorical Figures: A Systematic Survey and Research Challenges | 本地 PDF 是 2024 年 arXiv 预印本；同题文章 2025 年发表于 ACM Computing Surveys | 少研究修辞手法检测综述；非自有检测模型 | 已有综述和工具偏重隐喻、反讽、讽刺，其他修辞形式的数据、定义、方法和可比评测分散 | 人工按修辞名称及 detection/identification 检索，逐类梳理定义、功能、相关形式、语料、规则/模型方法与指标，再归纳研究挑战 | 新综述视角和资料整理；无新模型、损失函数或自建对照实验 | 汇总既有数据集与研究；本地版本 §5 称 39 篇论文、26 类修辞；正文其他位置称 24 类 | 本地版本称 86 种方法，但表 16 类别计数合计 87；规则方法记为 60、模型方法 24；不能将汇总数字当同条件性能比较 | 综述明确不研究修辞含义解释；检索为手工检索，非可完全复现的系统检索；版本内计数有不一致；被引研究数据集与指标不统一 | 修辞定义/层级与作用映射；显著性排序而非仅二分类；上下文边界与负例设计；跨语言评测 | 作者公开交互式方法表和数据集概览；未发现该综述自有模型代码/权重；本地预印本无训练配置 | **机制相关**：可为委婉语、夸张、转喻、修辞问句等隐晦表达提供任务边界和评测设计 |
+| Cultural Bias Matters: A Cross-Cultural Benchmark Dataset and Sentiment-Enriched Model for Understanding Multimodal Metaphors | 2025；ACL Long Papers | 跨文化多模态隐喻识别与情感分类 | 英语/西方广告主导的隐喻资源难以检验中英文化差异；图文隐喻需联合语义与情感线索 | MultiMM 为中英广告图文对，标注隐喻、源域/目标域、情感；SEMD 用 mBERT、ViT 编码 OCR 文本、图像和情感输入，再拼接分类 | 新跨文化数据集/双任务评测；已有编码器与情感特征的组合式基线 | MultiMM 8,461 对（中文 4,397；英文 4,064；隐喻 4,772）；训练/验证/测试 6,768/846/847 | 主表：SEMD 隐喻 macro-F1 英文 80.16%、中文 77.79%；情感任务 75.69%/70.51%；隐喻任务超主表最强基线 CMGCN 79.04%（英）、CES 75.53%（中） | 作者承认只含广告及中英两语；主表与消融表中 SEMD 数值不一致；公开隐喻代码在验证/测试时直接读取数据中的情感标注作为输入，故不应将现有结果直接解释为“无额外标注的真实部署性能” | 源域/目标域+情感联合标注；分语言、分模态比较；情感辅助特征与融合方式消融；翻译扰动测试 | 官方仓库公开数据与隐喻检测代码，论文给超参；未确认有 SEMD 训练权重，仓库说明代码需手动改数据/模型路径 | **机制相关**：处理跨文化图文隐喻及间接意义；不等于隐式仇恨检测 |
+
+## 来源与复核提示
+
+1. ToxiGen：本地 PDF（本地PDF路径已省略）；[ACL 正式记录](https://aclanthology.org/2022.acl-long.234/)；[可检索论文正文](https://ar5iv.labs.arxiv.org/html/2203.09509)；[官方代码](https://github.com/microsoft/ToxiGen)。
+2. 修辞手法综述：本地 PDF（本地PDF路径已省略）；[同版 arXiv 正文](https://arxiv.org/abs/2406.16674)；[作者补充表](https://ramonakuehn.de/survey.html)；[期刊 DOI](https://doi.org/10.1145/3744554)。本表的统计和章节以用户提供的 2024 预印本为准，期刊发表年份另列。
+3. MultiMM：本地 PDF（本地PDF路径已省略）；[ACL 正式记录](https://aclanthology.org/2025.acl-long.1275/)；[可检索论文正文](https://arxiv.org/html/2506.06987)；[官方代码与数据](https://github.com/DUTIR-YSQ/MultiMM)。
