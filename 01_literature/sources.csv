@@ -30,7 +30,7 @@ S-P028-01,P028,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内
 S-P029-01,P029,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
 S-P030-01,P030,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
 S-P031-01,P031,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
-S-P032-01,P032,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
+S-P032-01,P032,当前馆藏,COLING 2022 正式版,,https://aclanthology.org/2022.coling-1.579/,https://aclanthology.org/2022.coling-1.579.pdf,正式论文精读并参照官方代码完成静态机制审计；已定稿；本地复现及数据重叠审计待做,ACL Anthology COLING 2022 正式版；GitHub youngwook06/ImpCon README model.py loss_impcon.py train.py data_preprocess.py prepare_ihc_pure.py prepare_sbic.py
 S-P033-01,P033,仅回收站历史条目,馆内PDF；具体版本待核验,10.1145/3774904.3792669,http://arxiv.org/abs/2510.07707,,回收站历史来源；PDF技术上可提取，但未在当前馆藏分析,Zotero元数据及本地附件
 S-P034-01,P034,仅回收站历史条目,馆内PDF；具体版本待核验,,,,回收站历史来源；PDF技术上可提取，但未在当前馆藏分析,Zotero元数据及本地附件
 S-P035-01,P035,仅回收站历史条目,馆内PDF；具体版本待核验,,,,回收站历史来源；PDF技术上可提取，但未在当前馆藏分析,Zotero元数据及本地附件
