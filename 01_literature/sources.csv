@@ -13,9 +13,9 @@ S-P011-01,P011,当前馆藏,ACL 2025 Main Conference 正式版,10.18653/v1/2025.
 S-P012-01,P012,当前馆藏,馆内PDF；具体版本待核验,10.1145/3778357,https://dl.acm.org/doi/10.1145/3778357,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
 S-P013-01,P013,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
 S-P014-01,P014,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
-S-P015-01,P015,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
+S-P015-01,P015,当前馆藏,ACL 2026 Main 正式版,10.18653/v1/2026.acl-long.1346,https://aclanthology.org/2026.acl-long.1346/,https://aclanthology.org/2026.acl-long.1346.pdf,已确认ACL正式发表信息与摘要; 全文方法与数据/代码核验进行中; 尚未定稿,ACL Anthology出版方记录; 正式全文待审
 S-P016-01,P016,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
-S-P017-01,P017,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
+S-P017-01,P017,当前馆藏,ACL 2026 Main 正式PDF 16页,10.18653/v1/2026.acl-long.768,https://aclanthology.org/2026.acl-long.768/,https://aclanthology.org/2026.acl-long.768.pdf,正式PDF §3–4附录I/J已精读并经用户授权定稿; GitHub公开代码静态核验; 实际复现/机制因果未证,ACL PDF Figure2 Table1/2 Appendix I/J; GitHub 1tux/doublespeak; cards/P017_In_Context_Representation_Hijacking.md
 S-P018-01,P018,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
 S-P019-01,P019,当前馆藏,NAACL 2025 Main 正式 PDF 23页,10.18653/v1/2025.naacl-long.1,https://aclanthology.org/2025.naacl-long.1/,https://aclanthology.org/2025.naacl-long.1.pdf,正式 PDF §3–5 Appendix A–K已逐项精读并复核且获用户授权定稿合并; 仅静态检视公开代码; 数据复现/解释因果未证实,用户提供 NAACL 2025正式 PDF; Table1–4; Appendix A D H J; GitHub asaakyan/V-FLUTE; cards/P019_V-FLUTE.md
 S-P020-01,P020,当前馆藏,ACL 2025 Main 正式发表记录；arXiv 2506.09301v1 作为全文核验版,10.18653/v1/2025.acl-long.1019,https://aclanthology.org/2025.acl-long.1019/,https://aclanthology.org/2025.acl-long.1019.pdf,ACL 元数据与 arXiv HTML §1–6 附录 A–D、代码已做初审；P020 2026-10-27 重新定稿；基于 arXiv v1 及代码的既有初审有效；ACL 正式 PDF 版本一致性与本地复现仍待补审,ACL Anthology 发表记录；arXiv https://arxiv.org/html/2506.09301v1；作者 GitHub https://github.com/cesare-spinoso/rsa_square
