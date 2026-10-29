@@ -13,7 +13,7 @@ S-P011-01,P011,当前馆藏,ACL 2025 Main Conference 正式版,10.18653/v1/2025.
 S-P012-01,P012,当前馆藏,馆内PDF；具体版本待核验,10.1145/3778357,https://dl.acm.org/doi/10.1145/3778357,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
 S-P013-01,P013,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
 S-P014-01,P014,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
-S-P015-01,P015,当前馆藏,ACL 2026 Main 正式版,10.18653/v1/2026.acl-long.1346,https://aclanthology.org/2026.acl-long.1346/,https://aclanthology.org/2026.acl-long.1346.pdf,已确认ACL正式发表信息与摘要; 全文方法与数据/代码核验进行中; 尚未定稿,ACL Anthology出版方记录; 正式全文待审
+S-P015-01,P015,当前馆藏,ACL 2026 Main 正式版31页,10.18653/v1/2026.acl-long.1346,https://aclanthology.org/2026.acl-long.1346/,https://aclanthology.org/2026.acl-long.1346.pdf,用户上传的正式全文§1–5附录A–L全部精读且授权定稿; 作者核心脚本静态核验; GT混杂与因果未证开放; 未本地复现,用户上传2026正式PDF Table1–4 Figures4–9/23–26 Appendix C–L; Github sage2003/LLMs-in-Sarcasm-Detection; cards/P015_LLMs_in_Sarcasm_Detection.md
 S-P016-01,P016,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
 S-P017-01,P017,当前馆藏,ACL 2026 Main 正式PDF 16页,10.18653/v1/2026.acl-long.768,https://aclanthology.org/2026.acl-long.768/,https://aclanthology.org/2026.acl-long.768.pdf,正式PDF §3–4附录I/J已精读并经用户授权定稿; GitHub公开代码静态核验; 实际复现/机制因果未证,ACL PDF Figure2 Table1/2 Appendix I/J; GitHub 1tux/doublespeak; cards/P017_In_Context_Representation_Hijacking.md
 S-P018-01,P018,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
@@ -31,7 +31,7 @@ S-P029-01,P029,当前馆藏,ACL 2026 Main 正式版,10.18653/v1/2026.acl-long.21
 S-P030-01,P030,当前馆藏,ACL 2026 Main 正式版,10.18653/v1/2026.acl-long.1584,https://aclanthology.org/2026.acl-long.1584/,https://aclanthology.org/2026.acl-long.1584.pdf,论文正式版已核验且核心公开代码已静态审计; 用户授权2026-10-27定稿; 未运行复现,ACL §4–7 Algorithm1 Fig1/3/4 Table1/3/5 Appendix B/F; hnghiem-nlp/hate_dpo_public; 01_literature/cards/P030_SMARTER.md
 S-P031-01,P031,当前馆藏,EMNLP 2025 Main 正式版,10.18653/v1/2025.emnlp-main.1469,https://aclanthology.org/2025.emnlp-main.1469/,https://aclanthology.org/2025.emnlp-main.1469.pdf,正式论文§3–4与公开main代码已静态审计；机制存在重大疑点；用户选择暂缓定稿；未本地复现,论文§3.2 Figure 2及Table 1–3；leeyejin1231/AmpleHate model/model.py utils/preprocess.py utils/dataloader.py train.py test.py；临时审计见01_literature/audits/P031_AmpleHate_mechanism_pending.md
 S-P032-01,P032,当前馆藏,COLING 2022 正式版,,https://aclanthology.org/2022.coling-1.579/,https://aclanthology.org/2022.coling-1.579.pdf,正式论文精读并参照官方代码完成静态机制审计；已定稿；本地复现及数据重叠审计待做,ACL Anthology COLING 2022 正式版；GitHub youngwook06/ImpCon README model.py loss_impcon.py train.py data_preprocess.py prepare_ihc_pure.py prepare_sbic.py
-S-P033-01,P033,当前馆藏,馆内PDF；具体版本待核验,10.1145/3774904.3792669,http://arxiv.org/abs/2510.07707,,馆内PDF逐页可提取文本；未做内容分析,Zotero元数据及本地附件
+S-P033-01,P033,当前馆藏,WWW 2026正式发表元数据; arXiv 2510.07707v2 2026-02-03 全文HTML待审,10.1145/3774904.3792669,https://doi.org/10.1145/3774904.3792669,https://arxiv.org/pdf/2510.07707v2,已核对WWW 2026正式出处; arXiv v2 HTML可读; 论文与代码方法/数据协议正式精读进行中; 尚未定稿,ACM DOI; dblp conf/www/ZhaoWSPCL26; arXiv html/2510.07707v2; Github Shu-Wan/cadet
 S-P034-01,P034,当前馆藏,馆内PDF；具体版本待核验,,,,馆内PDF逐页可提取文本；未做内容分析,Zotero元数据及本地附件
 S-P035-01,P035,当前馆藏,馆内PDF；具体版本待核验,,,,馆内PDF逐页可提取文本；未做内容分析,Zotero元数据及本地附件
 S-P036-01,P036,当前馆藏,馆内PDF；具体版本待核验,,,,馆内PDF逐页可提取文本；未做内容分析,Zotero元数据及本地附件
