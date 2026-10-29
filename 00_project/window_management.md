@@ -37,10 +37,14 @@
 
 ## 6. 2026-10-29 进度口径及第三阶段交接
 - 2026-10-27 的 Zotero 整理历史已选择性整合到最新阅读索引：根 Collection 为 36 篇（P001–P036），固定 Seed 仍为 32 篇（P001–P032）。原先“32 篇当前全部馆藏”的陈述只适用于整理前的历史快照。
-- 当前研究状态以 `00_project/progress.md` 为准：12 篇定稿、P031 暂缓、根 Collection 的 23 篇未正式精读。上述已定稿包括第二阶段 P019、P024、P028、P029、P030、P032；不能被 2026-10-27 的旧版索引回滚。
+- 当前研究状态以 `00_project/progress.md` 为准（2026-10-29 更新：14 篇定稿、P031 暂缓、根 Collection 的21篇未正式精读）。上述已定稿包括第二阶段 P019、P024、P028、P029、P030、P032；不能被 2026-10-27 的旧版索引回滚。
 - 第三阶段 R1 跨论文机制综合仅在聊天中初步完成，**尚未归档 GitHub**；接续 R2 竞争工作/反面证据审计。**勿将第一阶段的 `02_synthesis/R2_P011_P023_P020_Method_Comparison.md` 误认作第三阶段 R2**。
 
 ## 7. P017 定稿与 P015 开始（2026-10-29）
 - P017: `01_literature/cards/P017_In_Context_Representation_Hijacking.md`；ACL 2026 Main / CCF-A。静态审计发现 Patchscopes 论文 vs 公开代码注入层、解释提示与 logits 位置不一致；TOCTOU、superposition 非因果证明；未经本地复现。
 - P015: `LLMs in Sarcasm Detection? It’s elementary! (Or is it?)`；ACL 2026 Main / CCF-A；DOI 10.18653/v1/2026.acl-long.1346；下一篇精读，需先核实真实/合成数据构建、split、捷径分析及因果干预，不由摘要预判结论；尚未定稿。
 - **教学/精读解释偏好（用户明确确认）**：说明原理时依次给 **抽象概念（是什么/为什么）→ 实际实现（输入/张量/逐步操作/公式/代码）→ 完整简单例子**；不得用“把向量注入Prompt”这样省略工程细节的表述取代解释。明确区分论文声称、公开代码实际做法与推测。
+
+## 8. P015 定稿与 P033 进入精读（2026-10-29）
+- P015 ACL 2026 CCF-A 的正式 PDF 31页、Tables/Figures/Appendix与公开代码静态审计已定稿：`01_literature/cards/P015_LLMs_in_Sarcasm_Detection.md`。关键限制：零样本真人/合成差距≠训练泛化失败；先指定标签再生成文本导致标签条件风格混杂；识别生成器身份不足以区分同一生成器两类样本；Min-K%++/UMAP/LIME/Attention/ablation/occlusion无法单独证明因果捷径或语义盲。代码预测、抽样、token occlusion、Table1与Table3口径差异保留。未经 GPU复现。
+- 下一篇 P033 CADET：`Causality Guided Representation Learning for Cross-Style Hate Speech Detection`，WWW 2026（CCF-A），DOI 10.1145/3774904.3792669；正式全文精读关注四类因素 DAG/identifiability、潜变量解耦、对抗 confounder、风格干预及反事实一致性、真实 GT/划分、复现成本；官方 github Shu-Wan/cadet。未定稿。
