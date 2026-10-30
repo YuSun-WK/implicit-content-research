@@ -37,7 +37,7 @@
 
 ## 6. 2026-10-29 进度口径及第三阶段交接
 - 2026-10-27 的 Zotero 整理历史已选择性整合到最新阅读索引：根 Collection 为 36 篇（P001–P036），固定 Seed 仍为 32 篇（P001–P032）。原先“32 篇当前全部馆藏”的陈述只适用于整理前的历史快照。
-- 当前研究状态以 `00_project/progress.md` 为准（2026-10-29 更新：14 篇定稿、P031 暂缓、根 Collection 的21篇未正式精读）。上述已定稿包括第二阶段 P019、P024、P028、P029、P030、P032；不能被 2026-10-27 的旧版索引回滚。
+- 当前研究状态以 `00_project/progress.md` 为准（2026-10-30 更新：15 篇定稿、P031 暂缓、根 Collection 的20篇未正式精读）。上述已定稿包括第二阶段 P019、P024、P028、P029、P030、P032；不能被 2026-10-27 的旧版索引回滚。
 - 第三阶段 R1 跨论文机制综合仅在聊天中初步完成，**尚未归档 GitHub**；接续 R2 竞争工作/反面证据审计。**勿将第一阶段的 `02_synthesis/R2_P011_P023_P020_Method_Comparison.md` 误认作第三阶段 R2**。
 
 ## 7. P017 定稿与 P015 开始（2026-10-29）
@@ -48,3 +48,7 @@
 ## 8. P015 定稿与 P033 进入精读（2026-10-29）
 - P015 ACL 2026 CCF-A 的正式 PDF 31页、Tables/Figures/Appendix与公开代码静态审计已定稿：`01_literature/cards/P015_LLMs_in_Sarcasm_Detection.md`。关键限制：零样本真人/合成差距≠训练泛化失败；先指定标签再生成文本导致标签条件风格混杂；识别生成器身份不足以区分同一生成器两类样本；Min-K%++/UMAP/LIME/Attention/ablation/occlusion无法单独证明因果捷径或语义盲。代码预测、抽样、token occlusion、Table1与Table3口径差异保留。未经 GPU复现。
 - 下一篇 P033 CADET：`Causality Guided Representation Learning for Cross-Style Hate Speech Detection`，WWW 2026（CCF-A），DOI 10.1145/3774904.3792669；正式全文精读关注四类因素 DAG/identifiability、潜变量解耦、对抗 confounder、风格干预及反事实一致性、真实 GT/划分、复现成本；官方 github Shu-Wan/cadet。未定稿。
+
+## 9. P033 定稿与 P034 进入精读（2026-10-30）
+- P033 CADET（WWW 2026 CCF-A）获用户明确授权“定稿合并”；正式卡 `01_literature/cards/P033_CADET.md`。切勿因定稿忽略关键未证项：潜变量因果身份、style预测标签与true_style不一致、`train,test,test`用目标风格测试集做验证/阈值/选模型、式(17–19)反事实与cycle数学/实现错配、随机采样一致性替代真实style干预、式(12) `lambda_u`实现不一致、表2均值汇总不一致；均为静态审计，**尚无本地实验**。
+- 下一篇 **P034 CrossGuard**（ACL 2026 Main CCF-A）：DOI 10.18653/v1/2026.acl-long.1178；ACL正式页面 https://aclanthology.org/2026.acl-long.1178/；官方 https://github.com/ZhangXu0963/CrossGuard；先审计 text/image单独无害联合表达恶意的定义、ImpForge RL奖励及生成标签、LoRA模型训练和 guardrail安全/正常样本评估； **P034 未定稿**。下一篇跨NLP与VLM，必要时新开专窗。
