@@ -37,7 +37,7 @@
 
 ## 6. 2026-10-29 进度口径及第三阶段交接
 - 2026-10-27 的 Zotero 整理历史已选择性整合到最新阅读索引：根 Collection 为 36 篇（P001–P036），固定 Seed 仍为 32 篇（P001–P032）。原先“32 篇当前全部馆藏”的陈述只适用于整理前的历史快照。
-- 当前研究状态以 `00_project/progress.md` 为准（2026-10-30 更新：15 篇定稿、P031 暂缓、根 Collection 的20篇未正式精读）。上述已定稿包括第二阶段 P019、P024、P028、P029、P030、P032；不能被 2026-10-27 的旧版索引回滚。
+- 当前研究状态以 `00_project/progress.md` 为准（2026-10-30 更新：16 篇定稿、P031 暂缓、根 Collection 的19篇未正式精读）。上述已定稿包括第二阶段 P019、P024、P028、P029、P030、P032；不能被 2026-10-27 的旧版索引回滚。
 - 第三阶段 R1 跨论文机制综合仅在聊天中初步完成，**尚未归档 GitHub**；接续 R2 竞争工作/反面证据审计。**勿将第一阶段的 `02_synthesis/R2_P011_P023_P020_Method_Comparison.md` 误认作第三阶段 R2**。
 
 ## 7. P017 定稿与 P015 开始（2026-10-29）
@@ -52,3 +52,7 @@
 ## 9. P033 定稿与 P034 进入精读（2026-10-30）
 - P033 CADET（WWW 2026 CCF-A）获用户明确授权“定稿合并”；正式卡 `01_literature/cards/P033_CADET.md`。切勿因定稿忽略关键未证项：潜变量因果身份、style预测标签与true_style不一致、`train,test,test`用目标风格测试集做验证/阈值/选模型、式(17–19)反事实与cycle数学/实现错配、随机采样一致性替代真实style干预、式(12) `lambda_u`实现不一致、表2均值汇总不一致；均为静态审计，**尚无本地实验**。
 - 下一篇 **P034 CrossGuard**（ACL 2026 Main CCF-A）：DOI 10.18653/v1/2026.acl-long.1178；ACL正式页面 https://aclanthology.org/2026.acl-long.1178/；官方 https://github.com/ZhangXu0963/CrossGuard；先审计 text/image单独无害联合表达恶意的定义、ImpForge RL奖励及生成标签、LoRA模型训练和 guardrail安全/正常样本评估； **P034 未定稿**。下一篇跨NLP与VLM，必要时新开专窗。
+
+## 10. P034 定稿与多模态隐晦检测专题交接（2026-10-30）
+- **P034 CrossGuard（ACL 2026 Main，CCF-A）用户授权定稿合并**：`01_literature/cards/P034_CrossGuard.md`。必须继承：三奖励正式论文 vs 公开代码的差异；5000 RL初始文本、1390 ImpForge红队评估样本、1616混合训练样本（其中12.5%≈202联合隐含类型）**不能混写**；论文没有证据确定≈202是否取自1390或两组是否独立；PPO不具同预算独立必要性证明；FigStep数据消融略退化；在线MLLM/离线MLLM/guardrail用不同ASR判据；SFT训练配置max_samples=1500 vs论文本体1616；全部仅静态审计。
+- 研究计划已从继续单篇P034阅读切换为**单独的新窗口：多模态图文隐晦信息检测领域审计**。先核验 VLSU（ICLR 2026 CCF-A）、Meerkat-VL（ICML 2026 CCF-A）、VLSBench（ACL 2025 Main CCF-A）及SIUO（NAACL 2025 Findings，不按CCF-A主会统计）；优先数据标签可信/模态依赖评测/竞品查重，再定是否需要Kill Test。不要重做 CrossGuard 的多GPU PPO，也不要自动认定“PPO改GRPO、新数据+LoRA”有足够创新。
