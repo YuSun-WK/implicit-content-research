@@ -66,3 +66,8 @@
 ## 12. P013定稿及P022进入精读（2026-10-31）
 - P013 Exploring Concreteness Through a Figurative Lens（ACL 2026 Main CCF-A）已经用户授权定稿合并；正式卡 01_literature/cards/P013_Concreteness_Figurative_Lens.md。关注 Concreteness评分token提取的是**生成后重喂的token表示**，不是预测该token前的隐藏向量；论文跨层global SVD vs开源逐层重复抽样+中心化SVD不一致，可能消去平均差异；正负方向不校准、steering参数/文件接口不匹配、缺随机方向控制；仅静态审计没有GPU复现。
 - 正式定稿 **18/36**，Seed **16/32**；P031继续暂缓，17篇尚未精读。第二批 CCF-A 余下**P022 → P035 → P036**。P022 ACL 2026 Main正式PDF https://aclanthology.org/2026.acl-long.210.pdf 已实际读取，可直接进行全文精读；若后续PDF不可访问则须询问用户上传，不得依靠摘要冒充全文。精读教学先总体后细节，解释每个任务标签/数据构造/算法公式/实验和局限。
+
+## 13. P022定稿与P035正式精读（2026-10-31）
+- P022 Revisiting a Pain in the Neck / SemanticQA（ACL 2026 Main CCF-A）已获用户明确授权定稿合并；正式卡 01_literature/cards/P022_SemanticQA.md。任务数据适配而非统一真值；六种 Sequential 是一个 Prompt 一次 query_llm 同时生成两个字段，非独立两轮 Pipeline；组合评价正文Table5使用METEOR，当前开源eval.py用BERTScore；原子/组合抽取的exact-match规则差异、标签疑点、数据数量口径保留。**尚未训练/运行复现。**
+- 已精读**19/36（52.8%）**、Seed **17/32（53.1%）**，P031仍暂缓，剩余16篇。原定第二批CCF-A只余 **P035 → P036**。
+- P035 Enhancing Hyperbole and Metaphor Detection with Their Bidirectional Dynamic Interaction and Emotion Knowledge（ACL 2025 Main CCF-A），官方PDF https://aclanthology.org/2025.acl-long.23.pdf **11页已实际阅读**；正式码 https://github.com/ZhengL00/EmoBi；从框架、emotion analysis、emotion-guided domain mapping、bidirectional dynamic interaction、verification、四数据集协议和消融开始读，讲解按“全局→具体、概念→公式→Prompt/代码→例子→结果”进行；若任何原始材料不可读取需明确告知用户。
