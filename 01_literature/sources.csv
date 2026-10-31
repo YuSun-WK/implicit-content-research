@@ -11,7 +11,7 @@ S-P009-01,P009,当前馆藏,馆内同正文的两种PDF字节版本；提取文�
 S-P010-01,P010,当前馆藏,馆内PDF；具体版本待核验,10.1109/TAFFC.2025.3612205,https://ieeexplore.ieee.org/document/11173951/,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
 S-P011-01,P011,当前馆藏,ACL 2025 Main Conference 正式版,10.18653/v1/2025.acl-long.425,https://aclanthology.org/2025.acl-long.425/,https://aclanthology.org/2025.acl-long.425.pdf,正式 PDF 18 页全文与图表及附录已核验；阅读卡定稿,ACL Anthology 2025.acl-long.425；正式 PDF §1–7 图1图2 附录A/B
 S-P012-01,P012,当前馆藏,馆内PDF；具体版本待核验,10.1145/3778357,https://dl.acm.org/doi/10.1145/3778357,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
-S-P013-01,P013,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
+S-P013-01,P013,当前馆藏,ACL 2026 Main正式PDF（20页）与作者GitHub代码静态审计,10.18653/v1/2026.acl-long.705,https://aclanthology.org/2026.acl-long.705/,https://aclanthology.org/2026.acl-long.705.pdf,2026-10-31正式论文全文与Fig1-3/Table3-6已读取并授权定稿；代码提取token与SVD协议差异已记录；未GPU复现,论文§3–5及附录；github cincynlp/concreteness-interpretability extract_embeddings/extract_llama_embeddings.py diffmean_svd_1D-conc-axis/compute_diffmean.py 1D_axis_via_svd.py 1D_axis_projection.py 1D_axis_steering/steer.py；cards/P013_Concreteness_Figurative_Lens.md
 S-P014-01,P014,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
 S-P015-01,P015,当前馆藏,ACL 2026 Main 正式版31页,10.18653/v1/2026.acl-long.1346,https://aclanthology.org/2026.acl-long.1346/,https://aclanthology.org/2026.acl-long.1346.pdf,用户上传的正式全文§1–5附录A–L全部精读且授权定稿; 作者核心脚本静态核验; GT混杂与因果未证开放; 未本地复现,用户上传2026正式PDF Table1–4 Figures4–9/23–26 Appendix C–L; Github sage2003/LLMs-in-Sarcasm-Detection; cards/P015_LLMs_in_Sarcasm_Detection.md
 S-P016-01,P016,当前馆藏,馆内PDF；具体版本待核验,,,,已确认馆内PDF各页文本可提取；未做内容分析,Zotero元数据及本地附件
