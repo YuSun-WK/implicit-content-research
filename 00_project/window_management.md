@@ -62,3 +62,7 @@
 - 读后正式完成计数 **17/36（47.2%）**，Seed **15/32（46.9%）**；P031 暂缓，18篇未正式精读。
 - **约定的第二批 CCF-A 阅读顺序必须保留**：P027 [已定稿] → **P013** Exploring Concreteness Through a Figurative Lens（ACL 2026 Main，DOI 10.18653/v1/2026.acl-long.705） → **P022** SemanticQA → **P035** Hyperbole/Metaphor → **P036** StealthGraph。P013 在进入精读前须核对正式 PDF 和作者代码，已讨论过局部概念但**未形成正式精读卡**；不要误判为已读。
 - 多模态隐晦专题 VLSU/Meerkat-VL/VLSBench 与上述第二批阅读并行存在，不覆盖此次明确的顺序。
+
+## 12. P013定稿及P022进入精读（2026-10-31）
+- P013 Exploring Concreteness Through a Figurative Lens（ACL 2026 Main CCF-A）已经用户授权定稿合并；正式卡 01_literature/cards/P013_Concreteness_Figurative_Lens.md。关注 Concreteness评分token提取的是**生成后重喂的token表示**，不是预测该token前的隐藏向量；论文跨层global SVD vs开源逐层重复抽样+中心化SVD不一致，可能消去平均差异；正负方向不校准、steering参数/文件接口不匹配、缺随机方向控制；仅静态审计没有GPU复现。
+- 正式定稿 **18/36**，Seed **16/32**；P031继续暂缓，17篇尚未精读。第二批 CCF-A 余下**P022 → P035 → P036**。P022 ACL 2026 Main正式PDF https://aclanthology.org/2026.acl-long.210.pdf 已实际读取，可直接进行全文精读；若后续PDF不可访问则须询问用户上传，不得依靠摘要冒充全文。精读教学先总体后细节，解释每个任务标签/数据构造/算法公式/实验和局限。
