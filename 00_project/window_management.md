@@ -71,3 +71,7 @@
 - P022 Revisiting a Pain in the Neck / SemanticQA（ACL 2026 Main CCF-A）已获用户明确授权定稿合并；正式卡 01_literature/cards/P022_SemanticQA.md。任务数据适配而非统一真值；六种 Sequential 是一个 Prompt 一次 query_llm 同时生成两个字段，非独立两轮 Pipeline；组合评价正文Table5使用METEOR，当前开源eval.py用BERTScore；原子/组合抽取的exact-match规则差异、标签疑点、数据数量口径保留。**尚未训练/运行复现。**
 - 已精读**19/36（52.8%）**、Seed **17/32（53.1%）**，P031仍暂缓，剩余16篇。原定第二批CCF-A只余 **P035 → P036**。
 - P035 Enhancing Hyperbole and Metaphor Detection with Their Bidirectional Dynamic Interaction and Emotion Knowledge（ACL 2025 Main CCF-A），官方PDF https://aclanthology.org/2025.acl-long.23.pdf **11页已实际阅读**；正式码 https://github.com/ZhengL00/EmoBi；从框架、emotion analysis、emotion-guided domain mapping、bidirectional dynamic interaction、verification、四数据集协议和消融开始读，讲解按“全局→具体、概念→公式→Prompt/代码→例子→结果”进行；若任何原始材料不可读取需明确告知用户。
+
+## 14. P035定稿并进入P036（2026-10-31）
+- P035 EmoBi（ACL 2025 Main CCF-A）用户明确授权定稿上传合并。卡 01_literature/cards/P035_EmoBi.md：四阶段情绪→域映射→双修辞关联→最终联合LLM自检；公开代码实际上隐喻先行→夸张→联合重判，没有完全对称hyperbole-first分支；2023 ACL Findings 既有HYPO/HYPO-L/TroFi/LCC双标签及标注质量证据；当前仓库运行导入/数据路径错误，未本地训练/推理复现。Verification加分不等于可靠纠错，保留同预算消融问题。
+- 当前**20/36（55.6%）**，Seed**17/32（53.1%）**；P031继续暂缓，15篇尚未正式精读。第二批CCF-A最后一篇 **P036 StealthGraph**（ACL 2026 Main，DOI 10.18653/v1/2026.acl-long.295；PDF https://aclanthology.org/2026.acl-long.295.pdf；code https://github.com/ZJUIDG-AIVA/StealthGraph）。正式精读须核对任务为**隐晦有害提示的生成、测试模型安全性**，不能混同一般隐晦信息分类检测；始终先概览后讲公式、数据生成/验证、实验与代码，读不到原始PDF要让用户提供。
