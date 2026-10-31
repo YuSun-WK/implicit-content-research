@@ -5,10 +5,10 @@
 ## 馆藏与精读完成度
 
 - 根 Collection：**36 篇独立论文（P001–P036）**；原始 `01seed_papers` 子集仍为 **32 篇（P001–P032）**。2026-10-27 本机整理记录核验 38 个 PDF 附件，P004、P009 各保留两份；Zotero 云同步未单独核验。
-- **已精读并定稿 17 篇**：P001、P002、P003、P011、P015、P017、P019、P020、P023、P024、P027、P028、P029、P030、P032、P033、P034。阅读卡在 `01_literature/cards/`，相应 PR 已合并。
+- **已精读并定稿 18 篇**：P001、P002、P003、P011、P013、P015、P017、P019、P020、P023、P024、P027、P028、P029、P030、P032、P033、P034。阅读卡在 `01_literature/cards/`，相应 PR 已合并。
 - **暂缓定稿 1 篇**：P031 AmpleHate，方法公式、公开代码与实验协议存在重大疑点；仅将临时静态审计保存到 `01_literature/audits/`。
-- **尚未正式精读 18 篇**，其中 Seed 内 16 篇、后恢复的 P035–P036 共 2 篇。
-- 定稿率：**根 Collection 17/36=47.2%**；**固定 Seed 15/32=46.9%**。定稿只表示文献与静态证据审计完成，不代表代码/模型已复现。
+- **尚未正式精读 17 篇**，其中 Seed 内 15 篇、后恢复的 P035–P036 共 2 篇。
+- 定稿率：**根 Collection 18/36=50.0%**；**固定 Seed 16/32=50.0%**。定稿只表示文献与静态证据审计完成，不代表代码/模型已复现。
 
 ## 已完成的研究阶段
 
@@ -23,6 +23,8 @@
 
 ## 尚未关闭
 
+- **P013（ACL 2026 CCF-A）**：评分token的生成后隐藏状态可能混入模型自产评分；静态词典分数不是上下文具体性独立真值；原文跨层 global SVD 与源码逐层10次抽样再中心化 SVD不同；默认basis文件名/形状和steering配置不对齐；SVD符号未显式校正；尚无随机方向/语义保真因果控制与本地复现。详见 01_literature/cards/P013_Concreteness_Figurative_Lens.md。
+
 - **P027 ExPO-HM（ICLR 2026 CCF-A）**：CDE 论文式(9)/(11)权重文字可能重复；实际 binary/FG 熵模式、错误预测中熵区间奖励不同于正文；Figure 2 GRPO G=8 vs公开脚本 n=5；论文后半段细粒度与二分类50/50，脚本后半仅二分类；脚本用FB test_seen的输出做 val，潜在 test-as-val 需核查；解释有用性并非解释忠实性；未本地复现。详见 01_literature/cards/P027_ExPO-HM.md。
 
 - P034 CrossGuard：1390条red-team样本与约202条ImpForge训练样本关系和独立性未证；三奖励公开代码/论文公式不一致；PPO与数据量独立必要性未证；LLaMA-Factory配置max_samples1500 vs论文1616；input-guard与response-ASR异构；未本地运行复现。
@@ -32,7 +34,7 @@
 
 ## 下一步
 
-按已确认的第二批未完成 CCF-A 清单继续核心精读：**P013（ACL 2026 Main）→ P022（ACL 2026 Main）→ P035（ACL 2025 Main）→ P036（ACL 2026 Main）**。P027（ICLR 2026）于2026-10-31定稿；四篇待读完成后优先审查解释忠实性、表征干预、隐晦语义/图文模态依赖的真正竞争工作并设计≤6h Kill Test。独立多模态图文隐晦专题（VLSU/Meerkat-VL/VLSBench）仍保留，不再替代原计划的 CCF-A 读完优先序列。
+按已确认的第二批未完成 CCF-A 清单继续核心精读：**P022（ACL 2026 Main）→ P035（ACL 2025 Main）→ P036（ACL 2026 Main）**。P027（ICLR 2026）于2026-10-31定稿；四篇待读完成后优先审查解释忠实性、表征干预、隐晦语义/图文模态依赖的真正竞争工作并设计≤6h Kill Test。独立多模态图文隐晦专题（VLSU/Meerkat-VL/VLSBench）仍保留，不再替代原计划的 CCF-A 读完优先序列。
 
 - 2026-10-29：**P017 Doublespeak** 正式精读、方法答疑及代码静态审计完成，用户明确授权定稿合并；Card `01_literature/cards/P017_In_Context_Representation_Hijacking.md`，非 GPU 复现。P015 进入正式精读中。
 
@@ -43,3 +45,5 @@
 - **2026-10-30：P034 CrossGuard 正式精读定稿并获用户明确指示上传合并**。卡片 `01_literature/cards/P034_CrossGuard.md`：已归档任务定义、三个奖励公式及代码差异、PPO算法与必要性比较、5000/1390/1616/≈202样本口径、FigStep例外、Table1-3/Fig3-7实验基线和指标、ASR不同评测协议、局限与Kill Test；**未训练或复现，不宣称已实现创新Gap**。
 
 - **2026-10-31：P027 ExPO-HM（ICLR 2026，CCF-A）用户授权定稿上传合并**。正式阅读卡 01_literature/cards/P027_ExPO-HM.md 已记录 SFT-PM→GRPO-CL+CDE 的原文与代码机制、具体公式、数据/实验、奖励误差及测试集验证路径。**未GPU复现，不以静态审计断言作者结果无效**。下一篇正式精读 P013 Exploring Concreteness Through a Figurative Lens（ACL 2026 Main CCF-A）。
+
+- **2026-10-31：P013 Exploring Concreteness Through a Figurative Lens（ACL 2026 Main，CCF-A）用户授权正式定稿并合并**。作者正式PDF 20页已读取；层级Probe、DiffMean/跨层SVD、steering及公开代码静态审计已归档；SVD实现差异与未证因果保留。已完成**18/36（50.0%）**，原Seed **16/32（50.0%）**。下一篇 **P022 SemanticQA**（ACL 2026 Main，CCF-A；官方24页PDF已可访问）。
