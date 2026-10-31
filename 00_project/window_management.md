@@ -75,3 +75,7 @@
 ## 14. P035定稿并进入P036（2026-10-31）
 - P035 EmoBi（ACL 2025 Main CCF-A）用户明确授权定稿上传合并。卡 01_literature/cards/P035_EmoBi.md：四阶段情绪→域映射→双修辞关联→最终联合LLM自检；公开代码实际上隐喻先行→夸张→联合重判，没有完全对称hyperbole-first分支；2023 ACL Findings 既有HYPO/HYPO-L/TroFi/LCC双标签及标注质量证据；当前仓库运行导入/数据路径错误，未本地训练/推理复现。Verification加分不等于可靠纠错，保留同预算消融问题。
 - 当前**20/36（55.6%）**，Seed**17/32（53.1%）**；P031继续暂缓，15篇尚未正式精读。第二批CCF-A最后一篇 **P036 StealthGraph**（ACL 2026 Main，DOI 10.18653/v1/2026.acl-long.295；PDF https://aclanthology.org/2026.acl-long.295.pdf；code https://github.com/ZJUIDG-AIVA/StealthGraph）。正式精读须核对任务为**隐晦有害提示的生成、测试模型安全性**，不能混同一般隐晦信息分类检测；始终先概览后讲公式、数据生成/验证、实验与代码，读不到原始PDF要让用户提供。
+
+## 15. P036定稿与第三阶段计划（2026-10-31）
+- 用户明确授权 P036 StealthGraph（ACL 2026 Main/CCF-A）定稿并合并。正式卡 01_literature/cards/P036_StealthGraph.md。现象：Wikidata知识图谱帮助生成不同实体的专业风险请求，双路径隐晦改写+Gemini质量审查+LLM响应ASR；**KG200条vs无KG200条的实体名称数96 vs10，故Self-BLEU改善有实体覆盖混杂，不能宣称图边独立因果**；代码质量失败后选择最近合格候选而非全局最高质量；Step7存在部分fail-open并下调模型成功标签。成功改写子集SG-Implicit✓的模型ASR是选择后的行为评测，不是隐晦有害文本人工金标。
+- **最新定稿21/36（58.3%）、Seed17/32（53.1%）**；P031 AmpleHate 独立暂缓、其他14篇未正式精读。第二批CCF-A阅读 P027/P013/P022/P035/P036 全部完成；**停止自动展开下一批阅读**，优先单独开窗做第三阶段：R1已读论文的机制—数据—真值—训练—评测对比矩阵→R2直接竞品和反证→R3筛选至多2个数据可达/单卡≤6h的假设及最低成本Kill Test。新窗口需把正式论文PDF与公开代码查实，不得把聊天初稿冒充已入GitHub；并行数据可达性核验与竞品查重。多模态图文隐晦主题（CrossGuard/P019/VLSU/Meerkat-VL）优先但先验证数据和真实双模态依赖。
