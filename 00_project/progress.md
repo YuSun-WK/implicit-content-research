@@ -5,10 +5,10 @@
 ## 馆藏与精读完成度
 
 - 根 Collection：**36 篇独立论文（P001–P036）**；原始 `01seed_papers` 子集仍为 **32 篇（P001–P032）**。2026-10-27 本机整理记录核验 38 个 PDF 附件，P004、P009 各保留两份；Zotero 云同步未单独核验。
-- **已精读并定稿 19 篇**：P001、P002、P003、P011、P013、P015、P017、P019、P020、P022、P023、P024、P027、P028、P029、P030、P032、P033、P034。阅读卡在 `01_literature/cards/`，相应 PR 已合并。
+- **已精读并定稿 20 篇**：P001、P002、P003、P011、P013、P015、P017、P019、P020、P022、P023、P024、P027、P028、P029、P030、P032、P033、P034、P035。阅读卡在 `01_literature/cards/`，相应 PR 已合并。
 - **暂缓定稿 1 篇**：P031 AmpleHate，方法公式、公开代码与实验协议存在重大疑点；仅将临时静态审计保存到 `01_literature/audits/`。
-- **尚未正式精读 16 篇**，其中 Seed 内 14 篇、后恢复的 P035–P036 共 2 篇。
-- 定稿率：**根 Collection 19/36=52.8%**；**固定 Seed 17/32=53.1%**。定稿只表示文献与静态证据审计完成，不代表代码/模型已复现。
+- **尚未正式精读 15 篇**，其中 Seed 内 14 篇、后恢复的 P036 共 1 篇。
+- 定稿率：**根 Collection 20/36=55.6%**；**固定 Seed 17/32=53.1%**。定稿只表示文献与静态证据审计完成，不代表代码/模型已复现。
 
 ## 已完成的研究阶段
 
@@ -23,6 +23,8 @@
 
 ## 尚未关闭
 
+- **P035 EmoBi（ACL 2025 Main CCF-A）**：当前开源模型调用主要为情绪→域映射→隐喻→夸张→联合重判，未提供双向对称分支；Verification 是每条样本自动调用一次LLM，没有独立检错器；2023 ACL Findings 补充的双标签存在类别失衡与单人主标注；公开代码缺少导入/占位路径等问题；原文与代码对应版本、评测划分与F1未实际复现。详见 01_literature/cards/P035_EmoBi.md。
+
 - **P022 SemanticQA（ACL 2026 Main/CCF-A）**：数据源按任务处理、样本/标签口径和语境真实意义可信度待进一步实物审计；当前 sequential-task 代码为单次模型生成两个输出字段而非两次调用；论文Table5使用METEOR，公开main/eval对应组合分数为BERTScore；原子抽取和组合抽取匹配规则不同，不能把所有下降直接归为多阶段错误传播；未本地复现。见 01_literature/cards/P022_SemanticQA.md。
 
 - **P013（ACL 2026 CCF-A）**：评分token的生成后隐藏状态可能混入模型自产评分；静态词典分数不是上下文具体性独立真值；原文跨层 global SVD 与源码逐层10次抽样再中心化 SVD不同；默认basis文件名/形状和steering配置不对齐；SVD符号未显式校正；尚无随机方向/语义保真因果控制与本地复现。详见 01_literature/cards/P013_Concreteness_Figurative_Lens.md。
@@ -36,7 +38,7 @@
 
 ## 下一步
 
-按已确认的第二批未完成 CCF-A 清单继续核心精读：**P035（ACL 2025 Main）→ P036（ACL 2026 Main）**。P027（ICLR 2026）于2026-10-31定稿；四篇待读完成后优先审查解释忠实性、表征干预、隐晦语义/图文模态依赖的真正竞争工作并设计≤6h Kill Test。独立多模态图文隐晦专题（VLSU/Meerkat-VL/VLSBench）仍保留，不再替代原计划的 CCF-A 读完优先序列。
+按已确认的第二批未完成 CCF-A 清单继续核心精读：**P036（ACL 2026 Main）**。P027（ICLR 2026）于2026-10-31定稿；四篇待读完成后优先审查解释忠实性、表征干预、隐晦语义/图文模态依赖的真正竞争工作并设计≤6h Kill Test。独立多模态图文隐晦专题（VLSU/Meerkat-VL/VLSBench）仍保留，不再替代原计划的 CCF-A 读完优先序列。
 
 - 2026-10-29：**P017 Doublespeak** 正式精读、方法答疑及代码静态审计完成，用户明确授权定稿合并；Card `01_literature/cards/P017_In_Context_Representation_Hijacking.md`，非 GPU 复现。P015 进入正式精读中。
 
@@ -51,3 +53,5 @@
 - **2026-10-31：P013 Exploring Concreteness Through a Figurative Lens（ACL 2026 Main，CCF-A）用户授权正式定稿并合并**。作者正式PDF 20页已读取；层级Probe、DiffMean/跨层SVD、steering及公开代码静态审计已归档；SVD实现差异与未证因果保留。已完成**18/36（50.0%）**，原Seed **16/32（50.0%）**。下一篇 **P022 SemanticQA**（ACL 2026 Main，CCF-A；官方24页PDF已可访问）。
 
 - **2026-10-31：P022 SemanticQA（ACL 2026 Main，CCF-A）用户授权定稿并归档**。正式24页PDF和GitHub静态分析完成；数据任务化处理、Sequential单次双字段生成、Conditional/Overall及METEOR-vs-BERTScore差异均已存卡；不宣称已运行复现。当前 **19/36（52.8%）**，Seed **17/32（53.1%）**。下一篇 **P035 EmoBi**（ACL 2025 Main，CCF-A，官方PDF 11页已实际读取）。
+
+- **2026-10-31：P035 EmoBi（ACL 2025 Main/CCF-A）用户授权定稿**。已完成正式11页PDF和代码静态精读、2023 Findings标注来源追溯、方法/Verification/实验/复现质疑；阅读卡 01_literature/cards/P035_EmoBi.md。进度**20/36（55.6%）**，Seed**17/32（53.1%）**；下篇P036 StealthGraph（ACL 2026 Main/CCF-A），已找到官方PDF。
