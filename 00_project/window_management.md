@@ -56,3 +56,9 @@
 ## 10. P034 定稿与多模态隐晦检测专题交接（2026-10-30）
 - **P034 CrossGuard（ACL 2026 Main，CCF-A）用户授权定稿合并**：`01_literature/cards/P034_CrossGuard.md`。必须继承：三奖励正式论文 vs 公开代码的差异；5000 RL初始文本、1390 ImpForge红队评估样本、1616混合训练样本（其中12.5%≈202联合隐含类型）**不能混写**；论文没有证据确定≈202是否取自1390或两组是否独立；PPO不具同预算独立必要性证明；FigStep数据消融略退化；在线MLLM/离线MLLM/guardrail用不同ASR判据；SFT训练配置max_samples=1500 vs论文本体1616；全部仅静态审计。
 - 研究计划已从继续单篇P034阅读切换为**单独的新窗口：多模态图文隐晦信息检测领域审计**。先核验 VLSU（ICLR 2026 CCF-A）、Meerkat-VL（ICML 2026 CCF-A）、VLSBench（ACL 2025 Main CCF-A）及SIUO（NAACL 2025 Findings，不按CCF-A主会统计）；优先数据标签可信/模态依赖评测/竞品查重，再定是否需要Kill Test。不要重做 CrossGuard 的多GPU PPO，也不要自动认定“PPO改GRPO、新数据+LoRA”有足够创新。
+
+## 11. P027 定稿及第二批 CCF-A 继续阅读（2026-10-31）
+- 用户已明确授权 P027 **ExPO-HM**（ICLR 2026，CCF-A）定稿、上传、合并，正式卡片在 01_literature/cards/P027_ExPO-HM.md。模型 Qwen2.5-VL；SFT-PM 仅细粒度标签 CE，GRPO-CL 课程，CDE 以预测正确性与决策熵组合成奖励。相关公开实现与论文存在课程第二阶段配比、G数、熵模式/奖励公式、测试集作验证路径的静态差异；解释一致性与忠实性不能混为一谈；未运行GPU。
+- 读后正式完成计数 **17/36（47.2%）**，Seed **15/32（46.9%）**；P031 暂缓，18篇未正式精读。
+- **约定的第二批 CCF-A 阅读顺序必须保留**：P027 [已定稿] → **P013** Exploring Concreteness Through a Figurative Lens（ACL 2026 Main，DOI 10.18653/v1/2026.acl-long.705） → **P022** SemanticQA → **P035** Hyperbole/Metaphor → **P036** StealthGraph。P013 在进入精读前须核对正式 PDF 和作者代码，已讨论过局部概念但**未形成正式精读卡**；不要误判为已读。
+- 多模态隐晦专题 VLSU/Meerkat-VL/VLSBench 与上述第二批阅读并行存在，不覆盖此次明确的顺序。
