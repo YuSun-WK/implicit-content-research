@@ -72,3 +72,5 @@
 - **P041 SIUO（NAACL 2025 Findings，非CCF-A主会）用户授权正式定稿并合并**：论文任务、269（167人工+102 AI辅助）数据口径、167条公开gen/mcqa不同格式、Safety/Effectiveness与MCQA协议、公开自动评测脚本字段风险均记录于01_literature/cards/P041_SIUO.md。只做静态审计，**未实物完整复现269条、未重新评价15模型**。
 - 此前已定稿21篇，加入P041为**22篇**；P037–P040仍待正式精读，当前进行P037 VLSBench（ACL2025 Main/CCF-A）。
 - 研究决策：P041是响应安全基准，不能等同隐晦输入二分类金标；后续重点审查P037单模态信息泄漏、P038联合能力、P039风险归因、P040自检对齐。严格先查竞争工作再判断创新空间。
+
+- **2026-11-02 P037 VLSBench（ACL 2025 Main/CCF-A）用户正式授权定稿并合并**：已归档VSIL形式、预训练LlamaGuard3-11B-Vision直接判别未按集微调、2241图文数据分布与一条空instruction、Qwen2-VL仅文本29.5% vs文本加图片描述22.5%的拒答/警告解释、SFT/DPO结果、官方eval.py默认data[:2]和GPT-4o Judge成本问题。见01_literature/cards/P037_VLSBench.md。**未本地复现、未逐图审查**。此前22篇+P037，当前**23篇已正式定稿**。下一篇P038 VLSU（ICLR2026 CCF-A），P039/P040未精读。
