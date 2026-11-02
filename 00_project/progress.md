@@ -74,3 +74,5 @@
 - 研究决策：P041是响应安全基准，不能等同隐晦输入二分类金标；后续重点审查P037单模态信息泄漏、P038联合能力、P039风险归因、P040自检对齐。严格先查竞争工作再判断创新空间。
 
 - **2026-11-02 P037 VLSBench（ACL 2025 Main/CCF-A）用户正式授权定稿并合并**：已归档VSIL形式、预训练LlamaGuard3-11B-Vision直接判别未按集微调、2241图文数据分布与一条空instruction、Qwen2-VL仅文本29.5% vs文本加图片描述22.5%的拒答/警告解释、SFT/DPO结果、官方eval.py默认data[:2]和GPT-4o Judge成本问题。见01_literature/cards/P037_VLSBench.md。**未本地复现、未逐图审查**。此前22篇+P037，当前**23篇已正式定稿**。下一篇P038 VLSU（ICLR2026 CCF-A），P039/P040未精读。
+
+- **2026-11-02 P038 VLSU正式定稿**：新增阅读卡01_literature/cards/P038_VLSU.md；正式论文8187行/17组合 vs GitHub CSV实测8159行/25三元组（141条not_sure），S-S-U论文37 vs发布35；官方只有test split，图片是外部URL、尚未实测可达性；未实物复现17个模型或GPT Judge；Harmless/Helpful行为控制提示词原文未完整核实。已定稿累计**24篇**（原23+P038），后续P039 ThinkingGuard、P040 Meerkat-VL。
