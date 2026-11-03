@@ -78,3 +78,5 @@
 - **2026-11-02 P038 VLSU正式定稿**：新增阅读卡01_literature/cards/P038_VLSU.md；正式论文8187行/17组合 vs GitHub CSV实测8159行/25三元组（141条not_sure），S-S-U论文37 vs发布35；官方只有test split，图片是外部URL、尚未实测可达性；未实物复现17个模型或GPT Judge；Harmless/Helpful行为控制提示词原文未完整核实。已定稿累计**24篇**（原23+P038），后续P039 ThinkingGuard、P040 Meerkat-VL。
 
 - **2026-11-03 P039 ThinkingGuard（ACM MM2026/CCF-A）正式定稿**：论文方法、2,800 Unsafe+2,800 Safe反事实设计、训练/测试口径、五步推理、SA-MCTS过程奖励与Max-Q、Trajectory/Step-DPO及消融已归档于01_literature/cards/P039_ThinkingGuard.md；三项未证事项：奖励尺度阈值/Judge代码不公开，Step-DPO未充分同token/数据/类别权重控制，安全/危险配对图片未证仅改变Trigger。SA-MCTS负责搜索而DPO负责训练参数。未GPU复现、未逐图评审。累计**25篇正式定稿**；下一篇P040 Meerkat-VL（ICML2026/CCF-A）。
+
+- **2026-11-03 P040 Meerkat-VL（ICML 2026/CCF-A）经用户授权正式定稿并合并**：阅读卡01_literature/cards/P040_MeerkatVL.md；方法SFT冷启动→NPSV同Actor四维文本自评→DPCA(推理/回答评分一致性惩罚)→GRPO训练已通过公开源码静态审计。评分阶段输入预设用户意图/风险说明，不重传原始图像；README与train.sh的lambda_con=0.3 vs0.2不一致，脚本有路径/引号/数据类配置/接口疑点。论文报告8436条RL数据而HF页面显示8466，实际Parquet未逐条读取；约1000条自验证SFT监督分数的具体来源未查明；**正式论文完整消融表未逐项核验、未GPU复现**。此前25篇+P040，当前**26篇正式定稿**；P041/P037/P038/P039/P040跨论文专题核心五篇均已定稿。建议下一步进入联合风险检测/风险感知/安全响应的机制横向审计、数据可达性和最小Kill Test。
