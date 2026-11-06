@@ -1,0 +1,740 @@
+{
+  "dataset_revision": "3ac26e778db94a282711f463f22ba6db99643bee",
+  "seed": 20261105,
+  "selected_pairs": 36,
+  "images": [
+    {
+      "pair_id": "test/ethical_violations/6",
+      "side": "safe",
+      "hf_path": "test/images_test/ethical_violations/6_safe.png",
+      "status": "ok",
+      "sha256": "eb9c22f2453a921f203c07539f298efd18314d365dcb526e34d862fc3a0c1b8c",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/ethical_violations/6",
+      "side": "unsafe",
+      "hf_path": "test/images_test/ethical_violations/6_unsafe.png",
+      "status": "ok",
+      "sha256": "342c34c27bb667f0096fc59cf18cba0c7d470b9d991bed855c11ee8d2bd517df",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/ethical_violations/12",
+      "side": "safe",
+      "hf_path": "test/images_test/ethical_violations/12_safe.png",
+      "status": "ok",
+      "sha256": "4990847840c24da0d1b7e7c41160a0226a79dca5f44fd581e252c3b156eddbdd",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/ethical_violations/12",
+      "side": "unsafe",
+      "hf_path": "test/images_test/ethical_violations/12_unsafe.png",
+      "status": "ok",
+      "sha256": "7bd47323a79a4f232685a73345af3529af955d2b30448da1dfa2114973677200",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/ethical_violations/8",
+      "side": "safe",
+      "hf_path": "test/images_test/ethical_violations/8_safe.png",
+      "status": "ok",
+      "sha256": "2a29b772e99bbdb761bf8afac0dc27b38df2a54977d793a81fd498d5df2b1d02",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/ethical_violations/8",
+      "side": "unsafe",
+      "hf_path": "test/images_test/ethical_violations/8_unsafe.png",
+      "status": "ok",
+      "sha256": "58277b277145447f6604a41975b8527731b17b9001312970550ba6d8d107746c",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/ethical_violations/36",
+      "side": "safe",
+      "hf_path": "test/images_test/ethical_violations/36_safe.png",
+      "status": "ok",
+      "sha256": "5c8328f59dea6dc5809d9a2232e188cfd8eb9640460606fc6bb28c4f7eebdad9",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/ethical_violations/36",
+      "side": "unsafe",
+      "hf_path": "test/images_test/ethical_violations/36_unsafe.png",
+      "status": "ok",
+      "sha256": "4d00bfc65d9bbfd2cb217c0064730a1c90058cb5547fc5f6aac83c6064a108b6",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/illegal_activities/12",
+      "side": "safe",
+      "hf_path": "test/images_test/illegal_activities/13_safe.png",
+      "status": "ok",
+      "sha256": "fe804219067a09ac182271935762aa456ee09af279d0182418f4d26d9d39f07b",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/illegal_activities/12",
+      "side": "unsafe",
+      "hf_path": "test/images_test/illegal_activities/13_unsafe.png",
+      "status": "ok",
+      "sha256": "603dbc273f0907bcfebcafb38d493fa6032b885b86a9af30cbcb48de3bb156fe",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/illegal_activities/25",
+      "side": "safe",
+      "hf_path": "test/images_test/illegal_activities/27_safe.png",
+      "status": "ok",
+      "sha256": "eb209edaf76a9b73d1cf8fe67808cfe7d6fa0d0a7c3cc1953eba3bfdbadb6e51",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/illegal_activities/25",
+      "side": "unsafe",
+      "hf_path": "test/images_test/illegal_activities/27_unsafe.png",
+      "status": "ok",
+      "sha256": "da2e9a6f878a7328d2fc8c847046d48639dacb3c33b890b52a1e220b9a8a4791",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/illegal_activities/31",
+      "side": "safe",
+      "hf_path": "test/images_test/illegal_activities/33_safe.png",
+      "status": "ok",
+      "sha256": "dec775242d9c84249a49ba7e991770f04aaa300005da720ccf831fa7e9bbe254",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/illegal_activities/31",
+      "side": "unsafe",
+      "hf_path": "test/images_test/illegal_activities/33_unsafe.png",
+      "status": "ok",
+      "sha256": "d5df517d4c058147d3f94e159d0b934d7e7749d7a965e515ba62aee1099e262a",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/illegal_activities/5",
+      "side": "safe",
+      "hf_path": "test/images_test/illegal_activities/5_safe.png",
+      "status": "ok",
+      "sha256": "77fb91b882b97e3877a0700e09a5d3ad4b946003e7c635802740885aef042fa4",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/illegal_activities/5",
+      "side": "unsafe",
+      "hf_path": "test/images_test/illegal_activities/5_unsafe.png",
+      "status": "ok",
+      "sha256": "f2e81df436d2005897a93c921fecb8ea8016e250511efa62fd6f590723cc2766",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/misinformation/5",
+      "side": "safe",
+      "hf_path": "test/images_test/misinformation/5_safe.png",
+      "status": "ok",
+      "sha256": "2cec4b8a939617b98185eb7c82e7e702ab7078019a3fbb00da26f9b981df5e45",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/misinformation/5",
+      "side": "unsafe",
+      "hf_path": "test/images_test/misinformation/5_unsafe.png",
+      "status": "ok",
+      "sha256": "a50dac9c1f69c119fe4ec916ff56cd796f26db7fdd075e3c902f7a0c6d7878c6",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/misinformation/45",
+      "side": "safe",
+      "hf_path": "test/images_test/misinformation/47_safe.png",
+      "status": "failed",
+      "error": "download connection failed; raw details retained locally"
+    },
+    {
+      "pair_id": "test/misinformation/45",
+      "side": "unsafe",
+      "hf_path": "test/images_test/misinformation/47_unsafe.png",
+      "status": "failed",
+      "error": "download connection failed; raw details retained locally"
+    },
+    {
+      "pair_id": "test/misinformation/82",
+      "side": "safe",
+      "hf_path": "test/images_test/misinformation/87_safe.png",
+      "status": "ok",
+      "sha256": "5f1c6981bb22200fcf95f748c9ee98ab1f9574e59930a6bf853f5d7159adf58b",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/misinformation/82",
+      "side": "unsafe",
+      "hf_path": "test/images_test/misinformation/87_unsafe.png",
+      "status": "ok",
+      "sha256": "ea7356bd16a042d679dab69646491be87d9155b5972a37da94bd380cdd7367a4",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/misinformation/4",
+      "side": "safe",
+      "hf_path": "test/images_test/misinformation/4_safe.png",
+      "status": "ok",
+      "sha256": "9b034908ca3c8e8b8de50a89df4b13c6db6e879da7e48426814ce0f5c0fff0f3",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/misinformation/4",
+      "side": "unsafe",
+      "hf_path": "test/images_test/misinformation/4_unsafe.png",
+      "status": "ok",
+      "sha256": "3b6646b92651fd62e8010e0b5498cf63659163f8528b59b26b939ebee806d672",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/offensiveness/53",
+      "side": "safe",
+      "hf_path": "test/images_test/offensiveness/56_safe.png",
+      "status": "ok",
+      "sha256": "5d85a40fbb01ae31c6118c764a82fbdb0b67437c5ff43c7bc08e074422e1e227",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/offensiveness/53",
+      "side": "unsafe",
+      "hf_path": "test/images_test/offensiveness/56_unsafe.png",
+      "status": "ok",
+      "sha256": "50ef06edbd3cc9196fb6a6080880d33b28465d546b63d8f2301fa0a7b8ff277e",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/offensiveness/1",
+      "side": "safe",
+      "hf_path": "test/images_test/offensiveness/1_safe.png",
+      "status": "ok",
+      "sha256": "14168382377039735ab5bcf6b13d396e792f0f2b21749ab2bf83d7fb799094c0",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/offensiveness/1",
+      "side": "unsafe",
+      "hf_path": "test/images_test/offensiveness/1_unsafe.png",
+      "status": "ok",
+      "sha256": "1683ba1a93c19331647253a27e1acc1948bf2809ea4e9e936e611ad09ca09097",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/offensiveness/38",
+      "side": "safe",
+      "hf_path": "test/images_test/offensiveness/39_safe.png",
+      "status": "ok",
+      "sha256": "6bfc41418d4f76fed266e71b1f80a81ea35b94ca5abaef754b36bbeae07990f2",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/offensiveness/38",
+      "side": "unsafe",
+      "hf_path": "test/images_test/offensiveness/39_unsafe.png",
+      "status": "ok",
+      "sha256": "e921136fe7ae3786f80a5746a37f7b9ab9ca109666f16474b419d75d540df11d",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/offensiveness/29",
+      "side": "safe",
+      "hf_path": "test/images_test/offensiveness/30_safe.png",
+      "status": "ok",
+      "sha256": "ae84d3c825b5e20ff479ed07a933e8e23bd8c0c01525910479f9708e0e92db0b",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/offensiveness/29",
+      "side": "unsafe",
+      "hf_path": "test/images_test/offensiveness/30_unsafe.png",
+      "status": "ok",
+      "sha256": "e1ff66b6a84486622cf1b1310cc3e660c2884ba565f788d6e254aeb58641f523",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/physical_harm/34",
+      "side": "safe",
+      "hf_path": "test/images_test/physical_harm/34_safe.png",
+      "status": "ok",
+      "sha256": "507f0130b7f19f9c4a5556b9450a028fc1110b6227a808ec2f0c3a27a66f4c8c",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/physical_harm/34",
+      "side": "unsafe",
+      "hf_path": "test/images_test/physical_harm/34_unsafe.png",
+      "status": "ok",
+      "sha256": "08e58326ab18a8942f143f8f8b18f157afa348cd0468baf5f0c63b33443f2c32",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/physical_harm/79",
+      "side": "safe",
+      "hf_path": "test/images_test/physical_harm/79_safe.png",
+      "status": "ok",
+      "sha256": "8909869a615a211e0d655a1ce9c53a3c8e253cce504d956273f744781466a226",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/physical_harm/79",
+      "side": "unsafe",
+      "hf_path": "test/images_test/physical_harm/79_unsafe.png",
+      "status": "ok",
+      "sha256": "13ad6d704bfdb87d8e5b24f953da23c3d594129cdc89fd9db369bf502673b5d8",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/physical_harm/43",
+      "side": "safe",
+      "hf_path": "test/images_test/physical_harm/43_safe.png",
+      "status": "ok",
+      "sha256": "491fcea21bbabeaba9fd527ccb01b9eaa29e4c753b5e97fa04b7febb2f7e22f6",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/physical_harm/43",
+      "side": "unsafe",
+      "hf_path": "test/images_test/physical_harm/43_unsafe.png",
+      "status": "ok",
+      "sha256": "4954b0417b483fe7c82eb31774a5655db2e469ea73dbda5f8b4aa0055ab43978",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/physical_harm/14",
+      "side": "safe",
+      "hf_path": "test/images_test/physical_harm/14_safe.png",
+      "status": "ok",
+      "sha256": "48f296ba7dac5b51da5a51d03e5c2f6fed396d23d3152a2ce7500980c69121b7",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/physical_harm/14",
+      "side": "unsafe",
+      "hf_path": "test/images_test/physical_harm/14_unsafe.png",
+      "status": "ok",
+      "sha256": "2a1b1b513a420e4575a0ac41b0aa43bdb2fa2bcb09d93a9db47088775bb706ba",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/privacy/89",
+      "side": "safe",
+      "hf_path": "test/images_test/privacy/89_safe.png",
+      "status": "ok",
+      "sha256": "2446c728fb158a6501df9c9e579b665c806c881052fb3e2925aa1b0683f3eb3a",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/privacy/89",
+      "side": "unsafe",
+      "hf_path": "test/images_test/privacy/89_unsafe.png",
+      "status": "ok",
+      "sha256": "e1c57f4e5f095d0590ee39a53a19429146f3b27c4c028d1d9e45814ef1e5c8fb",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/privacy/27",
+      "side": "safe",
+      "hf_path": "test/images_test/privacy/27_safe.png",
+      "status": "ok",
+      "sha256": "97a0de2cd7edf0c8091389660097f59c88f30a352b7bca464aa4e83cd8e84eac",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/privacy/27",
+      "side": "unsafe",
+      "hf_path": "test/images_test/privacy/27_unsafe.png",
+      "status": "ok",
+      "sha256": "7a01324e4a89eeadda4e6ce0af14a4fb9a545b68b10f0cbeceb41557b684d4c5",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/privacy/66",
+      "side": "safe",
+      "hf_path": "test/images_test/privacy/66_safe.png",
+      "status": "ok",
+      "sha256": "66ef46e97c9debcd7d418037ca8b16c55c735c6d1f0c150795846fd5ac5bb485",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/privacy/66",
+      "side": "unsafe",
+      "hf_path": "test/images_test/privacy/66_unsafe.png",
+      "status": "ok",
+      "sha256": "785987f6bbf6c579511bd6e9939e4cf239f543d4a7d8228207b8f5f2fe1a5b93",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/privacy/55",
+      "side": "safe",
+      "hf_path": "test/images_test/privacy/55_safe.png",
+      "status": "ok",
+      "sha256": "dcf0ae437536d95209b12e34c17e5c4b73ab2bae7f5bb542d7059aad4e90830f",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/privacy/55",
+      "side": "unsafe",
+      "hf_path": "test/images_test/privacy/55_unsafe.png",
+      "status": "ok",
+      "sha256": "026e8b6f5e9a1d96345c7e7c835642b47d774fcdd224549500e40cdc6a34d54e",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/property_damage/8",
+      "side": "safe",
+      "hf_path": "test/images_test/property_damage/9_safe.png",
+      "status": "ok",
+      "sha256": "b88b03ec3a7ffe5e74bea77a258497e29c9ae35f1f358ce3535c2473aefdc633",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/property_damage/8",
+      "side": "unsafe",
+      "hf_path": "test/images_test/property_damage/9_unsafe.png",
+      "status": "ok",
+      "sha256": "76146a25de18de4d4ab865828e1b3426eba013f028c9d10c7891a9612308fe36",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/property_damage/3",
+      "side": "safe",
+      "hf_path": "test/images_test/property_damage/4_safe.png",
+      "status": "ok",
+      "sha256": "61bc401515a04678549d0a8156548d7eb46532fca1b8cdd316618fb81bf18def",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/property_damage/3",
+      "side": "unsafe",
+      "hf_path": "test/images_test/property_damage/4_unsafe.png",
+      "status": "ok",
+      "sha256": "67fa888afcc48a8bce179a164631c93b21a0db4e69707e25c2eaea62af5bef21",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/property_damage/98",
+      "side": "safe",
+      "hf_path": "test/images_test/property_damage/101_safe.png",
+      "status": "ok",
+      "sha256": "61ba0c293674a6ac55e2e95ca9fb90315cf5b49e1c741415926445c52f8ca9b0",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/property_damage/98",
+      "side": "unsafe",
+      "hf_path": "test/images_test/property_damage/101_unsafe.png",
+      "status": "ok",
+      "sha256": "eaa9ea5355fa0f2e1fe3bfb11afebf8aab5ef186935542439852d7574ec6b5a1",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/property_damage/61",
+      "side": "safe",
+      "hf_path": "test/images_test/property_damage/64_safe.png",
+      "status": "ok",
+      "sha256": "9099b525c76d485107b891268b13cd67b11374f183c8e61e1e21fb877833c3bb",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/property_damage/61",
+      "side": "unsafe",
+      "hf_path": "test/images_test/property_damage/64_unsafe.png",
+      "status": "ok",
+      "sha256": "376d97c859377e3f9d28bf7cd8f5d60ff9280e0c716b4eb1b54d53c93847f630",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/religion_belief/3",
+      "side": "safe",
+      "hf_path": "test/images_test/religion_belief/3_safe.png",
+      "status": "ok",
+      "sha256": "7bf06f66b81568b98e8aa7caffc067b1ecfa0ada7f93c5123c19bad4d6fccf81",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/religion_belief/3",
+      "side": "unsafe",
+      "hf_path": "test/images_test/religion_belief/3_unsafe.png",
+      "status": "ok",
+      "sha256": "971a470e9e9abbd67598689c6c4cc6e02a3fd859e29be35e234bc4dc7185c538",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/religion_belief/82",
+      "side": "safe",
+      "hf_path": "test/images_test/religion_belief/82_safe.png",
+      "status": "ok",
+      "sha256": "ec92390268e71b7408a3768acdcfe25f817ff8b3a993089bf248ab8bc05cd5bc",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/religion_belief/82",
+      "side": "unsafe",
+      "hf_path": "test/images_test/religion_belief/82_unsafe.png",
+      "status": "ok",
+      "sha256": "b75410fe5f9337e44ae9dd64e44e7c7cd9267ac9ccf2b4b9fc7ad59a7775c3a4",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/religion_belief/43",
+      "side": "safe",
+      "hf_path": "test/images_test/religion_belief/43_safe.png",
+      "status": "ok",
+      "sha256": "3f9231f5ff634823ac44d21c04ff19e33a428671857d77722a12c63916944410",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/religion_belief/43",
+      "side": "unsafe",
+      "hf_path": "test/images_test/religion_belief/43_unsafe.png",
+      "status": "ok",
+      "sha256": "fdb348f61bd33794b9a50e7c5fa454531cef1d2a63189d9eb824e8f2c189fee5",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/religion_belief/29",
+      "side": "safe",
+      "hf_path": "test/images_test/religion_belief/29_safe.png",
+      "status": "ok",
+      "sha256": "567219082620622961f018f702097664f93bd634d79f87a5c3d7ba6399a73e2c",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/religion_belief/29",
+      "side": "unsafe",
+      "hf_path": "test/images_test/religion_belief/29_unsafe.png",
+      "status": "ok",
+      "sha256": "545b0fb6cdcef2720bd3ce7e4b500a1a910e6f96b3246f135d8b9bdaeba9392b",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/violence/27",
+      "side": "safe",
+      "hf_path": "test/images_test/violence/29_safe.png",
+      "status": "ok",
+      "sha256": "8873b2ba71a8e15388b00bdfdba57974628fbebdec7e37b56e65068f0ebc81b3",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/violence/27",
+      "side": "unsafe",
+      "hf_path": "test/images_test/violence/29_unsafe.png",
+      "status": "ok",
+      "sha256": "ed731b4ad7d8b900c37b7d76f4c709d85b27f31190a3c2dbfe7d349b944ae9b4",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/violence/65",
+      "side": "safe",
+      "hf_path": "test/images_test/violence/70_safe.png",
+      "status": "ok",
+      "sha256": "cfed9e6365830d10b40c89c04cb8ba2d95ca1c989d065905c67e4ee43cb566c0",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/violence/65",
+      "side": "unsafe",
+      "hf_path": "test/images_test/violence/70_unsafe.png",
+      "status": "ok",
+      "sha256": "7cca303774c8aa8335d28b1a9011b76339e1caa191282125fb702de8eea6581f",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/violence/54",
+      "side": "safe",
+      "hf_path": "test/images_test/violence/59_safe.png",
+      "status": "ok",
+      "sha256": "8ebf4d84481f29c14f6b7869c02339820d22ae1f8326f0e183b674b0e646098f",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/violence/54",
+      "side": "unsafe",
+      "hf_path": "test/images_test/violence/59_unsafe.png",
+      "status": "ok",
+      "sha256": "bcc599b97d4131c26c46d3b1ab9961aa9d6c8af5493ef33c6812c8cad4fcd56a",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/violence/9",
+      "side": "safe",
+      "hf_path": "test/images_test/violence/11_safe.png",
+      "status": "ok",
+      "sha256": "cfb55bc270cf8d10751bce3dd0607ec0f3332025d949608100e83289a0fb1e71",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    },
+    {
+      "pair_id": "test/violence/9",
+      "side": "unsafe",
+      "hf_path": "test/images_test/violence/11_unsafe.png",
+      "status": "ok",
+      "sha256": "e26c681245ef68ff1f09d612a365672e096b5bb2d442c3edee1c9fc275aa7147",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG"
+    }
+  ],
+  "failures": [
+    {
+      "pair_id": "test/misinformation/45",
+      "side": "safe",
+      "hf_path": "test/images_test/misinformation/47_safe.png",
+      "status": "failed",
+      "error": "download connection failed; raw details retained locally"
+    },
+    {
+      "pair_id": "test/misinformation/45",
+      "side": "unsafe",
+      "hf_path": "test/images_test/misinformation/47_unsafe.png",
+      "status": "failed",
+      "error": "download connection failed; raw details retained locally"
+    }
+  ],
+  "exact_duplicate_image_groups": [],
+  "review_status": "pending_review",
+  "replacement_policy": "no silent replacement; use sampling_order.csv rank 4 onward with explicit record"
+}

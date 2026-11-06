@@ -1,0 +1,7 @@
+{
+  "status": "not_run",
+  "reason": "Stage 0C image download incomplete and model weights unavailable within time budget",
+  "joint_pairs_evaluated": 0,
+  "all_requested_metrics": null,
+  "statistical_conclusions": null
+}

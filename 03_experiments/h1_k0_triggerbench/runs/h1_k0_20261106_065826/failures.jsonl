@@ -1,0 +1,4 @@
+{"stage": "image_download", "pair_id": "test/misinformation/45", "side": "safe", "hf_path": "test/images_test/misinformation/47_safe.png", "status": "failed", "error": "connection failure; see network_failures_summary.md"}
+{"stage": "image_download", "pair_id": "test/misinformation/45", "side": "unsafe", "hf_path": "test/images_test/misinformation/47_unsafe.png", "status": "failed", "error": "connection failure; see network_failures_summary.md"}
+{"stage": "model_download", "model_id": "Sandy124/ThinkingGuard-8B", "reason": "HF CAS decoding and HTTP TLS/read timeout; weights incomplete"}
+{"stage": "stop", "reason": "Projected full two-model run exceeds six-hour budget at observed download rate"}

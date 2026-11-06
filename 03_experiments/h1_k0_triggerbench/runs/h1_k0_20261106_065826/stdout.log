@@ -1,0 +1,5 @@
+Stage 0A: GPU/disk and dependencies checked.
+Stage 0B: 36 CSVs, 2800 valid pairs.
+Stage 0C: 36 pairs selected; 70/72 images decoded; 2 download failures.
+Stage 0D: ThinkingGuard weights incomplete due HF network failures.
+STOP: Projected time exceeds 6-hour budget; no GPU inference.
