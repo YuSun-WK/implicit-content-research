@@ -1,0 +1,3 @@
+{"stage": "image_recovery_initial", "pair_id": "test/misinformation/45", "status": "initial bounded retry failed; both images subsequently recovered from partial files"}
+{"stage": "model_download", "model_id": "Sandy124/ThinkingGuard-8B", "revision": "76892f9768ce828268265171f4bbc5dfb75eafc3", "status": "failed", "details": "HF Python download twice had ChunkedEncodingError; aria2c had TLS handshake failures; bounded curl resume returned code 35 after minimal progress"}
+{"stage": "stop", "reason": "ThinkingGuard weights unavailable and projected completion exceeds time budget; no GPU inference attempted"}

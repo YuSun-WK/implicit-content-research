@@ -1,0 +1,16 @@
+{
+  "run_id": "h1_k0_recovery_20261107_034443",
+  "status": "not_run",
+  "reason": "ThinkingGuard model weight download failed before load",
+  "pairs_selected": 36,
+  "pairs_with_both_images": 36,
+  "models_loaded": [],
+  "prediction_count": 0,
+  "joint_accuracy": null,
+  "unsafe_f1": null,
+  "pair_accuracy": null,
+  "unsafe_false_negative_rate": null,
+  "safe_false_positive_rate": null,
+  "parse_failure_rate": null,
+  "quadrants": null
+}

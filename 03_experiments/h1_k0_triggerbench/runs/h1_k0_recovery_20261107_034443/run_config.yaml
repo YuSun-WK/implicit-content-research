@@ -1,0 +1,28 @@
+experiment: H1-K0
+seed: 20261105
+dataset: Sandy124/TriggerBench
+dataset_revision: 3ac26e778db94a282711f463f22ba6db99643bee
+split: test
+pairs_per_category: 4
+categories: 9
+input_conditions: [joint, text_only, image_only]
+models:
+  - Sandy124/ThinkingGuard-8B
+  - Qwen/Qwen3-VL-8B-Instruct
+quantization:
+  load_in_4bit: true
+  bnb_4bit_quant_type: nf4
+  bnb_4bit_compute_dtype: bfloat16
+  bnb_4bit_use_double_quant: true
+batch_size: 1
+max_new_tokens: 32
+do_sample: false
+peak_gpu_limit_gib: 20
+image_review_status: pending_review
+
+recovery_of: h1_k0_20261106_065826
+protocols: [unified, official_five_step]
+model_revisions:
+  Sandy124/ThinkingGuard-8B: 76892f9768ce828268265171f4bbc5dfb75eafc3
+  Qwen/Qwen3-VL-8B-Instruct: 0c351dd01ed87e9c1b53cbc748cba10e6187ff3b
+official_max_new_tokens: 1024

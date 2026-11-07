@@ -1,0 +1,14 @@
+test_duplicate_rejected (test_evaluate.EvaluateTests.test_duplicate_rejected) ... ok
+test_invalid_mislabel_rejected (test_evaluate.EvaluateTests.test_invalid_mislabel_rejected) ... ok
+test_metrics_and_invalid_policy (test_evaluate.EvaluateTests.test_metrics_and_invalid_policy) ... ok
+test_missing_rejected (test_evaluate.EvaluateTests.test_missing_rejected) ... ok
+test_mixed_revision_rejected (test_evaluate.EvaluateTests.test_mixed_revision_rejected) ... ok
+test_text_only_has_no_ground_truth (test_evaluate.EvaluateTests.test_text_only_has_no_ground_truth) ... ok
+test_official_missing_or_ambiguous_final (test_run_inference.ParseTests.test_official_missing_or_ambiguous_final) ... ok
+test_official_only_final_overall (test_run_inference.ParseTests.test_official_only_final_overall) ... ok
+test_unified_exact_label (test_run_inference.ParseTests.test_unified_exact_label) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.002s
+
+OK

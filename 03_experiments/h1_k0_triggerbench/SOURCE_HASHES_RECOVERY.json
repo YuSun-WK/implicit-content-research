@@ -1,0 +1,32 @@
+{
+  "run_id": "h1_k0_recovery_20261107_034443",
+  "sha256_original_local_files": {
+    "H1_RECOVERY_REVIEW.md": "35841be7571930a6a61da7ff92e88f8cfef99e500cab9732bdfdcc4c6e6ed7bb",
+    "scripts/evaluate.py": "71126a6bc9b0adfe9c8ad7db5d2f4a8be43aac9c47097199b17c182bf41f345e",
+    "scripts/run_inference.py": "c3b273b050f7a354dfba11e924a97734fce994ebef3fad5a47d02a5fe4703b11",
+    "tests/test_evaluate.py": "aea4bf77ee4779a0e93a359193339af1485530a79f329a111f7ef3cdc6792929",
+    "tests/test_run_inference.py": "ef7d67bc90d814d00230aa692a7349dc09baa05511f2eb80e984bbe807b51d3e",
+    "runs/h1_k0_recovery_20261107_034443/run_config.yaml": "05913eb8d07d56f68e7c013f6b74b8ef007ae3fbb8b674b0a6f4b8fd9239a907",
+    "runs/h1_k0_recovery_20261107_034443/environment.json": "48c5dc9ef70bd3975a13e7d93e5bfd9c7783aa2760b6fca3d30e3da62e3a6879",
+    "runs/h1_k0_recovery_20261107_034443/model_revisions.json": "63a76b29d9869bd315b04c49dfa499ace4b05419c34f8a741a6b49bee5e905ed",
+    "runs/h1_k0_recovery_20261107_034443/dataset_revision.json": "e7f6b57d7e4dd64b9f4456c06bd65d0ff55325e535177b2838407c48f3c16ab6",
+    "runs/h1_k0_recovery_20261107_034443/sample_manifest.csv": "a7b531d8bafc87e9b17838190e0e7fa1fd825385f896a163ce05ff12fde49c6f",
+    "runs/h1_k0_recovery_20261107_034443/source_sample_manifest.csv": "42d03f7897c8a0fba702b3b5efd2498ce847b69cfaf6e0299b6affcb2cb90733",
+    "runs/h1_k0_recovery_20261107_034443/sampling_order.csv": "9e70f30cf2703115f2f2786cadb32a49c5d4f316320729c77956d96982976227",
+    "runs/h1_k0_recovery_20261107_034443/image_audit.json": "d439e2961eaff739621e4d4f79c2de11b8180546525270e630b019f2817feebe",
+    "runs/h1_k0_recovery_20261107_034443/predictions.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/h1_k0_recovery_20261107_034443/metrics.json": "7a45e7910ce6fa7a8768ab535f25b70b2cd3b400467a8b3cb3beb14432950a40",
+    "runs/h1_k0_recovery_20261107_034443/metrics.md": "9151a7063b52473136e33dbc8bad39c1ec915cb141314a78e844329b29b98c46",
+    "runs/h1_k0_recovery_20261107_034443/failures.jsonl": "1bb716e4b2b3404d0967ad5d6078221e2db3a9fa56a41f5be860a1eb2e1e4b23",
+    "runs/h1_k0_recovery_20261107_034443/gpu_usage.csv": "9745a3521f01227c284c94da07416ab662bdea6960c908057a201ca2bd71d19c",
+    "runs/h1_k0_recovery_20261107_034443/stdout.log": "507bd4cd029cd6eea94c029f81c469bca59455869a687f2074fd3eaf8543595f",
+    "runs/h1_k0_recovery_20261107_034443/audit_summary.md": "e31cd0efdfccdf8ebd6701ff00658bd5d2118918a0ef2423983a9bd65b245673",
+    "runs/h1_k0_recovery_20261107_034443/final_report.md": "4d67238a3163deb8fa61c8f3c6b3ef971a630c1c478b346b21b77a2a6df41bc0",
+    "runs/h1_k0_recovery_20261107_034443/cpu_tests.log": "f409fd3244169576861459414929122c8a4fc55de9856bb2f865c1cf522d18ed",
+    "runs/h1_k0_recovery_20261107_034443/image_recovery.log": "ac80bc48ca928bdae063e3cb351feb9972eee1fb08562ae2ee9793ea2679f55a",
+    "runs/h1_k0_recovery_20261107_034443/image_resume.log": "bc0503eca5b5d2f5122c57282e65c0a684cde1868c4c5bff92120886aee9753c",
+    "runs/h1_k0_recovery_20261107_034443/model_download.log": "8257fe4c856b9375fe4b16b9db24331edbebe69dddc4415f21349c1b3a230d02",
+    "runs/h1_k0_recovery_20261107_034443/aria2_shard1.log": "57f5cebeb89ad90b375a3dc6434457e84d016619f91ae25872b34c56dd4920cb",
+    "runs/h1_k0_recovery_20261107_034443/curl_shard1.log": "a7f100e1ef217c85d26959027f0a0f8bfb01e6947991c34949bcf56b903250e8"
+  }
+}

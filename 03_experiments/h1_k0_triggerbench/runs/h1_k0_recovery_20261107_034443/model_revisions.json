@@ -1,0 +1,14 @@
+{
+  "Sandy124/ThinkingGuard-8B": {
+    "revision": "76892f9768ce828268265171f4bbc5dfb75eafc3",
+    "download_complete": false,
+    "load_attempted": false,
+    "status": "failed_network_download"
+  },
+  "Qwen/Qwen3-VL-8B-Instruct": {
+    "revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+    "download_complete": false,
+    "load_attempted": false,
+    "status": "not_attempted_after_stop"
+  }
+}

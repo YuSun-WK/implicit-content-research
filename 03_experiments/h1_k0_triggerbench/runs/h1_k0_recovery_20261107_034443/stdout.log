@@ -1,0 +1,5 @@
+Recovery run created; old run preserved.
+Recovered original pair test/misinformation/45 by bounded partial-file resume; all 72 images decoded; no sample substitution.
+CPU tests: 9 passed.
+ThinkingGuard bounded model download failed after HTTP chunk errors, aria2 TLS failures, curl TLS/timeout errors.
+STOP: model unavailable; zero GPU inference.
