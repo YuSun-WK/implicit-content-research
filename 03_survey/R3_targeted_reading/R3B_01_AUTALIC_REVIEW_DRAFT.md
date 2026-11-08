@@ -7,7 +7,8 @@
 - 编号：**R2A-013**（保留R2-A原编号）。
 - Naba Rizvi et al., **AUTALIC: A Dataset for Anti-AUTistic Ableist Language In Context**, **ACL 2025 Main / Long Papers（CCF-A）**，20999–21015，DOI: 10.18653/v1/2025.acl-long.1022。
 - 官方：[Anthology](https://aclanthology.org/2025.acl-long.1022/)｜[正式PDF](https://aclanthology.org/2025.acl-long.1022.pdf)；作者数据：[数据说明页](https://nrizvi.github.io/AUTALIC.html)｜[公开仓库](https://github.com/nrizvi/AUTALIC)（目前公开README及加密ZIP）。
-- 元数据冲突待核：ACL Anthology网页作者列表未列Michael Golden，而正式PDF首页列有该作者；投稿/引用时优先以出版社修正后的正式BibTeX为准，同时在审计日志保留网页/PDF差异。[P+O]\n- 归属：**T4b语境化有害性/歧视判断**；相关T3b社群角色、立场和话语功能；X标注分歧与误报审计。**不是仅含隐式内容的基准，也不是多模态研究。**
+- 元数据冲突待核：ACL Anthology网页作者列表未列Michael Golden，而正式PDF首页列有该作者；投稿/引用时优先以出版社修正后的正式BibTeX为准，同时在审计日志保留网页/PDF差异。[P+O]
+- 归属：**T4b语境化有害性/歧视判断**；相关T3b社群角色、立场和话语功能；X标注分歧与误报审计。**不是仅含隐式内容的基准，也不是多模态研究。**
 - **结论：补足R2-C“真实社群语境、反用/引述、人工分歧”的直接例证；但没有文本-only与文本+语境的系统消融，不能证明语境带来的定量增益、逐例标签翻转率或隐式语义恢复机制。**[P]
 
 ## 1. 任务/现象边界
