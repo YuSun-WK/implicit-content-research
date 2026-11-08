@@ -1,6 +1,6 @@
 # Research Taxonomy｜广义隐晦信息研究初步分类
 
-更新：2026-11-08。此表是对现有59篇文献的多标签工作分类，尚非正式综述框架。完整逐篇标注见 Literature_Inventory.xlsx。
+更新：2026-11-08（R0 学术审核后定点修正）。此表是对现有59篇文献的多标签工作分类，尚非正式综述框架。完整逐篇标注见 Literature_Inventory.xlsx。
 
 ## 范围与层级
 
@@ -17,7 +17,7 @@
 | 修辞/非字面 | P002、P013–P016、P018–P023、P035；T012–T013 | 隐喻、夸张、反讽、习语、委婉语、幽默；按形式与任务拆分 |
 | 编码/伪装 | P023、P017；T008–T009、T011–T013 | 暗语、谐音、扰动与语境编码；显式解码、策略分类与规避鲁棒性分开 |
 | 隐式有害/偏见 | P001、P028–P033；T005–T009、T017–T018 | 隐式仇恨、冒犯、刻板印象与性别歧视；不能代表整个综述 |
-| 多模态非字面 | P003、P014、P019；T001 | 图文隐喻、反讽与视觉蕴含；需检验模态互补与数据来源捷径 |
+| 多模态非字面 | P003、P014、P019 | 图文隐喻、反讽与视觉蕴含；需检验模态互补与数据来源捷径 |
 | 图文有害/Meme | P026–P027、P034、P037–P041；T001–T004、T014–T016 | 图文组合有害性、解释与安全响应；区分单模态泄漏与真正联合风险 |
 | 视频风险 | P025、P028 | 视频/音频/文本隐式风险；目前材料远少于文本和图文 |
 | 图文联合安全 | P034、P037–P041 | 安全输入组合后产生风险、视觉泄漏、风险归因、对齐与拒答权衡 |
@@ -29,5 +29,5 @@
 
 1. 检测标签、隐含意义恢复、解释生成、安全响应分别记录；即使输入相同，也不能合并成一个任务。
 2. 显式/隐式有害文本、图文合成后才出现的风险，以及普通有害 Meme 需区分。上传表的“隐晦”备注不能替代论文任务定义。
-3. P002 的阅读版本为 arXiv 2024，sources.csv 另记 2025 期刊版；P039 仅有作者录用记录。相关状态保留在总索引。
+3. P002 的阅读版本为 arXiv 2024，正式期刊版于 2025 在线、2026 编入卷期；P039 的作者录用与 DOI 记录尚不能证明正式出版。相关状态保留在总索引。
 4. 此分类参考仓库 [papers.csv](https://github.com/YuSun-WK/implicit-content-research/blob/main/01_literature/papers.csv)、[sources.csv](https://github.com/YuSun-WK/implicit-content-research/blob/main/01_literature/sources.csv)、[阅读卡目录](https://github.com/YuSun-WK/implicit-content-research/blob/main/01_literature/cards)、[既有综合](https://github.com/YuSun-WK/implicit-content-research/blob/main/02_synthesis/README.md) 与上传表行号；分类本身是本轮研究者判断。
