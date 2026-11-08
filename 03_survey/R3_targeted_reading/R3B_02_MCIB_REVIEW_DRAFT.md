@@ -1,6 +1,7 @@
 # R3-B｜R2A-024 MCIB（AAAI 2026）定向精读与证据审计
 
-> 日期：2026-11-08。状态：**审阅稿；尚未定稿/合并**。本篇只新增R3-B独立阅读卡，不改并行R3-A或原R0/R1/R2资料。
+> 日期：2026-11-08。状态：**审阅稿；尚未定稿/合并**。本篇只新增R3-B独立阅读卡，不改并行R3-A或原R0/R1/R2资料。  
+> 专项深审：[CIB独立贡献、广播问题与残差旁路审计](R3B_02_MCIB_CIB_Attribution_Audit.md)，以该文件对CIB机制证据强度的裁决为准。
 > 证据标签：**P**=AAAI正式主会论文；**E**=arXiv v2扩展附录（2025-11-17，相关补充，不等同正式会议正文）；**S**=作者公开仓库在main提交 `d1430aa7bf827731b99cf4baed73525f0fd590c3` 的静态源码检查；**H**=我们的逻辑推断；**O**=尚未实现/未独立验证。未下载夸克盘数据、未运行训练、未复现论文分数。
 
 ## 0. 基本信息和结论
@@ -36,6 +37,7 @@
 - [MCIB_trans.py](https://github.com/sljgkjhwe/MCIB/blob/main/MCIB_trans.py)以Transformer编码各模态，产生`mu,logvar`并采样`b_v,b_a,b_t`；条件预测器使用另一Transformer，输出`mu,logvar`，通过`mu+eps*std`得到`y_pred`；条件损失实际为`MSE(y_pred,label)+KL(N(mu,var)||N(0,I))`（代码约110–126），并**不是主文写出的负log概率损失原样实现**。[S]
 - 注意扩展版附录式(34)另将条件项解释为重构损失+KL；因此不能据主文差异直接断定作者方法不正确。更严谨的结论是**主会Eq(9–10)、扩展附录Eq(34)、公开代码的具体统计假设/采样形式尚需逐项对应**，尤其为何对随机`y_pred`使用MSE并对`q(y|b,x_a)`施加标准正态KL。[P+E+S+O]
 - 同一代码计算primary IB的KL时先在latent维取mean，而主文Eq(5)是sum；这引入维度缩放差异，可能由系数吸收但无法直接说系数同义。[S]
+- **高优先级新发现：README推荐的Transformer版本条件MSE输入形状存在广播风险**：条件估计器输出形状[B,1]，代码把标签squeeze到[B]，PyTorch MSE将其广播成[B,B]，不再是同一样本的预测与标签配对；已以CPU PyTorch小张量验证广播机制，但未运行作者原始数据。MLP备用版采用expand_as修复了该形状问题；不应推断正式训练也必然用了公开bug版本。[S+本地小张量测试+O]\n- **信息瓶颈旁路**：分类器使用`LayerNorm(expand(concat(b_v,b_a,b_t)) + x)`，其中x是未经bottleneck KL约束的DeBERTa文本隐藏状态；条件预测head只参与训练辅助损失，不直接作为推理logit输出，因此“所有信息经瓶颈过滤”没有获得源码支持。[S]
 - [MCIB_trans_Train.py](https://github.com/sljgkjhwe/MCIB/blob/main/MCIB_trans_Train.py)最终训练损失为`BCEWithLogits(logits,y)+args.p_lambda*total_loss`；`total_loss`包含三个加权`(KL_primary+MSE_cond+KL_cond)`。与论文`sum alpha_i (L_IB+lambda_i L_CIB)+beta L_pred`的超参数命名与位置并非一一对应。[S]
 - 公开代码读取本地`./features_Process/{dataset}.pkl`，仓库树**没有该特征目录/生成脚本**；README提供夸克盘数据入口，不等于当前已可端到端复现训练。[S]
 - 训练循环写有`KFold(n_splits=5)`，但`if fold_idx>0: break`，实际仅跑首折；主文另报五次平均运行，可能是作者独立重复而非此处执行，不能把脚本的单折输出直接当正式五次结果。[S+P]
@@ -49,7 +51,7 @@
 - 整理：MCIB原集→修订集约-1.21**百分点**，并非1.21%的相对降幅。其在R上比GPT-4o高0.45百分点；没有配对置信区间/显著性检验，不宜宣称明确统计优势。[P+O]
 - **主表潜在数值/栏目矛盾**：SpeechPrompt-v2 原集行写Precision=78.33、Recall=58.06、weighted F1=73.47；对同一组单标签多类评价，标准加权F1不应高于weighted P和R的算术均值(68.195)。文章正文把78.33→63.03称为accuracy下降，但表格相同列标题是Precision。因此这行的栏目定义、评测代码或誊写需核验，不能把73.47→43.59当作已经独立确认的同一协议对照。[P+H/O]
 - Table2（在MUStARD++R）text-only 70.98, audio-only 68.97, visual-only69.99；最佳双模态 text(primary)+visual(aux)73.77；三模态 x_va+x_at+x_tv **75.64**，另一个顺序组合74.03。[P]
-- w/o Transformer F1=74.32（-1.32百分点）；w/o fine-grained 71.19（-4.45百分点）；这些直接支持结构和细粒度输入有帮助，但缺 **w/o KL、w/o conditional loss、普通IB同参数、相同预算pairwise fusion** 的精准消融，因此不能把全部+4.45归因于CIB创新。[P+O]
+- w/o Transformer F1=74.32（-1.32百分点）；w/o fine-grained 71.19（-4.45百分点）；这些直接支持结构和细粒度输入有帮助，但缺 **w/o KL、w/o conditional loss、普通IB同参数、相同预算pairwise fusion** 的精准消融，因此不能把全部+4.45归因于CIB创新。**缺CIB-only / no-CIB同结构对照，意味着该论文不能量化CIB独立增益；当前公开实现还存在条件loss的shape broadcasting风险及未经瓶颈的文本残差旁路。**[P+O]
 - 扩展版附录 Table5在同一R测试集进行不同train源对比：MCIB `MUStARD++→R` F1 **75.58**，`R→R` **75.64**；TBJE 67.04→68.75；ITHP 57.58→68.27；此表**比主文同名数据集直接比F1更接近分布转移实证**，但仍只是同一电视剧来源、相同潜在内容的预处理条件变化，非跨节目/社群/语言OOD。[E, §D]
 - 扩展版MOSI表：MCIB Acc89.01/F189.00；MOSEI表：MCIB Acc86.77/F186.76，弱于MIA-NET 88.59/88.56。不能笼统“所有泛化任务SOTA”。[E, Table3–4]
 - Fig3/Fig6的Venn图是“加模态后同一样本预测对错的集合变化”，**不是对真实互信息I、表征冗余或因果互补的直接测量**。[P+H]
