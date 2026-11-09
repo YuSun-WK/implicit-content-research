@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1580" height="560" viewBox="0 0 1580 560" role="img" aria-label="F3">
+<style>
+  text { font-family: "Noto Sans CJK SC", "Microsoft YaHei", "Source Han Sans SC", sans-serif; fill: #17212b; }
+  .title { font-size: 35px; font-weight: 700; }
+  .section { font-size: 24px; font-weight: 700; }
+  .label { font-size: 22px; font-weight: 600; }
+  .small { font-size: 20px; }
+  .box { fill: #f7f9fb; stroke: #24384a; stroke-width: 2; }
+  .alt { fill: #fff; stroke: #24384a; stroke-width: 2; stroke-dasharray: 7 5; }
+  .band { fill: #edf3f7; stroke: #24384a; stroke-width: 1.5; }
+  .link { fill: none; stroke: #24384a; stroke-width: 2; }
+  .dash { fill: none; stroke: #516473; stroke-width: 2; stroke-dasharray: 7 6; }
+</style>
+<rect width="1580" height="560" fill="#fff"/>
+<text x="45" y="52" class="title">F3  编码语言的四类研究任务</text><rect x="45" y="78" width="1490" height="52" rx="6" class="band"/><text x="61" y="108" class="section">共享条件：文本实例、社群知识、词典定义与时间语境；各研究可取不同信息预算</text><rect x="45" y="195" width="350" height="180" rx="8" class="box"/><text x="63" y="227" class="label">词项发现 / type</text><text x="63" y="255" class="small">输入：语料与种子词典</text><text x="63" y="283" class="small">GT：候选编码词项</text><text x="63" y="311" class="small">FETCH!：词典留出≠时间外</text><rect x="425" y="195" width="350" height="180" rx="8" class="box"/><text x="443" y="227" class="label">实例词义消歧</text><text x="443" y="255" class="small">输入：已知词项与定义</text><text x="443" y="283" class="small">GT：该次使用的义项</text><text x="443" y="311" class="small">Silent Signals：实例任务</text><rect x="805" y="195" width="350" height="180" rx="8" class="box"/><text x="823" y="227" class="label">编码意义恢复</text><text x="823" y="255" class="small">输入：上下文与候选义</text><text x="823" y="283" class="small">GT：目标词或解释</text><text x="823" y="311" class="small">FA-Net：固定候选域适应</text><rect x="1185" y="195" width="350" height="180" rx="8" class="box"/><text x="1203" y="227" class="label">规范性有害判断</text><text x="1203" y="255" class="small">输入：意义、立场与政策</text><text x="1203" y="283" class="small">GT：人审风险类别</text><text x="1203" y="311" class="small">SeTox：外部检索可参与</text><path d="M395 283 H425 M775 283 H805 M1155 283 H1185" class="dash"/><text x="45" y="445" class="section">虚线连接表示可分析的任务关系；不代表现有论文已验证统一端到端系统。</text><text x="45" y="493" class="small">不同模块的标签、来源词典、测试时信息及误差应分别报告。</text>
+</svg>
