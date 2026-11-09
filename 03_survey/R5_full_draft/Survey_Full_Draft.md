@@ -371,7 +371,9 @@ Multimodal Situational Safety [@zhou2025situational]把活动请求放入视觉�
 
 作者Figure4将有无ImpForge联合类训练数据对照：SIUO防护ASR **60.33→5.39%**、MM-SafetyBench **10.20→0.38%**，但FigStep **0.12→0.21%**小幅变差，因而可说部分联合隐含防护基准显著改善，不能说所有基准都单调改善。新增数据数量/类别比例也变了，不能将全部收益归因于PPO本身或新检测架构。该文在线被测MLLM可能依据拒答模板判危险输出，离线生成模型用GPT裁判，Guard则由输入Safe/Unsafe漏判计算指标；**攻击生成的ASR、Guard的输入漏检以及回应的危险输出ASR不是同一统计对象**，不能不注明分母与Judge便做直接性能排名。 [@zhang-etal-2026-crossguard]
 
-ThinkingGuard [@zhang2026thinkingguard]把输入风险检测与逐步归因放在同一模型：TriggerBench 以关键实体和触发因素构造 Safe／Unsafe 图文配对；离线 SA-MCTS 搜索五阶段风险分析轨迹，随后以完整轨迹及关键步骤的偏好对进行 DPO 训练；推理时模型直接输出结构化分析、风险类别和安全标签。作者报告 Table 3 中完整模型相对去 Step-DPO 的 Unsafe F1 与召回收益，支持该**训练配置**的经验价值。但额外关键步骤偏好对可能同时增加样本、token 与危险样本权重；没有同预算的额外轨迹对照，不能将差异独立归因于“逐步归因机制”。独立生成的配对图片也可能在触发因素之外发生视觉变化，需逐对人工验证和按 pair 分组切分。 [@zhang2026thinkingguard]
+在同一段“解释—检测”方法谱系中，**ExPO-HM（ICLR 2026 Main，CCF-A）**[@mei2026expohm]直接研究图文Hateful Meme的解释后分类，GT是二元仇恨与细粒度攻击类别，**不是**VLSU的逐例图、文各Safe而联合Unsafe三标签。其Policy Manual辅助SFT之后，作者用课程GRPO和条件决策熵（CDE）奖励训练解释后分类；在Hateful Memes上的binary macro-F1，朴素GRPO为74.5，完整配置为81.1，但强直接检测RA-HMD已有80.2，边际仅约+0.9个百分点。这说明额外结构化政策监督及后训练组合可改善作者协议下的检测和解释指标，尚不能把全部差距独立归因于CDE，也不能由决策低熵推断解释真正参与了预测。它需要与SMARTER的标签条件DPO、ThinkingGuard的步骤DPO、Meerkat-VL的回应对齐分开比较Y、训练先验与评价对象。 [@mei2026expohm; @nghiem-etal-2026-smarter; @zhang2026thinkingguard; @zhou2026meerkatvl]
+
+ThinkingGuard [@zhang2026thinkingguard]在同一模型内组合风险标签预测与结构化归因。作者报告TriggerBench共有5600条图文实例（Unsafe与Safe各2800），用同index/文字形成配对，但Safe/Unsafe图片**分别生成**，不能据共文本和文件配对认定只改变触发元素E_T。SA-MCTS离线搜索五阶段轨迹时可获知构造时的关键实体/Trigger教师字段，随后Trajectory-DPO及Step-DPO改变部署模型参数，推理时模型直接输出分析和风险标签。其Table3报告去Step-DPO时Unsafe F1为0.779、Recall为0.699，完整配置为0.810/0.749，即分别增加3.1/5.0个百分点；然而额外Step偏好对集中于Unsafe、也增加训练token与类别权重，未有同预算额外Trajectory或Unsafe重采样消融，不能独立证明逐步解释的因果忠实性。还需要按pair隔离数据及逐图人审Key保持/Trigger变化/生成纹理干扰。 [@zhang2026thinkingguard]
 
 ThinkingGuard 的出版状态须单独说明：作者仓库与研究组称其获 ACM MM 2026 接收并给出 DOI，ACM MM 会议在项目采用目录中属 CCF-A；截至本稿日期，尚未独立取得 ACM 出版社最终条目和论文实际 Track。因此本文仅用作已公开的直接竞争研究先例，不将其列为“已核 ACM MM Main 正式论文”，也不凭作者标注 Oral 推断 Track。对其 SA-MCTS 奖励提示、配对反事实的单因素程度和 Step-DPO 等预算效应，保持开放状态。 [@zhang2026thinkingguard]
 
@@ -379,9 +381,11 @@ CrossGuard 与 ThinkingGuard 已分别推进防护训练和触发因素归因，
 
 ## 7.4 安全响应与过度拒答
 
-风险判断即使正确，也不唯一规定回复方式。针对危险请求，安全输出可拒绝具体有害步骤并提供可用的替代信息；针对正常请求，机械拒答则损害帮助性。MOSSBench [@li2025oversensitive]以 300 条作者视作安全的图文请求研究过度拒答，另有部分危险对照。其指标是安全输入上的拒答行为，不是模型输入风险分类的准确率。项目既有审计显示对照并非全部一一配对，且部分众包意见认为主集中的少量请求不能安全回答，故需保留标注分歧。去图后拒答减少也不能单独证明原拒答全因视觉理解错误：删图同时改变了可见事实。 [@li2025oversensitive]
+输入风险预测正确也不能唯一规定回答策略。MOSSBench（ICLR 2025 Main，CCF-A）[@li2025oversensitive]以300条作者目标为安全可答的图文请求测过度拒绝（ARR），但有约9%的人审认为无法在不产生有害内容的情况下安全回答，说明“全部毫无争议的安全GT”不成立。此前项目静态审计在公开数据中能把244条有害contrast与主集配对，剩余56条没有一一映射；不等于全部300为严格只变单因素的反事实。删图可能移除风险环境事实，因此低拒答不一定意味着更好地理解视觉语义；ARR属于回应行为，不等于输入误报率。 [@li2025oversensitive]
 
-Meerkat-VL [@zhou2026meerkatvl]把目标从输入类别转向安全而有帮助的生成。其 cold-start 监督微调使 VLM 输出感知分析与回答；随后同一 Actor 对自身分析和回答给出若干质量分，经感知一致性奖励和 GRPO 更新。训练监督包括用户目标、风险说明和安全警示等文本字段，公开评分路径的自评调用并未重新接收原图，故不能把“自验证”理解为独立视觉事实核查。作者报告安全及帮助性改进，然而项目精读卡尚未逐项核对正式 PDF 的完整基线与消融表；本章不报未经对齐的百分比。风险知识字段、冷启动与奖励优化的独立贡献仍需同信息、同预算对照。 [@zhou2026meerkatvl]
+Meerkat-VL（ICML 2026 Main，CCF-A）[@zhou2026meerkatvl]把目标从输入类别转向安全且有帮助的回答。Cold-start SFT先使VLM输出风险感知分析及答复；训练自评分NPSV由**同一个Actor**依据先前生成的推理/回答以及训练用规范性risk文本（user_intent、harmful_intent、safety_warning）产生多个维度的质量分，所查公开评分调用没有重新读取原始图像。DPCA把分析与回答的安全/帮助评分差异作为一致性惩罚，最终通过GRPO更新；一致性值为零只代表分数吻合，不能保证视觉事实或规范判断正确。作者报告综合回复安全/帮助改善，但本项目没有独立核完正式ICML论文的逐项基线/消融数字；因此只能把独立NPSV、DPCA与额外风险知识的贡献列为待同预算对照，不冒称自验证是独立重新看图。 [@zhou2026meerkatvl]
+
+VLSU（ICLR 2026，CCF-A）的同模型行为提示提供具体**安全—帮助性双侧权衡**：对Gemini-1.5仅把推理时提示从Harmless换到Helpful，Borderline输入上的拒答率由62.4%降至10.4%，但Unsafe输入拒答率也由90.8%降至53.9%。这不是SFT/PPO重训练，也不是风险分类F1变化；前者提示过度拒绝可能降低，后者提醒危险请求的拒绝同样下降，不能只挑有利一侧解读。与MOSSBench的正常请求误拒和Meerkat-VL的训练后回应一起看，研究问题应是能否在相同模型/政策/Judge下改善两侧，而不能把异构数据集拼成统一Pareto曲线。 [@palaskar2026vlsu; @li2025oversensitive; @zhou2026meerkatvl]
 
 VLSU 的拒答／帮助性实验、MSSBench 的情境行动、MOSSBench 的正常请求误拒和 Meerkat-VL 的安全回应，分别对响应链的不同层施压。SIUO 的攻击成功率关注危险输出，MMSafeAware 的危险召回关注输入判别。即使数字看似都以百分比报告，拒答率、ASR、分类 F1 和安全回复率也不能换算为同一个“安全性能”。尤其不能把高拒答率视作模型已经识别图文组合的风险来源。 [@palaskar2026vlsu; @zhou2025situational; @li2025oversensitive; @wang-etal-2025-cant; @zhou2026meerkatvl; @wang-etal-2025-safe]
 
