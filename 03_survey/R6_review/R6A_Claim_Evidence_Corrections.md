@@ -119,3 +119,27 @@
 - **帮助性与拒答存在具体协议权衡**：VLSU在同模型不同prompt下Borderline和Unsafe拒答同步下降（P），不能跨到分类F1或与其他样本集直接组成统一Pareto曲线。
 
 **状态**：R6-A0/A1/A2/A3均已完成审稿交付，R6-A4去重终审与R6-Fix原稿修订尚未启动；以上所有需要改动的主张及表格均未修改R5-C。
+
+## G. R6-A4｜主张证据终裁与R6-Fix检查门槛（2026-11-09）
+
+**R6-A审稿最终裁决：MAJOR REVISION，暂不具备投稿准备稿的学术质量。** A0–A3按历史问题编号登记60个（A0=11/A1=14/A2=18/A3=17）；基于相同根因+整改+验收合并为24项唯一整改单元（**3P0/17P1/4P2**），见[R6A4最终裁决](R6A4_Final_Academic_Verdict.md)、[无遗漏映射表](R6A4_Deduplicated_Issue_Register.md)。本审稿文件的各A0–A3行是**历史证据记录**，不能简单相加或自行将某条从OPEN改为CLOSED。
+
+### P0最小关闭证据
+
+| 去重编号 | 证据对象（事实P/F，审稿综合H，或静态S） | 修改必须拿到的证据 | 关闭失败条件 |
+|---|---|---|---|
+| **P0-01** | 已有相关综述与本文比较的真实重叠（F/P）；本稿缺“条件规律”的判断是审稿H | 第1章公平的`prior survey×分析单位×本稿结果`；第8章**≥3个跨论文有正面作者结果、反例与适用条件**的分析产物；表7反映真实Y/G/E/信息预算 | 单纯扩大字数或列几篇文献、却仍只有“未证明/须同预算”泛论。 |
+| **P0-02** | RV-HATE/CADET/MultiMM/MGMCF/MCIB等具体源码结论目前为既有项目S/O | `claim→public repo→immutable SHA→file#L→函数或split/shape→观察范围→是否作者正式运行O`；不能固定则正文删降 | 只引发表论文Bib来证明“公开代码泄漏/测试违规”，或把静态观察写成已复现结果。 |
+| **P0-03** | ExPO-HM ICLR 2026（CCF-A）正式出版和P027全文精读（F/P/S/O） | 唯一官方Bib、Ch7/8和表7与SMARTER/ThinkingGuard/Meerkat比较`Y/知识/训练/奖励/效果/忠实性`；区分与VLSU三条件风险GT | 仅补Bib而不讨论机制/论文真实证据；误标为严格S-S-U任务；CDE低=解释因果忠实的强断言。 |
+
+### 事实性P1与待核项目
+
+- **DOSE（ACL2026 Main，CCF-A）表5模态确定性错误**：`文/音/视`需改`图像+新闻文章文本`；音视频对应MCIB（AAAI2026 Technical，CCF-A）。
+- **CrossGuard（ACL2026 Main，CCF-A）分母和反例**：1390 ImpForge红队测、1616混合Guard训练、12.5%≈202联合类，不证明202条已核来自1390中哪部分；论文Fig4 SIUO ASR60.33→5.39，但FigStep0.12→0.21，判据和方向按攻击者/Guard/响应分别记。
+- **VLSU（ICLR2026，CCF-A）与MOSS等风险/响应协议**：PDF8187/CSV8159、S-S-U37/35、141 image not_sure，Figure5约34%是`joint预测已错`条件比例，不是全数据或S-S-U；MOSSBench（ICLR2025，CCF-A）过度拒答是响应行为；SIUO（NAACL2025 Findings，会议CCF-B）不是已获得三条件输入GT的主会论文。
+- **ExPO/ThinkingGuard/Meerkat机制归因**：积极报告作者原试验的分类F1、召回与安全/帮助结果，同时明确多了教师风险字段、额外Step DPO偏好、奖励或训练预算所导致的不可辨识混杂。不存在一项可据此声称解释`faithfulness`已获得因果实证。
+- **不可被“执行完成”强行关闭的O项**：AUTALIC CSV真实类别计数、VLSU PDF/CSV差异原因与图片可达、MMSafeAware公共图像文件/正式实验对应、Meerkat数据8436/8466差异、ThinkingGuard ACM正式Track/真实逐对反事实、MCIB及ExPO公开源码是否与论文实际训练相同。可保留**限定后的OPEN**，不编造替代证据。
+
+### 接口与后续
+
+以[R6A4_R6Fix_Execution_Package.md](R6A4_R6Fix_Execution_Package.md)为可直接给Work执行的工单，R6-Fix在单独基于R5-C的修订分支修改正文与科学表格；R6-V独立核实SVG真实渲染、表格排版与BibTeX/交叉引用，不替代科学评审。**当前R6-A审稿已DONE，所有需改的原文claim仍OPEN，PR #57/#58均不得自动合并。**
