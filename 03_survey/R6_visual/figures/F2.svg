@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="760" viewBox="0 0 1540 760" role="img" aria-label="F2">
+<style>
+  text { font-family: "Noto Sans CJK SC", "Microsoft YaHei", "Source Han Sans SC", sans-serif; fill: #17212b; }
+  .title { font-size: 35px; font-weight: 700; }
+  .section { font-size: 24px; font-weight: 700; }
+  .label { font-size: 22px; font-weight: 600; }
+  .small { font-size: 20px; }
+  .box { fill: #f7f9fb; stroke: #24384a; stroke-width: 2; }
+  .alt { fill: #fff; stroke: #24384a; stroke-width: 2; stroke-dasharray: 7 5; }
+  .band { fill: #edf3f7; stroke: #24384a; stroke-width: 1.5; }
+  .link { fill: none; stroke: #24384a; stroke-width: 2; }
+  .dash { fill: none; stroke: #516473; stroke-width: 2; stroke-dasharray: 7 6; }
+</style>
+<rect width="1540" height="760" fill="#fff"/>
+<text x="50" y="52" class="title">F2  任务定义与证据评价框架</text><rect x="270" y="80" width="1000" height="92" rx="8" class="box"/><text x="288" y="112" class="label">审计单位：一项具体实验协议</text><text x="288" y="140" class="small">Task = (X 输入与先验, Y 预测目标, G 真值, E 评价)</text><path d="M770 172 V220 M180 220 H1360" class="link"/><rect x="50" y="250" width="280" height="150" rx="8" class="box"/><text x="68" y="282" class="label">A 机制 / 现象</text><text x="68" y="310" class="small">语用、修辞、编码</text><text x="68" y="338" class="small">跨模态关系；可多选</text><rect x="350" y="250" width="280" height="150" rx="8" class="alt"/><text x="368" y="282" class="label">B 任务 T1–T6</text><text x="368" y="310" class="small">Y：分类、解释、行动</text><text x="368" y="338" class="small">T5⊂特定 T4；T6 相邻</text><rect x="650" y="250" width="280" height="150" rx="8" class="box"/><text x="668" y="282" class="label">C 模态与语境</text><text x="668" y="310" class="small">文本、图文、音视频</text><text x="668" y="338" class="small">联合依赖须另证</text><rect x="950" y="250" width="280" height="150" rx="8" class="alt"/><text x="968" y="282" class="label">D 信息预算</text><text x="968" y="310" class="small">训练与测试分列</text><text x="968" y="338" class="small">gold、OCR、词典、检索</text><rect x="1250" y="250" width="280" height="150" rx="8" class="box"/><text x="1268" y="282" class="label">E 真值与评价</text><text x="1268" y="310" class="small">标注者、政策、split</text><text x="1268" y="338" class="small">指标、Judge、双侧误判</text><rect x="50" y="445" width="1440" height="48" rx="6" class="band"/><text x="66" y="475" class="section">关键判读：五轴同步记录，互不构成必经流水线</text><rect x="50" y="520" width="690" height="120" rx="8" class="alt"/><text x="68" y="552" class="label">同一论文可含多项协议</text><text x="68" y="580" class="small">仅“加图涨分”不足以证明视觉因果必要性</text><rect x="800" y="520" width="690" height="120" rx="8" class="alt"/><text x="818" y="552" class="label">风险等级与响应行为分别评测</text><text x="818" y="580" class="small">输出 Judge 不能替代独立输入风险真值</text><text x="50" y="705" class="small">图示为综述审计框架；实线表示记录关系，虚线框表示常见误读。</text>
+</svg>
