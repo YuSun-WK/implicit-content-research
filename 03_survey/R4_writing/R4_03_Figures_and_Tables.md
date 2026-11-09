@@ -2,7 +2,7 @@
 
 > 2026-11-08｜状态：R4 REVIEW DRAFT。**这里只规划图表/给出可执行结构草图，不制作或声称已完成最终图片**。所有图应自行绘制，避免直接复制原论文图和版权问题；正式写作前需补版权、引用和出版核验。
 >
-> 来源：R1 T1–T6、R2-C、R3-A1/A2/A3/A4、R3-B AUTALIC FINAL与MCIB REVIEW。图表不用于证明尚无数据支持的心理机制或严格因果关系；“概念关系”只表示综述组织框架。
+> 来源：R1 T1–T6、R2-C、R3-A1/A2/A3/A4、R3-B AUTALIC FINAL与MCIB FINAL（未解决的代码与实验归因风险保留）。图表不用于证明尚无数据支持的心理机制或严格因果关系；“概念关系”只表示综述组织框架。
 
 ## 0. 整体建议
 
@@ -82,7 +82,7 @@ flowchart TD
 | R0/R2：59+32=91 | **本项目文献入账候选数**，不是全球年度发表数 | 禁止用这91条做“全领域近年研究数量增长曲线”或PRISMA流程图（检索召回不存在） |
 | AUTALIC（ACL 2025 Main A） | 论文称2,400目标句、3位标注者/句、κ约0.25；需标论文报告[P] | 242正+2160负=2402，**不一致**；未打开真实CSV，禁按二者绘制精确占比柱状图；并遵守限制用途 |
 | VLSU（ICLR 2026 Main A） | 论文设计3层风险、17种目标组合；公开CSV含8,159记录和not_sure，由P卡静态审计 | 不把论文8,187与公开8159混为同版本；严格S-S-U的公开35条不能写37且不报区间；官方test-only不可无声明作训练集 |
-| MCIB（AAAI 2026 Technical A） | 作者报告R数据weighted F1=75.64、文本/音频/视频三模态；R3-B稿含方法/源码差异[S/O] | 不画“无捷径 vs 有捷径”因果前后提升证明图；SpeechPrompt v2表内P/R/F1有数学疑点，未核实前不用该行作精确可视化 |
+| MCIB（AAAI 2026 Technical A） | 作者报告R数据weighted F1=75.64、文本/音频/视频三模态；R3-B定稿保留方法/源码差异[S/O] | 不画“无捷径 vs 有捷径”因果前后提升证明图；SpeechPrompt v2表内P/R/F1有数学疑点，未核实前不用该行作精确可视化 |
 | MultiMM（ACL 2025 Main A） | 论文报告跨文化/源目标/情绪标签与相应对照 | gold情绪测试输入不是部署预测情绪；不得在图上当同输入预算纯图文baseline |
 | MOSSBench（ICLR 2025 Main A） | 安全请求中模型输出是否拒绝/响应等行为指标 | 禁把安全请求误拒率和输入Unsafe二分类混画 |
 | ThinkingGuard（ACM MM 2026刊会A） | 方法可按作者录用稿描述；正式元数据待核 | 不能直接列入“经官方验证已正式出版的CCF-A Main论文总数” |
@@ -93,7 +93,7 @@ flowchart TD
 |---|---|---|---|---|
 | **P0** | F1、F2、T1、T2 | R1任务框架、R2-C、R3-A1/A2 | 核词汇边界，避免多任务层级混淆 | 每个节点有定义/反例、所有箭头不表示未经证实的因果 |
 | **P0** | F3、T3 | Silent Signals/FETCH!/FA-Net/CodedLang/SeTox精读 | 核词典留出、是否给定词义与可用许可 | type/instance/meaning/harm四栏可与各篇论文一一匹配 |
-| **P0** | F4、T5 | MultiMM、MGMCF、M3UCD、DOSE、V-FLUTE、MCIB | MCIB最终审计；MultiMM和MGMCF额外输入协议 | 所有模型方法标签有可追溯原文；无假“因果视觉理解” |
+| **P0** | F4、T5 | MultiMM、MGMCF、M3UCD、DOSE、V-FLUTE、MCIB | MCIB定稿仍开放的loss/实现协议；MultiMM和MGMCF额外输入协议 | 所有模型方法标签有可追溯原文；无假“因果视觉理解” |
 | **P0** | F5、T6 | VLSU、MSSBench、MOSSBench、CrossGuard、Meerkat-VL | 区分数据标签 vs Judge行为；VLSU版本 | 文字解释变量不同，误拒与漏检均可表示 |
 | **P1** | F6、T7 | R3-A2方法史和竞争矩阵 | 只从已验证训练协议归类 | 无SOTA排行榜/虚假跨任务排名 |
 | **P1** | T4、T8 | AUTALIC R3-B、R2-C/P卡静态审计 | AUTALIC许可及类别数，MCIB指标口径，P039出版 | 数值都带证据/数据版本，无歧义指标脚注 |
@@ -107,6 +107,6 @@ flowchart TD
 - [R3-A2六大方法谱系](../R3_evolution/R3A_Method_Evolution.md)
 - [R3-A4证据门槛（审阅稿）](https://github.com/YuSun-WK/implicit-content-research/blob/survey/r3-a4-evidence-audit-review-20261108/03_survey/R3_evolution/R3A_Coverage_and_Evidence_Audit.md)
 - [R3-B AUTALIC定稿](../R3_targeted_reading/R3B_01_AUTALIC_FINAL.md)
-- [R3-B MCIB审阅稿](https://github.com/YuSun-WK/implicit-content-research/blob/r3b-mcib-targeted-review-20261108/03_survey/R3_targeted_reading/R3B_02_MCIB_REVIEW_DRAFT.md)
+- [R3-B MCIB定稿](https://github.com/YuSun-WK/implicit-content-research/blob/main/03_survey/R3_targeted_reading/R3B_02_MCIB_FINAL.md)
 
 > 本文为图表设计工作单，尚未获用户定稿授权，未绘制或导出图像文件；任何论文数值图、授权受限语料图与原论文图片复用都需在后续单独核验。
