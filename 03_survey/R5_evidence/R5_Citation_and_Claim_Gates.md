@@ -39,7 +39,7 @@
 | **Ch5 §5.6 过渡** | 文本歧视GT与联合图文风险GT不是同一个标签；普通meme图文输入不自动证明严格S-S-U | “所有图文仇恨论文都是组合安全研究” | **PASS(H/P)**；T4/T5分轴 |
 | **Ch6 §6.1–6.4 多模态修辞** | 反讽/隐喻/视觉蕴含的标签范围各异；所查MultiMM实现测试用gold情绪、MGMCF用源目标字段 | “这些作者成绩严格证明模态不可替代”“所有正式模型存在标签泄漏” | **PASS-WITH-QUALIFIER**；X预算不等可据静态代码说明，正式运行版本O |
 | **Ch6 §6.5 MCIB** | AAAI 2026 **Technical Track**（CCF-A）；作者在MUStARD++R报weighted F1=75.64，结构/特征消融有结果 | “CIB单独带来X点”“已因果去除捷径”“代码MSE广播证明正式实验错了”“残差仍然只走瓶颈” | **BLOCK-STRONG-CLAIM**；论文结构结果可限定引，机制独立性/公开训练复现OPEN |
-| **Ch7 §§7.1–7.2 VLSU** | ICLR 2026（CCF-A）正式PDF写8187、17模式、17模型；此前公开CSV实读8159和S-S-U 35（论文Figure9 37）；图/文/联合安全三级别分别标 | “公开文件就是8187”“全部联合风险都是S-S-U”“34%是S-S-U漏检率”“Boarderline等于模型不确定”；官方摘要网页仍写11模型需分版本 | **PASS-WITH-QUALIFIER**；不能从test-only 35样本作广泛定量泛化 |
+| **Ch7 §§7.1–7.2 VLSU** | ICLR 2026（CCF-A）正式PDF写8187、17模式、17模型；此前公开CSV实读8159和S-S-U 35（论文Figure9 37）；图/文/联合安全三级别分别标 | “公开文件就是8187”“全部联合风险都是S-S-U”“34%是S-S-U漏检率”“Borderline等于模型不确定”；官方摘要网页仍写11模型需分版本 | **PASS-WITH-QUALIFIER**；不能从test-only 35样本作广泛定量泛化 |
 | **Ch7 §7.3 ThinkingGuard** | 作者README报ACM Multimedia 2026（会议CCF-A）录用、DOI 10.1145/3767308.3835707，提出TriggerBench+SA-MCTS+Trajectory/Step-DPO | “已独立核实ACM官方Main论文正式入库/实际Track”“反事实只改trigger已人审保证”“Step-DPO提升排除样本预算” | **BIB-BLOCK**（正式ACM/Track待核）；作者录用/方法先例可限定引用 |
 | **Ch7 §§7.4–7.5 联合风险/响应** | VLSU joint风险classification 与VLSU refusal/helpfulness、SIUO ASR、MSSBench情境行为、MOSSBench误拒的GT和分母不同 | “拒答率等于安全判断准确率”“ASR等于有害标签F1”“helpful模型因此更安全” | **BLOCK-STRONG-CLAIM**；结果必须分输入风险/输出行为两表 |
 | **Ch8–9 方法和未来** | 提出同预算、保持标签不变的受控反事实、跨分布、双侧误判及标注分歧审计等研究问题 | “本文实验证明共同失效机制”“首个提出独立语义中间真值的研究” | **PASS(H)** 仅作为建议；不能写成新实验成果 |
@@ -71,7 +71,7 @@
 ## 4. 最小交接清单、闭环状态与未解决阻断项
 
 ### 可以在限定范围内关闭
-- **CLOSED-FACT**：P011/P007/P002的正式场合与版本区分；AUTALIC算术不一致的存在、9名本科研究志愿者身份、公开使用条款；MCIB的正式 AA AI Technical 发表和所查代码具体形态；VLSU输入三标注与响应评价两种不同任务；SeTox正式ACL条目优先；SIUO为Findings。
+- **CLOSED-FACT**：P011/P007/P002的正式场合与版本区分；AUTALIC算术不一致的存在、9名本科研究志愿者身份、公开使用条款；MCIB的正式 AAAI Technical 发表和所查代码具体形态；VLSU输入三标注与响应评价两种不同任务；SeTox正式ACL条目优先；SIUO为Findings。
 - **CLOSED-WRITING-GATE**：已提供无需新实验即可使用的弱表述与强结论禁区；这不是对原作者研究开放问题的实证“关闭”。
 
 ### 仍须OPEN，不准强行闭合
