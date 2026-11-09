@@ -2,7 +2,7 @@
 
 > 2026-11-08｜状态：**R4 REVIEW DRAFT**，不等于已获用户定稿；仅新增R4文件，不合并R3-A1/A3/A4未定稿分支。
 >
-> 来源：R0 59篇+R2-A32篇（共91篇**候选**）；R1 T1–T6；R2-C；R3-A1（review）；R3-A2（FINAL）；R3-A3/A4（review）。R3-B AUTALIC已main定稿；MCIB有独立审阅稿尚待final。本次为**结构化批判性叙述综述（critical structured narrative review）**工作方案，不冒充PRISMA式穷尽系统综述。所有刊会名称后需要写明CCF 2026分类、具体Main/Technical/Findings/Workshop等轨道，论文存在不代表机制经过独立复现。
+> 来源：R0 59篇+R2-A32篇（共91篇**候选**）；R1 T1–T6；R2-C；R3-A1（review）；R3-A2（FINAL）；R3-A3/A4（review）。R3-B AUTALIC与MCIB均已正式定稿并合并main（MCIB源码与归因开放问题仍保留）。本次为**结构化批判性叙述综述（critical structured narrative review）**工作方案，不冒充PRISMA式穷尽系统综述。所有刊会名称后需要写明CCF 2026分类、具体Main/Technical/Findings/Workshop等轨道，论文存在不代表机制经过独立复现。
 
 ## A. 候选综述标题与定位
 
