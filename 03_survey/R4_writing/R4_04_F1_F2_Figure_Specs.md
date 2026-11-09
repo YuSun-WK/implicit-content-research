@@ -170,4 +170,4 @@ flowchart TB
 - R3已定稿入口：[R3-A1](../R3_evolution/R3A_Research_Evolution.md)、[R3-A2](../R3_evolution/R3A_Method_Evolution.md)、[R3-A3](../R3_evolution/R3A_Survey_Narrative.md)、[R3-A4](../R3_evolution/R3A_Coverage_and_Evidence_Audit.md)、[R3-B双篇综合](../R3_targeted_reading/R3B_03_AUTALIC_MCIB_Cross_Paper_Synthesis_FINAL.md)。
 - 91篇书目与状态见[R4-02](R4_02_Paper_Allocation.md)；46条小节证据见[R4-07](R4_07_Section_Claim_Evidence_Matrix.md)。
 
-> **R4-4 图源阶段裁决：CONDITIONAL PASS。** F1混层错误已消除、F2字段与R4-07一致；编辑图不等于最终论文图。须用户确认后才进入R4-5。
+> **R4-4 图源阶段裁决：CONDITIONAL PASS。** F1混层错误已消除、F2字段与R4-07一致；R4-5前两章试写稿现已形成审阅版。**编辑图不等于最终论文图；R4整体须用户审阅确认后才可定稿/合并main。**
