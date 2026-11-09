@@ -411,13 +411,23 @@ VLSU 的拒答／帮助性实验、MSSBench 的情境行动、MOSSBench 的正�
 
 提示和检索增强使模型在推理时使用外部定义、网络语境或候选解释。SeTox [@cui-etal-2026-new]用搜索辅助动态中文新词毒性判断，训练工具调用轨迹；其优势依赖可得的检索结果、查询时间和来源质量，不能改称模型在完全闭卷下自主发现社群意义。语言模型直接生成解释可扩大任务覆盖，但解释文本与标签可能同时来自同一模型，必须另以人审或受控干预检验。检索是在推理时增加 X，SFT 是用轨迹改变参数，两者在方法表中应分别列出。 [@cui-etal-2026-new; @nghiem-etal-2026-smarter]
 
-多模态融合与多任务模型处理图文或音视频线索：MGMCF 的对象与全局局部交换、M3UCD 的共享 LoRA、DOSE 的任务专家以及 MCIB 的条件压缩分别优化局部特征、共享监督、参数路由与融合目标。偏好训练和安全对齐则改变输出分布：SMARTER 的 DPO 偏好标签—解释组合，ThinkingGuard 的轨迹／步骤 DPO 面向风险分析，Meerkat-VL 的 GRPO 面向安全且有帮助的回答，CrossGuard 则训练输入防护。它们不是技术年表中的同一后继阶段，也不能将分类 F1、候选解释准确率和回复安全率排成一个算法榜。实际研究常混合数种机制，比较独立收益需要同参数、同训练数据、同可见外部信息的拆分实验。 [@zheng2026m3ucd; @zheng2025multigranular; @guo-etal-2026-two; @wang2026conditional; @nghiem-etal-2026-smarter; @zhang-etal-2026-crossguard; @zhang2026thinkingguard; @zhou2026meerkatvl]
+多模态融合与多任务模型处理图文或音视频线索：MGMCF的对象级Global–Local交互、M3UCD的共享LoRA、DOSE的共享/私有任务专家，以及MCIB的条件压缩，分别优化不同的局部特征、参数或融合目标。后训练方法则必须按**真正更新的预测目标**分开：SMARTER对标签—解释对施加DPO；ExPO-HM用政策手册SFT、课程GRPO与CDE训练**解释后仇恨分类**；ThinkingGuard将离线SA-MCTS轨迹/关键步骤偏好经DPO蒸馏为**输入风险标签与归因**；Meerkat-VL用规范风险信息支持Actor自评并经GRPO训练**安全有帮助的回答**；CrossGuard的PPO属于**红队攻击文本生成器**，其Safe/Unsafe Guard主要用LoRA/SFT训练。技术同叫RL/DPO，不代表数据、目标Y或额外教师监督相同。故表7按训练对象、输入预算和真实作者消融拆分，拒绝跨任务分数排行；同论文也需对照数据量、token、同可用先验才能比较独立模块价值。 [@zheng2026m3ucd; @zheng2025multigranular; @guo-etal-2026-two; @wang2026conditional; @nghiem-etal-2026-smarter; @mei2026expohm; @zhang-etal-2026-crossguard; @zhang2026thinkingguard; @zhou2026meerkatvl]
 
 [表7：方法族、监督信息与独立贡献证据](tables/T7_Method_Families.md)按优化目标、额外输入和控制证据横向比较直接竞争方法，不设置跨任务分数排名。
 
+### 8.1.1 三条具有实证锚点的跨领域条件规律
+
+**规律一：词义任务越开放，越需要区分已给的社群先验与真实未知意义。** Silent Signals（ACL 2024 Main，CCF-A）以已知词及暗义定义作instance消歧，作者在400个筛阳正例的人工核查中报告约85.3% Precision；FETCH!（ACL 2025 Main，CCF-A）给20%已知词典种子，评估剩余已收录词项的type回收；FA-Net（AAAI 2024 Technical，CCF-A）训练时可见无标签目标域文本并固定目标词类别；SeTox（ACL 2026 Main，CCF-A）则在推理时使用检索证据预测新词毒性。**正向认识（H）**：明确的先验使实例用义、既有类型发现、固定候选解码和风险分类分别能够获得可核的GT及指标；**反例/约束**：词典外新义、未来词、伪正对错配与随时间变化的检索背景，没有由这些不同基准共同验证。不能把“在已有候选意义上得到较高Accuracy”推广成开放世界义项发现。 [@kruk-etal-2024-silent; @sasse-etal-2025-making; @hu2024hidden; @cui-etal-2026-new]
+
+**规律二：解释、规范和触发因素成为训练监督时，目标分类可能改善，但解释忠实性仍未被独立测量。** ImpCon（COLING 2022 Main，会议CCF-B）对隐含陈述做对比监督；SMARTER（ACL 2026 Main，CCF-A）在已有解释SFT基础上对gold类别条件的标签—解释答案做DPO，chosen/rejected的类别token本身可能不同。ExPO-HM（ICLR 2026 Main，CCF-A）以政策手册、细粒度课程和CDE进行GRPO训练，作者报告Hateful Memes二分类Macro-F1朴素GRPO **74.5→完整81.1**，但最强直接检测RA-HMD已有80.2，边际仅**+0.9个百分点**；其CDE低不等于解释内容对标签决策的因果影响。ThinkingGuard（作者称ACM MM 2026接收；会议CCF-A，最终Track仍O）的Step-DPO带来作者Unsafe F1 **.779→.810**，但增加了Unsafe关键步骤偏好与token；Meerkat-VL（ICML 2026 Main，CCF-A）训练时同Actor评价借助规范性风险说明，评分调用不独立重读图。**正向认识（H）**：解释/政策/风险理由能够成为可优化的监督或奖励来源；**失败边界**：分类准确、解释可读、解释与原图事实相符、解释实际导致模型判断是四个不同的评价单位，不能用另一个模型的解释Judge或较低CDE代替同信息预算的解释干预实验。 [@kim-etal-2022-generalizable; @nghiem-etal-2026-smarter; @mei2026expohm; @zhang2026thinkingguard; @zhou2026meerkatvl]
+
+**规律三：联合风险的危险侧识别与正常侧误拒是两种不同错误，其相互权衡存在直接实验而非抽象猜想。** MMSafeAware（ACL 2025 Main，CCF-A）在Unsafe 1000/Over-Safety 500的二分类配置中，恒判Unsafe总Accuracy便可达**66.67%**，显示总分会掩盖正常侧误报。VLSU（ICLR 2026 Main，CCF-A）只改变同一Gemini-1.5的行为提示Harmless→Helpful，Borderline拒答由**62.4%→10.4%**、Unsafe拒答亦由**90.8%→53.9%**，说明减少非必要拒答可能伴随危险请求拒答减少；但这是回应行为，不是同一模型的输入风险F1提升。CrossGuard（ACL 2026 Main，CCF-A）加入ImpForge联合风险训练使SIUO上Guard ASR **60.33%→5.39%**，而FigStep **0.12%→0.21%**，并同时改变了训练数据量与类别构成。MOSSBench（ICLR 2025 Main，CCF-A）则评作者安全主集的实际拒答，还存在约9%人工安全可答争议。**正向认识（H）**：应分别汇报G_in下Unsafe recall、Safe FPR和回应层Safe refusal、危险回复率、帮助性；**界限**：这些来自不同政策、数据和Judge的数值不能在没有共享样本时拼成一条跨方法的Pareto曲线，更不能把Guard漏判与红队攻击ASR作直接数值排名。 [@wang-etal-2025-cant; @palaskar2026vlsu; @zhang-etal-2026-crossguard; @li2025oversensitive]
+
+三条规律均建立于作者论文的正面结果和反面限制（P），其跨任务外推属于本综述条件性判断（H），**不是本项目额外跑过的受控实验**。可证伪的进一步检验分别需要：封存时间外新词/社群义、固定解释教师知识和训练token预算、以及同政策和同模型Judge下的双侧样本评测。
+
 ## 8.2 训练与测试信息预算及公平比较
 
-同名“图文输入”可能含完全不同的字段。MultiMM 的所查公开检测代码在测试时输入人工情绪；MGMCF 的论文与公开路径使用源／目标域辅助文本；V-FLUTE 的图像替换实验仍保留图文格式；MSSBench 的 Oracle 环境状态和 Meerkat-VL 评分用的风险说明又是另一类特权信息。每一种都可能有合理的研究用途，但论文的分数只回答其**实际可用字段**下的问题。部署时若只能得到原图、配文和未审检索结果，人工 gold 字段的配置应单独命名，不与纯原始输入基线直接比较。 [@yang-etal-2025-cultural; @zheng2025multigranular; @saakyan-etal-2025-understanding; @zhou2025situational; @zhou2026meerkatvl]
+同名“图文输入”可能包含完全不同的字段。MultiMM的作者论文评测了情绪辅助配置，历史项目阅读卡还提示一个公开路径可能在测试时读取人工情绪，**此严重源码细节尚未固定commit和正式运行映射**；MGMCF论文将源/目标概念文本作为输入，而预计算字段是否为gold及何种基线也未最终核；MSSBench可能额外提供Oracle环境状态，Meerkat-VL训练时自评则使用规范风险说明。它们都是合理但不同的研究设置。若部署只能获得原图、配文和未经审核的检索结果，人工gold或评分时教师风险知识必须单独列出，不能把特权信息条件下的分数称为“纯原始图文理解”。V-FLUTE白图替换仍改变输入分布，亦非天然的同信息反事实。 [@yang-etal-2025-cultural; @zheng2025multigranular; @saakyan-etal-2025-understanding; @zhou2025situational; @zhou2026meerkatvl]
 
 信息预算还包含训练前的隐含资源。SMARTER 的少样本目标数据实验之前已有解释资源及候选生成；DOSE 的多任务实例数随任务有效性改变，同样比例的“原始图文”未必代表同样多的训练 token；SeTox 的搜索结果可能在不同日期改变。因而，报告应至少列出：原始样本与有效任务实例数、额外标注或教师输出、冻结模型和参数量、训练步数、推理查询次数、测试时可用 Oracle、检索时间戳以及 baseline 是否拥有同样信息。仅把参数量和最终 F1 并排，无法识别收益来自算法结构还是信息增量。 [@nghiem-etal-2026-smarter; @guo-etal-2026-two; @cui-etal-2026-new]
 
@@ -445,13 +455,13 @@ Ground Truth 是某个标注协议的结果，不是所有层级共享的心理�
 
 T6 评价生成响应，要另记录拒答、警示、执行、转介与不回答原因，并由独立标准衡量安全性和对合法请求的帮助性。MOSSBench 在安全主集上的拒答是过度保守的一侧，SIUO 的攻击成功率是不安全输出的一侧，MSSBench 的 IF Judge 是情境行动协议，Meerkat-VL 优化回答质量；这些均不能由输入分类 Accuracy 代替。高危险拒答率可能伴随正常请求误拒，高安全回答率亦需检查是否只是模板式拒绝。若使用模型裁判，应公开提示词、模型版本、评分粒度、人工抽样一致性及安全／有用的双维结果。 [@li2025oversensitive; @wang-etal-2025-safe; @zhou2025situational; @zhou2026meerkatvl]
 
-图6作为候选图暂未收入本稿；方法族与瓶颈的定性关系已由表7承担，避免重复图表。
+方法族及实证证据的横向差异由表7和本章三条条件性规律承担，不使用未经定义的统一排序或单一安全得分。
 
 因此，不宜创造未经定义的单一“广义隐晦信息 SOTA”数值。更可复核的报告单位是“任务—数据版本—输入预算—标注协议—指标分母—误差子群”。同一案例若兼有意义与风险标注，可以分析两种输出的相关性，但没有受控干预时不能声称意义正确是安全行为正确的必要中介。
 
 ## 8.6 证据等级与开放研究挑战
 
-现有工作已经直接研究了多模态捷径 [@wang2026conditional; @hu-etal-2025-vlsbench]、联合风险 Guard 和红队训练 [@zhang-etal-2026-crossguard]、触发配对与步骤偏好 [@zhang2026thinkingguard]、安全有用的回答对齐 [@zhou2026meerkatvl]。因此，这些题目本身不是“无人研究的新任务”。真正尚未闭合的是更细的证据问题：条件信息瓶颈在等预算下的独立收益、gold 辅助标签移除后的纯输入表现、合成图像配对的单因素有效性、风险推理文本对实际分类和回复的因果作用，以及危险漏检和正常误拒能否在同一政策与同一案例上共同改善。它们分别需要模块正交消融、信息置换、人工重判、解释干预和双侧行为评价，而不是再增加一个总体分数。 [@wang2026conditional; @yang-etal-2025-cultural; @zheng2025multigranular; @zhang-etal-2026-crossguard; @zhang2026thinkingguard; @zhou2026meerkatvl]
+现有工作已经直接研究了多模态捷径 [@wang2026conditional; @hu-etal-2025-vlsbench]、解释后仇恨Meme检测的政策监督及CDE奖励 [@mei2026expohm]、联合风险Guard和红队训练 [@zhang-etal-2026-crossguard]、触发配对与步骤偏好 [@zhang2026thinkingguard]、安全有用的回答对齐 [@zhou2026meerkatvl]。因此，这些题目本身不是“无人研究的新任务”。真正尚未闭合的是更细的证据问题：条件信息瓶颈在等预算下的独立收益、gold 辅助标签移除后的纯输入表现、合成图像配对的单因素有效性、风险推理文本对实际分类和回复的因果作用，以及危险漏检和正常误拒能否在同一政策与同一案例上共同改善。它们分别需要模块正交消融、信息置换、人工重判、解释干预和双侧行为评价，而不是再增加一个总体分数。 [@wang2026conditional; @yang-etal-2025-cultural; @zheng2025multigranular; @zhang-etal-2026-crossguard; @zhang2026thinkingguard; @zhou2026meerkatvl]
 
 开放问题也受资料状态限制。VLSU 正式 PDF 与所查 CSV 的 8,187／8,159 及严格 S-S-U 的 37／35 条差异、正式 PDF 与官方摘要的 17／11 模型差异，仍属版本审计问题；MCIB 的公开代码风险不等于正式实验出错；ThinkingGuard 的 ACM 最终条目和 Track 尚待独立核对。把这些 O 项标出，既不能证明原作者主张为假，也不能把缺少本项目复现写成全领域空白。第八章的贡献在于给出每一类强结论所需的最小证据，而不是替未完成的实验下定论。 [@palaskar2026vlsu; @wang2026conditional; @zhang2026thinkingguard]
 
