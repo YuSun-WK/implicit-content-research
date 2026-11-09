@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="690" viewBox="0 0 1600 690" role="img" aria-label="F5">
 <style>
   text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif; fill: #17212b; }
-  .title { font-size: 30px; font-weight: 700; }
-  .section { font-size: 20px; font-weight: 700; }
-  .label { font-size: 18px; font-weight: 600; }
-  .small { font-size: 15px; }
+  .title { font-size: 36px; font-weight: 700; }
+  .section { font-size: 25px; font-weight: 700; }
+  .label { font-size: 24px; font-weight: 600; }
+  .small { font-size: 21px; }
   .box { fill: #f7f9fb; stroke: #24384a; stroke-width: 2; }
   .alt { fill: #fff; stroke: #24384a; stroke-width: 2; stroke-dasharray: 7 5; }
   .band { fill: #edf3f7; stroke: #24384a; stroke-width: 1.5; }
