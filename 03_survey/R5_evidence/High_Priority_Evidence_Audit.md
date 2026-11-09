@@ -8,7 +8,7 @@
 
 ## 1. 相关综述与本文真实贡献（P0，Ch1 §1.2）
 
-- **F/P：** P011（ACL 2025 Main，CCF-A）已综述LLM语用数据和评测；Farabi et al.（IJCAI 2024 **Survey Track**，IJCAI CCF-A）覆盖2018–2023多模态反讽；P007（EMNLP 2024 **Findings**，会议CCF-B、非Main）已经覆盖多模态仇恨及LLM/LMM检测/解释/去偏/反言语；P002（ACM CSUR，2025在线/2026卷期、CCF未收录）涉及少见修辞；Ge et al.（Artificial Intelligence Review 2023，CCF等级待核）已经有隐喻识别/解释/生成综述。
+- **F/P：** P011（ACL 2025 Main，CCF-A）已综述LLM语用数据和评测；Farabi et al.（IJCAI 2024 **Survey Track**，按2026年第七版目录会议CCF-B（非普通研究Full/Regular Paper））覆盖2018–2023多模态反讽；P007（EMNLP 2024 **Findings**，会议CCF-B、非Main）已经覆盖多模态仇恨及LLM/LMM检测/解释/去偏/反言语；P002（ACM CSUR，2025在线/2026卷期、CCF未收录）涉及少见修辞；Ge et al.（Artificial Intelligence Review 2023，CCF等级待核）已经有隐喻识别/解释/生成综述。
 - **H：** 本综述能稳妥主张的是把跨现象文献统一投影到 T1–T6 / Task=(X,Y,G,E) / 模态与信息预算 / GT / 机制证据约束，这是一种**组织与审计贡献**，不是“首篇”或新验证的理论。
 - **O：** 非穷尽检索；除IJCAI明确的2018–2023时间窗，其余尚不能把摘要级对照升格为逐篇全文覆盖率。单独详见 [Related_Surveys_Comparison](Related_Surveys_Comparison.md)。
 
