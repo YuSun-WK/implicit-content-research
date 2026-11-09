@@ -245,7 +245,7 @@ AUTALIC [@rizvi-etal-2025-autalic]把这一问题推进到真实社群语境。�
 
 SMARTER [@nghiem-etal-2026-smarter]转向低资源解释式分类。作者先利用 HateCOT 等先前解释资源做辅助监督微调，再在目标任务少量带标签样本上生成正误回答与解释，使用 DPO 使模型偏好较合适的标签—解释组合，最后尝试跨模型解释 refinement。DPO 优化的是相对参考策略的回答偏好，不是单独验证每条解释与真实推理路径一致；“只用部分目标任务数据”也不等于前期解释资源、生成计算与模型权重都被省去。论文 Table 1、Fig. 3 和 Table 5 记录不同样本预算下的分类及消融，支持其特定协议的低资源效果，但模型之间的交换收益并不对称，也不能将宏 F1 的改善全部归因于 DPO 或解释质量。 [@nghiem-etal-2026-smarter]
 
-RV-HATE [@lee-etal-2026-rv]采取不同思路：簇代表对比训练、NER/语言模型辅助的目标标记、离群样本处理与困难负例构成四个分类模块，最后用 PPO 在每个数据集上寻找四组固定 logit 权重。目标标记可帮助模型关注潜在群体，但被 NER 找出的实体未必就是被攻击者；删除簇内远点也可能删除少见而真实的隐晦样本。论文 Table 1–3 的分类结果支持所报设置下模块组合的总体效果，并未把“识别对象”“恢复隐含命题”“解释忠实”逐一独立测量。其公开脚本的权重搜索使用了 test_data 标签计算奖励，是本项目静态审计发现的协议风险；它不能被倒推为作者发表时一定采用相同代码版本，更不能据此直接宣告论文所有表格无效。 [@lee-etal-2026-rv]
+RV-HATE [@lee-etal-2026-rv]采取不同思路：簇代表对比训练、NER/语言模型辅助的目标标记、离群样本处理与困难负例构成四个分类模块，最后用 PPO 在每个数据集上寻找四组固定 logit 权重。目标标记可帮助模型关注潜在群体，但被 NER 找出的实体未必就是被攻击者；删除簇内远点也可能删除少见而真实的隐晦样本。论文 Table 1–3 的分类结果支持所报设置下模块组合的总体效果，并未把“识别对象”“恢复隐含命题”“解释忠实”逐一独立测量。已有项目阅读卡提出公开脚本在权重搜索中可能访问测试标签的协议风险，但本修订稿**未固定可外部复核的源码commit、行号及正式训练路径**；因此不应将这一线索写成已确认发生的测试泄漏，也不能由此否定作者正式结果。 [@lee-etal-2026-rv]
 
 三类方法分别增加人工隐含陈述、模型生成解释和目标标记/模块集成，其额外信息预算及训练目标差异大于名称表面相似性。真正要比较“分类到解释”的进展，至少应在同一语料上分开给出危害、目标、立场和隐含陈述的标注，并检验在删除或置换解释时预测是否合理变化。后一个要求属于综述提出的评测建议；现有跨数据集宏 F1 不能替代它。 [@kim-etal-2022-generalizable; @nghiem-etal-2026-smarter; @lee-etal-2026-rv]
 
@@ -540,4 +540,5 @@ T6 评价生成响应，要另记录拒答、警示、执行、转介与不回�
 44. **grice1975logic** — Grice, H. P. (1975). Logic and Conversation. *Syntax and Semantics, Volume 3: Speech Acts*, 41–58. 
 45. **searle1969speech** — Searle, John R. (1969). Speech Acts: An Essay in the Philosophy of Language. **. [出版入口](https://doi.org/10.1017/CBO9781139173438)
 46. **frank2012predicting** — Frank, Michael C.; Goodman, Noah D. (2012). Predicting Pragmatic Reasoning in Language Games. *Science*, 336(6084), 998. [出版入口](https://doi.org/10.1126/science.1218633)
-
+47. **mei2026expohm** — Mei, Jingbiao; Sun, Mingsheng; Chen, Jinghong; Qin, Pengda; Li, Yuhong; Chen, Da; Byrne, Bill (2026). ExPO-HM: Learning to Explain-then-Detect for Hateful Meme Detection. *The Fourteenth International Conference on Learning Representations* (ICLR 2026 Main，CCF-A). [正式出版](https://proceedings.iclr.cc/paper_files/paper/2026/hash/812f0e17bf0fa2a31a3d0b24dca49462-Abstract-Conference.html)；[开放评审及官方Bib](https://openreview.net/forum?id=bEejbORUI5)
+48. **searle1975indirect** — Searle, John R. (1975). Indirect Speech Acts. In Cole, Peter and Morgan, Jerry L. (eds.), *Syntax and Semantics, Volume 3: Speech Acts*, 59–82. Academic Press. [书目核验](https://www.cambridge.org/core/elements/speech-act-theory/E29E0869CBABCD7B61536B4AF6A0653B)
