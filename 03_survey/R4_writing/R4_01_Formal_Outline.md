@@ -1,6 +1,6 @@
 # R4-01｜广义隐晦信息研究：正式中文综述框架（审阅版）
 
-> 2026-11-09｜状态：**R4-1 REVISED FOR REVIEW**（正式目录定向修订稿，尚未经用户确认冻结；R4-2至R4-5尚未完成）。本文件迁移至以最新main为基点的新R4修订分支；不改变已定稿R3内容。
+> 2026-11-09｜状态：**R4-1 REVISED FOR REVIEW**（九章结构修订稿；R4-2至R4-5各阶段已形成审阅稿并完成交叉审查，**R4整体仍待用户确认定稿，未合并main**）。本文件迁移至以最新main为基点的新R4修订分支；不改变已定稿R3内容。
 >
 > 来源：R0 59篇+R2-A32篇（共91篇**候选**）；R1 T1–T6；R2-C；R3-A1/A2/A3/A4（均已在最新main定稿，2026-11-09核对）。R3-B AUTALIC与MCIB均已正式定稿并合并main（MCIB源码与归因开放问题仍保留）。本次为**结构化批判性叙述综述（critical structured narrative review）**工作方案，不冒充PRISMA式穷尽系统综述。所有刊会名称后需要写明CCF 2026分类、具体Main/Technical/Findings/Workshop等轨道，论文存在不代表机制经过独立复现。
 
@@ -149,9 +149,12 @@
 
 - [R4-02全91篇论文分配](R4_02_Paper_Allocation.md)
 - [R4-03图表设计与可验证数据来源](R4_03_Figures_and_Tables.md)
+- [R4-04 F1/F2可编辑图源](R4_04_F1_F2_Figure_Specs.md)
+- [R4-07全46小节论断证据矩阵](R4_07_Section_Claim_Evidence_Matrix.md)
+- [R4-05引言试写稿](R4_05_Ch1_Introduction_DRAFT.md)；[R4-06概念与任务试写稿](R4_06_Ch2_Concepts_and_Tasks_DRAFT.md)
 - [R1任务框架](../R1_taxonomy/R1_Working_Framework_DRAFT.md)
 - [R3-A2方法演进 FINAL](../R3_evolution/R3A_Method_Evolution.md)
 - [R3-A3叙事 FINAL](../R3_evolution/R3A_Survey_Narrative.md)
 - [R3-A4证据终审 FINAL](../R3_evolution/R3A_Coverage_and_Evidence_Audit.md)
 
-> R4-1修订审计结论：**九章KEEP、边界及篇幅TARGETED REVISION**。本稿仍需用户审核；R4-02论文分配、R4-07证据矩阵、F1/F2图表、Ch1/Ch2试写稿属于后续阶段，不因本次提交而自动定稿。
+> R4-1修订审计结论：**九章KEEP、边界及篇幅TARGETED REVISION**。R4-02论文分配、R4-07逐节证据矩阵、R4-03/04图表设计和R4-05/06章节试写稿已在同分支建立审阅版；本九章目录和上游R3定稿的界线保持不变。**阶段审阅版完成不等于投稿级正文/矢量图/完整BibTeX已完成；整体定稿与合并main须用户明确批准。**
