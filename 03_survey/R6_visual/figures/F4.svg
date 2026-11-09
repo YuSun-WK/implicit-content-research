@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="680" viewBox="0 0 1500 680" role="img" aria-label="F4">
+<style>
+  text { font-family: "Noto Sans CJK SC", "Microsoft YaHei", "Source Han Sans SC", sans-serif; fill: #17212b; }
+  .title { font-size: 35px; font-weight: 700; }
+  .section { font-size: 24px; font-weight: 700; }
+  .label { font-size: 22px; font-weight: 600; }
+  .small { font-size: 20px; }
+  .box { fill: #f7f9fb; stroke: #24384a; stroke-width: 2; }
+  .alt { fill: #fff; stroke: #24384a; stroke-width: 2; stroke-dasharray: 7 5; }
+  .band { fill: #edf3f7; stroke: #24384a; stroke-width: 1.5; }
+  .link { fill: none; stroke: #24384a; stroke-width: 2; }
+  .dash { fill: none; stroke: #516473; stroke-width: 2; stroke-dasharray: 7 6; }
+</style>
+<rect width="1500" height="680" fill="#fff"/>
+<text x="45" y="52" class="title">F4  跨模态信息预算与受控干预</text><rect x="45" y="80" width="1410" height="50" rx="6" class="band"/><text x="61" y="110" class="section">同一样本、同一标签政策与同一划分下比较；图文和音视频分别建表</text><rect x="60" y="165" width="650" height="155" rx="8" class="box"/><text x="78" y="197" class="label">原始可观察输入</text><text x="78" y="225" class="small">图像 / 配文；音频 / 视频 / 转写</text><text x="78" y="253" class="small">分别记录 text-only、image-only、joint</text><rect x="790" y="165" width="650" height="155" rx="8" class="alt"/><text x="808" y="197" class="label">额外辅助输入（单独列账）</text><text x="808" y="225" class="small">OCR、gold 情绪、源/目标域、Oracle 描述</text><text x="808" y="253" class="small">词典定义、检索结果及生成时间</text><path d="M710 242 H790" class="dash"/><rect x="45" y="360" width="1410" height="50" rx="6" class="band"/><text x="61" y="390" class="section">受控诊断：改变一个因素后，重新确认样本真值</text><rect x="60" y="445" width="430" height="125" rx="8" class="box"/><text x="78" y="477" class="label">模态删除 / 遮蔽</text><text x="78" y="505" class="small">控制缺失模态引起的分布变化</text><rect x="535" y="445" width="430" height="125" rx="8" class="box"/><text x="553" y="477" class="label">图像 / 文本置换</text><text x="553" y="505" class="small">匹配主题与难度，人工复标</text><rect x="1010" y="445" width="430" height="125" rx="8" class="box"/><text x="1028" y="477" class="label">反事实配对</text><text x="1028" y="505" class="small">按图像、词项、社群分组切分</text><text x="45" y="635" class="small">成绩差异是协议内行为证据；正确语义依赖还需独立标签和干预控制。</text>
+</svg>
