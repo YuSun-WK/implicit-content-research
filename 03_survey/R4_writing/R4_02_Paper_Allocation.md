@@ -20,9 +20,9 @@
 | 4 编码/狗哨/动态词义 | 11 | 5 | 6 | 0 |
 | 5 隐晦有害与语境 | 16 | 8 | 5 | 3 |
 | 6 多模态非字面理解 | 12 | 6 | 5 | 1 |
-| 7 联合风险与安全行为 | 25 | 10 | 14 | 1 |
-| 8 跨任务方法/证据可靠性 | 2 | 0 | 2 | 0 |
-| **合计** | **91** | **35** | **40** | **16** |
+| 7 联合风险与安全行为 | 24 | 10 | 7 | 7 |
+| 8 跨任务方法/证据可靠性 | 3 | 0 | 3 | 0 |
+| **合计** | **91** | **35** | **34** | **22** |
 
 ## 3. Ch1 引言与相关综述（9篇主归属）
 
@@ -115,10 +115,10 @@
 | R2A-021 | CofiPara: A Coarse-to-fine Paradigm for Multimodal Sarcasm Target Identification with Large Multimodal Models | 2024 ACL Main，A | B 支持/对照 | R2A官方元数据/摘要候选 | — | [官方](https://aclanthology.org/2024.acl-long.522/) |
 | R2A-022 | Incongruity-aware Tension Field Network for Multi-modal Sarcasm Detection | 2025 ACL Main，A | B 支持/对照 | R2A官方元数据/摘要候选 | — | [官方](https://aclanthology.org/2025.acl-long.705/) |
 | R2A-023 | RAM-SD: Retrieval-Augmented Multi-agent framework for Sarcasm Detection | 2026 ACL Main，A | B 支持/对照 | R2A官方元数据/摘要候选 | — | [官方](https://aclanthology.org/2026.acl-long.64/) |
-| R2A-024 | Conditional Information Bottleneck for Multimodal Fusion: Overcoming Shortcut Learning in Sarcasm Detection | 2026 AAAI Main，A | A 主讲锚点 | R3-B MCIB REVIEW（未定稿） | 8（条件IB/捷径） | [官方](https://ojs.aaai.org/index.php/AAAI/article/view/39874) |
+| R2A-024 | Conditional Information Bottleneck for Multimodal Fusion: Overcoming Shortcut Learning in Sarcasm Detection | 2026 AAAI Main，A | A 主讲锚点 | R3-B MCIB FINAL（已合并main；复现项仍开放） | 8（条件IB/捷径） | [官方](https://ojs.aaai.org/index.php/AAAI/article/view/39874) |
 | R2A-032 | HumorDB: Can AI understand graphical humor? | 2025 ICCV Main，A | C 背景/邻接 | R2A官方元数据/摘要候选 | — | [官方](https://openaccess.thecvf.com/content/ICCV2025/html/Jain_HumorDB_Can_AI_understand_graphical_humor_ICCV_2025_paper.html) |
 
-## 9. Ch7 联合风险与安全行为（25篇主归属）
+## 9. Ch7 联合风险与安全行为（24篇主归属）
 
 | 原编号 | 题名或短题述 | 出处、年份与CCF信息 | 编辑定位 | 阅读与证据状态 | 交叉章 | 来源 |
 |---|---|---|---|---|---|---|
@@ -127,20 +127,19 @@
 | P027 | ExPO-HM: Learning to Explain-then-Detect for Hateful Meme Detection | ICLR 2026 Main，A | A 主讲锚点 | 原阅读卡在库（审计程度依卡） | 5（解释优化）、8（GRPO） | [卡](../../01_literature/cards/P027_ExPO-HM.md) |
 | P028 | ImpliHateVid: A Benchmark Dataset and Two-stage Contrastive Learning Framework for Implicit Hate Speech Detection in Videos | ACL 2025 Main Long Papers（等级/track以主索引核） | B 支持/对照 | 原阅读卡在库（审计程度依卡） | — | [卡](../../01_literature/cards/P028_ImpliHateVid.md) |
 | P034 | CrossGuard: Safeguarding MLLMs against Joint-Modal Implicit Malicious Attacks | ACL 2026 Main，A | A 主讲锚点 | 原阅读卡在库（审计程度依卡） | 8（红队训练） | [卡](../../01_literature/cards/P034_CrossGuard.md) |
-| P036 | StealthGraph: Exposing Domain-Specific Risks in LLMs through Knowledge-Graph-Guided Harmful Prompt Generation | ACL 2026 Main，A | B 支持/对照 | 原阅读卡在库（审计程度依卡） | — | [卡](../../01_literature/cards/P036_StealthGraph.md) |
 | P037 | VLSBench: Unveiling Visual Leakage in Multimodal Safety | ACL 2025 Main，A | A 主讲锚点 | 原阅读卡在库（审计程度依卡） | 6（视觉捷径）、8（审计） | [卡](../../01_literature/cards/P037_VLSBench.md) |
 | P038 | VLSU: Mapping the Limits of Joint Multimodal Understanding for AI Safety | ICLR 2026 Main，A | A 主讲锚点 | 原阅读卡在库（审计程度依卡） | 8（标签协议） | [卡](../../01_literature/cards/P038_VLSU.md) |
 | P039 | ThinkingGuard: Decoding Implicit Hazards via Step-by-Step Risk Attribution in Multimodal Large Language Models | ACM MM 2026刊会A，论文Track待核 | A 主讲锚点 | 原阅读卡在库（审计程度依卡） | 8（偏好/反事实） | [卡](../../01_literature/cards/P039_ThinkingGuard.md) |
 | P040 | Meerkat-VL: Implicit Risk Safety Alignment in Multimodal LLMs via Perceptual Reasoning and Self-Verification | ICML 2026 Main，A | A 主讲锚点 | 原阅读卡在库（审计程度依卡） | 8（安全对齐） | [卡](../../01_literature/cards/P040_MeerkatVL.md) |
 | P041 | Safe Inputs but Unsafe Output: Benchmarking Cross-modality Safety Alignment of Large Vision-Language Models | NAACL Findings（非Main） | B 支持/对照 | 原阅读卡在库（审计程度依卡） | — | [卡](../../01_literature/cards/P041_SIUO.md) |
-| T001 | 【原表短题述】Harmful Meme检测；标签免依赖方法；T5非自动成立 | R0新增T条目（正式题名/venue见R0 xlsx） | B 支持/对照 | R0新增文献，须核题名与全文状态 | — | [R0](../R0_inventory/R0_Audit_Report.md) |
-| T002 | 【原表短题述】Hateful Meme检测 | R0新增T条目（正式题名/venue见R0 xlsx） | B 支持/对照 | R0新增文献，须核题名与全文状态 | — | [R0](../R0_inventory/R0_Audit_Report.md) |
+| T001 | 【原表短题述】Harmful Meme检测；标签免依赖方法；T5非自动成立 | R0新增T条目（正式题名/venue见R0 xlsx） | C 背景/邻接 | R0新增文献，须核题名与全文状态 | — | [R0](../R0_inventory/R0_Audit_Report.md) |
+| T002 | 【原表短题述】Hateful Meme检测 | R0新增T条目（正式题名/venue见R0 xlsx） | C 背景/邻接 | R0新增文献，须核题名与全文状态 | — | [R0](../R0_inventory/R0_Audit_Report.md) |
 | T003 | 【原表短题述】Harmful Meme检测与因果偏差缓解 | R0新增T条目（正式题名/venue见R0 xlsx） | B 支持/对照 | R0新增文献，须核题名与全文状态 | — | [R0](../R0_inventory/R0_Audit_Report.md) |
-| T004 | 【原表短题述】宣传性/仇恨Meme检测及解释 | R0新增T条目（正式题名/venue见R0 xlsx） | B 支持/对照 | R0新增文献，须核题名与全文状态 | — | [R0](../R0_inventory/R0_Audit_Report.md) |
-| T010 | 【原表短题述】中文多模态有害内容检测；T5未经单独证明 | R0新增T条目（正式题名/venue见R0 xlsx） | B 支持/对照 | R0新增文献，须核题名与全文状态 | — | [R0](../R0_inventory/R0_Audit_Report.md) |
-| T014 | 【原表短题述】中文有害Meme基准；NeurIPS 2024 D&B Track | NeurIPS 2024 D&B Track（非一般Main） | B 支持/对照 | R0新增文献，须核题名与全文状态 | — | [R0](../R0_inventory/R0_Audit_Report.md) |
+| T004 | 【原表短题述】宣传性/仇恨Meme检测及解释 | R0新增T条目（正式题名/venue见R0 xlsx） | C 背景/邻接 | R0新增文献，须核题名与全文状态 | — | [R0](../R0_inventory/R0_Audit_Report.md) |
+| T010 | 【原表短题述】中文多模态有害内容检测；T5未经单独证明 | R0新增T条目（正式题名/venue见R0 xlsx） | C 背景/邻接 | R0新增文献，须核题名与全文状态 | — | [R0](../R0_inventory/R0_Audit_Report.md) |
+| T014 | 【原表短题述】中文有害Meme基准；NeurIPS 2024 D&B Track | NeurIPS 2024 D&B Track（非一般Main） | C 背景/邻接 | R0新增文献，须核题名与全文状态 | — | [R0](../R0_inventory/R0_Audit_Report.md) |
 | T015 | 【原表短题述】Hateful Memes基准；部分跨模态依赖不等于全部T5 | NeurIPS 2020 Main，A | A 主讲锚点 | R0新增文献，须核题名与全文状态 | 6（图文难例） | [R0](../R0_inventory/R0_Audit_Report.md) |
-| T016 | 【原表短题述】有害Meme检测与目标识别 | R0新增T条目（正式题名/venue见R0 xlsx） | B 支持/对照 | R0新增文献，须核题名与全文状态 | — | [R0](../R0_inventory/R0_Audit_Report.md) |
+| T016 | 【原表短题述】有害Meme检测与目标识别 | R0新增T条目（正式题名/venue见R0 xlsx） | C 背景/邻接 | R0新增文献，须核题名与全文状态 | — | [R0](../R0_inventory/R0_Audit_Report.md) |
 | R2A-025 | Improving Hateful Meme Detection through Retrieval-Guided Contrastive Learning | 2024 ACL Main，A | B 支持/对照 | R2A官方元数据/摘要候选 | — | [官方](https://aclanthology.org/2024.acl-long.291/) |
 | R2A-026 | Uncertainty-Guided Modal Rebalance for Hateful Memes Detection | 2024 ACL Main，A | B 支持/对照 | R2A官方元数据/摘要候选 | — | [官方](https://aclanthology.org/2024.acl-long.239/) |
 | R2A-027 | Multimodal Situational Safety | 2025 ICLR Main，A | A 主讲锚点 | R2-B全文卡已在库 | 6（环境语义） | [官方](https://proceedings.iclr.cc/paper_files/paper/2025/hash/1cb57fcf7ff3f6d37eebae5becc9ea6d-Abstract-Conference.html) |
@@ -148,12 +147,17 @@
 | R2A-029 | Can’t See the Forest for the Trees: Benchmarking Multimodal Safety Awareness for Multimodal LLMs | 2025 ACL Main，A | A 主讲锚点 | R2-B全文卡已在库 | 8（多数类基线） | [官方](https://aclanthology.org/2025.acl-long.832/) |
 | R2A-030 | Teach to Reason Safely: Policy-Guided Safety Tuning for MLRMs | 2026 ICLR Main，A | C 背景/邻接 | R2A官方元数据/摘要候选 | — | [官方](https://proceedings.iclr.cc/paper_files/paper/2026/hash/8ece25974724edad00c8d0bcc8a235e8-Abstract-Conference.html) |
 
-## 10. Ch8 跨任务方法/证据可靠性（2篇主归属）
+## 10. Ch8 跨任务方法/证据可靠性（3篇主归属）
 
 | 原编号 | 题名或短题述 | 出处、年份与CCF信息 | 编辑定位 | 阅读与证据状态 | 交叉章 | 来源 |
 |---|---|---|---|---|---|---|
 | P024 | Analyzing Offensive Language Dataset Insights from Training Dynamics and Human Agreement Level | COLING 2025 Main（等级/track以主索引核） | B 支持/对照 | 原阅读卡在库（审计程度依卡） | — | [卡](../../01_literature/cards/P024_CONELA.md) |
+| P036 | StealthGraph: Exposing Domain-Specific Risks in LLMs through Knowledge-Graph-Guided Harmful Prompt Generation | ACL 2026 Main，A | B 支持/对照 | 原阅读卡在库（审计程度依卡） | 7（相邻红队，不是多模态检测） | [卡](../../01_literature/cards/P036_StealthGraph.md) |
 | R2A-016 | Class Distillation with Mahalanobis Contrast: An Efficient Training Paradigm for Pragmatic Language Understanding Tasks | 2025 ACL Main，A | B 支持/对照 | R2A官方元数据/摘要候选 | — | [官方](https://aclanthology.org/2025.acl-long.1424/) |
+
+### Ch7 阅读预算与归类审计提示
+
+此处24篇**归属**中，只有10篇标为A主讲锚点，7篇是B支持/方法对照，7篇仅C背景/相邻资源。T001/T002/T004/T010/T014/T016均不能因为是多模态有害内容就被称为严格“图安全、文安全、组合危险”任务；写作时只在7.1/7.2的基准背景短引，不展开训练流水线。P036是纯文本/知识图谱危险请求生成与红队机制，已从Ch7改到Ch8方法论相邻研究，避免误写为多模态联合风险检测。**归属篇数不是每篇要长写一节的配额**。
 
 ## 11. R4正式正文论文配额和写作序列
 
@@ -167,7 +171,7 @@
 ## 12. R3状态与主索引同步任务（不自动改原账本）
 
 - AUTALIC（R2A-013）现在已有[R3-B全文FINAL](../R3_targeted_reading/R3B_01_AUTALIC_FINAL.md)，但CSV未实物核其正负类别数；数据库使用限制必须说明。
-- MCIB（R2A-024）有[独立R3-B全文/源码审阅](https://github.com/YuSun-WK/implicit-content-research/blob/r3b-mcib-targeted-review-20261108/03_survey/R3_targeted_reading/R3B_02_MCIB_REVIEW_DRAFT.md)，**不可列为FINAL**，且其text+audio+video反讽任务不是Hateful Meme。
+- MCIB（R2A-024）的[R3-B全文/源码审计已定稿](https://github.com/YuSun-WK/implicit-content-research/blob/main/03_survey/R3_targeted_reading/R3B_02_MCIB_FINAL.md)并经PR #49合并main；**定稿不代表CIB独立贡献和复现实验已经验证**，且它研究text+audio+video反讽，不是Hateful Meme。
 - P039 ThinkingGuard存在ACM MM 2026 A刊会及作者录用/DOI信息；**Track和正式出版仍需出版社核验**，暂用于竞争定位、不计作已确认正式A主会文献。
 - T014 NeurIPS 2024 Datasets & Benchmarks与T012 ACL Findings不得在严格Main计数时并入相应主会常规论文。
 - 各论文的实验数字需在R4正文引用处检验：作者正式PDF vs公开数据/代码版本，且区分论文报告和本项目静态审计。
