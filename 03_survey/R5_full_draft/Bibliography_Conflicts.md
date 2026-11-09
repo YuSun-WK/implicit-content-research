@@ -11,6 +11,8 @@
 | IJCAI 2024 Survey [@farabi2024survey] | 旧记录把IJCAI标CCF-A；项目采用2026第七版为CCF-B，且本文为Survey Track [F] | 引文映射按B、Survey Track，Bib正常书目不嵌入等级 | 若目标刊要求不同年份目录，另列评级口径 |
 | MCIB [@wang2026conditional] | AAAI 2026 Technical 已核；正式主文、扩展版与公开实现的目标函数/训练路径未完全对齐 [F/P/S/O] | Bib以AAAI卷期页码/DOI为准；正文只引作者整体结果与已审结构消融 | 正交去CIB消融、公开代码版本与正式训练关系仍待核 |
 | MultiMM / MGMCF [@yang-etal-2025-cultural; @zheng2025multigranular] | 所查代码含gold情绪或源/目标辅助特征 [S]；正式结果是否等同该运行路径未核 [O] | 表5单列测试信息预算；不将静态风险写成已证实论文结果错误 | 获取模型运行配置及同预算基线 |
+| ExPO-HM [@mei2026expohm] | ICLR 2026 Conference（CCF-A）官方出版页与作者Bib均可核，已于R6-Fix补入正文与书目 [F/P] | 依据官方论文记录与作者字段建唯一新条目；分类目的为Explain-then-Detect并非严格S-S-U输入三标签 | 完整正式PDF/公开脚本的课程配置与CDE实现差异仍为P/S/O，不能把静态发布当正式训练配置 |
+| Searle 1975 [@searle1975indirect] | 间接言语行为原典为Cole/Morgan主编《Syntax and Semantics》卷3 pp.59–82，独立于Searle 1969专著 [F] | 补入理论原典并保留1969书目 | 出版社目录的具体纸本版次由R6-V按目标期刊体例核对 |
 | CVF / ICLR / NeurIPS 非ACL条目 | 某些出版站点即时访问受限；CVF摘要索引、ICLR正式页、NeurIPS出版页及已审卡片可核主要字段 [F/P] | 采用可核字段，缺 DOI/页码时留空，不推造；参见引文映射 | R6排版前逐条重取官方BibTeX与PDF首页比对 |
 
-**书目准入。** `references.bib` 是初步统一稿，非“所有46条逐字段均已由出版社最终BibTeX核验”的声明。正文实际引用、Bib条目与映射一一对应；出版社未能取得的字段保守留空。
+**书目准入。** `references.bib` 是R6-Fix在R5-C的46条基础上新增ExPO-HM与Searle 1975后的48条学术引用工作稿，非“所有48条逐字段均已由出版社最终BibTeX核验”的声明。正文实际引用、Bib条目与映射一一对应；出版社未能取得的字段保守留空。
