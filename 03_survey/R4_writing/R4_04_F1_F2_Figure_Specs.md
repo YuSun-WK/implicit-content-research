@@ -129,7 +129,7 @@ F3编码任务图使用图2的B/D/E轴定义词典和Gold；F4跨模态依赖图
 - [R3-A2方法史（FINAL）](../R3_evolution/R3A_Method_Evolution.md)
 - [R4正式目录](R4_01_Formal_Outline.md)
 - [R4全91篇目录归属](R4_02_Paper_Allocation.md)
-- [R3-B MCIB定稿](../R3_targeted_reading/R3B_02_MCIB_FINAL.md)
+- [R3-B MCIB定稿](https://github.com/YuSun-WK/implicit-content-research/blob/main/03_survey/R3_targeted_reading/R3B_02_MCIB_FINAL.md)
 - [MCIB AAAI正式论文](https://ojs.aaai.org/index.php/AAAI/article/view/39874)
 - [AUTALIC ACL正式论文](https://aclanthology.org/2025.acl-long.1022/)
 - [VLSU ICLR正式论文](https://proceedings.iclr.cc/paper_files/paper/2026/hash/a36e092659c42b2c92b8b0eb2394bf74-Abstract-Conference.html)
