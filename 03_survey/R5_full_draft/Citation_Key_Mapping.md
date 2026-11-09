@@ -1,6 +1,6 @@
 # 原项目编号—正式引文键映射
 
-本表维持 R0/R2A 的原编号，不将 91 条候选一律等同于正式全文证据。本轮R6-Fix书目登记增至 **48 条**（含新补P027 ExPO-HM及Searle 1975原典）；其中原R5-C的46条仍保留，新增一篇已精读CCF-A方法论文及一篇经典理论章节。最终正文citekey/书目一致性尚待R6-V独立核验。CCF 等级依项目采用的 2026 第七版目录，**仅对应刊会类别**；实际 Main、Technical、Findings、Survey Track 和预印本单独注明。
+本表维持 R0/R2A 的原编号，不将 91 条候选一律等同于正式全文证据。PR #61的R6-Fix书目登记为 **48 条**（含新补P027 ExPO-HM及Searle 1975原典）；其中原R5-C的46条仍保留，新增一篇已精读CCF-A方法论文及一篇经典理论章节。R6-Fix-R1仅补Ye摘要级对照，现49条，原48条保留；任务／证据用途完整分组见正文附录B。机械一致性由本轮检查，独立书目工程仍待R6-V。CCF 等级依项目采用的 2026 第七版目录，**仅对应刊会类别**；实际 Main、Technical、Findings、Survey Track 和预印本单独注明。
 
 | 原编号 | BibTeX key | 会场/等级/Track | 出版入口 | 核验状态 |
 |---|---|---|---|---|
@@ -53,4 +53,7 @@
 | 理论原典 | `searle1969speech` | 专著；CCF不适用 | [出版](https://doi.org/10.1017/CBO9781139173438) | CUP出版信息 |
 | 理论实证 | `frank2012predicting` | Science 336(6084)；CCF期刊目录不适用 | [出版](https://doi.org/10.1126/science.1218633) | 作者书目与期刊信息 |
 
+| R6-Fix-R1新对照（不占历史P/R2A号） | `ye2025safety` | arXiv:2502.14881v1；预印本，CCF不适用 | [作者版本](https://arxiv.org/abs/2502.14881v1) | 作者、题名、版本／摘要已核；仅摘要和目录级定位，正式状态未核 |
+
 **核验规则。** ACL 2024/2025 条目取官方 .bib，2026 ACL 条目取正式页面“Export citation”；AAAI、CVF、PMLR、NeurIPS 与 ICLR 条目取可访问的出版页或项目已归档正式精读卡。无法直接取得最终出版社 BibTeX 的项保留在[书目冲突台账](Bibliography_Conflicts.md)，不能把当前手工格式化字段称作逐字官方导出。
+

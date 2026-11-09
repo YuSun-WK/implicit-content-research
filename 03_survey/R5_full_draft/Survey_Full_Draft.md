@@ -1,6 +1,6 @@
 # 广义隐晦信息的计算理解与检测：语用、修辞、编码语言及多模态研究综述
 
-> R6-Fix 定向修订审阅稿｜基于2026-11-09 R5-C固定版。已按R6-A4补充文献、修订跨领域综合及重要分母，仍需学术复审和R6-V图表/书目工程验收；并未重新运行作者实验。
+> R6-Fix-R1 定向修订审阅稿｜2026-11-10；以PR #61固定稿 c125c6358c655951d07286763f3b7a3eed6e9275 为基线，仅处理PR #62八项未闭问题。作者实验P、公开静态材料S与综述推断H分列；仍待独立学术复审和R6-V工程验收，未重新运行模型实验。
 
 **摘要：** 语言和多模态内容中的目标意义、交际功能及风险判断，常不能仅由字面形式确定。现有工作分别研究语用含意、修辞、社群编码、隐晦有害内容、多模态非字面意义和联合输入风险，但其预测目标、标注依据与输入条件并不相同。本文以结构化批判性叙述综述方式，将表达与意义机制、规范性危害评价和安全响应分层；以 T1–T6 任务体系及 Task=(X,Y,G,E) 记录输入、目标、Ground Truth 与评价，并结合模态依赖和训练/测试信息预算比较代表性研究。全文重点分析编码词项发现与实例义消歧的差别、修辞标签与有害真值的断裂、多模态辅助金信息及捷径、联合风险分类与输出拒答的不同分母。综合证据表明，任务操作化和方法覆盖已明显推进，但高分类分数不能单独证明真实语用理解、模态因果依赖或解释忠实性；标注分歧、数据版本和同预算控制仍限制强机制结论。跨论文正反证据进一步支持三个具有明确前提的综合认识：编码义的任务开放度受词典、候选集与检索先验制约；解释和规范监督可改善作者协议下的预测却未必构成忠实推理；联合风险漏检与正常请求误拒可能呈现不同方向的权衡。以上均是针对现有实验的条件性综合（H），不是本文新训练或新因果实验。
 
@@ -24,16 +24,17 @@
 
 ## 1.2 综述范围与相关研究的关系
 
-已有相邻综述覆盖多个重要子域，本文必须在这些工作之上说明增量。表内时间窗只填已经核实的范围，未核者不推断。
+已有综述已经分析任务、数据、标注与评价，本文不把这些维度本身作为首创。下表在同一“研究／评价单位”上说明重叠，并指向本稿新增的条件比较产物；增量是重新组织原论文证据后得到的H级结论，不是先行综述未曾讨论任何类似问题的证明。
 
-| 相邻综述 | 已覆盖对象与范围 | 本文的不同分析单位 |
+| 先行综述／发表信息 | 已有研究／评价单位与实证覆盖 | 本稿新增的跨子域比较产物及可回答的问题 |
 |---|---|---|
-| Kühn 等：少见修辞格综述 [@kuhn2026rhetorical] | 修辞格定义、数据与检测；正式卷期为2026，预印本为2024 | 将修辞标签与意义、危害 GT 分离 |
-| Ma 等：LLM 语用综述 [@ma-etal-2025-pragmatics] | 语用任务、数据与评价 | 联结编码、规范性危害与安全行为 |
-| Farabi 等：多模态反讽综述 [@farabi2024survey] | 2018–2023 多模态反讽；IJCAI 2024 Survey Track | 进一步比较跨模态意义与联合风险/响应 |
-| Hee 等：多模态仇恨审核综述 [@hee-etal-2024-recent] | 文/图/音仇恨及大模型审核；EMNLP 2024 Findings | 从更广的无害语用与修辞起点审计 T1–T6 |
+| Ma等 [@ma-etal-2025-pragmatics]；ACL 2025 Main，CCF-A | 以语用现象、数据资源、任务设计、采集与评价为单位；已有数据与GT分析，不能称只做主题罗列。[正式全文](https://aclanthology.org/2025.acl-long.425.pdf) | 将含意选择中的“先解释”与仇恨Meme的解释奖励分开编码：为何更多解释不预测单向收益？§8.1.1 C2同时呈现DRInQ正负变化、ExPO-HM监督收益及混杂。 |
+| Farabi等 [@farabi2024survey]；IJCAI 2024 Survey Track，会议CCF-B（项目2026目录口径） | 2018–2023多模态反讽的模型、模态、数据集与评测；已有跨模态方法比较。[正式全文](https://www.ijcai.org/proceedings/2024/0887.pdf) | 将视觉意图的解释提示与文本含意、仇恨分类的解释训练放在同一“监督对象／测试证据”坐标，而非据是否有CoT排名；见C2及协议实例表。 |
+| Hee等 [@hee-etal-2024-recent]；EMNLP 2024 Findings，会议CCF-B，非Main | 跨文本／图像／音频的仇恨检测、解释、去偏与反言语，已有检测与响应区分。[正式全文](https://aclanthology.org/2024.findings-emnlp.254.pdf) | 把危害解释训练与无害含意的解释提示对照（C2），并把安全回应中的双侧代价与修辞解释的字面子群代价相连（C3）；不以“首次检测到响应”宣称增量。 |
+| Ye等 [@ye2025safety]；arXiv:2502.14881v1，预印本，CCF不适用／正式状态未核 | **仅按作者摘要与章节目录确认**：生命周期中的攻击、防御和评估，含Janus-Pro实测；不声称本轮全文／各表审计。[作者版本](https://arxiv.org/abs/2502.14881v1) | C3把“Harmless／Helpful改变拒答”与“修辞策略改变候选概率”比较为输出偏好重分配的条件证据；可检验共同结构，不据安全总分推断通用理解。 |
+| Kühn等 [@kuhn2026rhetorical]；ACM Computing Surveys 58(2)，项目登记CCF未收录 | 少见修辞格定义、数据与检测；已存在修辞体系综述，具体覆盖时间窗未逐项复核。[正式出处](https://doi.org/10.1145/3744554) | C1用有限候选反讽与编码词项回收对照“可测开放度”，C3给字面负例的实测代价；不把修辞标签直接升级为危害GT。 |
 
-**表注。** 此表说明实质重叠与组织差异；不是先行综述的穷尽检索或覆盖率统计。会议等级、Track 与出版状态另见[引文映射](Citation_Key_Mapping.md)。
+**表注。** 对前三篇的范围判断依据正式出版摘要／既有证据，不伪称完成逐表穷尽比较；Ye只作摘要级竞争背景。本文没有证明其他综述完全缺少这些见解；可核增量是§8.1.1按同一列定义呈现的跨子域正反证据及其可证伪条件，而非“覆盖更宽”或优先权断言。
 
 本文使用“广义隐晦信息”作为一个**操作性综述范畴**，指语言或多模态交际中，目标意义、立场或交际作用不能仅由显式字面内容充分确定，而需结合语境、修辞映射、社群约定、编码形式或模态间关系来推断的信息。该定义旨在跨任务组织文献，**并不声称“广义隐晦信息研究”已是各子学科公认的统一研究名称**。隐含（implicit）与细微（subtle）并非同义词；编码（coded）不等于必然恶意隐藏；语境依赖不必然产生非字面意义；有害性判断还涉及目标、规范及评价政策。具体的包含关系与反例在第2章给出。
 
@@ -43,17 +44,17 @@
 
 在编排上，本综述同时保留研究历史和技术机制两种横向视角，但不把它们写成单一的进步代际。例如，词典与概率语用模型、PLM监督学习、检索增强以及多模态融合在不同任务中仍可能持续共存。我们关注的是各方法解决了哪个具体目标、在什么信息和标注条件下报告有效，以及哪些能力尚未由对应实验直接证明。
 
-现有相关综述与本文有实质重叠，不宜只凭跨子域范围较广就宣称首次发现。Ma等（ACL 2025 Main，CCF-A）已系统整理LLM语用任务、数据与评测；Farabi等（IJCAI 2024 Survey Track，会议CCF-B）已讨论多模态反讽；Hee等（EMNLP 2024 Findings，会议CCF-B、非Main）涉及多模态仇恨审核。本文的独特分析对象不是简单增加论文种类，而是把各研究的预测目标、训练/测试信息预算、Ground Truth来源、有效的正面结果与相反实验放在同一证据比较中；第8章给出三条有明确适用条件的跨领域规律，不作跨任务绝对分数排名。 [@ma-etal-2025-pragmatics; @farabi2024survey; @hee-etal-2024-recent]
+现有相关综述与本文有实质重叠，不宜只凭跨子域范围较广就宣称首次发现。Ma等（ACL 2025 Main，CCF-A）已系统整理LLM语用任务、数据与评测；Farabi等（IJCAI 2024 Survey Track，会议CCF-B）已讨论多模态反讽；Hee等（EMNLP 2024 Findings，会议CCF-B、非Main）涉及多模态仇恨审核。本文的独特分析对象不是简单增加论文种类，而是把各研究的预测目标、训练/测试信息预算、Ground Truth来源、有效的正面结果与相反实验放在同一证据比较中；第8章给出三条有明确适用条件的跨领域综合结论，不作跨任务绝对分数排名。 [@ma-etal-2025-pragmatics; @farabi2024survey; @hee-etal-2024-recent]
 
 ## 1.3 研究问题与本文贡献
 
 围绕上述研究范围，本文着重回答五个问题：其一，什么样的表达机制会使字面信息不足，如何区别表达识别、意义恢复与交际意图推断；其二，语境、社群及时间变化如何影响词义判定与泛化；其三，隐含意义与有害性在何种规范和证据条件下相关，又为何不能直接互推；其四，多模态信息何时提供不可替代的语义证据，如何识别文本泄漏和额外信息捷径；其五，如何在同一研究地图中分别衡量输入风险、模型输出行为、解释质量与安全—帮助性的权衡。
 
-本文提供三个可核对的综述分析产物，而非原创训练实验。第一，将语用/修辞/编码等表达机制，与社会规范危害和安全回应分层，采用T1–T6及 Task=(X,Y,G,E) 对齐各自的输入、标签、指标和证据。第二，以真实论文的训练与测试先验、监督对象、正面结果和失败边界为单位，在表3–表7跨领域比较，而不把不同任务的F1、ASR或解释分数排成一个模型排行榜。第三，第8章以正反证据建立三条条件性综合规律：编码语言开放度受已给词典、候选与检索信息约束；解释监督的预测收益不能直接等同忠实理解；联合危险漏判与合法请求误拒是必须同时关注的不同错误。各规律都是本综述的H级归纳，既不宣称首创相关任务，也不声称本稿完成新的实验复现。
+本文提供三个可核对的综述分析产物，而非原创训练实验。第一，将语用/修辞/编码等表达机制，与社会规范危害和安全回应分层，采用T1–T6及 Task=(X,Y,G,E) 对齐各自的输入、标签、指标和证据。第二，以真实论文的训练与测试先验、监督对象、正面结果和失败边界为单位，在表3–表7跨领域比较，而不把不同任务的F1、ASR或解释分数排成一个模型排行榜。第三，第8章以正反证据建立三条条件性综合结论：先验限定可测意义空间；解释收益取决于监督对象和推理协议；全局解释／行为偏好可能重新分配互补子群的错误。各结论都是本综述的H级归纳，既不宣称首创相关任务，也不声称本稿完成新的实验复现。
 
 ## 1.4 文献选择协议、覆盖边界与证据规则
 
-本文采用结构化批判性叙述综述，**不是可重建召回率的系统检索综述**。项目候选池为R0的59条与R2-A的32条，共91条；纳入正文中心证据时优先满足三个条件：研究任务真实落在T1–T6或相邻关键对照；可取得正式出处或已核全文/细致精读卡；足以核定至少一项输入、监督、Ground Truth或评价主张。仅有正式摘要的文献只作任务存在性说明，未核机制的候选不作强实证。R5-C原Bib46条；本次定向补入ExPO-HM（ICLR 2026，CCF-A）及Searle 1975理论章节后工作稿为48条，**不是统一检索式下的完整领域样本**。截至2026-11-09项目证据整合尚无可再现的检索式、数据库与逐层排除流水账，不能写成PRISMA筛选，也不由91→48计算领域覆盖率。
+本文采用结构化批判性叙述综述，**不是可重建召回率的系统检索综述**。项目候选登记由R0的59条与R2-A的32条组成，共91条；R2-A这32条是相对R0按题名不重复的增补记录，不能据此推定所有预印本／发表版、别名和不同读法均已彻底去重。纳入正文中心证据时优先满足三个条件：研究任务真实落在T1–T6或相邻关键对照；可取得正式出处或已核全文/细致精读卡；足以核定至少一项输入、监督、Ground Truth或评价主张。仅有正式摘要的文献只作任务存在性说明，未核机制的候选不作强实证。R5-C原Bib46条；本次定向补入ExPO-HM（ICLR 2026，CCF-A）及Searle 1975理论章节后PR #61为48条，本轮仅补入Ye摘要级对照后为49条，**不是统一检索式下的完整领域样本**。截至2026-11-09项目证据整合尚无可再现的检索式、数据库与逐层排除流水账，不能写成PRISMA筛选，也不由91→48或49计算领域覆盖率。48条原引文按核心任务、邻接综述／理论及摘要背景的实际用途分组，新增Ye另列，完整键目录见附录B；这些用途分组不是伪造的候选筛选流水。
 
 比较单位是一项具体实验协议：原始输入与附加先验、预测目标、Ground Truth、指标与分母、训练/测试时信息预算、代码或数据版本。出版事实记为 F，作者报告记为 P，公开材料静态观察记为 S，本文跨论文综合记为 H，尚待核实事项记为 O。正文用自然语言说明证据边界，详细登记见[证据审计](R5C_Integration_Audit.md)。图1与图2分别展示研究地图和协议审计结构。
 
@@ -104,6 +105,18 @@
 因此，针对**一篇论文的一项具体实验协议**，本文用 \( \mathrm{Task}=(X,Y,G,E) \) 记录输入及先验、预测目标、Ground Truth和评价形式。这里的记录式是本文组织综述的**分析记号**，不是作者提出的新模型、训练目标或被普遍接受的数学理论。
 
 为操作化四元组，X应细分为原始输入X_raw、训练额外信息X_train_aux（教师解释、金标情绪、政策或风险说明）及推理时额外信息X_test_aux（候选、词典、检索、oracle）；G至少区分人类共识、模型构造后审修和政策代理，E记录样本单位、分母与Judge。DRInQ固定文字问句而变化会话语境、以五个候选含意的人类共识为评测；VAGUE依视觉场景和四个候选行动评判间接请求，候选由构造目标及人工筛选。二者都可称语用能力测评，但候选数和信息预算不同，不能直接比较其绝对Accuracy。 [@arai-ren-2026-drinq; @Nam_2025_ICCV]
+
+**协议实例表｜同一字段记号下的真实实验（P与S分列）。** “未知”表示本稿未核；评测候选／风险政策是X_test_aux，评测金标只进入评分而不默认进入模型。
+
+| 具体协议／证据 | X_raw | X_train_aux | X_test_aux | Y与G来源 | E及分母 | 同预算对照及未知项 |
+|---|---|---|---|---|---|---|
+| DRInQ困难集（P；ACL 2026 Main，CCF-A） | 固定问句Q＋变化文本情境C | 不新增模型微调；题目由GPT-4o构造后人审 | 五候选含意＋3个in-context例；Explanation另要求理由 | 选人类共识A_c；5人中至少4人一致，819共识例再筛400困难题 | 400题Accuracy，3次few-shot抽样；不是819全体或当前公开CSV | 同模型Vanilla/Explanation及同题；额外输出token未匹配。引言和困难集数字不合并。[正式§3–4/Table2](https://aclanthology.org/2026.acl-long.1597.pdf) |
+| VAGUE 2.0 MCQ（P；ICCV 2025 Main，CCF-A） | 场景图I＋间接表达p_i | 不新增评测模型训练；生成时direct／solution是构造工具 | 四行动候选；LM无图、SM给caption、VLM给原图；**不预设direct／solution作为答案输入** | 目标行动先由模型构造再经人工合理性筛选；非真实心理意图观测 | 全体1677题（VCR1144＋Ego4D533）；拒答计错；400人评子集另列 | 同模型多输入设定；caption与原图不等信息，推理token未匹配；代码prompt字段需另核。[作者v3 §3–5/附录H–I](https://arxiv.org/html/2411.14137v3) |
+| MultiMM情绪辅助检测（P；ACL 2025 Main，CCF-A） | 广告图文 | 人工隐喻／情绪等属性监督 | 论文有情绪辅助配置；各表测试情绪来源和同入口对应仍O | 隐喻检测标签，情绪不是隐喻真值 | 各split标签样本上的分类指标；具体表／输入映射未知 | 不能以论文结果直接认证下一行公开路径；同预算predicted-vs-gold对照仍O。[@yang-etal-2025-cultural] |
+| MultiMM所审loader（**S，非论文run**） | CSV配文＋图像 | train行读取第六列senti | val/test同样读取第六列并tokenize；OCR和该列gold／预测的有效来源仍待run核对 | row[2]为metaphor目标；row[5]只作为情绪辅助输入 | 静态字段观察，无本轮模型得分／分母 | 固定commit/file#line见附录A A3；实际正式run、所有baseline相同字段均O |
+| DOSE五任务（P；ACL 2026 Main，CCF-A） | 新闻图像＋文章文本 | 五类任务标签、共享／私有专家训练；统一MCQ目标CE | 对应任务提示＋候选；标签为评分目标，非默认额外gold输入 | 检测／机制／描述／对象／意图；基于原DocMSU，模型生成扩展并人审 | 作者1%训练、其余评价；各任务Accuracy后取均值，非按有效MCQ总数加权 | Qwen3-VL-8B DOSE/LoRA同1%原始数据；有效任务数／token／训练参数并未因同百分比自动相同。[正式§3、§5/Table3](https://aclanthology.org/2026.acl-long.319.pdf) |
+| VLSU Understanding（P；ICLR 2026，CCF-A） | image-only／text-only／joint三条件 | 冻结评测，无本轮任务训练 | 安全等级定义与分类提示，不提供人审目标标签 | 单图经验作者；文本／联合多评审；Safe/Borderline/Unsafe | 各条件三级Acc/F1；Table1二分类另将Borderline→Safe；Figure5仅指定模型joint错误集合 | 同模型三条件对照；去模态信息不等，不能称同信息因果对照；正式PDF8187与固定CSV8159分开 |
+| VLSU Alignment（P；同上） | 同一图文请求 | 冻结模型 | Harmless或Helpful行为提示 | G_in按输入风险分组；回应Judge评分并非新的P_in金标 | 各严重度组的拒答／帮助性；Table3、附录E.4，不与分类F1互算 | 同模型同样本变提示；Judge、生成长度等固定细节以作者版本附录D为准，跨模型不默认同预算。[作者v2](https://arxiv.org/html/2510.18214v2#A4) |
 
 ## 2.3 计算语用与操作性Ground Truth
 
@@ -161,7 +174,7 @@ DRInQ [@arai-ren-2026-drinq]从评价设计切入：保持表面问句 Q 不变�
 
 情绪是修辞的重要线索，却既可能是表达后果，也可能只是与语料主题共同出现。EmoBi [@zheng-etal-2025-enhancing]把模型自生成的情绪描述送入源目标映射与隐喻/夸张相互提示，使情绪成为推理时的辅助文本。其关键优点在于把“何种情绪、何种映射”显式放进可检查的中间输出；其直接评测目标仍是两个形式标签，而非人工标注的情绪因果作用或最终语用意义。作者 Table 2 的去核验消融显示完整流程在所测资源上得分较高，但核验本身是同一模型基于更多提示再判断，没有外部真值纠错器。相关公开实现的执行顺序和依赖路径尚需固定版本核对；此前项目阅读卡可作复核线索，而非对正式运行的已证判决。 [@zheng-etal-2025-enhancing]
 
-情绪信息的“可用”还取决于测试时如何获得。多模态隐喻论文 [@yang-etal-2025-cultural]的公开隐喻检测路径已在[R6-Fix固定代码审计索引](../R6_fix/R6Fix_Public_Code_Evidence_Index.md)固定到commit及代码行：测试分支从CSV第六列构造情绪提示并作为模型输入。但尚未核实该代码路径对应作者正式论文哪一张表，因此可确认**所审代码输入预算**与纯原图文不同，而不能断言正式论文所有实验均用测试gold情绪。对文本修辞而言，同样应区分模型自行预测的情绪、训练时辅助情绪标签、测试时人工情绪标签以及随机或打乱的情绪提示。综述判断是：只有在相同模型、相同推理预算下比较这些条件，并检查情绪错误时标签是否随之翻转，才能更具体地论证情绪线索的部署价值。现有结果说明其作为设计线索有前景，却尚未证明所有修辞理解必须经由情绪中介。 [@yang-etal-2025-cultural; @zheng-etal-2025-enhancing]
+情绪信息的“可用”还取决于测试时如何获得。多模态隐喻论文 [@yang-etal-2025-cultural]的公开隐喻检测路径已在[附录A：固定公开源码](#appendix-a)固定到commit及代码行：测试分支从CSV第六列构造情绪提示并作为模型输入。但尚未核实该代码路径对应作者正式论文哪一张表，因此可确认**所审代码输入预算**与纯原图文不同，而不能断言正式论文所有实验均用测试gold情绪。对文本修辞而言，同样应区分模型自行预测的情绪、训练时辅助情绪标签、测试时人工情绪标签以及随机或打乱的情绪提示。综述判断是：只有在相同模型、相同推理预算下比较这些条件，并检查情绪错误时标签是否随之翻转，才能更具体地论证情绪线索的部署价值。现有结果说明其作为设计线索有前景，却尚未证明所有修辞理解必须经由情绪中介。 [@yang-etal-2025-cultural; @zheng-etal-2025-enhancing]
 
 ## 3.4 测试形式的边界
 
@@ -191,13 +204,15 @@ P023 的评测进一步展示这一区分。论文 Table 2 考察是否存在编
 
 ## 4.2 已知编码词的实例消歧
 
-给定词典条目时，研究问题不再是“找到这个词”，而是“本次出现是否用了词典给出的编码义”。Silent Signals 输入目标词、编码义定义及上下文，让模型在几种问法与定义下重复判断，再用输出一致性筛选高置信实例。方法实质上把社群先验作为显式输入，利用语言模型的语境判断扩充可用语料；它没有训练一个从零发明狗哨含义的解码器。作者既构建人工小评测集，也给出大规模模型筛选的正例主集；两者的 Ground Truth 质量和样本分母不同。论文报告的主集 16,550 条与本项目静态检查到的公开主集 README 16,258 条存在版本差，故本章不把大集称作“全部人工核实的 16,550 条金标”。 [@kruk-etal-2024-silent]
+给定词典条目时，研究问题不再是“找到这个词”，而是“本次出现是否用了词典给出的编码义”。Silent Signals 输入目标词、编码义定义及上下文，让模型在几种问法与定义下重复判断，再用输出一致性筛选高置信实例。方法实质上把社群先验作为显式输入，利用语言模型的语境判断扩充可用语料；它没有训练一个从零发明狗哨含义的解码器。作者既构建人工小评测集，也给出大规模模型筛选的正例主集；两者的 Ground Truth 质量和样本分母不同。论文报告的主集为16,550条模型筛阳数据；此前所见发布说明提示版本口径差异，但本轮未固定其README历史版本，故撤去发布版精确整数，差异仅记O，亦不把论文主集称作逐条人工核实的金标。 [@kruk-etal-2024-silent]
 
 这种设置的优势是把多义词放回具体上下文，比“词典命中即风险”更接近真实判别；局限是定义本身可能带偏模型，普通义、引述、批评或戏仿都需要负例检验。论文小型人工检测、消歧评测与自动高置信抽样采用不同的提示与评分条件，不能把其中一次 Precision 直接当成整个自动标注流程的正确率，更不能据部分人机对照断言语言模型普遍优于懂社群语境的读者。综述判断是：已知定义下的实例消歧为开放词义研究提供了必要组件，但它尚未解决词典未收录的新表达和意义随时间漂移的问题。 [@kruk-etal-2024-silent]
 
 ## 4.3 词项发现与开放词义
 
 当词项未知，输出的单位就从句子中的二元用义变成候选表达类型。FETCH! [@sasse-etal-2025-making]以部分已知狗哨作为种子，用共同语境的句向量和近邻检索取得候选，再由模型过滤、抽取关键词；论文还考察直接让语言模型提词的基线。EarShot 等流程优化的是候选词项的发现与排序，指标包括词项 Precision、发现比例和偏重 Precision 的 F0.5，既非逐句普通义/编码义消歧，也非目标词义解释准确率。 [@sasse-etal-2025-making]
+
+**作者正式版指标实例（P）。** [§3.4及Tables 4–5](https://aclanthology.org/2025.acl-long.284.pdf)以词项而非帖子计分：Precision的分母是系统输出候选词项，命中参考根词或其表面变体算正例；DPR的分母是该场景语料中实际出现的留出参考根词，按根词去重；F0.5由Precision和DPR计算。Table 4的Balanced场景RoBERTa R4＋KeyBERT为P=14.81%、DPR=1.65%、F0.5=5.70%；Table 5同场景DIRECT Llama2-13B为2.97%、13.58%、3.52%。同场景的精度／发现比例取舍不能化约为全面更强；两管线模型、筛选、输出规模亦不等预算。它们是**已收录词典type回收**的作者结果，不是逐句用义正确率或真正词典外未来新义准确率。本轮核了正式表和定义，未重跑预测列表／去重实现。
 
 该研究的重要评测边界是“未见”的定义。主实验把已存在于参考狗哨词典的词项约 20% 用作种子，约 80% 暂不向系统提供，检验能否从语料中回收；这构成词典留出，不构成现实世界先按时间封存、后来才出现的新狗哨。基准中的词项出现多由正则命中确认，无法逐句排除普通义或引用；词典外真正新词还可能被自动指标误算为错误。作者在附录给出若干词典外候选的质性分析，但它们没有形成完整人工标注的开放世界测试集。因而，论文证明了一个有用的种子检索研究设置，并报告在三种稀疏度条件下的实验结果；它尚未证明现实时间外新义已被可靠发现。 [@sasse-etal-2025-making]
 
@@ -245,7 +260,7 @@ AUTALIC [@rizvi-etal-2025-autalic]把这一问题推进到真实社群语境。�
 
 SMARTER [@nghiem-etal-2026-smarter]转向低资源解释式分类。作者先利用 HateCOT 等先前解释资源做辅助监督微调，再在目标任务少量带标签样本上生成正误回答与解释，使用 DPO 使模型偏好较合适的标签—解释组合，最后尝试跨模型解释 refinement。DPO 优化的是相对参考策略的回答偏好，不是单独验证每条解释与真实推理路径一致；“只用部分目标任务数据”也不等于前期解释资源、生成计算与模型权重都被省去。论文 Table 1、Fig. 3 和 Table 5 记录不同样本预算下的分类及消融，支持其特定协议的低资源效果，但模型之间的交换收益并不对称，也不能将宏 F1 的改善全部归因于 DPO 或解释质量。 [@nghiem-etal-2026-smarter]
 
-RV-HATE [@lee-etal-2026-rv]采取不同思路：簇代表对比训练、NER/语言模型辅助的目标标记、离群样本处理与困难负例构成四个分类模块，最后用 PPO 在每个数据集上寻找四组固定 logit 权重。目标标记可帮助模型关注潜在群体，但被 NER 找出的实体未必就是被攻击者；删除簇内远点也可能删除少见而真实的隐晦样本。论文 Table 1–3 的分类结果支持所报设置下模块组合的总体效果，并未把“识别对象”“恢复隐含命题”“解释忠实”逐一独立测量。本轮在[R6-Fix固定代码审计索引](../R6_fix/R6Fix_Public_Code_Evidence_Index.md)已固定所审公开`ppo_eval.py`：该入口用test_data构造包含标签的PPO环境并以同一test_data评价优化权重。**这只证明特定公开源码路径存在验证隔离风险，不证明论文正式结果由该入口或该commit生成**；因此不能据此否定作者正式所有结果。 [@lee-etal-2026-rv]
+RV-HATE [@lee-etal-2026-rv]采取不同思路：簇代表对比训练、NER/语言模型辅助的目标标记、离群样本处理与困难负例构成四个分类模块，最后用 PPO 在每个数据集上寻找四组固定 logit 权重。目标标记可帮助模型关注潜在群体，但被 NER 找出的实体未必就是被攻击者；删除簇内远点也可能删除少见而真实的隐晦样本。论文 Table 1–3 的分类结果支持所报设置下模块组合的总体效果，并未把“识别对象”“恢复隐含命题”“解释忠实”逐一独立测量。本轮在[附录A：固定公开源码](#appendix-a)已固定所审公开`ppo_eval.py`：该入口用test_data构造包含标签的PPO环境并以同一test_data评价优化权重。**这只证明特定公开源码路径存在验证隔离风险，不证明论文正式结果由该入口或该commit生成**；因此不能据此否定作者正式所有结果。 [@lee-etal-2026-rv]
 
 三类方法分别增加人工隐含陈述、模型生成解释和目标标记/模块集成，其额外信息预算及训练目标差异大于名称表面相似性。真正要比较“分类到解释”的进展，至少应在同一语料上分开给出危害、目标、立场和隐含陈述的标注，并检验在删除或置换解释时预测是否合理变化。后一个要求属于综述提出的评测建议；现有跨数据集宏 F1 不能替代它。 [@kim-etal-2022-generalizable; @nghiem-etal-2026-smarter; @lee-etal-2026-rv]
 
@@ -269,9 +284,9 @@ Sheep’s Skin, Wolf’s Deeds [@zeng-etal-2025-sheeps]更直接考察风险：�
 
 ## 5.5 跨语域、跨风格与可解释性的局限
 
-跨数据集或显式/隐式风格转换常被用来检验模型是否过度依赖词汇与来源。ImpCon [@kim-etal-2022-generalizable]的原文—隐含陈述对比训练，在所选跨语料设置中取得分类增益，但 IHC、SBIC 与 DynaHate 的标签来源和对象不同，不能把跨基准分数直接解释为同一危害定义下的文化或时间外迁移。RV-HATE [@lee-etal-2026-rv]对多个数据集分别训练分类器和权重，其汇总结果也不是“训练一次、部署到全部未见领域”的证据；其公开权重脚本中test_data同时进入PPO环境和最终评估的情况已在[R6-Fix固定代码审计索引](../R6_fix/R6Fix_Public_Code_Evidence_Index.md)固定源代码版本，但正式论文报表采用的实际入口、split及checkpoint映射仍未核证，不能由该静态证据指认作者正式实验已经使用测试标签调权。 [@kim-etal-2022-generalizable; @lee-etal-2026-rv]
+跨数据集或显式/隐式风格转换常被用来检验模型是否过度依赖词汇与来源。ImpCon [@kim-etal-2022-generalizable]的原文—隐含陈述对比训练，在所选跨语料设置中取得分类增益，但 IHC、SBIC 与 DynaHate 的标签来源和对象不同，不能把跨基准分数直接解释为同一危害定义下的文化或时间外迁移。RV-HATE [@lee-etal-2026-rv]对多个数据集分别训练分类器和权重，其汇总结果也不是“训练一次、部署到全部未见领域”的证据；其公开权重脚本中test_data同时进入PPO环境和最终评估的情况已在[附录A：固定公开源码](#appendix-a)固定源代码版本，但正式论文报表采用的实际入口、split及checkpoint映射仍未核证，不能由该静态证据指认作者正式实验已经使用测试标签调权。 [@kim-etal-2022-generalizable; @lee-etal-2026-rv]
 
-CADET [@zhao2026cadet]研究显式与隐式风格迁移：RoBERTa编码后通过重建、对抗、正交和反事实相关损失试图降低表征与风格的耦合；作者报告相关分类和模块消融。然而几何正交不等于恢复真实社会语义潜因子，源域与目标域的正类比例及风格标签政策也可能不同。本轮已把[R6-Fix固定代码审计索引](../R6_fix/R6Fix_Public_Code_Evidence_Index.md)中的CADET公开commit、两处(train,test,test)加载返回及验证F1用于模型选型的训练代码固定为可查行号，证明**这条公开路径**的验证/测试隔离存在较大风险；但启动参数、正式论文是否使用该版本及样本split未做运行复核，故仍不可直接断言正式实验泄漏或所有表格无效。 [@zhao2026cadet]
+CADET [@zhao2026cadet]研究显式与隐式风格迁移：RoBERTa编码后通过重建、对抗、正交和反事实相关损失试图降低表征与风格的耦合；作者报告相关分类和模块消融。然而几何正交不等于恢复真实社会语义潜因子，源域与目标域的正类比例及风格标签政策也可能不同。本轮已把[附录A：固定公开源码](#appendix-a)中的CADET公开commit、两处(train,test,test)加载返回及验证F1用于模型选型的训练代码固定为可查行号，证明**这条公开路径**的验证/测试隔离存在较大风险；但启动参数、正式论文是否使用该版本及样本split未做运行复核，故仍不可直接断言正式实验泄漏或所有表格无效。 [@zhao2026cadet]
 
 因此，跨域方法的共同比较单位应是完整协议：训练和验证能见哪些目标域文本、是否见目标类别空间、人工解释或 API 辅助标记是否可用、测试是否封存，以及源/目标数据的正类比例和政策定义是否匹配。解释文本、目标标签或“因果”分支名称都不能代替这样的审计。以同一测试集报告总体宏 F1、少数类召回、引用/反用子群误报与不确定样本上的分歧，才能同时观察漏检和压制合法讨论的代价。这是综述从现有问题提出的评测要求，不是已有各篇均已完成的统一报告。 [@kim-etal-2022-generalizable; @lee-etal-2026-rv; @zhao2026cadet; @rizvi-etal-2025-autalic]
 
@@ -311,9 +326,9 @@ DOSE [@guo-etal-2026-two]把反讽检测扩展到机制、描述、对象和意�
 
 ## 6.4 情绪、多义与附加金信息
 
-情绪可能帮助解释同一视觉对象为何对应不同隐喻或反讽，但“情绪是相关线索”与“部署时模型能自行获得情绪线索”是不同命题。MultiMM的SEMD报告英文/中文广告隐喻F1分别为80.16/77.79，作者情绪消融在相应协议下有收益。本轮[R6-Fix固定代码审计索引](../R6_fix/R6Fix_Public_Code_Evidence_Index.md)固定的MultiMM公开`code_metaphor/data_utils.py`确实对train/val/test按同一规则从CSV字段生成情绪提示，但是否对应正式论文主表训练或测试入口仍O。可以说该公开路径有**额外情绪字段输入**，不能将其不加条件地概括成论文主表测试金标已泄漏或作者实验违规。稳妥结论是：情绪辅助配置可在相应输入条件下取得经验收益，真正部署的纯原图文能力还需分别报告缺失/模型预测/gold情绪三种预算。 [@yang-etal-2025-cultural]
+情绪可能帮助解释同一视觉对象为何对应不同隐喻或反讽，但“情绪是相关线索”与“部署时模型能自行获得情绪线索”是不同命题。MultiMM的SEMD报告英文/中文广告隐喻F1分别为80.16/77.79，作者情绪消融在相应协议下有收益。本轮[附录A：固定公开源码](#appendix-a)固定的MultiMM公开`code_metaphor/data_utils.py`确实对train/val/test按同一规则从CSV字段生成情绪提示，但是否对应正式论文主表训练或测试入口仍O。可以说该公开路径有**额外情绪字段输入**，不能将其不加条件地概括成论文主表测试金标已泄漏或作者实验违规。稳妥结论是：情绪辅助配置可在相应输入条件下取得经验收益，真正部署的纯原图文能力还需分别报告缺失/模型预测/gold情绪三种预算。 [@yang-etal-2025-cultural]
 
-MGMCF的源域和目标域辅助概念字段使输入预算问题更直接：如果任务输出是隐喻或情绪类别，而测试时还提供域概念，模型获得了与解释相关的额外先验。原论文定义了这些输入，[R6-Fix固定代码审计索引](../R6_fix/R6Fix_Public_Code_Evidence_Index.md)已固定的MGMCF公开`loaddata.py`表明train/val/test从相同加载流程取得预计算source/target特征，但这些pkl究竟来自人工gold、模型预测或外部数据仍未实物溯源。Dual-Semantic损失与论文的实现对照尚未在此固定为可单独复核的执行路径，不能据目前证据断言正式实验失效。与M3UCD将源/目标作为预测对象不同，必须首先在**表5（多模态非字面意义表）**分清输入的概念先验与输出的预测标签。 [@zheng2025multigranular]
+MGMCF的源域和目标域辅助概念字段使输入预算问题更直接：如果任务输出是隐喻或情绪类别，而测试时还提供域概念，模型获得了与解释相关的额外先验。原论文定义了这些输入，[附录A：固定公开源码](#appendix-a)已固定的MGMCF公开`loaddata.py`表明train/val/test从相同加载流程取得预计算source/target特征，但这些pkl究竟来自人工gold、模型预测或外部数据仍未实物溯源。Dual-Semantic损失与论文的实现对照尚未在此固定为可单独复核的执行路径，不能据目前证据断言正式实验失效。与M3UCD将源/目标作为预测对象不同，必须首先在**表5（多模态非字面意义表）**分清输入的概念先验与输出的预测标签。 [@zheng2025multigranular]
 
 意图和对象标签同样属于标注者对文本效果的操作判断。DOSE 的多选题可能受到选项位置、长度或模板线索影响；项目只在公开 1% 训练子集观察到相关风险信号，不能外推为完整测试集偏差已证。比较情绪、源／目标与意图的实际作用，需同时报告无辅助、模型预测辅助、人工金标辅助三种输入，固定基座和预算，并分别测分类与解释；这些是综述提出的验证方案，而非现有论文已全部完成的控制实验。 [@guo-etal-2026-two]
 
@@ -323,7 +338,7 @@ MGMCF的源域和目标域辅助概念字段使输入预算问题更直接：如
 
 MCIB [@wang2026conditional]针对音频、视频和文本反讽检测提出条件信息瓶颈融合。其模型编码三种输入、构建细粒度模态表示，用条件预测与压缩目标约束融合特征，最后输出二元反讽标签；训练仍使用已有反讽金标，推理时不需要人工风险标签。作者在 MUStARD++R 上报告完整配置 weighted F1 为 75.64；正式论文 Table 2 的去细粒度表示为 71.19、以 MLP 替代 Transformer 为 74.32。这些是整体模型及结构替代的证据，不是“只去条件信息瓶颈、其他不变”的独立消融，因此不能把差值全归于瓶颈模块，更不能称其已因果消除捷径。 [@wang2026conditional]
 
-本轮[R6-Fix固定代码审计索引](../R6_fix/R6Fix_Public_Code_Evidence_Index.md)将MCIB公开Transformer实现固定为特定commit：条件loss对标签`squeeze`后直接计算MSE，若输入形状为[B,1]与[B]会发生跨样本广播风险；分类路径还可见融合输出与原文本x相加。**代码行已可外部复核，但真实batch形状、是否激活该路径及其与正式论文训练的对应关系仍O**，因此不能声称作者正式实验的损失已被复现证明错误。该方向的真正机制独立证据应是同参数同预算的无KL、无条件预测及双无控制，并结合受控模态置换检验决策是否真正依赖互补特征；结构消融和weighted-F1只能支持作者当前完整方法的经验效果。 [@wang2026conditional]
+本轮[附录A：固定公开源码](#appendix-a)将MCIB公开Transformer实现固定为特定commit：条件loss对标签`squeeze`后直接计算MSE，若输入形状为[B,1]与[B]会发生跨样本广播风险；分类路径还可见融合输出与原文本x相加。**代码行已可外部复核，但真实batch形状、是否激活该路径及其与正式论文训练的对应关系仍O**，因此不能声称作者正式实验的损失已被复现证明错误。该方向的真正机制独立证据应是同参数同预算的无KL、无条件预测及双无控制，并结合受控模态置换检验决策是否真正依赖互补特征；结构消融和weighted-F1只能支持作者当前完整方法的经验效果。 [@wang2026conditional]
 
 ![图4 跨模态信息预算与受控干预](figures/F4.svg)
 
@@ -355,11 +370,11 @@ MCIB [@wang2026conditional]针对音频、视频和文本反讽检测提出条�
 
 Hateful Memes [@kiela2020hateful]使图文组合成为有害内容检测的重要基准，但普通 Meme 的联合分类标签不能自动证明每个样本均属严格 S-S-U。本项目目前只将该篇作为官方出版与任务背景，不从摘要级材料杜撰其细节或复现成绩。VLSBench [@hu-etal-2025-vlsbench]转向视觉安全信息泄漏：若文本或其他捷径已足以触发拒答／危险回答，加入图像后的安全表现可能误导对视觉依据的判断。其主要评测对象是生成回应的拒答、警示和不安全行为；不能直接当作独立的三条件输入风险金标。 [@kiela2020hateful; @hu-etal-2025-vlsbench]
 
-MMSafeAware [@wang-etal-2025-cant]直接让MLLM预测联合图文Safe/Unsafe：论文有Unsafe1000条及Over-Safety500条，并以图、文字、联合三向人审筛除不合构建条件的候选，但当前公开仓库不含完整逐例三条件人工投票。项目历史审计对某一发布版本记录了1523条编号prompt、1453个可匹配编号图像文件、445种不同Git图像blob和70条没有相应编号配图的prompt；这些数值是特定发布状态的静态观察，**尚不能用来断言正式论文实验真实使用1453张图或数据造假**。在正式2:1类别比例下，恒判Unsafe即可获66.67%总Accuracy，必须报告危险侧召回、安全侧召回或Balanced Accuracy。 [@wang-etal-2025-cant]
+MMSafeAware [@wang-etal-2025-cant]直接让MLLM预测联合图文Safe/Unsafe：论文有Unsafe1000条及Over-Safety500条，并以图、文字、联合三向人审筛除不合构建条件的候选，但当前公开仓库不含完整逐例三条件人工投票。此前发布材料提示编号、图像和重复文件的口径可能不一致；因本轮未固定该发布状态及计数方法，撤去过细整数，仅保留版本待核（O）。不能由文件状态推定作者正式评测使用的样本或图像数。在正式2:1类别比例下，恒判Unsafe即可获66.67%总Accuracy，必须报告危险侧召回、安全侧召回或Balanced Accuracy。 [@wang-etal-2025-cant]
 
 VLSU [@palaskar2026vlsu]以图像、文字、图文联合三个条件分别标Safe/Borderline/Unsafe。正式PDF报告8187条、15风险类、17种组合；此前项目读取的公开CSV为8159条，差28条原因未明。严格S-S-U在论文Figure9为37条、所查公开版35条，属于较小的test-only子集，不能把其他风险升级模式都称为S-S-U。三条件人审强度也不同：图像单独标签由一名经验作者给出，文字/联合多由3人、少量2人标注；因此三标签是任务操作性共识，不等于对每对图片做过相同标准的严格单因素反事实实验。正式PDF写17模型而官方摘要曾写11，版本差异仍留OPEN。 [@palaskar2026vlsu]
 
-VLSU的Safety Understanding要求显式风险标签，而Safety Alignment自由生成回答后评审拒答与帮助性。其Table1为兼容旧基准采用独立**二分类提示**并把Borderline→Safe，不能与正式三分类F1直接换算。Figure5报告约33.8%（约34%）属于**joint分类已经预测错误**的样本里两个单模态预测反而均正确的比例，分母既非全库8187/8159，也非严格S-S-U的37/35条。所查公开CSV另有141条image_grade=not_sure，在三条件组合模式统计时需说明排除/映射，不意味着仅评joint时所有这些记录均被丢弃。 [@palaskar2026vlsu]
+VLSU的Safety Understanding要求显式风险标签，而Safety Alignment自由生成回答后评审拒答与帮助性。其Table1为兼容旧基准采用独立**二分类提示**并把Borderline→Safe，不能与正式三分类F1直接换算。Figure5的33.8%应限于**作者示例Qwen2.5-VL-32B在joint三分类已经预测错误的集合**：其中image-only和text-only均预测正确的占比；不是17个模型汇总，也非全库8187/8159或严格S-S-U的37/35条。其他模型须分别看附录E.3 Figure18。作者[版本v2的§5图题、原图及E.3](https://arxiv.org/html/2510.18214v2#S5)可读；本轮正式PDF端点超时，正式版图题与模型对应尚需独立复核，不把作者版本核对伪称正式PDF新核验。所查公开CSV另有141条image_grade=not_sure，在三条件组合模式统计时需说明排除/映射，不意味着仅评joint时所有这些记录均被丢弃。 [@palaskar2026vlsu]
 
 Multimodal Situational Safety [@zhou2025situational]把活动请求放入视觉环境，MSSBench 论文报告 1,960 个图文对，区分显式安全判断诊断和是否遵循／拒绝的行为评估。同一句请求配不同场景图的 Chat 部分适合讨论视觉条件；Embodied 部分不一定严格只改图像。其 IF Judge 对回答模式评分，并非直接读取模型内部风险分类；给模型 Oracle 环境状态也提高了可用信息预算。SIUO [@wang-etal-2025-safe]观察表面安全的跨模态输入引发不安全输出，主要是行为对齐挑战，不能并入 VLSU 的人工输入三等级真值。 [@zhou2025situational; @wang-etal-2025-safe]
 
@@ -381,9 +396,9 @@ CrossGuard 与 ThinkingGuard 已分别推进防护训练和触发因素归因，
 
 ## 7.4 安全响应与过度拒答
 
-输入风险预测正确也不能唯一规定回答策略。MOSSBench（ICLR 2025 Main，CCF-A）[@li2025oversensitive]以300条作者目标为安全可答的图文请求测过度拒绝（ARR），但有约9%的人审认为无法在不产生有害内容的情况下安全回答，说明“全部毫无争议的安全GT”不成立。此前项目静态审计在公开数据中能把244条有害contrast与主集配对，剩余56条没有一一映射；不等于全部300为严格只变单因素的反事实。删图可能移除风险环境事实，因此低拒答不一定意味着更好地理解视觉语义；ARR属于回应行为，不等于输入误报率。 [@li2025oversensitive]
+输入风险预测正确也不能唯一规定回答策略。MOSSBench（ICLR 2025 Main，CCF-A）[@li2025oversensitive]以300条作者目标为安全可答的图文请求测过度拒绝（ARR），但有约9%的人审认为无法在不产生有害内容的情况下安全回答，说明“全部毫无争议的安全GT”不成立。公开有害contrast与安全主集的逐ID映射和发布版数量本轮未固定，故不保留精确映射数；目前无证据把全部主集视为严格只变单因素的反事实。删图可能移除风险环境事实，因此低拒答不一定意味着更好地理解视觉语义；ARR属于回应行为，不等于输入误报率。 [@li2025oversensitive]
 
-Meerkat-VL（ICML 2026 Main，CCF-A）[@zhou2026meerkatvl]把目标从输入类别转向安全且有帮助的回答。Cold-start SFT先使VLM输出风险感知分析及答复；训练自评分NPSV由**同一个Actor**依据先前生成的推理/回答以及训练用规范性risk文本（user_intent、harmful_intent、safety_warning）产生多个维度的质量分，本轮[R6-Fix固定代码审计索引](../R6_fix/R6Fix_Public_Code_Evidence_Index.md)已对相应同Actor评分函数固定commit及行号，确认该函数重用先前回答和风险说明并将其tokenize为文本，**不在该函数中重新提供图像张量**；是否实际用于正式论文报告的训练配置仍O。DPCA把分析与回答的安全/帮助评分差异作为一致性惩罚，最终通过GRPO更新；一致性值为零只代表分数吻合，不能保证视觉事实或规范判断正确。作者报告综合回复安全/帮助改善，但本项目没有独立核完正式ICML论文的逐项基线/消融数字；因此只能把独立NPSV、DPCA与额外风险知识的贡献列为待同预算对照，不冒称自验证是独立重新看图。 [@zhou2026meerkatvl]
+Meerkat-VL（ICML 2026 Main，CCF-A）[@zhou2026meerkatvl]把目标从输入类别转向安全且有帮助的回答。Cold-start SFT先使VLM输出风险感知分析及答复；训练自评分NPSV由**同一个Actor**依据先前生成的推理/回答以及训练用规范性risk文本（user_intent、harmful_intent、safety_warning）产生多个维度的质量分，本轮[附录A：固定公开源码](#appendix-a)已对相应同Actor评分函数固定commit及行号，确认该函数重用先前回答和风险说明并将其tokenize为文本，**不在该函数中重新提供图像张量**；是否实际用于正式论文报告的训练配置仍O。DPCA把分析与回答的安全/帮助评分差异作为一致性惩罚，最终通过GRPO更新；一致性值为零只代表分数吻合，不能保证视觉事实或规范判断正确。作者报告综合回复安全/帮助改善，但本项目没有独立核完正式ICML论文的逐项基线/消融数字；因此只能把独立NPSV、DPCA与额外风险知识的贡献列为待同预算对照，不冒称自验证是独立重新看图。 [@zhou2026meerkatvl]
 
 VLSU（ICLR 2026，CCF-A）的同模型行为提示提供具体**安全—帮助性双侧权衡**：对Gemini-1.5仅把推理时提示从Harmless换到Helpful，Borderline输入上的拒答率由62.4%降至10.4%，但Unsafe输入拒答率也由90.8%降至53.9%。这不是SFT/PPO重训练，也不是风险分类F1变化；前者提示过度拒绝可能降低，后者提醒危险请求的拒绝同样下降，不能只挑有利一侧解读。与MOSSBench的正常请求误拒和Meerkat-VL的训练后回应一起看，研究问题应是能否在相同模型/政策/Judge下改善两侧，而不能把异构数据集拼成统一Pareto曲线。 [@palaskar2026vlsu; @li2025oversensitive; @zhou2026meerkatvl]
 
@@ -415,19 +430,21 @@ VLSU 的拒答／帮助性实验、MSSBench 的情境行动、MOSSBench 的正�
 
 [表7：方法族、监督信息与独立贡献证据](tables/T7_Method_Families.md)按优化目标、额外输入和控制证据横向比较直接竞争方法，不设置跨任务分数排名。
 
-### 8.1.1 三条具有实证锚点的跨领域条件规律
+### 8.1.1 三条可被反驳的跨子域条件性综合（H）
 
-**规律一：词义任务越开放，越需要区分已给的社群先验与真实未知意义。** Silent Signals（ACL 2024 Main，CCF-A）以已知词及暗义定义作instance消歧，作者在400个筛阳正例的人工核查中报告约85.3% Precision；FETCH!（ACL 2025 Main，CCF-A）给20%已知词典种子，评估剩余已收录词项的type回收；FA-Net（AAAI 2024 Technical，CCF-A）训练时可见无标签目标域文本并固定目标词类别；SeTox（ACL 2026 Main，CCF-A）则在推理时使用检索证据预测新词毒性。**正向认识（H）**：明确的先验使实例用义、既有类型发现、固定候选解码和风险分类分别能够获得可核的GT及指标；**反例/约束**：词典外新义、未来词、伪正对错配与随时间变化的检索背景，没有由这些不同基准共同验证。不能把“在已有候选意义上得到较高Accuracy”推广成开放世界义项发现。 [@kruk-etal-2024-silent; @sasse-etal-2025-making; @hu2024hidden; @cui-etal-2026-new]
+下表的条件C、可观察结果Y/E与论文报告P分列。P只表明原实验中的效应；把不同子域解释为共同条件结构是本文的H级推断。没有共享样本、同信息预算和共同因果干预，不能称元分析或通用定律。
 
-**规律二：解释、规范和触发因素成为训练监督时，目标分类可能改善，但解释忠实性仍未被独立测量。** ImpCon（COLING 2022 Main，会议CCF-B）对隐含陈述做对比监督；SMARTER（ACL 2026 Main，CCF-A）在已有解释SFT基础上对gold类别条件的标签—解释答案做DPO，chosen/rejected的类别token本身可能不同。ExPO-HM（ICLR 2026 Main，CCF-A）以政策手册、细粒度课程和CDE进行GRPO训练，作者报告Hateful Memes二分类Macro-F1朴素GRPO **74.5→完整81.1**，但最强直接检测RA-HMD已有80.2，边际仅**+0.9个百分点**；其CDE低不等于解释内容对标签决策的因果影响。ThinkingGuard（作者称ACM MM 2026接收；会议CCF-A，最终Track仍O）的Step-DPO带来作者Unsafe F1 **.779→.810**，但增加了Unsafe关键步骤偏好与token；Meerkat-VL（ICML 2026 Main，CCF-A）训练时同Actor评价借助规范性风险说明，评分调用不独立重读图。**正向认识（H）**：解释/政策/风险理由能够成为可优化的监督或奖励来源；**失败边界**：分类准确、解释可读、解释与原图事实相符、解释实际导致模型判断是四个不同的评价单位，不能用另一个模型的解释Judge或较低CDE代替同信息预算的解释干预实验。 [@kim-etal-2022-generalizable; @nghiem-etal-2026-smarter; @mei2026expohm; @zhang2026thinkingguard; @zhou2026meerkatvl]
+| 条件／跨子域连接 | 可观察预测与直接正面证据（P） | 反例、混杂与不可迁移边界 | 本文新增的条件判断（H）及可反驳方式 |
+|---|---|---|---|
+| **C1 先验限定可测开放度**：修辞意义推断＋编码词项发现。若候选意义、词典种子或意义先验由外部给定，系统成绩首先检验该支持集内的恢复，而非支持集外新义。 | (RSA)²在PragMega+有限候选上hard L1正确义平均概率0.84；将意义先验置均匀后为0.51（[作者v1 Table3](https://arxiv.org/html/2506.09301v1#S5.T3)，非Accuracy）。FETCH!给约20%词典种子，Table4 Balanced词项P=14.81%、DPR=1.65%，是剩余已收录根词的回收（[正式§3.4/Table4](https://aclanthology.org/2025.acl-long.284.pdf)）。两者都把外部知识转为可测预测条件。 | RSA先验消融不是证明人类认知离不开先验；FETCH词典外真新词可被指标算为错，不能反证真实新义不存在。Silent Signals已给定义、FA-Net目标域未标文本、SeTox实时搜索分别改变X与Y，不能按分数互换开放度。 | **预测**：同一模型扩展候选空间／移除定义时，原成绩不保证保持，且词典回收与实例消歧可能失配；若在封存词典外、时间外并独立人审的新义上保持正确，才可扩大结论。本文未完成这项实验。适用边界是“给定支持集”的协议，而非所有开放生成任务。 |
+| **C2 解释收益依赖监督对象与推理协议**：文本会话含意＋视觉行动意图＋仇恨Meme检测。训练中用金标／政策约束解释，和测试时只增加解释提示，是不同干预。 | DRInQ同400题Vanilla→Explanation：GPT-5-Mini Accuracy .56→.62（[正式Table2](https://aclanthology.org/2026.acl-long.1597.pdf)）。VAGUE同原图MCQ，GPT-4o 64.6→66.4%（[作者v3 Table3](https://arxiv.org/html/2411.14137v3#S5.T3)）。仇恨Meme中ExPO-HM从naive GRPO 74.5到完整81.1 macro-F1，完整配置带政策SFT、课程和CDE奖励（[正式论文](https://proceedings.iclr.cc/paper_files/paper/2026/file/812f0e17bf0fa2a31a3d0b24dca49462-Paper-Conference.pdf)）。 | **同协议反例**：DRInQ Sonnet-4.5 .65→.62；VAGUE原图Qwen2.5-VL-72B 72.8→69.9%（[作者v3附录G Table G6](https://arxiv.org/html/2411.14137v3#A7)；会议版附录表号须独立核）。ExPO最强直接方法RA-HMD已80.2，完整相对只+0.9pp，且课程／奖励／监督一起变化。正反差异也可能源于模型、长度、解析或教师信息，不是解释文字的独立因果效应。 | **预测**：仅以“有无解释／CoT”分组无法稳定预测提升方向；将训练解释的标签约束和推理证据来源分开后才有可检验的异质效应假设。未锚定真值的测试解释仍可改善（上列正例），所以不主张“必须训练才有效”。若同底座、同标签与token预算、同解析条件下，未约束解释始终一致改善两种子域，则应修正该边界假设。分类提升亦不自动测得faithfulness。 |
+| **C3 全局偏好可能重新分配互补子群错误**：无害修辞解释＋多模态安全回应。若改变策略／行为指令，缺少逐例新增证据，总体收益可能含输出偏好移动。 | (RSA)²普通L0→hard策略L0：全体正确义平均概率0.73→0.85；反讽子群由0.48提升到>0.8（[作者v1 Table2/Figure4](https://arxiv.org/html/2506.09301v1#S5.SS3)）。VLSU同Gemini-1.5 Harmless→Helpful，Borderline拒答62.4→10.4%，减少安全边界请求误拒（[作者v2 Table3/E.4](https://arxiv.org/html/2510.18214v2#S4.SS4)；正式稿对应表见原论文）。 | **同协议代价**：RSA字面子群0.95→0.77；VLSU Unsafe拒答90.8→53.9%，危险侧防护下降。**反例限制单调性**：VLSU QwenVL32B同提示变化时Borderline拒答反而23.4→30.7%，Unsafe仍71.2→57.5%。策略后验质量、模型服从性与语义／政策类别均不同，不能据共同方向证明共享内部机制。 | **预测**：当增益主要来自全局偏好变化，互补子群应出现不对称甚至反向变化；只有逐组检验仍同时改善，才更支持辨别力增加。共同可迁移的是“查子群重分配”的检验，不是把字面错误概率换算为安全FPR，更不能将这些不同数据／Judge拼成Pareto曲线。 |
 
-**规律三：联合风险的危险侧识别与正常侧误拒是两种不同错误，其相互权衡存在直接实验而非抽象猜想。** MMSafeAware（ACL 2025 Main，CCF-A）在Unsafe 1000/Over-Safety 500的二分类配置中，恒判Unsafe总Accuracy便可达**66.67%**，显示总分会掩盖正常侧误报。VLSU（ICLR 2026 Main，CCF-A）只改变同一Gemini-1.5的行为提示Harmless→Helpful，Borderline拒答由**62.4%→10.4%**、Unsafe拒答亦由**90.8%→53.9%**，说明减少非必要拒答可能伴随危险请求拒答减少；但这是回应行为，不是同一模型的输入风险F1提升。CrossGuard（ACL 2026 Main，CCF-A）加入ImpForge联合风险训练使SIUO上Guard ASR **60.33%→5.39%**，而FigStep **0.12%→0.21%**，并同时改变了训练数据量与类别构成。MOSSBench（ICLR 2025 Main，CCF-A）则评作者安全主集的实际拒答，还存在约9%人工安全可答争议。**正向认识（H）**：应分别汇报G_in下Unsafe recall、Safe FPR和回应层Safe refusal、危险回复率、帮助性；**界限**：这些来自不同政策、数据和Judge的数值不能在没有共享样本时拼成一条跨方法的Pareto曲线，更不能把Guard漏判与红队攻击ASR作直接数值排名。 [@wang-etal-2025-cant; @palaskar2026vlsu; @zhang-etal-2026-crossguard; @li2025oversensitive]
-
-三条规律均建立于作者论文的正面结果和反面限制（P），其跨任务外推属于本综述条件性判断（H），**不是本项目额外跑过的受控实验**。可证伪的进一步检验分别需要：封存时间外新词/社群义、固定解释教师知识和训练token预算、以及同政策和同模型Judge下的双侧样本评测。
+C2把解释提示与解释监督的不同信息来源联系起来，C3把修辞过度解释与安全过度拒答联系起来；这两条分别有不同子领域论文中的正反实测，超出了单一编码或安全子域的协议提醒。C1保留候选／词典开放度的共同边界，但不据跨论文差异建立先验数量到性能的函数。表7逐研究拆行列监督对象与作者结果，协议实例表记录X/Y/G/E；数值只在原论文协议内作对照。RSA、VAGUE本轮定点读取的是标明版本的作者全文，未伪称完成会议版逐页一致性核验。 [@spinoso-di-piano-etal-2025-rsa; @sasse-etal-2025-making; @arai-ren-2026-drinq; @Nam_2025_ICCV; @mei2026expohm; @palaskar2026vlsu]
 
 ## 8.2 训练与测试信息预算及公平比较
 
-同名“图文输入”可能包含完全不同的字段。MultiMM的作者论文评测了情绪辅助配置，本轮[R6-Fix固定代码审计索引](../R6_fix/R6Fix_Public_Code_Evidence_Index.md)已固定一个MultiMM公开路径在测试样本中读取CSV情绪列的代码行，但正式论文运行配置映射尚未核实；MGMCF论文将源/目标概念文本作为输入，而预计算字段是否为gold及何种基线也未最终核；MSSBench可能额外提供Oracle环境状态，Meerkat-VL训练时自评则使用规范风险说明。它们都是合理但不同的研究设置。若部署只能获得原图、配文和未经审核的检索结果，人工gold或评分时教师风险知识必须单独列出，不能把特权信息条件下的分数称为“纯原始图文理解”。V-FLUTE白图替换仍改变输入分布，亦非天然的同信息反事实。 [@yang-etal-2025-cultural; @zheng2025multigranular; @saakyan-etal-2025-understanding; @zhou2025situational; @zhou2026meerkatvl]
+同名“图文输入”可能包含完全不同的字段。MultiMM的作者论文评测了情绪辅助配置，本轮[附录A：固定公开源码](#appendix-a)已固定一个MultiMM公开路径在测试样本中读取CSV情绪列的代码行，但正式论文运行配置映射尚未核实；MGMCF论文将源/目标概念文本作为输入，而预计算字段是否为gold及何种基线也未最终核；MSSBench可能额外提供Oracle环境状态，Meerkat-VL训练时自评则使用规范风险说明。它们都是合理但不同的研究设置。若部署只能获得原图、配文和未经审核的检索结果，人工gold或评分时教师风险知识必须单独列出，不能把特权信息条件下的分数称为“纯原始图文理解”。V-FLUTE白图替换仍改变输入分布，亦非天然的同信息反事实。 [@yang-etal-2025-cultural; @zheng2025multigranular; @saakyan-etal-2025-understanding; @zhou2025situational; @zhou2026meerkatvl]
 
 信息预算还包含训练前的隐含资源。SMARTER 的少样本目标数据实验之前已有解释资源及候选生成；DOSE 的多任务实例数随任务有效性改变，同样比例的“原始图文”未必代表同样多的训练 token；SeTox 的搜索结果可能在不同日期改变。因而，报告应至少列出：原始样本与有效任务实例数、额外标注或教师输出、冻结模型和参数量、训练步数、推理查询次数、测试时可用 Oracle、检索时间戳以及 baseline 是否拥有同样信息。仅把参数量和最终 F1 并排，无法识别收益来自算法结构还是信息增量。 [@nghiem-etal-2026-smarter; @guo-etal-2026-two; @cui-etal-2026-new]
 
@@ -490,6 +507,56 @@ T6 评价生成响应，要另记录拒答、警示、执行、转介与不回�
 三条议程共同的**停止门槛**是：缺少可信GT、无法确认样本/图片去重、严重源码问题未固定版本或评审器提示词不可复核时，只作受限诊断并保留O，不能把未证猜测提升为新方法的失败机制。数据版权、社群语义变迁和真实部署合法性还要分别核授权；本文没有实地训练或部署测得这些条件。
 
 
+<a id="appendix-a"></a>
+
+# 附录A 可随稿公开的最小源码／发布数据证据
+
+本附录是稿件本体的一部分，直接列出公开作者仓库的不可变链接；评阅者无需访问本研究的私人记录。2026-11-10定点重读下列文件。**S只证明所列commit中的公开路径，不证明作者正式论文的表格或模型权重由该版本／入口产生；未运行训练或推理。** 源码的静态风险不构成对作者正式实验错误或不当行为的判决。
+
+| 编号／对应研究（刊会等级见正文引文映射） | 固定公开源码（40位commit＋文件行） | 可复核S观察；必须保留的O |
+|---|---|---|
+| **A1 RV-HATE**（ACL 2026 Main，CCF-A） | `acfe053172a7266c8dde3759551882701478cdac`：[ppo_eval.py L19–67](https://github.com/leeyejin1231/RV-HATE/blob/acfe053172a7266c8dde3759551882701478cdac/ppo_eval.py#L19-L67)、[L155–180](https://github.com/leeyejin1231/RV-HATE/blob/acfe053172a7266c8dde3759551882701478cdac/ppo_eval.py#L155-L180) | 环境缓存所传dataset标签并用macro-F1变化作reward；所列入口传test_data、训练PPO后再评同数据。**O**：论文实际入口／commit／split与表格对应，无运行复现。 |
+| **A2 CADET**（WWW 2026 Main，CCF-A） | `1f1a25d56907c9aa83f9285ce32753a6945097f6`：[dataloader.py L119–142](https://github.com/Shu-Wan/cadet/blob/1f1a25d56907c9aa83f9285ce32753a6945097f6/src/cadet/datasets/dataloader.py#L119-L142)、[L257–313](https://github.com/Shu-Wan/cadet/blob/1f1a25d56907c9aa83f9285ce32753a6945097f6/src/cadet/datasets/dataloader.py#L257-L313)；[trainer L219–252](https://github.com/Shu-Wan/cadet/blob/1f1a25d56907c9aa83f9285ce32753a6945097f6/src/cadet/training/cadet_trainer.py#L219-L252) | 所列loader返回train/test/test；trainer按传入val的F1选模型／阈值。**O**：正式run是否使用这些分支、参数和目标split。 |
+| **A3 MultiMM**（ACL 2025 Main，CCF-A） | `33a01f111208b2ddbacdb06a667828c1246cc42b`：[data_utils.py L67–100](https://github.com/DUTIR-YSQ/MultiMM/blob/33a01f111208b2ddbacdb06a667828c1246cc42b/code_metaphor/data_utils.py#L67-L100)、[L150–159](https://github.com/DUTIR-YSQ/MultiMM/blob/33a01f111208b2ddbacdb06a667828c1246cc42b/code_metaphor/data_utils.py#L150-L159) | train/val/test从CSV row[5]构造senti，tokenize后返回；row[2]为隐喻目标。**O**：情绪列有效来源、OCR与正式表的run对应；不等于隐喻真值直接泄漏。 |
+| **A4 MGMCF**（AAAI 2025 Technical，CCF-A） | `02407e81099db63674ff27d97ee332011fcf4be0`：[loaddata.py L12–25](https://github.com/ZhengL00/MGMCF/blob/02407e81099db63674ff27d97ee332011fcf4be0/loaddata.py#L12-L25)、[L55–78](https://github.com/ZhengL00/MGMCF/blob/02407e81099db63674ff27d97ee332011fcf4be0/loaddata.py#L55-L78)、[L103–109](https://github.com/ZhengL00/MGMCF/blob/02407e81099db63674ff27d97ee332011fcf4be0/loaddata.py#L103-L109) | 加载source/target pkl并随模型输入返回。**O**：pkl为gold、预测或外部构造的哪一种来源，及正式run和baseline的信息对应。 |
+| **A5 MCIB**（AAAI 2026 Technical，CCF-A） | `d1430aa7bf827731b99cf4baed73525f0fd590c3`：[MCIB_trans.py L110–126](https://github.com/sljgkjhwe/MCIB/blob/d1430aa7bf827731b99cf4baed73525f0fd590c3/MCIB_trans.py#L110-L126)、[L194–224](https://github.com/sljgkjhwe/MCIB/blob/d1430aa7bf827731b99cf4baed73525f0fd590c3/MCIB_trans.py#L194-L224) | loss中squeeze标签；分类路径有expand(output)+x残差。**仅当**实际y_pred为[B,1]且y为[B]时才有广播风险；真实batch shape、激活路径及论文run均O，不写已复现训练错误。 |
+| **A6 Meerkat-VL**（ICML 2026 Main，CCF-A） | `9ecb79281492bd491ef65f72647bcef893cba4fa`：[ray_trainer.py L489–553](https://github.com/Tunanzzz/Meerkat-VL/blob/9ecb79281492bd491ef65f72647bcef893cba4fa/verl/trainer/ppo/ray_trainer.py#L489-L553)、[L554–616](https://github.com/Tunanzzz/Meerkat-VL/blob/9ecb79281492bd491ef65f72647bcef893cba4fa/verl/trainer/ppo/ray_trainer.py#L554-L616) | 自评提示含user_intent/safety_warning/harmful_intent和回答；此输入构造仅tokenize文字，未重新加入图像张量。**O**：正式训练是否进入该函数及其版本对应；不据此否定整个模型的视觉能力。 |
+
+**固定发布数据。** VLSU（ICLR 2026，CCF-A）的[作者CSV](https://github.com/apple-aiml-research/ml-vlsu/blob/b7c1780d2d578a82fc5f11a070d93bcd50cb9e45/data/VLSU.csv)固定commit为`b7c1780d2d578a82fc5f11a070d93bcd50cb9e45`，Git blob为`09421adeb2e68eac1d5e829dcbd48848f21a0be6`。本轮直接读取该blob，按CSV记录而非物理文本行重计：8159条9字段记录、严格S-S-U为35、image_grade=not_sure为141。以下独立计数可在下载该固定CSV后执行，不要求私人仓库或模型运行：
+
+```python
+import csv
+with open("VLSU.csv", encoding="utf-8", newline="") as f:
+    rows = list(csv.DictReader(f))
+assert all(len(x) == 9 and None not in x for x in rows)
+ssu = sum(x["image_grade"] == "safe"
+          and x["consensus_text_grade"] == "safe"
+          and x["consensus_combined_grade"] == "unsafe" for x in rows)
+uncertain = sum(x["image_grade"] == "not_sure" for x in rows)
+print(len(rows), ssu, uncertain)  # 8159, 35, 141
+```
+
+这是发布文件的S，不是正式PDF的8187/37；差异原因、图片可达性及论文实际评测名单仍O。MMSafeAware的发布编号／图像／重复blob数量、Silent Signals的历史README主集数、MOSSBench的contrast映射数，本轮没有同等级不可变版本链，故从正文与附表撤去精细S整数，仅保留作者P级数据与发布差异待核。版本不一致不自动构成论文实验错误。
+
+<a id="appendix-b"></a>
+
+# 附录B 实际引文的任务、用途与证据层级目录
+
+本目录逐键覆盖原48条及本轮新增Ye一条。分组是实际引用用途，不是互斥的自然学科分类，也不是从91候选重建的PRISMA流图。P级机制证据继承已归档精读与文中明确的原论文表，不意味着本轮逐篇重读或独立复现；S只在附录A固定路径成立。F／摘要背景不承担模块有效性的实证责任。
+
+| 用途／任务 | 本文使用到的证据深度 | 引文键（完整分配，不按数量推断领域召回） |
+|---|---|---|
+| 理论原典／相邻基础（4） | F与理论定义；不当作现代benchmark实验 | [@grice1975logic; @searle1969speech; @searle1975indirect; @frank2012predicting] |
+| 相邻综述定位（原4＋新增Ye 1） | Ma/Farabi/Hee/Kühn用于已有任务、数据、评价的承认；Ye本轮仅作者摘要／目录，正式状态O；不伪称全篇竞品审计 | [@ma-etal-2025-pragmatics; @farabi2024survey; @hee-etal-2024-recent; @kuhn2026rhetorical; @ye2025safety] |
+| T1/T2修辞、T2/T3语用核心（9） | P：标签、候选意义、表征／提示实验；其中Mendelsohn的G为隐喻而非独立危害；RSA/VAGUE本轮读指定作者版本 | [@spinoso-di-piano-etal-2025-rsa; @mahato-etal-2026-llms; @liu-etal-2026-revisiting; @zheng-etal-2025-enhancing; @mendelsohn-budak-2025-people; @arai-ren-2026-drinq; @Nam_2025_ICCV; @zhang-etal-2024-model; @yao-etal-2026-rhetorical] |
+| 编码词项／实例义／解码及风险接口（5） | P：各自type/instance/候选义/毒性协议；Silent发布README未固定O，不使用精细S整数 | [@kruk-etal-2024-silent; @sasse-etal-2025-making; @hu2024hidden; @wan-etal-2026-newspaper; @cui-etal-2026-new] |
+| T4文本危害、解释与迁移（8） | P：GT、生成／训练／分类结果；RV-HATE与CADET另有附录A的S；AUTALIC受限CSV仍O | [@hartvigsen-etal-2022-toxigen; @elsherief-etal-2021-latent; @kim-etal-2022-generalizable; @nghiem-etal-2026-smarter; @lee-etal-2026-rv; @zeng-etal-2025-sheeps; @rizvi-etal-2025-autalic; @zhao2026cadet] |
+| 多模态非字面意义核心（6） | P：蕴含／隐喻／多任务／反讽实验；MultiMM/MGMCF/MCIB另列S，正式run对应O | [@saakyan-etal-2025-understanding; @yang-etal-2025-cultural; @zheng2025multigranular; @zheng2026m3ucd; @guo-etal-2026-two; @wang2026conditional] |
+| 多图反讽存在性背景（1） | **仅官方出版页／摘要F**；未以CIRM独立消融作P证据 | [@Zhao_2026_CVPR] |
+| T4/T5图文风险及T6相邻回应（11） | P：输入标签／回应协议分别使用；Meerkat另列S；ThinkingGuard据作者版本、正式Track O；VLSU CSV另为固定S | [@kiela2020hateful; @hu-etal-2025-vlsbench; @wang-etal-2025-safe; @wang-etal-2025-cant; @palaskar2026vlsu; @zhou2025situational; @li2025oversensitive; @zhang-etal-2026-crossguard; @zhang2026thinkingguard; @zhou2026meerkatvl; @mei2026expohm] |
+
+没有纳入核心比较的泛显式毒性、纯形式还原、一般VQA及通用RLHF，按§1.2的任务边界排除；未被正文使用的候选不自动意味着不重要或不合格。本轮没有补造91项逐层筛选记录，也不声称收齐全部CCF-A研究。
+
 # 参考文献
 
 以下书目与 [references.bib](references.bib) 使用相同键；刊会的 CCF 级别与具体 Track 分列于[引文映射](Citation_Key_Mapping.md)，出版冲突见[书目冲突台账](Bibliography_Conflicts.md)。正文引文使用统一的可机读键值格式。
@@ -542,3 +609,6 @@ T6 评价生成响应，要另记录拒答、警示、执行、转介与不回�
 46. **frank2012predicting** — Frank, Michael C.; Goodman, Noah D. (2012). Predicting Pragmatic Reasoning in Language Games. *Science*, 336(6084), 998. [出版入口](https://doi.org/10.1126/science.1218633)
 47. **mei2026expohm** — Mei, Jingbiao; Sun, Mingsheng; Chen, Jinghong; Qin, Pengda; Li, Yuhong; Chen, Da; Byrne, Bill (2026). ExPO-HM: Learning to Explain-then-Detect for Hateful Meme Detection. *The Fourteenth International Conference on Learning Representations* (ICLR 2026 Main，CCF-A). [正式出版](https://proceedings.iclr.cc/paper_files/paper/2026/hash/812f0e17bf0fa2a31a3d0b24dca49462-Abstract-Conference.html)；[开放评审及官方Bib](https://openreview.net/forum?id=bEejbORUI5)
 48. **searle1975indirect** — Searle, John R. (1975). Indirect Speech Acts. In Cole, Peter and Morgan, Jerry L. (eds.), *Syntax and Semantics, Volume 3: Speech Acts*, 59–82. Academic Press. [书目核验](https://www.cambridge.org/core/elements/speech-act-theory/E29E0869CBABCD7B61536B4AF6A0653B)
+
+
+49. **ye2025safety** — Ye, Mang; Rong, Xuankun; Huang, Wenke; Du, Bo; Yu, Nenghai; Tao, Dacheng (2025). A Survey of Safety on Large Vision-Language Models: Attacks, Defenses and Evaluations. *arXiv:2502.14881v1*，预印本，CCF不适用；正式发表状态未核。本稿只据作者摘要及目录作相关综述定位。[作者版本](https://arxiv.org/abs/2502.14881v1)
