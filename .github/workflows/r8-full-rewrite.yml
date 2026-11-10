@@ -1,0 +1,96 @@
+name: R8 full chapter and appendix rewrite PDF
+
+on:
+  push:
+    branches:
+      - survey/r8-full-rewrite-ch8-ch9-appendices-20261110
+    paths:
+      - .github/workflows/r8-full-rewrite.yml
+      - 03_survey/R7_submission/source/**
+      - 03_survey/R5_full_draft/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: r8-full-rewrite-review
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install typesetting and fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc fonts-noto-cjk poppler-utils
+          cd 03_survey/R7_submission/source
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Build and verify R8 PDF
+        env:
+          REQUIRE_PANDOC: '1'
+        run: |
+          cd 03_survey/R7_submission/source
+          npm run build
+          node check_pages.cjs
+          pdfinfo ../Survey_Final_Review.pdf | grep -E 'Pages:|Page size:'
+          mkdir -p ../../R8_submission
+          cp ../Survey_Final_Review.pdf ../../R8_submission/Survey_R8_Full_Rewrite.pdf
+          cp ../Figure_Table_Check_Pages_Full_Rewrite.pdf ../../R8_submission/Figure_Table_Check_Pages_Full_Rewrite.pdf
+          cp ../R7_Reference_Numbering_QA.md ../../R8_submission/R8_Full_Rewrite_References_QA.md
+          pdftotext -layout ../../R8_submission/Survey_R8_Full_Rewrite.pdf ../../R8_submission/pdf_text_check.txt
+          grep -q '广义隐晦信息的理解与检测' ../../R8_submission/pdf_text_check.txt
+          grep -q '在实际语言交际中' ../../R8_submission/pdf_text_check.txt
+          grep -q '研究任务与实验协议的双层描述' ../../R8_submission/pdf_text_check.txt
+          grep -q '跨子域方法族' ../../R8_submission/pdf_text_check.txt
+          grep -q '从规则推断到大模型后训练' ../../R8_submission/pdf_text_check.txt
+          grep -q '研究进展与主要认识' ../../R8_submission/pdf_text_check.txt
+          grep -q '代表性研究的任务设定与评价协议' ../../R8_submission/pdf_text_check.txt
+          grep -q '文献检索、选择与综述方法' ../../R8_submission/pdf_text_check.txt
+          if grep -q '可随稿公开的最小源码' ../../R8_submission/pdf_text_check.txt; then exit 1; fi
+          if grep -q '三条可以使用现有公开资源检验的研究议程' ../../R8_submission/pdf_text_check.txt; then exit 1; fi
+          if grep -q '章节顺序是编辑组织' ../../R8_submission/pdf_text_check.txt; then exit 1; fi
+          rm ../../R8_submission/pdf_text_check.txt
+          echo "# R8 PDF构建验收" > ../../R8_submission/R8_Full_Rewrite_Build_QA.md
+          echo "" >> ../../R8_submission/R8_Full_Rewrite_Build_QA.md
+          echo "- 分支：survey/r8-full-rewrite-ch8-ch9-appendices-20261110" >> ../../R8_submission/R8_Full_Rewrite_Build_QA.md
+          echo "- 源提交：$GITHUB_SHA" >> ../../R8_submission/R8_Full_Rewrite_Build_QA.md
+          echo "- 页数：$(pdfinfo ../../R8_submission/Survey_R8_Full_Rewrite.pdf | awk '/Pages:/{print $2}')" >> ../../R8_submission/R8_Full_Rewrite_Build_QA.md
+          echo "- 图1–图5，表1–表7，附录A/B及50条参考文献由构建检查。" >> ../../R8_submission/R8_Full_Rewrite_Build_QA.md
+          echo "- 本次更新第8章、第9章及附录A/B，保留此前R8版本和R7固定阅读底稿。" >> ../../R8_submission/R8_Full_Rewrite_Build_QA.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r8-full-rewrite-pdf
+          path: |
+            03_survey/R8_submission/Survey_R8_Full_Rewrite.pdf
+            03_survey/R8_submission/Figure_Table_Check_Pages_Full_Rewrite.pdf
+            03_survey/R8_submission/R8_Full_Rewrite_References_QA.md
+            03_survey/R8_submission/R8_Full_Rewrite_Build_QA.md
+          retention-days: 30
+      - name: Commit R8 PDF and QA
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$GITHUB_REF_NAME"
+          if ! git diff --quiet HEAD "origin/$GITHUB_REF_NAME" -- 03_survey/R7_submission/source 03_survey/R5_full_draft; then
+            echo "Source changed during R8 build; rerun from latest branch head"
+            exit 1
+          fi
+          git reset --mixed "origin/$GITHUB_REF_NAME"
+          git add -f 03_survey/R8_submission/Survey_R8_Full_Rewrite.pdf
+          git add -f 03_survey/R8_submission/Figure_Table_Check_Pages_Full_Rewrite.pdf
+          git add 03_survey/R8_submission/R8_Full_Rewrite_References_QA.md
+          git add 03_survey/R8_submission/R8_Full_Rewrite_Build_QA.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Build R8 chapter/appendix rewritten PDF and QA [skip ci]"
+            git push origin "$GITHUB_REF_NAME"
+          fi
