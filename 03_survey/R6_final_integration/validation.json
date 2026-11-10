@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "bibtex_parsed_entries": 50,
+  "body_unique_citekeys": 50,
+  "manual_references": 50,
+  "appendix_b_unique_keys": 50,
+  "chapters": 9,
+  "tables": [
+    {
+      "name": "T1_Concepts.md",
+      "rows": 9
+    },
+    {
+      "name": "T2_Tasks_and_GT.md",
+      "rows": 8
+    },
+    {
+      "name": "T3_Coded_Language.md",
+      "rows": 7
+    },
+    {
+      "name": "T4_Contextual_Harm.md",
+      "rows": 7
+    },
+    {
+      "name": "T5_Multimodal_Meaning.md",
+      "rows": 9
+    },
+    {
+      "name": "T6_Multimodal_Safety.md",
+      "rows": 12
+    },
+    {
+      "name": "T7_Method_Families.md",
+      "rows": 22
+    }
+  ],
+  "figures": [
+    {
+      "name": "F1.svg",
+      "git_blob": "e13da1664b240ff40e8ec03a949b153fc0a72e52"
+    },
+    {
+      "name": "F2.svg",
+      "git_blob": "98b8a906720cdaecf9460c50cad77e8a7ba744db"
+    },
+    {
+      "name": "F3.svg",
+      "git_blob": "2540e055df498cedb71e2fd176467a1480815441"
+    },
+    {
+      "name": "F4.svg",
+      "git_blob": "7053da691e69b978fa684017a4fb8a5a18e755b0"
+    },
+    {
+      "name": "F5.svg",
+      "git_blob": "7b74ff928d86a3d4ddf28c797b2468e03f453039"
+    }
+  ],
+  "source_main": "49214314d544f865e046aae0a0fe165f08e542f5",
+  "source_pr63": "80bad7e668a5510f7897b8ee117d7851ebaa8114"
+}

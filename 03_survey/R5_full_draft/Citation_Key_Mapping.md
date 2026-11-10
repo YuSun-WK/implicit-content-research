@@ -1,6 +1,6 @@
 # 原项目编号—正式引文键映射
 
-本表维持 R0/R2A 的原编号，不将 91 条候选一律等同于正式全文证据。本文实际使用 **46 条**参考文献：42 条有原项目编号，另有 Farabi 综述与 Grice、Searle、Frank–Goodman 三条理论文献。CCF 等级依项目采用的 2026 第七版目录，**仅对应刊会类别**；实际 Main、Technical、Findings、Survey Track 和预印本单独注明。
+本表维持 R0/R2A 的原编号，不将 91 条候选一律等同于正式全文证据。PR #61的R6-Fix书目登记为 **48 条**（含新补P027 ExPO-HM及Searle 1975原典）；其中原R5-C的46条仍保留，新增一篇已精读CCF-A方法论文及一篇经典理论章节。R6-Fix-R1补Ye摘要级对照为49条；最终整合另补Mao正式综述，现50条，原48条保留；任务／证据用途完整分组见正文附录B。机械一致性由本轮检查，独立书目工程仍待R6-V。CCF 等级依项目采用的 2026 第七版目录，**仅对应刊会类别**；实际 Main、Technical、Findings、Survey Track 和预印本单独注明。
 
 | 原编号 | BibTeX key | 会场/等级/Track | 出版入口 | 核验状态 |
 |---|---|---|---|---|
@@ -14,6 +14,7 @@
 | P020 | `spinoso-di-piano-etal-2025-rsa` | ACL 2025 Main；CCF-A | [出版](https://aclanthology.org/2025.acl-long.1019/) | ACL Anthology正式BibTeX |
 | P022 | `liu-etal-2026-revisiting` | ACL 2026 Main；CCF-A | [出版](https://aclanthology.org/2026.acl-long.210/) | ACL Anthology正式BibTeX |
 | P023 | `wan-etal-2026-newspaper` | ACL 2026 Main；CCF-A | [出版](https://aclanthology.org/2026.acl-long.426/) | ACL Anthology正式BibTeX |
+| P027 | `mei2026expohm` | ICLR 2026 Conference；CCF-A | [正式出版](https://proceedings.iclr.cc/paper_files/paper/2026/hash/812f0e17bf0fa2a31a3d0b24dca49462-Abstract-Conference.html)；[论文与Bib](https://openreview.net/forum?id=bEejbORUI5) | 官方出版页及作者Bib字段核对；解释后检测非严格S-S-U |
 | P029 | `lee-etal-2026-rv` | ACL 2026 Main；CCF-A | [出版](https://aclanthology.org/2026.acl-long.2104/) | ACL Anthology正式BibTeX |
 | P030 | `nghiem-etal-2026-smarter` | ACL 2026 Main；CCF-A | [出版](https://aclanthology.org/2026.acl-long.1584/) | ACL Anthology正式BibTeX |
 | P032 | `kim-etal-2022-generalizable` | COLING 2022 Main；CCF-B | [出版](https://aclanthology.org/2022.coling-1.579/) | ACL Anthology正式BibTeX |
@@ -48,7 +49,13 @@
 | T017 | `elsherief-etal-2021-latent` | EMNLP 2021 Main；CCF-B | [出版](https://aclanthology.org/2021.emnlp-main.29/) | ACL Anthology正式BibTeX |
 | 新对照综述 | `farabi2024survey` | IJCAI 2024 Survey Track；按第七版 CCF-B | [出版](https://ijcai.org/proceedings/2024/887) | IJCAI正式页；2018–2023范围 |
 | 理论原典 | `grice1975logic` | 书章；CCF不适用 | [出版](https://doi.org/10.1163/9789004368811_003) | 原始1975书章信息 |
+| 理论原典 | `searle1975indirect` | 书章，CCF不适用 | [书目信息](https://www.cambridge.org/core/elements/speech-act-theory/E29E0869CBABCD7B61536B4AF6A0653B) | Cole/Morgan主编Syntax and Semantics 3，pp.59–82 |
 | 理论原典 | `searle1969speech` | 专著；CCF不适用 | [出版](https://doi.org/10.1017/CBO9781139173438) | CUP出版信息 |
 | 理论实证 | `frank2012predicting` | Science 336(6084)；CCF期刊目录不适用 | [出版](https://doi.org/10.1126/science.1218633) | 作者书目与期刊信息 |
 
+| R6-Fix-R1新对照（不占历史P/R2A号） | `ye2025safety` | arXiv:2502.14881v1；预印本，CCF不适用 | [作者版本](https://arxiv.org/abs/2502.14881v1) | 作者、题名、版本／摘要已核；仅摘要和目录级定位，正式状态未核 |
+
+| R6最终整合新增相邻综述 | `mao2025pragmatic` | *Information Fusion* 114 (2025), 102712；CCF目录未收录（本次检索） | [出版](https://doi.org/10.1016/j.inffus.2024.102712) | 正式书目元数据已核；仅作相邻综述定位 |
+
 **核验规则。** ACL 2024/2025 条目取官方 .bib，2026 ACL 条目取正式页面“Export citation”；AAAI、CVF、PMLR、NeurIPS 与 ICLR 条目取可访问的出版页或项目已归档正式精读卡。无法直接取得最终出版社 BibTeX 的项保留在[书目冲突台账](Bibliography_Conflicts.md)，不能把当前手工格式化字段称作逐字官方导出。
+
