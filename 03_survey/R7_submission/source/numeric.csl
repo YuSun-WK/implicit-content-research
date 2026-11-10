@@ -14,9 +14,8 @@
       <text variable="citation-number"/>
     </layout>
   </citation>
-  <bibliography second-field-align="flush" entry-spacing="0" line-spacing="1">
+  <bibliography entry-spacing="0" line-spacing="1">
     <layout>
-      <text variable="citation-number" prefix="[" suffix="] "/>
       <names variable="author" suffix=". ">
         <name name-as-sort-order="all" sort-separator=", " delimiter="; " et-al-min="13" et-al-use-first="12"/>
       </names>
