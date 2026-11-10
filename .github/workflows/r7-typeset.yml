@@ -1,0 +1,73 @@
+name: R7 formal typesetting
+
+on:
+  push:
+    branches:
+      - survey/r7-submission-typesetting-20261110
+    paths:
+      - .github/workflows/r7-typeset.yml
+      - 03_survey/R7_submission/source/**
+      - 03_survey/R5_full_draft/**
+
+permissions:
+  contents: write
+
+concurrency:
+  group: r7-formal-typesetting
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install typesetting dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc fonts-noto-cjk poppler-utils
+          cd 03_survey/R7_submission/source
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Build formal PDF with Pandoc citeproc
+        env:
+          REQUIRE_PANDOC: '1'
+        run: |
+          cd 03_survey/R7_submission/source
+          npm run build
+          node check_pages.cjs
+          pdfinfo ../Survey_Final_Review.pdf | grep -E 'Pages:|Page size:'
+          pdftotext ../Survey_Final_Review.pdf - | grep -q '参考文献'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r7-final-pdfs
+          path: |
+            03_survey/R7_submission/Survey_Final_Review.pdf
+            03_survey/R7_submission/Figure_Table_Check_Pages.pdf
+            03_survey/R7_submission/reference_page_screenshots/*.png
+            03_survey/R7_submission/R7_Reference_Numbering_QA.md
+          retention-days: 7
+      - name: Commit reproducible lockfile and PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$GITHUB_REF_NAME"
+          if ! git diff --quiet HEAD "origin/$GITHUB_REF_NAME" -- 03_survey/R7_submission/source 03_survey/R5_full_draft; then
+            echo "R7 source changed during build; rerun the workflow from the latest branch head"
+            exit 1
+          fi
+          git reset --mixed "origin/$GITHUB_REF_NAME"
+          git add 03_survey/R7_submission/source/package-lock.json
+          git add -f 03_survey/R7_submission/Survey_Final_Review.pdf
+          git add -f 03_survey/R7_submission/Figure_Table_Check_Pages.pdf
+          git add -f 03_survey/R7_submission/reference_page_screenshots/*.png
+          git add 03_survey/R7_submission/R7_Reference_Numbering_QA.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Build R7 formal PDF with citeproc [skip ci]"
+            git push
+          fi
