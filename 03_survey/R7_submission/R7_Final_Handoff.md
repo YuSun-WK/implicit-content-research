@@ -10,4 +10,4 @@
 
 本地 41 页预览已逐页渲染并看过总览，重点图表页作原分辨率复核；修复两处公式转义显示。正式 43 页 CI PDF 尚需独立逐页视觉和实体打印核验。书目冲突仍有 AUTALIC、ThinkingGuard、VLSU 等未关闭项，详见专门台账。当前达到 **Level 1：Readable Review Draft**；完成正式 PDF 的逐页视觉检查、剩余书目字段与图表打印复核后再判 Level 2。目标刊未指定，不判 Level 3。
 
-导师审阅建议先读 `Survey_Final_Review.pdf`；图表可对照 `Figure_Table_Check_Pages.pdf`、`R7_Figure_Table_QA.md`，书目请见 `R7_Bibliography_Final_Audit.md` 与 `R7_Open_Issues.md`。图表检查册来自本地预览，页号与正式 PDF 不完全相同。
+导师审阅建议先读 `Survey_Final_Review.pdf`；图表可对照由该正式 PDF 抽取的 `Figure_Table_Check_Pages.pdf`（18 页）、`R7_Figure_Table_QA.md`，书目请见 `R7_Bibliography_Final_Audit.md` 与 `R7_Open_Issues.md`。
