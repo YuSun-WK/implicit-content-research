@@ -1,16 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1580" height="560" viewBox="0 0 1580 560" role="img" aria-label="F3">
-<style>
-  text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif; fill: #17212b; }
-  .title { font-size: 36px; font-weight: 700; }
-  .section { font-size: 25px; font-weight: 700; }
-  .label { font-size: 24px; font-weight: 600; }
-  .small { font-size: 21px; }
-  .box { fill: #f7f9fb; stroke: #24384a; stroke-width: 2; }
-  .alt { fill: #fff; stroke: #24384a; stroke-width: 2; stroke-dasharray: 7 5; }
-  .band { fill: #edf3f7; stroke: #24384a; stroke-width: 1.5; }
-  .link { fill: none; stroke: #24384a; stroke-width: 2; }
-  .dash { fill: none; stroke: #516473; stroke-width: 2; stroke-dasharray: 7 6; }
-</style>
-<rect width="1580" height="560" fill="#fff"/>
-<text x="45" y="52" class="title">F3  编码语言的四类研究任务</text><rect x="45" y="78" width="1490" height="52" rx="6" class="band"/><text x="61" y="108" class="section">共享条件：文本实例、社群知识、词典定义与时间语境；各研究可取不同信息预算</text><rect x="45" y="195" width="350" height="180" rx="8" class="box"/><text x="63" y="227" class="label">词项发现 / type</text><text x="63" y="255" class="small">输入：语料与种子词典</text><text x="63" y="283" class="small">GT：候选编码词项</text><text x="63" y="311" class="small">FETCH!：词典留出≠时间外</text><rect x="425" y="195" width="350" height="180" rx="8" class="box"/><text x="443" y="227" class="label">实例词义消歧</text><text x="443" y="255" class="small">输入：已知词项与定义</text><text x="443" y="283" class="small">GT：该次使用的义项</text><text x="443" y="311" class="small">Silent Signals：实例任务</text><rect x="805" y="195" width="350" height="180" rx="8" class="box"/><text x="823" y="227" class="label">编码意义恢复</text><text x="823" y="255" class="small">输入：上下文与候选义</text><text x="823" y="283" class="small">GT：目标词或解释</text><text x="823" y="311" class="small">FA-Net：固定候选域适应</text><rect x="1185" y="195" width="350" height="180" rx="8" class="box"/><text x="1203" y="227" class="label">规范性有害判断</text><text x="1203" y="255" class="small">输入：意义、立场与政策</text><text x="1203" y="283" class="small">GT：人审风险类别</text><text x="1203" y="311" class="small">SeTox：外部检索可参与</text><path d="M395 283 H425 M775 283 H805 M1155 283 H1185" class="dash"/><text x="45" y="445" class="section">虚线连接表示可分析的任务关系；不代表现有论文已验证统一端到端系统。</text><text x="45" y="493" class="small">不同模块的标签、来源词典、测试时信息及误差应分别报告。</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="569" viewBox="0 0 1440 569" role="img" aria-label="图3｜编码语言研究中的四类不同问题">
+<style>text{font-family:"Noto Sans CJK SC","Microsoft YaHei","Source Han Sans SC",sans-serif;fill:#16324b} .title{font-size:35px;font-weight:700}.subtitle{font-size:21px;fill:#456177} .bandText{font-size:24px;font-weight:700;fill:#204b6d} .cardTitle{font-size:25px;font-weight:700}.body{font-size:21px}.small{font-size:19px;fill:#456177}.note{font-size:21px;fill:#456177}</style>
+<rect width="1440" height="569" fill="#fff"/>
+<text class="title" x="45" y="56">图3｜编码语言研究中的四类不同问题</text><text class="subtitle" x="45" y="96">同一表达可能涉及多项研究任务，但预测目标和正确答案并不相同。</text><line x1="45" y1="118" x2="1395" y2="118" stroke="#aac0cf" stroke-width="1.5"/>
+<rect x="45" y="140" width="1350" height="49" rx="9" fill="#e8f1f7" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="bandText" x="65" y="174">四类问题相互关联，但不构成必须依次执行的处理流程</text>
+<rect x="45" y="209" width="331" height="165" rx="9" fill="#f3f7f9" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="cardTitle" x="65" y="246">发现编码词项</text>
+<text class="body" x="65" y="285">语料中有哪些可能具有</text>
+<text class="body" x="65" y="316">特殊含义的表达？</text>
+<text class="body" x="65" y="347">评价：词项检索与发现</text>
+<rect x="393" y="209" width="331" height="165" rx="9" fill="#f3f7f9" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="cardTitle" x="413" y="246">判断实例义项</text>
+<text class="body" x="413" y="285">已知编码词在这一语境中</text>
+<text class="body" x="413" y="316">使用普通义还是编码义？</text>
+<text class="body" x="413" y="347">评价：上下文义项标签</text>
+<rect x="741" y="209" width="331" height="165" rx="9" fill="#f3f7f9" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="cardTitle" x="761" y="246">恢复具体含义</text>
+<text class="body" x="761" y="285">该表达在当前语境中</text>
+<text class="body" x="761" y="316">指向什么含义或对象？</text>
+<text class="body" x="761" y="347">评价：意义或解释依据</text>
+<rect x="1089" y="209" width="331" height="165" rx="9" fill="#f3f7f9" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="cardTitle" x="1109" y="246">判断是否有害</text>
+<text class="body" x="1109" y="285">结合目标、立场与政策，</text>
+<text class="body" x="1109" y="316">内容是否构成危害？</text>
+<text class="body" x="1109" y="347">评价：规范性风险标签</text>
+<rect x="45" y="390" width="1349" height="94" rx="9" fill="#f3f7f9" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="cardTitle" x="65" y="427">共同影响因素</text>
+<text class="body" x="65" y="466">会话与社群约定 · 词典和候选含义 · 时间变化 · 测试时可获得的信息</text>
+<line x1="45" y1="506" x2="1395" y2="506" stroke="#aac0cf" stroke-width="1.4"/>
+<text class="note" x="45" y="538">发现编码表达，不意味着已经理解其具体含义，更不能仅凭形式判断有害。</text>
 </svg>
