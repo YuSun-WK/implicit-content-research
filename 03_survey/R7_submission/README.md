@@ -7,7 +7,7 @@
 - `Survey_Final_Review.pdf`：正式引用编排的完整审阅 PDF，43 页，九章、五图、七表、附录 A/B、50 条参考文献。T7 占两页横向 A4。
 - `source/build.cjs`、`source/numeric.csl`、`source/package.json`、`source/package-lock.json`：可编辑排版源与锁定依赖。R5 Markdown/Bib/SVG/表格均为可编辑源。
 - `R7_Typesetting_QA.md`、`R7_Figure_Table_QA.md`、`R7_Bibliography_Final_Audit.md`、`R7_Open_Issues.md`、`R7_Final_Handoff.md`：验收记录。
-- `Figure_Table_Check_Pages.pdf`：图表重点页检查册；本地 41 页预览所抽取的 17 页，不代替最终 43 页 PDF 的逐页复核。
+- `Figure_Table_Check_Pages.pdf`：从正式 43 页 PDF 自动抽取的 18 页图表检查册，不代替完整逐页复核。
 
 ## 重建
 
