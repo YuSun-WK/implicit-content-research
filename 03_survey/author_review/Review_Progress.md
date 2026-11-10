@@ -116,3 +116,10 @@
 - 本轮用户要求全面重写第8章：候选 `author_review/Chapter8_Rewrite_Proposal.md`，Issue R8-028 OPEN。
 - 候选保留8.1.1三项条件性综合，29个正式Bib引用键均存在；未更改正文或重新生成PDF。
 - 需注意现存R8分支此前已修改正文/图表并生成45页PDF，但变更日志仍旧，正式应用之前核对分支实际历史。
+
+
+## 附录A/B整体重写（2026-11-10）
+- R8-029：附录A换为“代表性研究的任务设定与评价协议”（A.1–A.4）；状态OPEN，正文不动。原代码证据单独备份为author_review/Original_AppendixA_Evidence_Archive.md。
+- R8-030：附录B换为“文献检索、选择与综述方法”（B.1–B.4）；状态OPEN，正文不动。
+- 候选全文：author_review/Appendices_AB_Rewrite_Proposal.md；跨章节需迁移旧A1–A6链接，详见Appendices_AB_Integration_Notes.md。
+- 23个引用键已验证均在references.bib中。保留原R8 PDF阅读底稿，尚未授权替换/重排。
