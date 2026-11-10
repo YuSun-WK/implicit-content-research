@@ -123,3 +123,16 @@
 - R8-030：附录B换为“文献检索、选择与综述方法”（B.1–B.4）；状态OPEN，正文不动。
 - 候选全文：author_review/Appendices_AB_Rewrite_Proposal.md；跨章节需迁移旧A1–A6链接，详见Appendices_AB_Integration_Notes.md。
 - 23个引用键已验证均在references.bib中。保留原R8 PDF阅读底稿，尚未授权替换/重排。
+
+
+## 2026-11-10｜正式应用第8章、第9章和附录A/B
+
+收到作者明确指令后，将R8-027～030四项候选写入新的R8整合分支及正式科学正文，旧附录A的固定公开代码证据已迁移到正文直链，原审计证据保留在工作目录；原R7、上一版R8 PDF仍在仓库保留。准备生成新的 `03_survey/R8_submission/Survey_R8_Full_Rewrite.pdf`。**稿件正文已应用，PDF构建和视觉QA尚待验收**，本节阅读进度不代表全文由作者逐段审完。后续恢复应以PR #71及其核验记录为准。
+
+
+## 2026-11-10｜R8整合PDF验收更新
+
+- R8-027～030：**VERIFIED（实施与PDF一致性）**，不是“原论文科学细节全部验证”。
+- 新PDF：`03_survey/R8_submission/Survey_R8_Full_Rewrite.pdf`，46页；源码仍为`Survey_Full_Draft.md`，PDF与QA已上传PR #71。
+- 对照已确认：8.1从PDF第31页开始，9.1从第35页开始，新附录A第39页、附录B第41页、参考文献第43页开始；横向表7在第38页。每页文本非空。
+- 上一版R8 PDF、原R7 PDF保留；main尚未更新，PR #71保持Draft。继续作者逐段审稿时以本PDF为最新版本，历史问题/证据局限按台账继续跟踪。

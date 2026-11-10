@@ -55,3 +55,18 @@ F5_approved_layout.png 6120cc8fa7e1434f7ad061de41c7b1ec99ae903d771ca61521a778845
 - 结果：**43页R8 PDF已生成且可独立读取**，目录九章，F1–F5，T1–T7，50条连续引文。已抽样逐页视觉核验图表与首尾版面，并修复初版表7孤立表注和末页单条书目。
 - 审稿状态：批量修改已`APPLIED`并通过范围与PDF一致性检查记`VERIFIED`。这不构成对所有原始论文证据问题的重新审核或独立复现。
 - 保留约束：`main`未合并；R7 PDF不覆盖，R8新增独立PDF路径；后续用户仍可继续逐段修订。
+
+
+## R8-D008｜整合第8/9章与附录A/B重写稿并上传GitHub
+
+- 作者指令（2026-11-10）：“把重写的内容修改到正式pdf中，上传到github”。
+- 直接应用范围：R8-027、R8-028、R8-029、R8-030中已经形成的完整候选；同步旧附录证据引用迁移和正式PDF重建。此指令视为批准实施四项重写稿，不代表批准新增加未经核的实验事实。
+- 原稿第8章 → `Chapter8_Rewrite_Proposal.md`；第9章 → `Chapter9_Rewrite_Proposal.md`；附录A/B → `Appendices_AB_Rewrite_Proposal.md`。
+- 初始正式正文提交：`0258755`，代码引用语句修正：`276580d`。
+- 处理方式：新建 `survey/r8-full-rewrite-ch8-ch9-appendices-20261110`，PR #71指向main；**不自动合并**。
+- 当前状态：`APPLIED`，待新版PDF文件提交、书目/图表与版面一致性核验后再记 `VERIFIED`。
+
+
+### R8-D008 最终应用验证
+
+GitHub Actions run #42831104329成功，正式PDF `03_survey/R8_submission/Survey_R8_Full_Rewrite.pdf` 已上传修订分支；页数46、九章、五图、七表与50条书目经检查。第8、9章和附录A/B的修改由APPLIED转为VERIFIED。最终PDF的SHA-256为`c76b40a3882d2e445c44e45bd0740f90950f375a6779b4f5b8453c40adb19958`。版本控制仍以PR #71为准，不自动合并main。
