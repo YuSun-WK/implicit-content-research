@@ -39,6 +39,13 @@ jobs:
           node check_pages.cjs
           pdfinfo ../Survey_Final_Review.pdf | grep -E 'Pages:|Page size:'
           pdftotext ../Survey_Final_Review.pdf - | grep -q '参考文献'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r7-final-pdfs
+          path: |
+            03_survey/R7_submission/Survey_Final_Review.pdf
+            03_survey/R7_submission/Figure_Table_Check_Pages.pdf
+          retention-days: 7
       - name: Commit reproducible lockfile and PDF
         run: |
           git config user.name "github-actions[bot]"
