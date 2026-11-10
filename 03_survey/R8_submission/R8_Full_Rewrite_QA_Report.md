@@ -3,7 +3,7 @@
 日期：2026-11-10
 
 **GitHub提交分支**：`survey/r8-full-rewrite-ch8-ch9-appendices-20261110`  
-**Draft PR**：[PR #71](https://github.com/YuSun-WK/implicit-content-research/pull/71)
+**已合并 PR**：[PR #71](https://github.com/YuSun-WK/implicit-content-research/pull/71)
 
 **正式PDF**：`03_survey/R8_submission/Survey_R8_Full_Rewrite.pdf`  
 **页数**：46（包含1页横向表7）  
@@ -24,4 +24,4 @@
 - 重要限定：重点页视觉抽检未发现明显文字重叠或截断，未进行目标期刊排印的最终人工逐页清样；也未重新逐篇核查全部原论文事实。
 
 ## 发布边界
-文件与QA均在PR #71的修订分支。main仍为此前#70合并版；未经用户进一步要求，本次不自动合并PR #71。所有科学证据未决事项保持原状态。
+文件与QA已通过PR #71合入 `main`，合并提交 `5ed0f2ed92f418714ed3b488d963be46d8d76c3a`。原R7及前一版R8 PDF保留；所有科学证据未决事项保持原状态。另一个重复PR #72已关闭未合并。
