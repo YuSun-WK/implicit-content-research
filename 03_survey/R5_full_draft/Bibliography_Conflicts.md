@@ -1,6 +1,6 @@
-# R5-C 书目与版本冲突台账
+# R6 最终整合书目与版本冲突台账
 
-审计日期：2026-11-09。F=正式出版事实；P=作者报告；S=公开文件静态观察；O=未关闭。仅在能核的字段上建立 `references.bib`；以下冲突不能凭简称、旧 README 或记忆补写。
+原审计日期：2026-11-09；最终整合更新：2026-11-10。F=正式出版事实；P=作者报告；S=公开文件静态观察；O=未关闭。仅在能核的字段上建立 `references.bib`；以下冲突不能凭简称、旧 README 或记忆补写。
 
 | 条目 | 已核事实与冲突 | 本稿处理 | 未关闭动作 |
 |---|---|---|---|
@@ -11,6 +11,11 @@
 | IJCAI 2024 Survey [@farabi2024survey] | 旧记录把IJCAI标CCF-A；项目采用2026第七版为CCF-B，且本文为Survey Track [F] | 引文映射按B、Survey Track，Bib正常书目不嵌入等级 | 若目标刊要求不同年份目录，另列评级口径 |
 | MCIB [@wang2026conditional] | AAAI 2026 Technical 已核；正式主文、扩展版与公开实现的目标函数/训练路径未完全对齐 [F/P/S/O] | Bib以AAAI卷期页码/DOI为准；正文只引作者整体结果与已审结构消融 | 正交去CIB消融、公开代码版本与正式训练关系仍待核 |
 | MultiMM / MGMCF [@yang-etal-2025-cultural; @zheng2025multigranular] | 所查代码含gold情绪或源/目标辅助特征 [S]；正式结果是否等同该运行路径未核 [O] | 表5单列测试信息预算；不将静态风险写成已证实论文结果错误 | 获取模型运行配置及同预算基线 |
+| ExPO-HM [@mei2026expohm] | ICLR 2026 Conference（CCF-A）官方出版页与作者Bib均可核，已于R6-Fix补入正文与书目 [F/P] | 依据官方论文记录与作者字段建唯一新条目；分类目的为Explain-then-Detect并非严格S-S-U输入三标签 | 完整正式PDF/公开脚本的课程配置与CDE实现差异仍为P/S/O，不能把静态发布当正式训练配置 |
+| Searle 1975 [@searle1975indirect] | 间接言语行为原典为Cole/Morgan主编《Syntax and Semantics》卷3 pp.59–82，独立于Searle 1969专著 [F] | 补入理论原典并保留1969书目 | 出版社目录的具体纸本版次由R6-V按目标期刊体例核对 |
 | CVF / ICLR / NeurIPS 非ACL条目 | 某些出版站点即时访问受限；CVF摘要索引、ICLR正式页、NeurIPS出版页及已审卡片可核主要字段 [F/P] | 采用可核字段，缺 DOI/页码时留空，不推造；参见引文映射 | R6排版前逐条重取官方BibTeX与PDF首页比对 |
+| VAGUE [@Nam_2025_ICCV] | ICCV正式补充材料中Qwen 72B的72.8→69.9为Table G4；作者arXiv v3 HTML中同组数为Table G6 [F/P] | 正文与表7以正式补充材料Table G4为主锚，保留作者版编号差异说明；不改实数 | 目标期刊若引用作者版，应在图表说明中注明该版编号 |
+| (RSA)² [@spinoso-di-piano-etal-2025-rsa] | arXiv HTML v1曾显示异常ACL模板；ACL正式论文对应Table 2／3、Figure 4 [F] | 正文与表7已改链正式ACL PDF，不再以异常HTML作为数值入口 | 投稿校样时再复核正式PDF页码与版面锚点 |
+| Mao等 [@mao2025pragmatic] | *Information Fusion* 114 (2025), 102712；DOI 10.1016/j.inffus.2024.102712 [F] | 第1章纳入相邻综述，书目增至50；只用于既有任务和方法综合定位 | 目标刊如要求CCF等级，应确认所用目录口径；本稿按当前检索标未收录 |
 
-**书目准入。** `references.bib` 是初步统一稿，非“所有46条逐字段均已由出版社最终BibTeX核验”的声明。正文实际引用、Bib条目与映射一一对应；出版社未能取得的字段保守留空。
+**书目准入。** `references.bib` 为PR #63的49条加Mao正式综述后的50条实际引用；已完成BibTeX语法解析与正文逐键核对，但不宣称所有50条逐字段均经出版社最终BibTeX认证。出版社未能取得的字段保守留空。
