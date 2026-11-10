@@ -17,4 +17,4 @@
 | **逐步风险归因** ThinkingGuard [@zhang2026thinkingguard]（作者ACM MM 2026录用；会议CCF-A，正式Track待核） | 输入风险标签/五步解释；SA-MCTS**离线**搜轨迹→Trajectory+Step-DPO更新VLM | 生成时Key/Trigger教师元素、偏好轨迹，Step偏好主要来自Unsafe | 作者Table3完整Unsafe F1 .810 vs去Step .779 | 配对图片不保证只变Trigger；额外Unsafe监督/token预算与解释忠实性未独立控制 |
 | **安全有用回应** Meerkat-VL [@zhou2026meerkatvl]（ICML 2026 Main，CCF-A） | 生成安全且有帮助回应；Cold-start SFT→同Actor NPSV评分→一致性惩罚DPCA→GRPO | 训练时user_intent/harmful_intent/safety_warning规范风险说明；评分不重看图 | 作者报告综合响应质量改善（正式具体消融尚待逐表复核） | NPSV额外答案级风险信息、同Actor自评与DPCA模块独立贡献未匹配同预算；回应Judge不等于P_in GT |
 
-**表注。** 表内数值都是各论文作者不同Y/G/E下的**同论文协议内对比**，不得横排绝对F1/ASR获得统一SOTA。六组代码固定SHA的公开来源直接列于正文§8.6；**S已固定不等于正式run已核**，未固定的公开数据精确S级数值降为O。正面结果、负迁移、额外监督和所缺独立对照必须一起读。
+**表注。** 表内数值都是各论文作者不同Y/G/E下的**同论文协议内对比**，不得横排绝对F1/ASR获得统一SOTA。六组代码固定SHA的公开来源直接列于正文§8.7；**S已固定不等于正式run已核**，未固定的公开数据精确S级数值降为O。正面结果、负迁移、额外监督和所缺独立对照必须一起读。
