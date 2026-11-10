@@ -217,6 +217,12 @@ pre { white-space:pre-wrap; overflow-wrap:anywhere; }
 #table-7 th:nth-child(2),#table-7 td:nth-child(2) {width:25%;}
 #table-7 th:nth-child(3),#table-7 td:nth-child(3) {width:27%;}
 #table-7 th:nth-child(4),#table-7 td:nth-child(4) {width:32%;}
+/* R8 final visual-pagination refinement: avoid orphaned table note / last reference. */
+.landscape table { font-size:8.75pt; line-height:1.27; margin:5pt 0 5pt; }
+.landscape th,.landscape td { padding:2.0pt 4.0pt; }
+.landscape #table-7 > p:last-child { font-size:8pt; line-height:1.2; margin:3pt 0; }
+.references .csl-entry { font-size:8.9pt; line-height:1.40; margin-bottom:3.5pt; }
+
 
 `;
 function document(html, cls='') { return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><style>' + css + '</style></head><body class="' + cls + '">' + html + '</body></html>'; }
