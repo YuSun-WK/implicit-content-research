@@ -31,11 +31,23 @@ function bibliographyHtml() {
     '--csl',path.join(__dirname,'numeric.csl'),'-f','markdown','-t','html5'],{input,encoding:'utf8',windowsHide:true});
   const start = html.indexOf('<div id="refs"');
   if (start < 0) throw Error('Pandoc did not produce a bibliography');
-  let entries = html.slice(start);
-  for (const [key, number] of numbers) entries = entries.replaceAll('id="ref-' + key + '"', 'id="ref-' + number + '"');
-  if ((entries.match(/class="csl-entry"/g)||[]).length !== 50) throw Error('Pandoc bibliography is not 50 entries');
-  console.log('Pandoc citeproc bibliography: 50 entries');
-  return '<h1>参考文献</h1>' + entries;
+  const rendered = html.slice(start);
+  if (/csl-(?:left-margin|right-inline)/.test(rendered)) throw Error('Unexpected CSL alignment wrapper');
+  const byKey = new Map();
+  const entryPattern = /<div\s+id="ref-([^"]+)"\s+class="csl-entry"[^>]*>([\s\S]*?)<\/div>/g;
+  for (const [, key, content] of rendered.matchAll(entryPattern)) {
+    if (byKey.has(key)) throw Error('Duplicate Pandoc bibliography key: ' + key);
+    byKey.set(key, content.trim());
+  }
+  if (byKey.size !== 50) throw Error('Pandoc bibliography has ' + byKey.size + ' entries, expected 50');
+  const entries = keys.map((key, index) => {
+    const content = byKey.get(key);
+    if (!content) throw Error('Pandoc bibliography missing key: ' + key);
+    const number = index + 1;
+    return `<div id="ref-${number}" class="csl-entry"><span class="ref-number">[${number}]</span><span class="ref-content">${content}</span></div>`;
+  }).join('\n');
+  console.log('Pandoc citeproc bibliography: 50 entries, visibly numbered [1]–[50]');
+  return '<h1>参考文献</h1><div id="refs" class="csl-bib-body">' + entries + '</div>';
 }
 
 function math(expr) {
@@ -149,8 +161,9 @@ pre { white-space:pre-wrap; overflow-wrap:anywhere; }
 .references h1 { text-align:left!important; font-size:15pt!important; break-before:page; }
 .references ol { padding-left:2em; }
 .references li { padding-left:0.2em; margin-bottom:5pt; text-align:left; font-size:9pt; line-height:1.45; }
-.references .csl-entry { padding-left:1.8em; text-indent:-1.8em; margin-bottom:5pt; font-size:9pt; line-height:1.45; overflow-wrap:anywhere; }
-.references .csl-left-margin { display:inline-block; min-width:1.8em; }
+.references .csl-entry { display:flex; align-items:flex-start; margin-bottom:5pt; font-size:9pt; line-height:1.45; overflow-wrap:anywhere; break-inside:avoid; }
+.references .ref-number { flex:0 0 2.8em; white-space:nowrap; }
+.references .ref-content { flex:1; min-width:0; }
 .landscape { page:landscape; }
 .landscape h1 { text-align:left!important; font-size:14pt!important; margin:0 0 9pt; }
 .landscape table { font-size:8.8pt; line-height:1.30; }
