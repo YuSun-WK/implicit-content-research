@@ -1,0 +1,49 @@
+name: R7 formal typesetting
+
+on:
+  push:
+    branches:
+      - survey/r7-submission-typesetting-20261110
+    paths:
+      - .github/workflows/r7-typeset.yml
+      - 03_survey/R7_submission/source/**
+      - 03_survey/R5_full_draft/**
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install typesetting dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc fonts-noto-cjk poppler-utils
+          cd 03_survey/R7_submission/source
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Build formal PDF with Pandoc citeproc
+        env:
+          REQUIRE_PANDOC: '1'
+        run: |
+          cd 03_survey/R7_submission/source
+          npm run build
+          pdfinfo ../Survey_Final_Review.pdf | grep -E 'Pages:|Page size:'
+          pdftotext ../Survey_Final_Review.pdf - | grep -q '参考文献'
+      - name: Commit reproducible lockfile and PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add 03_survey/R7_submission/source/package-lock.json 03_survey/R7_submission/Survey_Final_Review.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "Build R7 formal PDF with citeproc [skip ci]"
+            git push
+          fi
