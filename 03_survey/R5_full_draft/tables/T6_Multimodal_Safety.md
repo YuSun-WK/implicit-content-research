@@ -5,7 +5,7 @@
 | Hateful Memes [@kiela2020hateful] | 图文仇恨二分类；非天然三条件标签 | 研究重点为分类 | 无强制回应任务 | 不能将所有图文难例当S-S-U |
 | VLSBench [@hu-etal-2025-vlsbench] | VSIL视觉信息泄漏：比较风险Judge看图文与仅文本；样本偏风险侧 | 非统一三条件GT分类 | Safe Rate=Refusal+Warning，另报Unsafe | Qwen2-VL-7B特定200例：text 29.5%、text+图像描述22.5%、图文16.0%，是**回应比例**而非输入分类准确 |
 | MMSafeAware [@wang-etal-2025-cant] | 作者论文Unsafe1000/Over-Safe500，三向人审筛选；发布版文件／图像差异本轮未固定，只记O并撤去精细计数 | 联合Safe/Unsafe二分类 | 非主要生成回应 | 类比2:1，恒判Unsafe总Acc=66.67%；需报Unsafe召回+Safe召回；未固定发布版不用于断言正式样本或图像数量 |
-| VLSU [@palaskar2026vlsu] | 人审图/文/联合三条件Safe/Borderline/Unsafe；正式PDF**8187**、公开CSV**8159**；严格S-S-U PDF**37**、CSV**35** | 三级风险；Table1兼容他基准的二分类把Borderline当Safe | Harmless/Helpful行为prompt下拒答与帮助性另测 | Figure5 **Qwen2.5-VL-32B作者示例**33.8%：分母为该模型**joint三分类已错集合**，其中I/T均正确；非17模型汇总，其他模型见E.3 Figure18；作者v2原图可读，本轮正式PDF图题复核仍O；公开image_grade含141个not_sure；图像单条件作者单人评、文本/联合多评审；论文PDF17模型/摘要11 |
+| VLSU [@palaskar2026vlsu] | 人审图/文/联合三条件Safe/Borderline/Unsafe；正式PDF**8187**、公开CSV**8159**；严格S-S-U PDF**37**、CSV**35** | 三级风险；Table1兼容他基准的二分类把Borderline当Safe | Harmless/Helpful行为prompt下拒答与帮助性另测 | 正式PDF第8页Figure5图内标题为**Qwen2.5-VL-32B**，33.8%：分母为该模型**joint三分类已错集合**，其中I/T均正确；非17模型汇总，扩展模型见正式PDF第38页E.3及第39页Figure18；本轮已直接核图内模型名、图注和分母；公开image_grade含141个not_sure；图像单条件作者单人评、文本/联合多评审；论文PDF17模型/摘要11 |
 | MSSBench [@zhou2025situational] | 论文1960视觉情境请求；Chat/Embodied控制程度不同 | 有部分显式安全诊断 | IF Judge评情境行动/回答 | Oracle环境事实应与原图输入分开 |
 | MOSSBench [@li2025oversensitive] | 300作者目标安全图文请求，约9%人审对能否安全作答有争议；contrast逐ID映射／发布版数量未固定，不保留精确数 | 不提供统一三等级输入分类 | 安全主集上ARR=拒答比例；危险对照可另测拒答 | 安全误拒不是输入分类FPR；不是全300严格单因素配对；发布版证据为S/O |
 | **SIUO** [@wang-etal-2025-safe] | 图文表面安全但可能引出危险回复；不提供VLSU式三条件风险人审GT | 非主要的独立输入分类任务 | 输出Safe Rate/攻击成功率；包含参考安全警示与Judge | NAACL2025 **Findings**（举办会议CCF-B，**非主会**）；须注明人工与AI辅助构造子集及judge参考信息 |
@@ -16,4 +16,4 @@
 **表注。** `G_in`=政策/人审输入真值，`P_in`=显式输入判断，`R_beh`=拒答/警示/执行，`Q_out`=安全与合法帮助质量；**同名ASR可能是攻击得逞、Guard漏检或生成危险回复，必须给主体+Judge+分母**。VLSU 33.8%只指Figure5示例模型的joint分类错误子集，严格S-S-U并非整个联合风险升高类。图片重复、发布数据文件差异、代码脚本观察需保留版本限制。
 
 
-**版本定位。** VLSU公开CSV固定commit `b7c1780d2d578a82fc5f11a070d93bcd50cb9e45`／blob `09421adeb2e68eac1d5e829dcbd48848f21a0be6`，本轮重读重计8159/35/141，公开链接与计数方法见正文附录A；Figure5作者版本见[§5](https://arxiv.org/html/2510.18214v2#S5)及[E.3](https://arxiv.org/html/2510.18214v2#A5.SS3)。未把作者版本当作本轮已打开的正式PDF。
+**版本定位。** VLSU公开CSV固定commit `b7c1780d2d578a82fc5f11a070d93bcd50cb9e45`／blob `09421adeb2e68eac1d5e829dcbd48848f21a0be6`，本轮重读重计8159/35/141，公开链接与计数方法见正文附录A；Figure5与Figure18本轮已直接核[ICLR2026正式PDF](https://proceedings.iclr.cc/paper_files/paper/2026/file/a36e092659c42b2c92b8b0eb2394bf74-Paper-Conference.pdf)，分别位于第8／39页；44页文件SHA-256为`b38dc2e84d20899132125338b3ef8d31f54873660c2562c281c4d992c1f96aa8`。这只补齐正式图表核验，不表示重算原模型预测。
