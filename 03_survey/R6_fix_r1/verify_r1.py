@@ -1,4 +1,8 @@
-"""Structural consistency checks for the R6-Fix-R1 manuscript (no model runs)."""
+"""Historical R6-Fix-R1 checks, compatible with 49-key R1 and 50-key integration.
+
+For CURRENT release verification also run R6_final_integration/verify_final.py.
+No source or model experiments are performed here.
+"""
 from pathlib import Path
 import re
 
@@ -14,14 +18,15 @@ def citekeys(value):
 
 entries = re.findall(r'^@\w+\s*\{\s*([^,\s]+)\s*,', bib, re.M)
 keys = set(entries)
-assert len(keys) == len(entries) == 49, 'Bib key count or duplication'
+expected_keys = 50 if 'mao2025pragmatic' in keys else 49
+assert len(keys) == len(entries) == expected_keys, 'Bib key count or duplication'
 assert citekeys(scientific_body) == keys, 'Main text/Bib mismatch'
 assert citekeys(body) == keys, 'Appendix/Bib mismatch'
 manual = re.findall(r'^\d+\. \*\*([^*]+)\*\*', reference_list, re.M)
-assert len(manual) == len(set(manual)) == 49 and set(manual) == keys
+assert len(manual) == len(set(manual)) == expected_keys and set(manual) == keys
 inventory = body.split('# 附录B ', 1)[1]
 inventory_keys = re.findall(r'@([\w-]+)', inventory)
-assert len(inventory_keys) == len(set(inventory_keys)) == 49
+assert len(inventory_keys) == len(set(inventory_keys)) == expected_keys
 assert set(inventory_keys) == keys
 mapping = (DRAFT / 'Citation_Key_Mapping.md').read_text()
 assert set(re.findall(r'`([\w-]+)`', mapping)) >= keys
@@ -57,7 +62,7 @@ t6 = (DRAFT / 'tables/T6_Multimodal_Safety.md').read_text()
 assert '本轮正式PDF图题复核仍O' not in t6
 assert '第8／39页' in t6
 assert 'b38dc2e84d20899132125338b3ef8d31f54873660c2562c281c4d992c1f96aa8' in t6
-print('PASS: main text/Bib/manual references/inventory = 49 unique keys')
+print(f'PASS: main text/Bib/manual references/inventory = {expected_keys} unique keys')
 print('PASS: table keys and widths; nine chapters; six immutable public source groups')
 print('PASS: stale private-only code references and unpinned release integers removed')
 print('PASS: Gate D official PDF page/model/denominator citations synchronized')
