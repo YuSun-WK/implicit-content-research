@@ -1,6 +1,6 @@
 # 原项目编号—正式引文键映射
 
-本表维持 R0/R2A 的原编号，不将 91 条候选一律等同于正式全文证据。本轮R6-Fix书目登记增至 **48 条**（含新补P027 ExPO-HM及Searle 1975原典）；其中原R5-C的46条仍保留，新增一篇已精读CCF-A方法论文及一篇经典理论章节。最终正文citekey/书目一致性尚待R6-V独立核验。CCF 等级依项目采用的 2026 第七版目录，**仅对应刊会类别**；实际 Main、Technical、Findings、Survey Track 和预印本单独注明。
+本表维持 R0/R2A 的原编号，不将 91 条候选一律等同于正式全文证据。本轮R6-Fix-R1书目登记为 **49 条**：原R5-C的46条、R6-Fix增加ExPO-HM（ICLR 2026，CCF-A）与Searle 1975，再增Mao等（Information Fusion 2025，期刊CCF等级待核）的相邻综述出版概览级对照。Mao不是原91候选的自动筛选结果。最终正文citekey/书目一致性尚待R6-V独立核验。CCF 等级依项目采用的 2026 第七版目录，**仅对应刊会类别**；实际 Main、Technical、Findings、Survey Track 和预印本单独注明。
 
 | 原编号 | BibTeX key | 会场/等级/Track | 出版入口 | 核验状态 |
 |---|---|---|---|---|
@@ -9,6 +9,7 @@
 | P003 | `yang-etal-2025-cultural` | ACL 2025 Main；CCF-A | [出版](https://aclanthology.org/2025.acl-long.1275/) | ACL Anthology正式BibTeX |
 | P007 | `hee-etal-2024-recent` | EMNLP 2024 Findings；会议CCF-B，非Main | [出版](https://aclanthology.org/2024.findings-emnlp.254/) | ACL正式BibTeX |
 | P011 | `ma-etal-2025-pragmatics` | ACL 2025 Main Long Papers；CCF-A | [出版](https://aclanthology.org/2025.acl-long.425/) | ACL正式BibTeX |
+| 新增相邻综述（不赋旧P编号） | `mao2025pragmatic` | Information Fusion 114 (2025), 102712；**期刊CCF等级待核** | [出版社DOI](https://doi.org/10.1016/j.inffus.2024.102712) | 出版社/DBLP元数据与摘要概览已核；未宣称全文逐章精读 |
 | P015 | `mahato-etal-2026-llms` | ACL 2026 Main；CCF-A | [出版](https://aclanthology.org/2026.acl-long.1346/) | ACL Anthology正式BibTeX |
 | P019 | `saakyan-etal-2025-understanding` | NAACL 2025 Main；CCF-B | [出版](https://aclanthology.org/2025.naacl-long.1/) | ACL Anthology正式BibTeX |
 | P020 | `spinoso-di-piano-etal-2025-rsa` | ACL 2025 Main；CCF-A | [出版](https://aclanthology.org/2025.acl-long.1019/) | ACL Anthology正式BibTeX |
