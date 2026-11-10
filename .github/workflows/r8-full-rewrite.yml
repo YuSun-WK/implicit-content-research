@@ -45,7 +45,7 @@ jobs:
           pdfinfo ../Survey_Final_Review.pdf | grep -E 'Pages:|Page size:'
           mkdir -p ../../R8_submission
           cp ../Survey_Final_Review.pdf ../../R8_submission/Survey_R8_Full_Rewrite.pdf
-          cp ../Figure_Table_Check_Pages_Full_Rewrite.pdf ../../R8_submission/Figure_Table_Check_Pages_Full_Rewrite.pdf
+          cp ../Figure_Table_Check_Pages.pdf ../../R8_submission/Figure_Table_Check_Pages_Full_Rewrite.pdf
           cp ../R7_Reference_Numbering_QA.md ../../R8_submission/R8_Full_Rewrite_References_QA.md
           pdftotext -layout ../../R8_submission/Survey_R8_Full_Rewrite.pdf ../../R8_submission/pdf_text_check.txt
           grep -q '广义隐晦信息的理解与检测' ../../R8_submission/pdf_text_check.txt

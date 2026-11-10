@@ -233,7 +233,8 @@ const parts = [
 ];
 const tableCount = parts.reduce((n,p) => n + (p.html.match(/<table>/g) || []).length, 0);
 const mathCount = parts.reduce((n,p) => n + (p.html.match(/<math /g) || []).length, 0);
-if (tableCount < 12 || mathCount < 10) throw Error('Missing rendered tables or math: ' + tableCount + '/' + mathCount);
+// R8: appendix A/B now contain prose instead of two internal-audit tables.
+if (tableCount < 10 || mathCount < 10) throw Error('Missing rendered tables or math: ' + tableCount + '/' + mathCount);
 async function launch() {
   if (process.env.BROWSER_EXECUTABLE) return chromium.launch({headless:true,executablePath:process.env.BROWSER_EXECUTABLE});
   try { return await chromium.launch({headless:true}); }
