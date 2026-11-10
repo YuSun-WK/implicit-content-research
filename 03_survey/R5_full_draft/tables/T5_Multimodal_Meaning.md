@@ -10,4 +10,4 @@
 | MCIB [@wang2026conditional] | **文本＋音频＋视频**；反讽二分类 | MUStARD++R标签协议、三配对条件瓶颈/KL与条件预测辅助训练 | 作者weighted-F1 75.64；去细粒度71.19、Transformer→MLP74.32为结构对照，不是独立“no KL/no conditional”证明；作者公开[MCIB@d1430a MCIB_trans.py L110–126](https://github.com/sljgkjhwe/MCIB/blob/d1430aa7bf827731b99cf4baed73525f0fd590c3/MCIB_trans.py#L110-L126)与[194–224](https://github.com/sljgkjhwe/MCIB/blob/d1430aa7bf827731b99cf4baed73525f0fd590c3/MCIB_trans.py#L194-L224)**已固定静态路径（S）**；若真实batch为[B,1]/[B]可广播，**真实shape和正式训练run对应O** |
 | MMSD3.0 [@Zhao_2026_CVPR] | **多图＋文本**；反讽 | 正式CVPR2026 Main（CCF-A）论文有CIRM关系推理 | **截至当前只核正式出版页/摘要**，可确认基准和方法存在，未据全文表格宣称模块独立收益或严格多图因果依赖 |
 
-**表注。** `人审模态贡献归属`≠`同模型text-only/image-only/joint的预测变化`≠`人工复标单因素反事实`；这三类证据不可互换。比较前必须给`X_raw/X_train_aux/X_test_gold_or_predicted`，**MultiMM/MGMCF/MCIB的静态源码版本已固定**，未知的是正式run与字段/张量真实来源；已固定S仍不构成作者正式实验错误或学术不端结论。六组可外部访问固定来源另见正文§8.6。
+**表注。** `人审模态贡献归属`≠`同模型text-only/image-only/joint的预测变化`≠`人工复标单因素反事实`；这三类证据不可互换。比较前必须给`X_raw/X_train_aux/X_test_gold_or_predicted`，**MultiMM/MGMCF/MCIB的静态源码版本已固定**，未知的是正式run与字段/张量真实来源；已固定S仍不构成作者正式实验错误或学术不端结论。六组可外部访问固定来源另见正文§8.7。
