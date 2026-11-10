@@ -65,3 +65,8 @@ F5_approved_layout.png 6120cc8fa7e1434f7ad061de41c7b1ec99ae903d771ca61521a778845
 - 初始正式正文提交：`0258755`，代码引用语句修正：`276580d`。
 - 处理方式：新建 `survey/r8-full-rewrite-ch8-ch9-appendices-20261110`，PR #71指向main；**不自动合并**。
 - 当前状态：`APPLIED`，待新版PDF文件提交、书目/图表与版面一致性核验后再记 `VERIFIED`。
+
+
+### R8-D008 最终应用验证
+
+GitHub Actions run #42831104329成功，正式PDF `03_survey/R8_submission/Survey_R8_Full_Rewrite.pdf` 已上传修订分支；页数46、九章、五图、七表与50条书目经检查。第8、9章和附录A/B的修改由APPLIED转为VERIFIED。最终PDF的SHA-256为`c76b40a3882d2e445c44e45bd0740f90950f375a6779b4f5b8453c40adb19958`。版本控制仍以PR #71为准，不自动合并main。

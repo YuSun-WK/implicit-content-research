@@ -297,3 +297,10 @@
 - 改写仅使用已有四份候选内容：`Chapter8_Rewrite_Proposal.md`、`Chapter9_Rewrite_Proposal.md`、`Appendices_AB_Rewrite_Proposal.md`与`Appendices_AB_Integration_Notes.md`。不重新改写摘要、图1–5、表1–7、参考文献50条和早期正文。
 - 初次构建发现旧脚本仍要求12张HTML表格；新叙述性附录替换原来两张内部审计表后，合理数量为10。构建规则与检查页源文件名已相应修正；该问题属于排版工程，不是研究内容错误。
 - 版本证据和未核项目（AUTALIC、VLSU等）维持待证状态，不因正文和PDF完成而自动关闭。
+
+
+## R8-027–R8-030｜正式PDF验收完成（2026-11-10）
+
+最新有效状态：**VERIFIED**（覆盖此前OPEN与APPLIED历史记录）。经GitHub Actions [run #42831104329](https://github.com/YuSun-WK/implicit-content-research/actions/runs/42831104329)成功构建并提交新版PDF：`03_survey/R8_submission/Survey_R8_Full_Rewrite.pdf`，46页，文献[1]–[50]依次各出现一次；目录九章，图1–图5和表1–表7完整；旧附录A代码清单标题及旧第9章执行议程标题不再出现。工作区中的代码静态证据依旧保留在原归档材料中，不暗示原论文漏洞已经实证确认。
+
+本轮还下载了真实PDF，用PyMuPDF检查正文关键标题、整本文本覆盖及图/表位置，抽查第1、31、32、35、36、38（横向表7）、39、40、41、42、43、46页的实际渲染，未发现明显图表裁切、空白页或单条参考文献孤立末页。PDF SHA-256：`c76b40a3882d2e445c44e45bd0740f90950f375a6779b4f5b8453c40adb19958`。本次视觉检查为重点页抽查，不代表目标期刊最终校样或原始论文逐篇复证。
