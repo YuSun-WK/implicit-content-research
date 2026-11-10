@@ -26,14 +26,15 @@
 
 已有相邻综述覆盖多个重要子域，本文必须在这些工作之上说明增量。表内时间窗只填已经核实的范围，未核者不推断。
 
-| 相邻综述 | 已覆盖对象与范围 | 本文的不同分析单位 |
+| 先行综述与出处 | 已有分析/评价单位与实际贡献 | 本稿新增条件性对照产物（H，不假称首创已有综述的贡献） |
 |---|---|---|
-| Kühn 等：少见修辞格综述 [@kuhn2026rhetorical] | 修辞格定义、数据与检测；正式卷期为2026，预印本为2024 | 将修辞标签与意义、危害 GT 分离 |
-| Ma 等：LLM 语用综述 [@ma-etal-2025-pragmatics] | 语用任务、数据与评价 | 联结编码、规范性危害与安全行为 |
-| Farabi 等：多模态反讽综述 [@farabi2024survey] | 2018–2023 多模态反讽；IJCAI 2024 Survey Track | 进一步比较跨模态意义与联合风险/响应 |
-| Hee 等：多模态仇恨审核综述 [@hee-etal-2024-recent] | 文/图/音仇恨及大模型审核；EMNLP 2024 Findings | 从更广的无害语用与修辞起点审计 T1–T6 |
+| Ma等 [@ma-etal-2025-pragmatics]（ACL 2025 Main，CCF-A） | LLM语用任务、数据、候选解释及评测方法；已讨论GT与评测挑战 | §2.2协议表：把给定含意候选的语用选择，与图文辅助字段、视觉安全GT的X_test_aux及Y/E并置，问语用成绩何时能外推 |
+| Farabi等 [@farabi2024survey]（IJCAI 2024 Survey Track，按2026目录会议CCF-B） | 2018–2023多模态反讽的数据、融合、方法与评估 | §6/§8规律一：区分图文/音视频结构增益与给定候选、情绪、gold概念的额外信息；不把模型性能当自动跨模态因果性 |
+| Hee等 [@hee-etal-2024-recent]（EMNLP 2024 Findings，会议CCF-B、非Main） | 多模态仇恨审核、检测/解释/反言语与大模型评测 | §7/§8规律二、三：同为有害相关任务仍分离文本隐含危害解释、Meme分类、输入Guard及生成回应的Y/G/E |
+| Mao等 [@mao2025pragmatic]（Information Fusion 114，2025，期刊CCF等级待核） | 五类语用处理：隐喻、反讽、人格识别、观点方面提取、情感极性；理论、任务与下游应用 | §8规律一、二：上游语用中间义或辅助属性的成绩不可自动跨越规范性危害GT及视觉组合风险；当前仅出版摘要/概览级阅读 |
+| Kühn等 [@kuhn2026rhetorical]（ACM Computing Surveys 2026卷期，项目登记CCF未收录） | 少见修辞格定义、标注与检测 | §5对照隐喻现象标签与人类有害/非人化金标缺失的限制 |
 
-**表注。** 此表说明实质重叠与组织差异；不是先行综述的穷尽检索或覆盖率统计。会议等级、Track 与出版状态另见[引文映射](Citation_Key_Mapping.md)。
+**表注。** 本表的比较单位不是研究领域名称，而是先行综述已总结的任务/评价单位与本文进一步作出的条件化证据比较。具体新增产物是§2.2逐实验协议表、表5–表7以及§8.1.1条件C→预测Y/E→正反P级证据矩阵。已有综述不可被当作没讨论GT和公平评测；Mao仅核实出版社公开概览而不宣称全文逐章审计。CCF等级和Track按2026口径区分，详情见[引文映射](Citation_Key_Mapping.md)。
 
 本文使用“广义隐晦信息”作为一个**操作性综述范畴**，指语言或多模态交际中，目标意义、立场或交际作用不能仅由显式字面内容充分确定，而需结合语境、修辞映射、社群约定、编码形式或模态间关系来推断的信息。该定义旨在跨任务组织文献，**并不声称“广义隐晦信息研究”已是各子学科公认的统一研究名称**。隐含（implicit）与细微（subtle）并非同义词；编码（coded）不等于必然恶意隐藏；语境依赖不必然产生非字面意义；有害性判断还涉及目标、规范及评价政策。具体的包含关系与反例在第2章给出。
 
@@ -43,7 +44,7 @@
 
 在编排上，本综述同时保留研究历史和技术机制两种横向视角，但不把它们写成单一的进步代际。例如，词典与概率语用模型、PLM监督学习、检索增强以及多模态融合在不同任务中仍可能持续共存。我们关注的是各方法解决了哪个具体目标、在什么信息和标注条件下报告有效，以及哪些能力尚未由对应实验直接证明。
 
-现有相关综述与本文有实质重叠，不宜只凭跨子域范围较广就宣称首次发现。Ma等（ACL 2025 Main，CCF-A）已系统整理LLM语用任务、数据与评测；Farabi等（IJCAI 2024 Survey Track，会议CCF-B）已讨论多模态反讽；Hee等（EMNLP 2024 Findings，会议CCF-B、非Main）涉及多模态仇恨审核。本文的独特分析对象不是简单增加论文种类，而是把各研究的预测目标、训练/测试信息预算、Ground Truth来源、有效的正面结果与相反实验放在同一证据比较中；第8章给出三条有明确适用条件的跨领域规律，不作跨任务绝对分数排名。 [@ma-etal-2025-pragmatics; @farabi2024survey; @hee-etal-2024-recent]
+现有相关综述与本文有实质重叠，不宜只凭跨子域范围较广就宣称首次发现。Ma等（ACL 2025 Main，CCF-A）已系统整理LLM语用任务、数据与评测；Farabi等（IJCAI 2024 Survey Track，会议CCF-B）已讨论多模态反讽；Hee等（EMNLP 2024 Findings，会议CCF-B、非Main）涉及多模态仇恨审核；Mao等（Information Fusion 2025，期刊CCF等级待核）已比较五类语用处理任务。本文的独特分析对象不是简单增加论文种类，而是把各研究的预测目标、训练/测试信息预算、Ground Truth来源、有效的正面结果与相反实验放在同一证据比较中；第8章给出三条有明确适用条件的跨领域规律，不作跨任务绝对分数排名。 [@ma-etal-2025-pragmatics; @farabi2024survey; @hee-etal-2024-recent; @mao2025pragmatic]
 
 ## 1.3 研究问题与本文贡献
 
@@ -53,7 +54,11 @@
 
 ## 1.4 文献选择协议、覆盖边界与证据规则
 
-本文采用结构化批判性叙述综述，**不是可重建召回率的系统检索综述**。项目候选池为R0的59条与R2-A的32条，共91条；纳入正文中心证据时优先满足三个条件：研究任务真实落在T1–T6或相邻关键对照；可取得正式出处或已核全文/细致精读卡；足以核定至少一项输入、监督、Ground Truth或评价主张。仅有正式摘要的文献只作任务存在性说明，未核机制的候选不作强实证。R5-C原Bib46条；本次定向补入ExPO-HM（ICLR 2026，CCF-A）及Searle 1975理论章节后工作稿为48条，**不是统一检索式下的完整领域样本**。截至2026-11-09项目证据整合尚无可再现的检索式、数据库与逐层排除流水账，不能写成PRISMA筛选，也不由91→48计算领域覆盖率。
+本文采用结构化批判性叙述综述，**不是可重建召回率的系统检索综述**。R0登记59条，R2-A增列与R0按题名不重复的32条，形成**91个候选记录**；新增32仅对R0题名去重，不保证全部版本或其他阅读卡唯一。R5-C原Bib为46条，第一轮R6-Fix添加ExPO-HM和Searle1975为48条，本轮再加入Mao相邻综述形成**49条最终引文**；Mao来自R5-E的竞争综述对比，不能推定91候选通过可重建筛选得到49条。
+
+**任务×证据深度代表目录（非全部文章的无交叉计数）**：核心T1–T3语用与解释有DRInQ [@arai-ren-2026-drinq]、(RSA)² [@spinoso-di-piano-etal-2025-rsa]、VAGUE [@Nam_2025_ICCV]，依作者正式实验P；核心编码与语境有害T2–T4有Silent Signals [@kruk-etal-2024-silent]、FETCH! [@sasse-etal-2025-making]、SeTox [@cui-etal-2026-new]、AUTALIC [@rizvi-etal-2025-autalic]，混合正式P、人审分歧与受限公开数据O；核心跨模态理解及联合输入T1–T5有MultiMM [@yang-etal-2025-cultural]、DOSE [@guo-etal-2026-two]、MCIB [@wang2026conditional]、VLSU [@palaskar2026vlsu]、CrossGuard [@zhang-etal-2026-crossguard]，正式表P与静态实现S分开；相邻T6有MOSSBench [@li2025oversensitive]、Meerkat-VL [@zhou2026meerkatvl]，主要为回应行为；先行综述/理论背景有Ma [@ma-etal-2025-pragmatics]、Mao [@mao2025pragmatic]、Farabi [@farabi2024survey]、Hee [@hee-etal-2024-recent]、Grice [@grice1975logic]。仅出版摘要核验的MMSD3.0 [@Zhao_2026_CVPR]只说明研究存在，不承担数值机制证明。
+
+**选择边界。** 核心研究要求有明确的隐晦表达或联合含义任务目标、可定位的正式出处、足以支撑该项论文主张的Y/G/E证据；仅正式摘要支持研究存在性而不支持未读消融；一般显式毒性、普通OCR、传统隐写、一般RLHF不自动入核心。相邻综述按与本稿贡献有何真实重叠选入；R5-E另有Ye等LVLM安全预印本但正式状态待核、不虚称全篇查阅。**没有PRISMA级检索式、逐库时间窗、完整排除流水、版本全去重日志**；不能计算91到49的“覆盖率”或宣称找齐所有CCF-A。
 
 比较单位是一项具体实验协议：原始输入与附加先验、预测目标、Ground Truth、指标与分母、训练/测试时信息预算、代码或数据版本。出版事实记为 F，作者报告记为 P，公开材料静态观察记为 S，本文跨论文综合记为 H，尚待核实事项记为 O。正文用自然语言说明证据边界，详细登记见[证据审计](R5C_Integration_Audit.md)。图1与图2分别展示研究地图和协议审计结构。
 
@@ -542,3 +547,4 @@ T6 评价生成响应，要另记录拒答、警示、执行、转介与不回�
 46. **frank2012predicting** — Frank, Michael C.; Goodman, Noah D. (2012). Predicting Pragmatic Reasoning in Language Games. *Science*, 336(6084), 998. [出版入口](https://doi.org/10.1126/science.1218633)
 47. **mei2026expohm** — Mei, Jingbiao; Sun, Mingsheng; Chen, Jinghong; Qin, Pengda; Li, Yuhong; Chen, Da; Byrne, Bill (2026). ExPO-HM: Learning to Explain-then-Detect for Hateful Meme Detection. *The Fourteenth International Conference on Learning Representations* (ICLR 2026 Main，CCF-A). [正式出版](https://proceedings.iclr.cc/paper_files/paper/2026/hash/812f0e17bf0fa2a31a3d0b24dca49462-Abstract-Conference.html)；[开放评审及官方Bib](https://openreview.net/forum?id=bEejbORUI5)
 48. **searle1975indirect** — Searle, John R. (1975). Indirect Speech Acts. In Cole, Peter and Morgan, Jerry L. (eds.), *Syntax and Semantics, Volume 3: Speech Acts*, 59–82. Academic Press. [书目核验](https://www.cambridge.org/core/elements/speech-act-theory/E29E0869CBABCD7B61536B4AF6A0653B)
+49. **mao2025pragmatic** — Mao, Rui; Ge, Mengshi; Han, Sooji; Li, Wei; He, Kai; Zhu, Luyao; Cambria, Erik (2025). A survey on pragmatic processing techniques. *Information Fusion* 114, article 102712. [出版入口](https://doi.org/10.1016/j.inffus.2024.102712)
