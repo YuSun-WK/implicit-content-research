@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="690" viewBox="0 0 1600 690" role="img" aria-label="F5">
+<style>
+  text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif; fill: #17212b; }
+  .title { font-size: 30px; font-weight: 700; }
+  .section { font-size: 20px; font-weight: 700; }
+  .label { font-size: 18px; font-weight: 600; }
+  .small { font-size: 15px; }
+  .box { fill: #f7f9fb; stroke: #24384a; stroke-width: 2; }
+  .alt { fill: #fff; stroke: #24384a; stroke-width: 2; stroke-dasharray: 7 5; }
+  .band { fill: #edf3f7; stroke: #24384a; stroke-width: 1.5; }
+  .link { fill: none; stroke: #24384a; stroke-width: 2; }
+  .dash { fill: none; stroke: #516473; stroke-width: 2; stroke-dasharray: 7 6; }
+</style>
+<rect width="1600" height="690" fill="#fff"/>
+<text x="45" y="52" class="title">F5  输入风险判断与安全响应的四层测量</text><rect x="45" y="78" width="1510" height="54" rx="6" class="band"/><text x="61" y="108" class="section">同一输入 X = (图像 I，文本 T，情境 C)；输入风险由人审/政策界定</text><rect x="45" y="185" width="365" height="178" rx="8" class="box"/><text x="63" y="217" class="label">G_in  输入风险真值</text><text x="63" y="245" class="small">人审：Safe / Borderline / Unsafe</text><text x="63" y="273" class="small">可有图、文、联合三条件</text><rect x="435" y="185" width="365" height="178" rx="8" class="alt"/><text x="453" y="217" class="label">P_in  显式风险预测</text><text x="453" y="245" class="small">仅模型明确输出时可观测</text><text x="453" y="273" class="small">不能由拒答倒推内部预测</text><rect x="825" y="185" width="365" height="178" rx="8" class="box"/><text x="843" y="217" class="label">R_beh  实际响应行为</text><text x="843" y="245" class="small">拒答 / 警告 / 帮助 / 危险行动</text><text x="843" y="273" class="small">行为可与分类判断不一致</text><rect x="1215" y="185" width="365" height="178" rx="8" class="alt"/><text x="1233" y="217" class="label">Q_out  输出质量</text><text x="1233" y="245" class="small">安全性与帮助性分开</text><text x="1233" y="273" class="small">记录 Judge、分母与政策</text><path d="M410 270 H435 M800 270 H825 M1190 270 H1215" class="dash"/><rect x="45" y="420" width="1510" height="54" rx="6" class="band"/><text x="61" y="450" class="section">双侧错误均须呈现，且指标不可互换</text><rect x="80" y="505" width="680" height="115" rx="8" class="box"/><text x="98" y="537" class="label">危险侧：漏判 / 不安全回应</text><text x="98" y="565" class="small">按输入风险 GT 与行为输出分别计数</text><rect x="840" y="505" width="680" height="115" rx="8" class="alt"/><text x="858" y="537" class="label">安全侧：误报 / 正常请求误拒</text><text x="858" y="565" class="small">拒答率不等于输入分类误报率</text><text x="45" y="662" class="small">虚线为评测关联，不表示所有系统均显式运行 G_in → P_in → R_beh → Q_out。</text>
+</svg>
