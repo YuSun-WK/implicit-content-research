@@ -285,3 +285,15 @@
 - 新附录候选共约5303字符，十个主/子标题，引用23个唯一正式BibTeX键且均存在（静态检查）。
 - 原附录A代码/CSV证据备份及跨章节链接迁移计划已提交同一R8 Draft PR；**未替换正式正文，不覆盖任何PDF，不合并main**。
 - 第8章候选R8-028与第9章候选R8-027仍为分别待确认的独立草稿，不因本轮附录改写自动视为定稿。
+
+
+## R8-027–R8-030｜第8/9章与附录A/B正式应用（2026-11-10）
+
+**最新状态覆盖早期 OPEN 提案描述**：作者明确要求“把重写的内容修改到正式pdf中，上传到github”。R8-027（第9章）、R8-028（第8章）、R8-029（附录A）、R8-030（附录B）已经按归档候选替换 `Survey_Full_Draft.md`，当前状态 `APPLIED`。实际PDF生成和版面验收通过后再变为 `VERIFIED`。
+
+- 源修改分支：`survey/r8-full-rewrite-ch8-ch9-appendices-20261110`，PR #71，目标 main。
+- 正文提交：`0258755`，证据链接语言校正 `276580d`。
+- 同步迁移8处旧“[附录A：固定公开源码]”和表2旧A3路径为作者公开仓库固定commit链接；原始完整代码证据仍保存在 `Original_AppendixA_Evidence_Archive.md`，没有提升成正式实验复现。
+- 改写仅使用已有四份候选内容：`Chapter8_Rewrite_Proposal.md`、`Chapter9_Rewrite_Proposal.md`、`Appendices_AB_Rewrite_Proposal.md`与`Appendices_AB_Integration_Notes.md`。不重新改写摘要、图1–5、表1–7、参考文献50条和早期正文。
+- 初次构建发现旧脚本仍要求12张HTML表格；新叙述性附录替换原来两张内部审计表后，合理数量为10。构建规则与检查页源文件名已相应修正；该问题属于排版工程，不是研究内容错误。
+- 版本证据和未核项目（AUTALIC、VLSU等）维持待证状态，不因正文和PDF完成而自动关闭。
