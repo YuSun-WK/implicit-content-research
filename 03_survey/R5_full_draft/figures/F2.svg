@@ -1,16 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="760" viewBox="0 0 1540 760" role="img" aria-label="F2">
-<style>
-  text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif; fill: #17212b; }
-  .title { font-size: 36px; font-weight: 700; }
-  .section { font-size: 25px; font-weight: 700; }
-  .label { font-size: 24px; font-weight: 600; }
-  .small { font-size: 21px; }
-  .box { fill: #f7f9fb; stroke: #24384a; stroke-width: 2; }
-  .alt { fill: #fff; stroke: #24384a; stroke-width: 2; stroke-dasharray: 7 5; }
-  .band { fill: #edf3f7; stroke: #24384a; stroke-width: 1.5; }
-  .link { fill: none; stroke: #24384a; stroke-width: 2; }
-  .dash { fill: none; stroke: #516473; stroke-width: 2; stroke-dasharray: 7 6; }
-</style>
-<rect width="1540" height="760" fill="#fff"/>
-<text x="50" y="52" class="title">F2  任务定义与证据评价框架</text><rect x="270" y="80" width="1000" height="92" rx="8" class="box"/><text x="288" y="112" class="label">审计单位：一项具体实验协议</text><text x="288" y="140" class="small">Task = (X 输入与先验, Y 预测目标, G 真值, E 评价)</text><path d="M770 172 V220 M180 220 H1360" class="link"/><rect x="50" y="250" width="280" height="150" rx="8" class="box"/><text x="68" y="282" class="label">A 机制 / 现象</text><text x="68" y="310" class="small">语用、修辞、编码</text><text x="68" y="338" class="small">跨模态关系；可多选</text><rect x="350" y="250" width="280" height="150" rx="8" class="alt"/><text x="368" y="282" class="label">B 任务 T1–T6</text><text x="368" y="310" class="small">Y：分类、解释、行动</text><text x="368" y="338" class="small">T5⊂特定 T4；T6 相邻</text><rect x="650" y="250" width="280" height="150" rx="8" class="box"/><text x="668" y="282" class="label">C 模态与语境</text><text x="668" y="310" class="small">文本、图文、音视频</text><text x="668" y="338" class="small">联合依赖须另证</text><rect x="950" y="250" width="280" height="150" rx="8" class="alt"/><text x="968" y="282" class="label">D 信息预算</text><text x="968" y="310" class="small">训练与测试分列</text><text x="968" y="338" class="small">gold、OCR、词典、检索</text><rect x="1250" y="250" width="280" height="150" rx="8" class="box"/><text x="1268" y="282" class="label">E 真值与评价</text><text x="1268" y="310" class="small">标注者、政策、split</text><text x="1268" y="338" class="small">指标、Judge、双侧误判</text><rect x="50" y="445" width="1440" height="48" rx="6" class="band"/><text x="66" y="475" class="section">关键判读：五轴同步记录，互不构成必经流水线</text><rect x="50" y="520" width="690" height="120" rx="8" class="alt"/><text x="68" y="552" class="label">同一论文可含多项协议</text><text x="68" y="580" class="small">仅“加图涨分”不足以证明视觉因果必要性</text><rect x="800" y="520" width="690" height="120" rx="8" class="alt"/><text x="818" y="552" class="label">风险等级与响应行为分别评测</text><text x="818" y="580" class="small">输出 Judge 不能替代独立输入风险真值</text><text x="50" y="705" class="small">图示为综述审计框架；实线表示记录关系，虚线框表示常见误读。</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="676" viewBox="0 0 1440 676" role="img" aria-label="图2｜研究任务与实验协议的双层描述">
+<style>text{font-family:"Noto Sans CJK SC","Microsoft YaHei","Source Han Sans SC",sans-serif;fill:#16324b} .title{font-size:35px;font-weight:700}.subtitle{font-size:21px;fill:#456177} .bandText{font-size:24px;font-weight:700;fill:#204b6d} .cardTitle{font-size:25px;font-weight:700}.body{font-size:21px}.small{font-size:19px;fill:#456177}.note{font-size:21px;fill:#456177}</style>
+<rect width="1440" height="676" fill="#fff"/>
+<text class="title" x="45" y="56">图2｜研究任务与实验协议的双层描述</text><text class="subtitle" x="45" y="96">先定位研究对象，再明确输入、预测目标、标注与评价。</text><line x1="45" y1="118" x2="1395" y2="118" stroke="#aac0cf" stroke-width="1.5"/>
+<rect x="45" y="140" width="1350" height="49" rx="9" fill="#e8f1f7" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="bandText" x="65" y="174">第一层｜研究处于什么条件？五个相互关联的分析维度</text>
+<rect x="45" y="208" width="256" height="104" rx="9" fill="#f3f7f9" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="cardTitle" x="65" y="245">意义机制</text>
+<text class="body" x="65" y="284">语用、修辞、编码</text>
+<rect x="319" y="208" width="256" height="104" rx="9" fill="#f3f7f9" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="cardTitle" x="339" y="245">研究任务</text>
+<text class="body" x="339" y="284">识别、解释、危害、回应</text>
+<rect x="593" y="208" width="256" height="104" rx="9" fill="#f3f7f9" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="cardTitle" x="613" y="245">输入与语境</text>
+<text class="body" x="613" y="284">文本、图文、会话、时间</text>
+<rect x="867" y="208" width="256" height="104" rx="9" fill="#f3f7f9" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="cardTitle" x="887" y="245">辅助信息</text>
+<text class="body" x="887" y="284">训练与测试分别记录</text>
+<rect x="1141" y="208" width="256" height="104" rx="9" fill="#f3f7f9" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="cardTitle" x="1161" y="245">标注与评价</text>
+<text class="body" x="1161" y="284">真值、指标和样本范围</text>
+<path d="M720 317 V357 m-9 -11 9 11 9 -11" fill="none" stroke="#204b6d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="45" y="371" width="1350" height="49" rx="9" fill="#e8f1f7" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="bandText" x="65" y="405">第二层｜一项具体实验如何比较？Task = (X, Y, G, E)</text>
+<rect x="45" y="437" width="331" height="139" rx="9" fill="#f3f7f9" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="cardTitle" x="65" y="474">X｜模型能获得什么？</text>
+<text class="body" x="65" y="513">原始输入、候选和检索</text>
+<text class="body" x="65" y="544">区分训练与测试</text>
+<rect x="393" y="437" width="331" height="139" rx="9" fill="#f3f7f9" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="cardTitle" x="413" y="474">Y｜模型需要做什么？</text>
+<text class="body" x="413" y="513">分类、解释或生成回应</text>
+<text class="body" x="413" y="544">对应T1–T6任务</text>
+<rect x="741" y="437" width="331" height="139" rx="9" fill="#f3f7f9" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="cardTitle" x="761" y="474">G｜答案如何确定？</text>
+<text class="body" x="761" y="513">标注者、规则及分歧</text>
+<text class="body" x="761" y="544">注明风险政策</text>
+<rect x="1089" y="437" width="331" height="139" rx="9" fill="#f3f7f9" stroke="#aac0cf" stroke-width="1.6"/>
+<text class="cardTitle" x="1109" y="474">E｜效果如何衡量？</text>
+<text class="body" x="1109" y="513">指标、分母与评价器</text>
+<text class="body" x="1109" y="544">同一协议内比较</text>
+<line x1="45" y1="598" x2="1395" y2="598" stroke="#aac0cf" stroke-width="1.4"/>
+<text class="note" x="45" y="630">同一指标下的数值并不必然可比，仍须核对输入条件与标签定义。</text>
 </svg>
