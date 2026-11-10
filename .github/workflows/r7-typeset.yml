@@ -36,6 +36,7 @@ jobs:
         run: |
           cd 03_survey/R7_submission/source
           npm run build
+          node check_pages.cjs
           pdfinfo ../Survey_Final_Review.pdf | grep -E 'Pages:|Page size:'
           pdftotext ../Survey_Final_Review.pdf - | grep -q '参考文献'
       - name: Commit reproducible lockfile and PDF
@@ -44,6 +45,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add 03_survey/R7_submission/source/package-lock.json
           git add -f 03_survey/R7_submission/Survey_Final_Review.pdf
+          git add -f 03_survey/R7_submission/Figure_Table_Check_Pages.pdf
           if ! git diff --cached --quiet; then
             git commit -m "Build R7 formal PDF with citeproc [skip ci]"
             git push
