@@ -1,6 +1,6 @@
 # R6-Fix｜24项去重审稿问题的实际正文修改与证据台账
 
-> **R6-Fix-R1当前增量（2026-11-10）**：PR #62已裁决16 CLOSED／8 PARTIAL，本文件以下保留PR #61的历史24项／60编号映射，不将其旧OPEN状态冒充最新独立判决。当前八项实际改动、旧固定行→新固定提交行、直接P/S证据及限制统一见[R1八项台账](../R6_fix_r1/R6FixR1_Eight_Issue_Change_Ledger_20261110.md)。修订执行者不自判CLOSED；P1-12正式PDF图题复核仍有外部证据限制，其余改动同待独立学术复审。
+> **R6-Fix-R1当前增量（2026-11-10）**：PR #62已裁决16 CLOSED／8 PARTIAL，本文件以下保留PR #61的历史24项／60编号映射，不将其旧OPEN状态冒充最新独立判决。当前八项实际改动、旧固定行→新固定提交行、直接P/S证据及限制统一见[R1八项台账](../R6_fix_r1/R6FixR1_Eight_Issue_Change_Ledger_20261110.md)。P1-12续补已直接核正式PDF Figure5／E.3／Figure18，原访问阻塞已消除；8项均已实施，修订执行者不自判CLOSED，仍待独立学术复审。
 
 > **版本/状态**：2026-11-09，R6-Fix独立修改分支；R5-C原稿PR #57固定commit `c04d6a23e864923acd64c192c8b05dc597c2bb90`；R6-A审稿PR #58终裁60→24，详见[R6A4唯一问题表](https://github.com/YuSun-WK/implicit-content-research/blob/survey/r6a-academic-review-20261109/03_survey/R6_review/R6A4_Deduplicated_Issue_Register.md)。
 > **“已实施”只表示在当前PR里改了文件，不代表已通过独立科学审查或可把问题标为CLOSED。** 新稿定位参考修订提交 `88af701357d17852b1126892dd7f22e3f4410a52`，本记录使用已存在的固定提交作为正文锚点；后续仅审计文件更新不会改变这些正文行号。

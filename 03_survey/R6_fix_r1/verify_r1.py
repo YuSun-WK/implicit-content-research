@@ -50,7 +50,15 @@ for char in re.sub(r'\\[{}]', '', bib):
     balance += (char == '{') - (char == '}')
     assert balance >= 0, 'Unexpected closing brace in BibTeX'
 assert balance == 0, 'Unbalanced BibTeX braces'
+assert '正式论文[第8页Figure5]' in scientific_body
+assert 'Qwen2.5-VL-32B' in scientific_body
+assert '本轮正式PDF端点超时' not in scientific_body
+t6 = (DRAFT / 'tables/T6_Multimodal_Safety.md').read_text()
+assert '本轮正式PDF图题复核仍O' not in t6
+assert '第8／39页' in t6
+assert 'b38dc2e84d20899132125338b3ef8d31f54873660c2562c281c4d992c1f96aa8' in t6
 print('PASS: main text/Bib/manual references/inventory = 49 unique keys')
 print('PASS: table keys and widths; nine chapters; six immutable public source groups')
 print('PASS: stale private-only code references and unpinned release integers removed')
+print('PASS: Gate D official PDF page/model/denominator citations synchronized')
 print('LIMIT: no BibTeX compiler, publisher-field certification, rendering or model reproduction')

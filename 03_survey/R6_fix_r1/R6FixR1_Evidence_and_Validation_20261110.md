@@ -1,6 +1,6 @@
 # R6-Fix-R1｜定点证据与实际验证记录
 
-> 2026-11-10；科学文件固定`29f225ca232a450c07b723e2678e25072f370b04`，基线PR #61 `c125c6358c655951d07286763f3b7a3eed6e9275`。以PR #62八个Gate为范围；下列状态是实际访问／静态核对，不是独立学术终审或模型复现。
+> 2026-11-10；初版科学文件固定`29f225ca232a450c07b723e2678e25072f370b04`；Gate D续补科学文件固定`216c0aa4ba706cdf130913d31ecc4b3138e52127`，基线PR #61 `c125c6358c655951d07286763f3b7a3eed6e9275`。以PR #62八个Gate为范围；下列状态是实际访问／静态核对，不是独立学术终审或模型复现。
 
 ## 1. 本轮实际取得的作者公开文件
 
@@ -28,7 +28,7 @@
 | DOSE；ACL2026 Main，CCF-A | [正式PDF](https://aclanthology.org/2026.acl-long.319.pdf) §3／5、Table3、Table4；五任务MCQ、1%训练与其余评测、78.90等数据 | 不把同原始比例视作有效实例／token完全匹配，未运行训练 |
 | (RSA)²；ACL2025 Main，CCF-A | [作者v1 HTML](https://arxiv.org/html/2506.09301v1) Tables2–3、Figure4；正确候选概率及字面子群反向效应 | 正式PDF因体积取读失败，故不声称本轮会议版逐页对应。正文明确数值定点阅读版 |
 | VAGUE；ICCV2025 Main，CCF-A | [作者v3 HTML](https://arxiv.org/html/2411.14137v3) §3–5、Table3、附录G TableG6、H/I；CoT正反、1677总分母及拒答计错 | CVF正式PDF端点403；会议版附录表号／逐页一致性O；未使用旧3993条版本 |
-| VLSU；ICLR2026，CCF-A | [作者v2 HTML](https://arxiv.org/html/2510.18214v2) §5、Figure5原图、E.3 Figure18、Table3及E.4 | 正式PDF端点多次超时；作者CMU PDF镜像的检索结果亦示Figure5为Qwen2.5-VL-32B，但检索不升级为正式PDF重新核验。**Gate D正式版图题任务仍未完成。** |
+| VLSU；ICLR2026，CCF-A | [正式PDF](https://proceedings.iclr.cc/paper_files/paper/2026/file/a36e092659c42b2c92b8b0eb2394bf74-Paper-Conference.pdf)共44页；直接读取第8页Figure5图内模型名、饼图比例、图注／§5，以及第38页E.3、第39页Figure18与Table12 | 上轮超时已消除；正式PDF SHA-256 `b38dc2e84d20899132125338b3ef8d31f54873660c2562c281c4d992c1f96aa8`；未重跑模型，数字是作者报告P；详见[Gate D记录](R6FixR1_GateD_Formal_PDF_Verification_20261110.md) |
 | Ma；ACL2025 Main，CCF-A；Farabi；IJCAI2024 Survey Track，会议CCF-B；Hee；EMNLP2024 Findings，会议CCF-B、非Main | 作者正式出版页／摘要与项目既有对照交叉使用；已承认任务／数据／评测与跨模态、检测／解释／响应已有覆盖 | 本轮不伪称逐表全篇竞品穷尽审计；第1章矩阵是分析单位对比，非覆盖率优先权证明 |
 | Ye；arXiv:2502.14881v1，预印本，CCF不适用 | [作者摘要](https://arxiv.org/abs/2502.14881v1)与HTML章节目录；只为新增近邻安全综述定位 | 未核正式发表状态，未声称全篇审阅或纳入其Janus-Pro实验作方法效果证据 |
 
@@ -42,6 +42,7 @@ ExPO-HM（ICLR2026 Main，CCF-A）的完整配置74.5／81.1和RA-HMD80.2来自�
 PASS: main text/Bib/manual references/inventory = 49 unique keys
 PASS: table keys and widths; nine chapters; six immutable public source groups
 PASS: stale private-only code references and unpinned release integers removed
+PASS: Gate D official PDF page/model/denominator citations synchronized
 LIMIT: no BibTeX compiler, publisher-field certification, rendering or model reproduction
 ```
 
@@ -51,8 +52,7 @@ MMSafeAware／Silent Signals／MOSSBench的高精度发布差异没有本轮固�
 
 ## 4. 本轮边界与下一次复审
 
-- **七项已实改待复审**：P0-01、P0-02、P1-01、P1-03、P1-05、P1-08、P1-16。
-- **一项部分完成**：P1-12。正式PDF Figure5图题／模型对应仍需直接核；模型示例、条件分母、作者版本与CSV重计已写入科学正文。
+- **八项均已实改待独立复审**：P0-01、P0-02、P1-01、P1-03、P1-05、P1-08、P1-12、P1-16。P1-12的正式PDF Figure5图题／模型／分母已直接核，前轮部分完成状态已被本续补替代。
 - 独立复审按原24个去重单元，不增造问题编号；原16 CLOSED的裁决不由执行者覆盖。
 - 未运行新GPU实验、下载全部图像、取得受限AUTALIC CSV、认证正式代码run或编译／渲染最终投稿文件；R6-V继续承担工程验收。
 - 新PR以PR #61修订分支为base，不合并PR #57–#62，不修改R6-A／R6-V／R6-Fix-Review审稿文件；不自动合并本PR。
