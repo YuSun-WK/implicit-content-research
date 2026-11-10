@@ -168,6 +168,56 @@ pre { white-space:pre-wrap; overflow-wrap:anywhere; }
 .landscape h1 { text-align:left!important; font-size:14pt!important; margin:0 0 9pt; }
 .landscape table { font-size:8.8pt; line-height:1.30; }
 .landscape td,.landscape th { padding:3pt 5pt; }
+
+/* R8 per-table readability and page break rules; source figures stay editable SVG. */
+.table-block table { table-layout: fixed; font-size:8.6pt; line-height:1.39; }
+.table-block th,.table-block td { overflow-wrap:normal; word-break:normal; hyphens:none; }
+.table-block thead { display:table-header-group; }
+#table-1 table { font-size:8.7pt; }
+#table-2 table { font-size:8.5pt; }
+#table-3 table { font-size:8.5pt; }
+#table-4 table { font-size:8.8pt; }
+#table-5 { break-before:page; }
+#table-5 table { font-size:8.5pt; }
+#table-6 { break-before:page; }
+#table-6 table { font-size:8.45pt; line-height:1.40; }
+#table-6 h3 { font-size:10.2pt; margin-top:9pt; }
+#table-6 h3:nth-of-type(2) { break-before:page; }
+.landscape table { table-layout:fixed; font-size:9.0pt; line-height:1.34; }
+.landscape th,.landscape td { overflow-wrap:normal; word-break:normal; }
+.table-block tr,.landscape tr { break-inside:avoid; }
+.table-block th,.table-block td { padding:4.2pt 4.5pt; }
+#table-1 th:nth-child(1),#table-1 td:nth-child(1) {width:12%;}
+#table-1 th:nth-child(2),#table-1 td:nth-child(2) {width:16%;}
+#table-1 th:nth-child(3),#table-1 td:nth-child(3) {width:25%;}
+#table-1 th:nth-child(4),#table-1 td:nth-child(4) {width:23%;}
+#table-1 th:nth-child(5),#table-1 td:nth-child(5) {width:24%;}
+#table-2 th:nth-child(1),#table-2 td:nth-child(1) {width:13%;}
+#table-2 th:nth-child(2),#table-2 td:nth-child(2) {width:20%;}
+#table-2 th:nth-child(3),#table-2 td:nth-child(3) {width:28%;}
+#table-2 th:nth-child(4),#table-2 td:nth-child(4) {width:17%;}
+#table-2 th:nth-child(5),#table-2 td:nth-child(5) {width:22%;}
+#table-3 th:nth-child(1),#table-3 td:nth-child(1) {width:18%;}
+#table-3 th:nth-child(2),#table-3 td:nth-child(2) {width:27%;}
+#table-3 th:nth-child(3),#table-3 td:nth-child(3) {width:28%;}
+#table-3 th:nth-child(4),#table-3 td:nth-child(4) {width:27%;}
+#table-4 th:nth-child(1),#table-4 td:nth-child(1) {width:17%;}
+#table-4 th:nth-child(2),#table-4 td:nth-child(2) {width:25%;}
+#table-4 th:nth-child(3),#table-4 td:nth-child(3) {width:28%;}
+#table-4 th:nth-child(4),#table-4 td:nth-child(4) {width:30%;}
+#table-5 th:nth-child(1),#table-5 td:nth-child(1) {width:18%;}
+#table-5 th:nth-child(2),#table-5 td:nth-child(2) {width:26%;}
+#table-5 th:nth-child(3),#table-5 td:nth-child(3) {width:27%;}
+#table-5 th:nth-child(4),#table-5 td:nth-child(4) {width:29%;}
+#table-6 th:nth-child(1),#table-6 td:nth-child(1) {width:18%;}
+#table-6 th:nth-child(2),#table-6 td:nth-child(2) {width:28%;}
+#table-6 th:nth-child(3),#table-6 td:nth-child(3) {width:27%;}
+#table-6 th:nth-child(4),#table-6 td:nth-child(4) {width:27%;}
+#table-7 th:nth-child(1),#table-7 td:nth-child(1) {width:16%;}
+#table-7 th:nth-child(2),#table-7 td:nth-child(2) {width:25%;}
+#table-7 th:nth-child(3),#table-7 td:nth-child(3) {width:27%;}
+#table-7 th:nth-child(4),#table-7 td:nth-child(4) {width:32%;}
+
 `;
 function document(html, cls='') { return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><style>' + css + '</style></head><body class="' + cls + '">' + html + '</body></html>'; }
 const parts = [
