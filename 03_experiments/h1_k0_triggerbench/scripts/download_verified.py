@@ -1,13 +1,17 @@
 """Bounded Range transfer: durable independently hashed blocks, official final SHA256."""
 import argparse,concurrent.futures,hashlib,json,os,pathlib,shutil,time,requests
 from audit_model_cache import REVISIONS,SHARDS,sha256_file
-p=argparse.ArgumentParser();p.add_argument('--model',default='Sandy124/ThinkingGuard-8B');p.add_argument('--host',default='https://huggingface.co');p.add_argument('--run-dir',type=pathlib.Path,default=pathlib.Path('runs/h1_autonomous_20261116_064613'));p.add_argument('--block-mib',type=int,default=16);p.add_argument('--deadline',type=float,required=True);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--model',default='Sandy124/ThinkingGuard-8B');p.add_argument('--host',default='https://huggingface.co');p.add_argument('--workers',type=int,default=4);p.add_argument('--run-dir',type=pathlib.Path,default=pathlib.Path('runs/h1_autonomous_20261116_064613'));p.add_argument('--block-mib',type=int,default=16);p.add_argument('--deadline',type=float,required=True);a=p.parse_args()
 rev=REVISIONS[a.model];root=pathlib.Path('model_snapshots')/a.model.replace('/','__')/rev;root.mkdir(parents=True,exist_ok=True)
 a.run_dir.mkdir(parents=True,exist_ok=True)
 log=a.run_dir/'download.jsonl'
 def emit(**kw):
  with log.open('a') as f:f.write(json.dumps(dict(time=time.time(),host=a.host,block_mib=a.block_mib,**kw))+'\n')
-meta=requests.get(f'https://huggingface.co/api/models/{a.model}/revision/{rev}?blobs=true',timeout=30);meta.raise_for_status();meta=meta.json();assert meta['sha']==rev
+if (root/'official_metadata.json').exists():
+ meta=json.loads((root/'official_metadata.json').read_text())
+else:
+ response=requests.get(f'https://huggingface.co/api/models/{a.model}/revision/{rev}?blobs=true',timeout=30);response.raise_for_status();meta=response.json()
+assert meta['sha']==rev
 (root/'official_metadata.json').write_text(json.dumps(meta,indent=2))
 for name,(size,digest) in SHARDS[a.model].items():
  item=next(s for s in meta['siblings'] if s['rfilename']==name);assert item['lfs']['sha256']==digest and item['size']==size
@@ -25,6 +29,7 @@ for item in meta['siblings']:
  if expected:assert hashlib.sha256(data).hexdigest()==expected
  else:assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()==item['blobId']
 block=a.block_mib*1024*1024
+missing_shards=[]
 for name,(size,digest) in SHARDS[a.model].items():
  dest=root/name
  if dest.exists() and dest.stat().st_size==size and sha256_file(dest)==digest:emit(event='reuse',file=name);continue
@@ -37,7 +42,7 @@ for name,(size,digest) in SHARDS[a.model].items():
    started=time.monotonic()
    try:
     # Unique query prevents intermediary caches from reusing another byte range.
-    url=f'{a.host}/{a.model}/resolve/{rev}/{name}?download=true&block={i}&nonce={time.time_ns()}'
+    url=f'{a.host}/{a.model}/resolve/{rev}/{name}?nodeprobe={time.time_ns()}'
     with requests.get(url,headers={'Range':f'bytes={lo}-{hi}'},stream=True,timeout=(15,45)) as r:
      assert r.status_code==206,(r.status_code,'Range unsupported')
      assert r.headers.get('Content-Range')==f'bytes {lo}-{hi}/{size}',r.headers.get('Content-Range')
@@ -51,9 +56,12 @@ for name,(size,digest) in SHARDS[a.model].items():
      tmp.replace(target);receipt.write_text(json.dumps(dict(bytes=n,sha256=h.hexdigest())))
      emit(event='block',file=name,block=i,bytes=n,seconds=time.monotonic()-started,attempt=attempt);return
    except Exception as e:emit(event='error',file=name,block=i,attempt=attempt,error=type(e).__name__+': '+str(e)[:180])
-  raise RuntimeError(f'block {i} failed after 3 attempts')
- with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
-  for _ in pool.map(fetch,range((size+block-1)//block)):pass
+  return False
+ with concurrent.futures.ThreadPoolExecutor(max_workers=a.workers) as pool:
+  outcomes=list(pool.map(fetch,range((size+block-1)//block)))
+ if any(x is False for x in outcomes):
+  missing_shards.append(name)
+  continue
  tmp=root/(name+'.assembling')
  with tmp.open('wb') as out:
   for i in range((size+block-1)//block):
@@ -61,4 +69,5 @@ for name,(size,digest) in SHARDS[a.model].items():
   out.flush();os.fsync(out.fileno())
  assert tmp.stat().st_size==size and sha256_file(tmp)==digest
  tmp.replace(dest);emit(event='verified',file=name,bytes=size,sha256=digest)
+if missing_shards:raise RuntimeError('missing blocks retained: '+','.join(missing_shards))
 print(root,flush=True)

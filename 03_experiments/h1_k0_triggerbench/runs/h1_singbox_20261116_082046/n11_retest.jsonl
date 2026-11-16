@@ -1,0 +1,3 @@
+{"node": "N11", "offset": 1073741824, "bytes_requested": 16777216, "ok": false, "error_type": "ConnectionError", "seconds": 25.005430839955807}
+{"node": "N11", "offset": 2147483648, "bytes_requested": 16777216, "ok": false, "error_type": "ReadTimeout", "seconds": 8.052600306924433}
+{"node": "N11", "offset": 3221225472, "bytes_requested": 16777216, "ok": false, "error_type": "SSLError", "seconds": 2.2487551460508257}

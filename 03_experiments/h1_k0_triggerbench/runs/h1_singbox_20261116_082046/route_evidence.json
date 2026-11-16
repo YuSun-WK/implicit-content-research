@@ -1,0 +1,12 @@
+{
+  "processes": [
+    {
+      "pid": 106965,
+      "proxy_to_owned_port": true
+    }
+  ],
+  "established_connections": 2,
+  "node": "N10",
+  "isolated_port": 17900,
+  "system_proxy_unchanged": true
+}

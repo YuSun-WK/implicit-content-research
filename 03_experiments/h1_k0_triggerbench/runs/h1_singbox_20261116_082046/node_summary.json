@@ -1,0 +1,120 @@
+[
+  {
+    "node": "N01",
+    "type": "vless",
+    "success": 1,
+    "attempts": 2,
+    "MiB_per_s": 0.022711229724728815,
+    "failures": [
+      "ConnectionError"
+    ]
+  },
+  {
+    "node": "N02",
+    "type": "vless",
+    "success": 1,
+    "attempts": 2,
+    "MiB_per_s": 0.03340131391879998,
+    "failures": [
+      "ConnectionError"
+    ]
+  },
+  {
+    "node": "N03",
+    "type": "vless",
+    "success": 0,
+    "attempts": 1,
+    "MiB_per_s": 0.0,
+    "failures": [
+      "ReadTimeout"
+    ]
+  },
+  {
+    "node": "N04",
+    "type": "vless",
+    "success": 0,
+    "attempts": 1,
+    "MiB_per_s": 0.0,
+    "failures": [
+      "ConnectionError"
+    ]
+  },
+  {
+    "node": "N05",
+    "type": "vless",
+    "success": 1,
+    "attempts": 2,
+    "MiB_per_s": 0.03343779264852937,
+    "failures": [
+      "ConnectionError"
+    ]
+  },
+  {
+    "node": "N06",
+    "type": "vless",
+    "success": 0,
+    "attempts": 1,
+    "MiB_per_s": 0.0,
+    "failures": [
+      "ReadTimeout"
+    ]
+  },
+  {
+    "node": "N07",
+    "type": "vless",
+    "success": 0,
+    "attempts": 1,
+    "MiB_per_s": 0.0,
+    "failures": [
+      "ConnectionError"
+    ]
+  },
+  {
+    "node": "N08",
+    "type": "vless",
+    "success": 0,
+    "attempts": 1,
+    "MiB_per_s": 0.0,
+    "failures": [
+      "ConnectionError"
+    ]
+  },
+  {
+    "node": "N09",
+    "type": "hysteria2",
+    "success": 0,
+    "attempts": 1,
+    "MiB_per_s": 0.0,
+    "failures": [
+      "ReadTimeout"
+    ]
+  },
+  {
+    "node": "N10",
+    "type": "hysteria2",
+    "success": 3,
+    "attempts": 3,
+    "MiB_per_s": 2.308168257644256,
+    "failures": []
+  },
+  {
+    "node": "N11",
+    "type": "hysteria2",
+    "success": 2,
+    "attempts": 3,
+    "MiB_per_s": 0.6251540655839551,
+    "failures": [
+      "ConnectionError"
+    ]
+  },
+  {
+    "node": "N12",
+    "type": "hysteria2",
+    "success": 0,
+    "attempts": 1,
+    "MiB_per_s": 0.0,
+    "failures": [
+      "ReadTimeout"
+    ]
+  }
+]
