@@ -1,0 +1,42 @@
+{
+  "rows": 766,
+  "unique_ids": 766,
+  "archive_entries": 1535,
+  "png_entries": 1532,
+  "source_path_present": 766,
+  "declared_spec_path_present": 0,
+  "id_to_composite_cue_present": 766,
+  "fields": [
+    "id",
+    "image-path",
+    "action",
+    "edit-spec-path",
+    "spec-annotation",
+    "prompt",
+    "category"
+  ],
+  "missing_field_values": {
+    "id": 0,
+    "image-path": 0,
+    "action": 0,
+    "edit-spec-path": 0,
+    "spec-annotation": 0,
+    "prompt": 0,
+    "category": 0
+  },
+  "categories": {
+    "['I1']": 34,
+    "['I2']": 76,
+    "['I3']": 43,
+    "['I4']": 52,
+    "['I5']": 31,
+    "['I6']": 84,
+    "['I7']": 192,
+    "['I8']": 48,
+    "['I9']": 108,
+    "['I10']": 98
+  },
+  "metadata_sha256": "50a216f7e57be5b6ce0860c8b08cc1acb5729ef59bff15bee02f60b0307c6ef7",
+  "images_downloaded": 0,
+  "images_decoded": 0
+}
