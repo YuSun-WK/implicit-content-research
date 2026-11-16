@@ -8,10 +8,16 @@ import pathlib
 import random
 import re
 import subprocess
+import sys
+import importlib.metadata
 import threading
 import time
+import uuid
 
-from PIL import Image
+try:
+    from scripts.image_utils import load_image
+except ModuleNotFoundError:
+    from image_utils import load_image
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 REVISIONS = {
@@ -65,18 +71,49 @@ def parse_output(raw, protocol):
     return verdicts[0].capitalize(), 'ok'
 
 
-def image_file(path):
-    p = pathlib.Path(path)
-    p = p if p.is_absolute() else ROOT / p
-    if not p.is_file():
-        raise FileNotFoundError(f'cached image missing: {p}')
-    return p
+def process_gpu_mib(gpu):
+    """Only bytes attributed to this PID, never the shared device total."""
+    p = subprocess.run(['nvidia-smi', '--query-compute-apps=pid,used_gpu_memory',
+                        '--format=csv,noheader,nounits', '-i', str(gpu)],
+                       capture_output=True, text=True, timeout=5, check=True)
+    total = 0
+    for line in p.stdout.splitlines():
+        fields = [x.strip() for x in line.split(',')]
+        if len(fields) == 2 and fields[0].isdigit() and int(fields[0]) == os.getpid():
+            total += int(fields[1])
+    return total
+
+
+def package_version(name):
+    try:
+        return importlib.metadata.version(name)
+    except importlib.metadata.PackageNotFoundError:
+        return None
+
+
+def update_revision_metadata(path, model_id, protocol, details):
+    data = json.loads(path.read_text()) if path.exists() else {}
+    # Keep legacy recovery metadata and every distinct process run.
+    history = data.setdefault('runs', {}).setdefault(model_id, {}).setdefault(protocol, [])
+    if isinstance(history, dict):
+        history = [history]
+        data['runs'][model_id][protocol] = history
+    session_id = details['session_id']
+    match = next((i for i, item in enumerate(history) if item.get('session_id') == session_id), None)
+    if match is None:
+        history.append(details)
+    else:
+        history[match] = details
+    path.write_text(json.dumps(data, indent=2, default=str) + '\n')
+
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('run', type=pathlib.Path)
     ap.add_argument('model_id', choices=tuple(REVISIONS))
     ap.add_argument('--gpu', default='2')
+    ap.add_argument('--image-root', type=pathlib.Path, required=True)
+    ap.add_argument('--model-path', type=pathlib.Path, help='verified local snapshot directory for this model and revision')
     ap.add_argument('--protocol', choices=('unified', 'official_five_step'), default='unified')
     ap.add_argument('--max-new-tokens', type=int)
     ap.add_argument('--limit-pairs', type=int, default=36)
@@ -87,13 +124,29 @@ def main():
         ap.error('limit-pairs must be 1..36')
     max_tokens = a.max_new_tokens or (1024 if a.protocol == 'official_five_step' else 32)
     os.environ['CUDA_VISIBLE_DEVICES'] = a.gpu  # Must precede torch import and CUDA initialization.
-    import torch
-    from transformers import AutoProcessor, BitsAndBytesConfig, Qwen3VLForConditionalGeneration
+    os.environ['HF_HUB_OFFLINE'] = '1'  # Prevent indirect hub requests by AutoProcessor.
+    from huggingface_hub import snapshot_download
 
     run = a.run
     rows = list(csv.DictReader((run/'sample_manifest.csv').open(encoding='utf-8', newline='')))[:a.limit_pairs]
     if len(rows) != a.limit_pairs or any(r['split'] != 'test' for r in rows):
         raise RuntimeError('incomplete or non-Test sample manifest')
+    for row in rows:
+        for side in ('safe', 'unsafe'):
+            load_image(row, side, a.image_root)
+    rev = REVISIONS[a.model_id]
+    snapshot = a.model_path if a.model_path else pathlib.Path(snapshot_download(a.model_id, revision=rev, local_files_only=True))
+    if a.model_path and snapshot.name != rev:
+        raise RuntimeError(f'model path must end in fixed revision {rev}: {snapshot}')
+    try:
+        from scripts.audit_model_cache import inspect_snapshot
+    except ModuleNotFoundError:
+        from audit_model_cache import inspect_snapshot
+    audit = inspect_snapshot(snapshot, a.model_id, rev)
+    if not audit['ready']:
+        raise RuntimeError(f'model snapshot incomplete or invalid: {audit}')
+    import torch
+    from transformers import AutoConfig, AutoModelForVision2Seq, AutoProcessor, BitsAndBytesConfig, Qwen3VLForConditionalGeneration
     conditions = ([('official_five_step', 'safe'), ('official_five_step', 'unsafe')]
                   if a.protocol == 'official_five_step' else
                   [('joint', 'safe'), ('joint', 'unsafe'), ('text_only', 'pair'),
@@ -103,18 +156,14 @@ def main():
         raise RuntimeError('CUDA unavailable')
     props = torch.cuda.get_device_properties(0)
     torch.cuda.set_per_process_memory_fraction(min(1.0, 20*2**30/props.total_memory), 0)
-    rev = REVISIONS[a.model_id]
-    processor = AutoProcessor.from_pretrained(a.model_id, revision=rev, local_files_only=True)
+    processor = AutoProcessor.from_pretrained(snapshot, local_files_only=True)
     quant = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type='nf4',
                               bnb_4bit_compute_dtype=torch.bfloat16, bnb_4bit_use_double_quant=True)
     stop = threading.Event(); over_budget = threading.Event(); samples = []
     def monitor():
         while not stop.is_set():
             try:
-                p = subprocess.run(['nvidia-smi', '--query-gpu=memory.used',
-                                    '--format=csv,noheader,nounits', '-i', a.gpu],
-                                   capture_output=True, text=True, timeout=5, check=True)
-                mib = int(p.stdout.strip().splitlines()[0])
+                mib = process_gpu_mib(a.gpu)
                 samples.append((time.time(), mib))
                 if mib > 20*1024:
                     over_budget.set()
@@ -128,21 +177,31 @@ def main():
         if peak() > 20 or over_budget.is_set():
             raise RuntimeError(f'GPU memory limit exceeded: process peak {peak():.2f} GiB')
     try:
-        model = Qwen3VLForConditionalGeneration.from_pretrained(
-            a.model_id, revision=rev, local_files_only=True, torch_dtype=torch.bfloat16,
+        config = AutoConfig.from_pretrained(snapshot, local_files_only=True)
+        mapped = AutoModelForVision2Seq._model_mapping.get(type(config), None)
+        if config.architectures != ['Qwen3VLForConditionalGeneration'] or mapped is not Qwen3VLForConditionalGeneration:
+            raise RuntimeError(f'unverified model architecture: {config.architectures}, {mapped}')
+        model_class = AutoModelForVision2Seq if a.model_id == 'Sandy124/ThinkingGuard-8B' else Qwen3VLForConditionalGeneration
+        model = model_class.from_pretrained(
+            snapshot, local_files_only=True, torch_dtype=torch.bfloat16,
             quantization_config=quant, device_map={'': 'cuda:0'}, low_cpu_mem_usage=True).eval()
         if any(str(v).lower().startswith(('cpu', 'disk')) for v in getattr(model, 'hf_device_map', {}).values()):
             raise RuntimeError('CPU/disk offload detected')
         check_memory()
         revisions_path = run/'model_revisions.json'
-        revisions = json.loads(revisions_path.read_text()) if revisions_path.exists() else {}
-        revisions[a.model_id] = {'model_revision': rev, 'processor_revision': rev, 'dtype': 'bfloat16',
-            'transformers_version': __import__('transformers').__version__, 'protocol': a.protocol,
+        metadata = {'session_id': str(uuid.uuid4()), 'model_revision': rev, 'processor_revision': rev,
+            'python_version': sys.version.split()[0], 'pytorch_version': torch.__version__,
+            'transformers_version': package_version('transformers'),
+            'bitsandbytes_version': package_version('bitsandbytes'),
+            'accelerate_version': package_version('accelerate'),
+            'protocol': a.protocol, 'model_class': model_class.__name__,
             'quantization': {'load_in_4bit': True, 'bnb_4bit_quant_type': 'nf4',
                              'bnb_4bit_compute_dtype': 'bfloat16', 'bnb_4bit_use_double_quant': True},
-            'device_map': getattr(model, 'hf_device_map', {}), 'peak_gib_after_load': peak(),
-            'image_preprocessing': 'pinned AutoProcessor default'}
-        revisions_path.write_text(json.dumps(revisions, indent=2, default=str))
+            'generation': {'max_new_tokens': max_tokens, 'do_sample': False},
+            'image_preprocessing': {'processor': 'AutoProcessor', 'revision': rev,
+                                    'mode': 'RGB', 'settings': processor.image_processor.to_dict()},
+            'device_map': getattr(model, 'hf_device_map', {}), 'peak_gib_after_load': peak()}
+        update_revision_metadata(revisions_path, a.model_id, a.protocol, metadata)
         pred_path = run/'predictions.jsonl'
         previous = [json.loads(x) for x in pred_path.read_text().splitlines() if x.strip()] if pred_path.exists() else []
         keys = [(p.get('model_id'), p.get('model_revision'), p.get('protocol'), p.get('pair_id'),
@@ -173,8 +232,7 @@ def main():
                     else:
                         prompt = f"Test Text: {row['text']}\nTest Image: Please refer to the provided image."
                     if side != 'pair':
-                        with Image.open(image_file(row[f'{side}_local_path'])) as im:
-                            image = im.convert('RGB')
+                        image = load_image(row, side, a.image_root)
                     content = ([{'type': 'image'}, {'type': 'text', 'text': prompt}] if image else
                                [{'type': 'text', 'text': prompt}])
                     messages = ([{'role': 'system', 'content': OFFICIAL_SYSTEM_PROMPT}] if a.protocol == 'official_five_step' else [])
@@ -205,8 +263,8 @@ def main():
                     torch.cuda.empty_cache()
                 if pair_index >= 2:
                     check_parse_gate()
-        revisions[a.model_id]['peak_gib_final'] = peak()
-        revisions_path.write_text(json.dumps(revisions, indent=2, default=str))
+        metadata['peak_gib_final'] = peak()
+        update_revision_metadata(revisions_path, a.model_id, a.protocol, metadata)
     finally:
         stop.set(); thread.join(timeout=3)
         with (run/'gpu_usage.csv').open('a') as f:

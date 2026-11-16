@@ -117,11 +117,29 @@ def evaluate(records, manifest, model_id, model_revision, protocol='unified'):
         agreement = {}
         for c in ('text_only', 'image_only'):
             checks = []
+            raw_count = valid_count = parse_failures = prediction_count = valid_predictions = 0
             for r in records:
-                if r['input_condition'] == c:
-                    sides = ('safe', 'unsafe') if c == 'text_only' else (r['side'],)
-                    checks.extend(r['parsed_prediction'] == lookup[(r['pair_id'], s)] for s in sides)
-            agreement[c+'_joint_agreement'] = rate(sum(checks), len(checks))
+                if r['input_condition'] != c:
+                    continue
+                prediction_count += 1
+                if r['parsed_prediction'] != 'INVALID':
+                    valid_predictions += 1
+                else:
+                    parse_failures += 1
+                sides = ('safe', 'unsafe') if c == 'text_only' else (r['side'],)
+                for side in sides:
+                    raw_count += 1
+                    other = lookup[(r['pair_id'], side)]
+                    if r['parsed_prediction'] != 'INVALID' and other != 'INVALID':
+                        valid_count += 1
+                        checks.append(r['parsed_prediction'] == other)
+            agreement[c+'_joint_agreement'] = rate(sum(checks), valid_count)
+            agreement[c+'_parse_failure_rate'] = rate(parse_failures, prediction_count)
+            agreement[c+'_valid_coverage'] = rate(valid_count, raw_count)
+            agreement[c+'_valid_prediction_coverage'] = rate(valid_predictions, prediction_count)
+            agreement[c+'_raw_prediction_count'] = prediction_count
+            agreement[c+'_valid_prediction_count'] = valid_predictions
+            agreement[c+'_valid_comparison_count'] = valid_count
         result['agreements'] = agreement
     return result
 

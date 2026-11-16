@@ -50,6 +50,27 @@ class EvaluateTests(unittest.TestCase):
         self.assertNotIn('text_only_accuracy', result)
         self.assertIsNone(bootstrap_pair_difference(result, result))
 
+    def test_invalid_never_agrees_and_coverage_is_explicit(self):
+        rows = records()
+        pair = MANIFEST[1]['pair_id']
+        text = next(r for r in rows if r['pair_id'] == pair and r['input_condition'] == 'text_only')
+        text['parsed_prediction'] = 'INVALID'; text['parse_status'] = 'invalid'
+        image = next(r for r in rows if r['pair_id'] == pair and r['input_condition'] == 'image_only' and r['side'] == 'unsafe')
+        image['parsed_prediction'] = 'INVALID'; image['parse_status'] = 'invalid'
+        result = evaluate(rows, MANIFEST, MODEL, REV)['agreements']
+        self.assertEqual(result['text_only_raw_prediction_count'], 2)
+        self.assertEqual(result['text_only_valid_prediction_count'], 1)
+        self.assertEqual(result['text_only_parse_failure_rate']['value'], .5)
+        self.assertEqual(result['text_only_valid_prediction_coverage']['value'], .5)
+        self.assertEqual(result['text_only_valid_comparison_count'], 2)
+        self.assertEqual(result['text_only_valid_coverage']['value'], .5)
+        self.assertEqual(result['image_only_raw_prediction_count'], 4)
+        self.assertEqual(result['image_only_valid_prediction_count'], 3)
+        self.assertEqual(result['image_only_parse_failure_rate']['value'], .25)
+        self.assertEqual(result['image_only_valid_comparison_count'], 3)
+        self.assertEqual(result['image_only_valid_coverage']['value'], .75)
+        self.assertEqual(result['image_only_joint_agreement']['total'], 3)
+
     def test_duplicate_rejected(self):
         rows = records()
         with self.assertRaisesRegex(AuditError, 'duplicate'):
