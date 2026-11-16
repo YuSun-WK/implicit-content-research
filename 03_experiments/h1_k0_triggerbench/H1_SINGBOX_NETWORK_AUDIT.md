@@ -1,3 +1,24 @@
+# Final download closeout — supersedes the historical live snapshot below
+
+Final verification: 2026-11-16T14:08:58.006358+00:00. PID 108368 has exited. The saved traceback ends with **TimeoutError: global deadline**, consistent with the configured 2026-11-16 13:45:46 UTC transfer cutoff. Last transfer event timestamp: 2026-11-16T13:46:16.104364+00:00. No new download was launched during this status check; no process was stopped or restarted. Read-only process enumeration found no remaining owned downloader, wrapper or GPU inference process. The isolated 17900 proxy listener is absent; system sing-box was left intact.
+
+| Shard | Rehashed complete blocks / total | Missing | Invalid receipt blocks | Official whole-file SHA256 |
+|---|---:|---:|---:|---|
+| 1 | 290/293 | 3 | 0 | 未执行：无完整文件 |
+| 2 | 285/294 | 9 | 0 | 未执行：无完整文件 |
+| 3 | 237/297 | 60 | 0 | 未执行：无完整文件 |
+| 4 | 117/164 | 47 | 0 | 未执行：无完整文件 |
+
+Retained verified block bytes: **15,550,968,664**; missing weight bytes: **1,983,370,784**. These figures use the non-overlapping 16MiB layout only. All captured complete blocks were rehashed successfully against local receipts and required lengths. **No shard has a complete block set**, so no shard can be assembled or checked against the official whole-file SHA256 yet. No incomplete or sparse file was promoted to a final weight. Exact gaps and pinned expected hashes remain in latest_progress.json.
+
+Existing audit_model_cache.py: **ready: false**. Model loading: **NOT_RUN**. Two-pair GPU Smoke Test: **NOT_RUN**. Formal 36-pair run and all research metrics: **NOT_RUN**. No GPU process was started because the model integrity gate failed.
+
+No user authentication is required for the saved state. Finishing the remaining 119 blocks would require a separately authorized transfer window; this status-check request explicitly excludes restarting a long download. All reliable blocks and historical artifacts remain in the original model_snapshots directory. No data deletion, relabeling, resampling or main merge occurred. The earlier commit 43ceefe21fbc85df8b54b880d1ce97ede0a3d6f9 records a live snapshot; this closeout replaces its active-process status.
+
+---
+
+## Historical live snapshot (not current process status)
+
 # H1 sing-box network audit and download progress
 
 Snapshot: 2026-11-16T12:53:58.744378+00:00. This is an interim snapshot during the original supervised download, not a completed transfer report. Current task began 2026-11-16 08:20:46 UTC; six-hour ceiling 14:20:46 UTC. Configured transfer deadline 13:45:46 UTC.
