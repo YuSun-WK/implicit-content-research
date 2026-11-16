@@ -1,0 +1,6 @@
+'(ProtocolError('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer')), '(Request ID: 2b87d4d1-49f7-493a-bc1f-09a0ae11a9c8)')' thrown while requesting HEAD https://huggingface.co/Sandy124/ThinkingGuard-8B/resolve/76892f9768ce828268265171f4bbc5dfb75eafc3/model-00001-of-00004.safetensors
+Retrying in 1s [Retry 1/5].
+'(ReadTimeoutError("HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: 94514a36-6cfe-47e4-af7f-f63967e95a2a)')' thrown while requesting HEAD https://huggingface.co/Sandy124/ThinkingGuard-8B/resolve/76892f9768ce828268265171f4bbc5dfb75eafc3/model-00001-of-00004.safetensors
+Retrying in 2s [Retry 2/5].
+'(ProtocolError('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer')), '(Request ID: 5fc99653-73ec-4234-a2f6-40a54c5b7622)')' thrown while requesting HEAD https://huggingface.co/Sandy124/ThinkingGuard-8B/resolve/76892f9768ce828268265171f4bbc5dfb75eafc3/model-00001-of-00004.safetensors
+Retrying in 4s [Retry 3/5].

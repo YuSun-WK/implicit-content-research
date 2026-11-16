@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/data/project/h1-cf-killtest/scripts/download_verified.py", line 55, in <module>
+    for _ in pool.map(fetch,range((size+block-1)//block)):pass
+  File "/home/ubuntu/anaconda3/envs/ESTMM/lib/python3.10/concurrent/futures/_base.py", line 621, in result_iterator
+    yield _result_or_cancel(fs.pop())
+  File "/home/ubuntu/anaconda3/envs/ESTMM/lib/python3.10/concurrent/futures/_base.py", line 319, in _result_or_cancel
+    return fut.result(timeout)
+  File "/home/ubuntu/anaconda3/envs/ESTMM/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/home/ubuntu/anaconda3/envs/ESTMM/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/ubuntu/anaconda3/envs/ESTMM/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/ubuntu/data/project/h1-cf-killtest/scripts/download_verified.py", line 53, in fetch
+    raise RuntimeError(f'block {i} failed after 3 attempts')
+RuntimeError: block 10 failed after 3 attempts

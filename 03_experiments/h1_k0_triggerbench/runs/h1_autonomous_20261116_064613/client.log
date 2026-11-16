@@ -1,0 +1,6 @@
+Error while downloading from https://huggingface.co/Sandy124/ThinkingGuard-8B/resolve/76892f9768ce828268265171f4bbc5dfb75eafc3/model-00002-of-00004.safetensors: HTTPSConnectionPool(host='us.aws.cdn.hf.co', port=443): Read timed out.
+Trying to resume download...
+'(ProtocolError('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer')), '(Request ID: 21982dcb-d1f0-4863-ab84-33c5a2f38b38)')' thrown while requesting GET https://huggingface.co/Sandy124/ThinkingGuard-8B/resolve/76892f9768ce828268265171f4bbc5dfb75eafc3/model-00002-of-00004.safetensors
+Retrying in 1s [Retry 1/5].
+'(ProtocolError('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer')), '(Request ID: cac59a6c-6c0c-42ab-a4a7-259fd04348fa)')' thrown while requesting GET https://huggingface.co/Sandy124/ThinkingGuard-8B/resolve/76892f9768ce828268265171f4bbc5dfb75eafc3/model-00002-of-00004.safetensors
+Retrying in 2s [Retry 2/5].

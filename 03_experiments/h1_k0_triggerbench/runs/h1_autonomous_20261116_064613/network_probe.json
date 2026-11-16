@@ -1,0 +1,16 @@
+[
+  {
+    "host": "https://huggingface.co",
+    "status": 206,
+    "content_range": "bytes 0-1048575/4905357176",
+    "bytes": 1048576,
+    "seconds": 5.941144709009677
+  },
+  {
+    "host": "https://hf-mirror.com",
+    "status": 206,
+    "content_range": "bytes 0-1048575/4905357176",
+    "bytes": 1048576,
+    "seconds": 3.096808898029849
+  }
+]

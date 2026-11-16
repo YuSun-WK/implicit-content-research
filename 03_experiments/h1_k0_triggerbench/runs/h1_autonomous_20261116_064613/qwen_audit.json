@@ -1,0 +1,26 @@
+{
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "path": "model_snapshots/Qwen__Qwen3-VL-8B-Instruct/0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "missing": [
+    "config.json",
+    "preprocessor_config.json",
+    "video_preprocessor_config.json",
+    "chat_template.json",
+    "tokenizer.json",
+    "tokenizer_config.json",
+    "merges.txt",
+    "vocab.json",
+    "generation_config.json",
+    "model.safetensors.index.json",
+    "model-00001-of-00004.safetensors",
+    "model-00002-of-00004.safetensors",
+    "model-00003-of-00004.safetensors",
+    "model-00004-of-00004.safetensors"
+  ],
+  "invalid": [],
+  "partial": [],
+  "shards": [],
+  "ready": false,
+  "integrity": "fixed-revision LFS size and SHA256 plus safetensors headers"
+}
