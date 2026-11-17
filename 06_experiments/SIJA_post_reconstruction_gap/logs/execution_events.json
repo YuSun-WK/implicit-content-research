@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-17 UTC",
+  "first_resource_check": "05:38",
+  "last_gpu_stop_confirmed": "08:28:46",
+  "target_model_download": "failed: HEAD reset/timeouts, CAS after five retries",
+  "gpu_attempts": {
+    "smoke_interface_error": 1,
+    "smoke_success": 1,
+    "natural_success": 1,
+    "draft_intent_success": 1,
+    "matched_interrupted": 1
+  },
+  "gpu_stop": "own task interrupted after foreign allocation detected; process absence and memory release verified",
+  "gold_human_verified": 0,
+  "further_gpu_runs": false,
+  "watchdog_added_after_pilot": "future occupancy detection every 2s; CPU syntax tested, not GPU exercised",
+  "model_cache": "partial download exists, no complete 4B",
+  "environment": {
+    "python": "3.10.19",
+    "torch": "2.9.1+cu128",
+    "transformers": "4.57.3",
+    "driver": "580.82.09"
+  }
+}

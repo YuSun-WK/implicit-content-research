@@ -1,0 +1,50 @@
+[
+  {
+    "row_idx": 16,
+    "review_status": "PENDING",
+    "safety_label": "UNVERIFIED",
+    "format": "NO_MATCHED_CUE",
+    "decode": true,
+    "sha256": "c85d114872b5cd24d28d74f38835ffe49a1c58609b541636fad9ceab48a5c355",
+    "size": [
+      500,
+      500
+    ]
+  },
+  {
+    "row_idx": 20,
+    "review_status": "PENDING",
+    "safety_label": "UNVERIFIED",
+    "format": "NO_MATCHED_CUE",
+    "decode": true,
+    "sha256": "83b6e2fb0d1f0c95034a8a4c97e97f7d527f27943633c9e515e9300b965a8bb7",
+    "size": [
+      500,
+      500
+    ]
+  },
+  {
+    "row_idx": 13,
+    "review_status": "PENDING",
+    "safety_label": "UNVERIFIED",
+    "format": "NO_MATCHED_CUE",
+    "decode": true,
+    "sha256": "b8ddceda339341340c2edac7942691b9520c32952eba342ed61ce94832e7c16f",
+    "size": [
+      1024,
+      1024
+    ]
+  },
+  {
+    "row_idx": 21,
+    "review_status": "PENDING",
+    "safety_label": "UNVERIFIED",
+    "format": "NO_MATCHED_CUE",
+    "decode": true,
+    "sha256": "22dcdb983942547876c007d28c3df63040408dfb6265d4d5e218c13b896132e3",
+    "size": [
+      500,
+      500
+    ]
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "verified_mechanism_failures": [],
+  "unverified_observations": [
+    {
+      "id": "SIJA-329",
+      "status": "UNVERIFIED",
+      "decision_transition": "NO -> NO under natural / draft-intent",
+      "policy_note": "conservative consent/context rule; not an established error"
+    }
+  ],
+  "reason": "No independently verified intent/safety labels; Gold not executed"
+}
