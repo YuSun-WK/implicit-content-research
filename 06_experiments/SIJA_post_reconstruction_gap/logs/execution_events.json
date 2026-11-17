@@ -20,5 +20,16 @@
     "torch": "2.9.1+cu128",
     "transformers": "4.57.3",
     "driver": "580.82.09"
+  },
+  "continuation": {
+    "date": "2026-11-17",
+    "window": "09:24 to before 09:30 UTC",
+    "gpu": 3,
+    "completed_total_research_calls": 10,
+    "stop_reason": "pilot manifest complete",
+    "shared_gpu_startup_guard_bug": "CUDA context initialized before free-memory check; fixed before resume",
+    "watchdog": "normal path exercised in resumed GPU run; foreign allocation trigger not deliberately tested",
+    "direct_weight_range_probe": "connection reset in 10.035 seconds",
+    "cue_retry": "all 8 source/cue members now decoded"
   }
 }

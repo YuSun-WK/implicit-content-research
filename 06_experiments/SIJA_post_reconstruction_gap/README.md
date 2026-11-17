@@ -10,6 +10,8 @@
 
 本轮没有完成可信E2；neutral长度控制尚未冻结，不应直接开展held-out。snapshot下载需独立缓存、固定run.json中的revision。原prompt是FA保留的HTML空白规范化文本，未改语义。对外称SIJA Prompt – Independent Adaptation。
 
-运行后的共享资源保护改进：runner现在在加载前检查显存，并在加载完成后每2秒检查显存相对本进程reserved的额外占用，发现疑似其它分配则SIGINT退出；这部分仅做CPU编译检查，尚未GPU实测，不能追溯宣称本轮Pilot已有自动保护。部分调用前后输入token日志是后续新增，已完成输出仅保留真实记录，不补造值。
+运行后的共享资源保护改进：runner现在在加载前检查显存，并在加载完成后每2秒检查显存相对本进程reserved的额外占用，发现疑似其它分配则SIGINT退出；随后恢复阶段运行了正常路径，尚未主动注入冲突验证触发逻辑，不能追溯宣称本轮Pilot已有自动保护。assemble_pilot.py可复建本轮两个实例×5条件的私有清单。部分调用前后输入token日志是后续新增，已完成输出仅保留真实记录，不补造值。
 
 fetch_magic_candidates.py修复viewer签名链接过期问题，记录固定revision查询参数及图像hash；服务未返回revision绑定，不能将查询参数当作commit字节一致性证明。configs/original_prompt.txt保留FA字节，包括行末空格，保证实际执行版本可追踪。
+
+export_public.py可从私有runner JSONL重建脱敏遥测，不导出raw/parsed推理内容。results/summary.json中的安全指标null表示未获可靠金标，不是零错误率。

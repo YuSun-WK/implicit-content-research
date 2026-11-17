@@ -17,12 +17,13 @@ def main():
     from PIL import Image
     from transformers import AutoProcessor,Qwen3VLForConditionalGeneration
     assert torch.cuda.device_count()==1,'Set exactly one CUDA_VISIBLE_DEVICES'
-    torch.manual_seed(20261117);torch.cuda.set_per_process_memory_fraction(20*1024**3/torch.cuda.get_device_properties(0).total_memory,0)
+    torch.manual_seed(20261117)
     physical=os.environ.get('CUDA_VISIBLE_DEVICES','')
     assert physical.isdigit(),'Use a single numeric physical GPU index'
     def used():
         return int(subprocess.check_output(['nvidia-smi','-i',physical,'--query-gpu=memory.used','--format=csv,noheader,nounits'],text=True).strip())
     assert used()<100,'GPU occupied; do not load'
+    torch.cuda.set_per_process_memory_fraction(20*1024**3/torch.cuda.get_device_properties(0).total_memory,0)
     started=time.monotonic();processor=AutoProcessor.from_pretrained(args.model,local_files_only=True)
     model=Qwen3VLForConditionalGeneration.from_pretrained(args.model,local_files_only=True,torch_dtype=torch.bfloat16,attn_implementation='sdpa').to('cuda:0').eval()
     def watch():
