@@ -1,0 +1,50 @@
+{
+  "commit": "261c63c6b940029c4e2bc9849ba0494abf71fde9",
+  "files": [
+    {
+      "path": "README.md",
+      "git_blob": "485fa0027bb8a51a84f819909e3b7bb85a0dacd8",
+      "url": "https://github.com/shenyizg/MMAligner/blob/261c63c6b940029c4e2bc9849ba0494abf71fde9/README.md"
+    },
+    {
+      "path": "mmaligner_core.py",
+      "git_blob": "0a32d8973254380c0577fcd17684fd97926e8d9c",
+      "url": "https://github.com/shenyizg/MMAligner/blob/261c63c6b940029c4e2bc9849ba0494abf71fde9/mmaligner_core.py"
+    },
+    {
+      "path": "step1_calibrate.py",
+      "git_blob": "71e1256f73b52fa2a9f54d25bbdf6e3e0d2a7efd",
+      "url": "https://github.com/shenyizg/MMAligner/blob/261c63c6b940029c4e2bc9849ba0494abf71fde9/step1_calibrate.py"
+    },
+    {
+      "path": "step2_train.py",
+      "git_blob": "ae83961ed8c2bb053998da20fe48d46f1573d0ac",
+      "url": "https://github.com/shenyizg/MMAligner/blob/261c63c6b940029c4e2bc9849ba0494abf71fde9/step2_train.py"
+    },
+    {
+      "path": "step4_boundary.py",
+      "git_blob": "6938442c8fea32b0eac5a59200e2daa0ef271bfc",
+      "url": "https://github.com/shenyizg/MMAligner/blob/261c63c6b940029c4e2bc9849ba0494abf71fde9/step4_boundary.py"
+    },
+    {
+      "path": "step5_eval.py",
+      "git_blob": "4855cbf14473b662a3e07804703407c414482db1",
+      "url": "https://github.com/shenyizg/MMAligner/blob/261c63c6b940029c4e2bc9849ba0494abf71fde9/step5_eval.py"
+    },
+    {
+      "path": "mmaligner_judge.py",
+      "git_blob": "812afa1fcf41ac94597e79df519224254c943409",
+      "url": "https://github.com/shenyizg/MMAligner/blob/261c63c6b940029c4e2bc9849ba0494abf71fde9/mmaligner_judge.py"
+    },
+    {
+      "path": "requirements.txt",
+      "git_blob": "74b36544eb3b45f5df27b72fd5e9c81f6741ac8f",
+      "url": "https://github.com/shenyizg/MMAligner/blob/261c63c6b940029c4e2bc9849ba0494abf71fde9/requirements.txt"
+    },
+    {
+      "path": "utils.py",
+      "git_blob": "509076e6a6380add25f3c39fcb8e7d18db03d4d0",
+      "url": "https://github.com/shenyizg/MMAligner/blob/261c63c6b940029c4e2bc9849ba0494abf71fde9/utils.py"
+    }
+  ]
+}

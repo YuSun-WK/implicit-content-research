@@ -1,0 +1,461 @@
+{
+  "raw_csv_files": 36,
+  "raw_rows": 5600,
+  "row_counts": {
+    "train": 3864,
+    "test": 1736
+  },
+  "train_test_exact_text_overlap": 0,
+  "train_test_normalized_text_overlap": 0,
+  "selected_csv_matches": [
+    {
+      "pair_id": "test/ethical_violations/6",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/ethical_violations/6",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/ethical_violations/12",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/ethical_violations/12",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/ethical_violations/8",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/ethical_violations/8",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/ethical_violations/36",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/ethical_violations/36",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/illegal_activities/12",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/illegal_activities/12",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/illegal_activities/25",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/illegal_activities/25",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/illegal_activities/31",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/illegal_activities/31",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/illegal_activities/5",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/illegal_activities/5",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/misinformation/5",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/misinformation/5",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/misinformation/45",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/misinformation/45",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/misinformation/82",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/misinformation/82",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/misinformation/4",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/misinformation/4",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/offensiveness/53",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/offensiveness/53",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/offensiveness/1",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/offensiveness/1",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/offensiveness/38",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/offensiveness/38",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/offensiveness/29",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/offensiveness/29",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/physical_harm/34",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/physical_harm/34",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/physical_harm/79",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/physical_harm/79",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/physical_harm/43",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/physical_harm/43",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/physical_harm/14",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/physical_harm/14",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/privacy/89",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/privacy/89",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/privacy/27",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/privacy/27",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/privacy/66",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/privacy/66",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/privacy/55",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/privacy/55",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/property_damage/8",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/property_damage/8",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/property_damage/3",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/property_damage/3",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/property_damage/98",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/property_damage/98",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/property_damage/61",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/property_damage/61",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/religion_belief/3",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/religion_belief/3",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/religion_belief/82",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/religion_belief/82",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/religion_belief/43",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/religion_belief/43",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/religion_belief/29",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/religion_belief/29",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/violence/27",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/violence/27",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/violence/65",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/violence/65",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/violence/54",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/violence/54",
+      "side": "unsafe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/violence/9",
+      "side": "safe",
+      "raw_csv_match": true
+    },
+    {
+      "pair_id": "test/violence/9",
+      "side": "unsafe",
+      "raw_csv_match": true
+    }
+  ],
+  "sampling_order_reproduced": true,
+  "preservation": {
+    "prompts_original_parser_AST_equal": true,
+    "evaluate_blob_identical": true,
+    "parser_blob_matches_freeze": true
+  },
+  "wilson_checks": {
+    "joint_accuracy": [
+      0.5949425733065095,
+      0.8006194381116332
+    ],
+    "unsafe_precision": [
+      0.6286235235977385,
+      0.9302134643693744
+    ],
+    "unsafe_recall": [
+      0.37005938022987594,
+      0.6801395848482095
+    ],
+    "safe_false_positive_rate": [
+      0.04406640300315648,
+      0.25314808590364857
+    ],
+    "unsafe_false_negative_rate": [
+      0.31986041515179053,
+      0.629940619770124
+    ],
+    "pair_accuracy": [
+      0.2714056205144606,
+      0.5779974842512834
+    ],
+    "correct_direction_flip": [
+      0.2714056205144606,
+      0.5779974842512834
+    ],
+    "reverse_flip": [
+      0,
+      0.09641862859446367
+    ],
+    "both_safe": [
+      0.31986041515179053,
+      0.629940619770124
+    ],
+    "both_unsafe": [
+      0.04406640300315648,
+      0.25314808590364857
+    ],
+    "parse_failure_rate": [
+      0,
+      0.05065117259645781
+    ],
+    "invalid_pair_rate": [
+      0,
+      0.09641862859446367
+    ]
+  },
+  "manifest_history": [
+    {
+      "path": "03_experiments\\h1_k0_triggerbench\\runs\\h1_k0_20261106_065826\\sample_manifest.csv",
+      "same_pair_order": true,
+      "identical_bytes": false
+    },
+    {
+      "path": "03_experiments\\h1_k0_triggerbench\\runs\\h1_k0_recovery_20261107_034443\\sample_manifest.csv",
+      "same_pair_order": true,
+      "identical_bytes": false
+    },
+    {
+      "path": "03_experiments\\h1_k0_triggerbench\\runs\\h1_resume_20261117_014439\\smoke\\sample_manifest.csv",
+      "same_pair_order": true,
+      "identical_bytes": true
+    },
+    {
+      "path": "03_experiments\\h1_k0_triggerbench\\runs\\h1_k1_20261117_060147\\formal_official\\sample_manifest.csv",
+      "same_pair_order": true,
+      "identical_bytes": true
+    },
+    {
+      "path": "03_experiments\\h1_k0_triggerbench\\runs\\h1_k1_20261117_060147\\formal_unified\\sample_manifest.csv",
+      "same_pair_order": true,
+      "identical_bytes": true
+    }
+  ],
+  "remaining": [
+    "train-test pixel/perceptual duplicates",
+    "semantic scenario/template overlap",
+    "authors actual training sample list/checkpoint ancestry",
+    "new full-weight rehash on server"
+  ]
+}

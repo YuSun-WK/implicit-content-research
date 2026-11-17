@@ -1,0 +1,88 @@
+{
+  "safe_dataset_train.json": {
+    "records": 200,
+    "blob": "77d209baa22ff2fc2e84271c06e6a9200e9d4e6e",
+    "fields": [
+      "id",
+      "instruction",
+      "text_instruction",
+      "image_path"
+    ]
+  },
+  "unsafe_dataset_train.json": {
+    "records": 200,
+    "blob": "faa6e61c51ad38010607b0d8cea936b54d3f3ed4",
+    "fields": [
+      "id",
+      "instruction",
+      "text_instruction",
+      "image_path"
+    ]
+  },
+  "safe_dataset_test.json": {
+    "records": 772,
+    "blob": "e40cde170aaad9b44e9e9a17f39f8ba25931da67",
+    "fields": [
+      "id",
+      "instruction",
+      "text_instruction",
+      "image_path"
+    ]
+  },
+  "unsafe_dataset_test.json": {
+    "records": 772,
+    "blob": "250c266a7e231406469334b13afabff795dde82c",
+    "fields": [
+      "id",
+      "instruction",
+      "text_instruction",
+      "image_path"
+    ]
+  },
+  "overlaps": {
+    "safe": {
+      "id": {
+        "train_unique": 200,
+        "test_unique": 772,
+        "overlap": 0
+      },
+      "instruction": {
+        "train_unique": 199,
+        "test_unique": 757,
+        "overlap": 2
+      },
+      "text_instruction": {
+        "train_unique": 199,
+        "test_unique": 772,
+        "overlap": 0
+      },
+      "image_path": {
+        "train_unique": 200,
+        "test_unique": 772,
+        "overlap": 0
+      }
+    },
+    "unsafe": {
+      "id": {
+        "train_unique": 200,
+        "test_unique": 772,
+        "overlap": 0
+      },
+      "instruction": {
+        "train_unique": 184,
+        "test_unique": 694,
+        "overlap": 11
+      },
+      "text_instruction": {
+        "train_unique": 200,
+        "test_unique": 772,
+        "overlap": 0
+      },
+      "image_path": {
+        "train_unique": 200,
+        "test_unique": 772,
+        "overlap": 0
+      }
+    }
+  }
+}

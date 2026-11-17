@@ -1,0 +1,254 @@
+[
+  {
+    "path": "test/text_test/ethical_violations_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/ethical_violations_safe.csv",
+    "sha256": "d8d9ec9b82fa3a27c2e5a5de70fa51924c07bbc555ab363f19906e6648508672",
+    "rows": 97,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/ethical_violations_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/ethical_violations_unsafe.csv",
+    "sha256": "19b5deed658e3be4e75fd22337c882140e825c742658be679d8ace37f4cf4131",
+    "rows": 97,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/illegal_activities_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/illegal_activities_safe.csv",
+    "sha256": "c465295725708789326ed369615e3a36d425b029cd4f51e7cd9532abc0ca6f5e",
+    "rows": 96,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/illegal_activities_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/illegal_activities_unsafe.csv",
+    "sha256": "c8ddbae88c0c6ef38e620a491e4f17f5232dcc7bf7857feb3d9b060e2e0050bb",
+    "rows": 96,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/misinformation_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/misinformation_safe.csv",
+    "sha256": "ec793258bfafc45960b128e1cc978d46c3824ccac1fbf2544029de95b0461c3f",
+    "rows": 95,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/misinformation_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/misinformation_unsafe.csv",
+    "sha256": "dcf8746ed269772d1902cb65af811474dd1792e48c5bfc35076940c47aba3783",
+    "rows": 95,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/offensiveness_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/offensiveness_safe.csv",
+    "sha256": "b1f8b1fcab643c393bd2d147df55615b6242987454363c2054bbc5213964e930",
+    "rows": 95,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/offensiveness_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/offensiveness_unsafe.csv",
+    "sha256": "263bd7effffea54f3a9971c6bd1fb763c7251f35579640b8a369ada6f9db9688",
+    "rows": 95,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/physical_harm_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/physical_harm_safe.csv",
+    "sha256": "320131c9794f43eaf5b8a660602ee68fc552189cf0e6efdbed8ebbf81b6e812f",
+    "rows": 81,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/physical_harm_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/physical_harm_unsafe.csv",
+    "sha256": "72481bd90d3df9c46e097baf8f2523776be5b1bccb66bd5cf53ab33f888c642e",
+    "rows": 81,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/privacy_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/privacy_safe.csv",
+    "sha256": "9a25b14c643b26689303f72d57605a52084d0e39aa58687e1cb63c432e88ec30",
+    "rows": 100,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/privacy_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/privacy_unsafe.csv",
+    "sha256": "f15f958d3ad0309ec7dfc3f327cb768d17a83521ed65df819d71596af8683de5",
+    "rows": 100,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/property_damage_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/property_damage_safe.csv",
+    "sha256": "27f7794d878c64e877687bf74f83b1d37af400f82ef9371b0d13182d6c91947c",
+    "rows": 100,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/property_damage_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/property_damage_unsafe.csv",
+    "sha256": "67d5c47545fc4d7105bd3bba2e7fbc514fc4901743c09d0a7316f5bf6642c894",
+    "rows": 100,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/religion_belief_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/religion_belief_safe.csv",
+    "sha256": "d032477be278475586fd28eaf5569940776da6221c3116c116490f73acf2d0a2",
+    "rows": 90,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/religion_belief_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/religion_belief_unsafe.csv",
+    "sha256": "ca60d1c77ad769297d036a5e52d5d1180ed0b9c894c2b5f017a847d416b602df",
+    "rows": 90,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/violence_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/violence_safe.csv",
+    "sha256": "b0f95cde3f351c1eb815c7ae926e3506210afc83ef01e91eb6a3d3e359c55ecc",
+    "rows": 114,
+    "status": "ok"
+  },
+  {
+    "path": "test/text_test/violence_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/test/text_test/violence_unsafe.csv",
+    "sha256": "006ff288df0c946aec2d856de6278267c562f6335188ad0005b75c60b7b79a91",
+    "rows": 114,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/ethical_violations_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/ethical_violations_safe.csv",
+    "sha256": "2464fa286bf42ddc4a2d5ecfb04c74a637771974a2185e4a717352cb438cf50a",
+    "rows": 236,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/ethical_violations_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/ethical_violations_unsafe.csv",
+    "sha256": "571500416a515aa99915ee3cf2f0e65a8bdeed68624c95fba39ef90728e498d7",
+    "rows": 236,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/illegal_activities_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/illegal_activities_safe.csv",
+    "sha256": "3f749f282163ec8e061b9ccd3dcbef39967bb142a28bd82d6057e5c18abca759",
+    "rows": 229,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/illegal_activities_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/illegal_activities_unsafe.csv",
+    "sha256": "c032fb55a6f3536c92d86a4d6408b433ad2815292b4f8a8f96f321bd7d8f6bac",
+    "rows": 229,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/misinformation_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/misinformation_safe.csv",
+    "sha256": "817d1db2984e27ca10b3f2d3f739756eb21073c9d130e6703d95829a754493f4",
+    "rows": 222,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/misinformation_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/misinformation_unsafe.csv",
+    "sha256": "1cfd5b28de9a19811f14fa9a67557cfda7d5f72a463f5b5a134bd3bceb657019",
+    "rows": 222,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/offensiveness_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/offensiveness_safe.csv",
+    "sha256": "ac55ff77ed07a45a2c0b6342f251d3faa73eb286660f5eda257d33a5bac99d15",
+    "rows": 206,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/offensiveness_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/offensiveness_unsafe.csv",
+    "sha256": "b2e3c6da90d1e526d475c4fdbec4e4bc97eb3ec95b80f0222693f9968f0ff173",
+    "rows": 206,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/physical_harm_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/physical_harm_safe.csv",
+    "sha256": "947b99ef509e6104632004481313d224e634c3831dd727ffaee38f18359c5fab",
+    "rows": 240,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/physical_harm_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/physical_harm_unsafe.csv",
+    "sha256": "a5a448b5ec849b02ac879785b0fb9655cf0ef67fde07f2852b9105e4094be501",
+    "rows": 240,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/privacy_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/privacy_safe.csv",
+    "sha256": "89bbc1898e480433d3bcd1ece256377173578abbf8ee0c556728eb16903a52e9",
+    "rows": 203,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/privacy_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/privacy_unsafe.csv",
+    "sha256": "278a995a7ee61a3cc522fcc93ffa69e11476c8702dfe9a1bac4268db49a0623e",
+    "rows": 203,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/property_damage_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/property_damage_safe.csv",
+    "sha256": "dc03c46c5dc6dc8e8a51783bab0ae91a19fc5c5daa1213eafee155f679680985",
+    "rows": 205,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/property_damage_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/property_damage_unsafe.csv",
+    "sha256": "4d183626e20414905f599a54183046c8377ced750e99dce8cc5b92ebf218e332",
+    "rows": 205,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/region_belief_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/region_belief_safe.csv",
+    "sha256": "efa46ef7f92fdcc58bfcbbd82a279f371c29499de80284cdf04c687be535dc2a",
+    "rows": 150,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/region_belief_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/region_belief_unsafe.csv",
+    "sha256": "0dff8afc5a096d8dbfa4434725d09de763f21c89a987650090a41451cc106613",
+    "rows": 150,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/violence_safe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/violence_safe.csv",
+    "sha256": "3cad97991bd79955a3df752aef136bf160bcc387c88b54777ed2a926579ed14d",
+    "rows": 241,
+    "status": "ok"
+  },
+  {
+    "path": "train/text_train/violence_unsafe.csv",
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench/resolve/3ac26e778db94a282711f463f22ba6db99643bee/train/text_train/violence_unsafe.csv",
+    "sha256": "84ad0e2a329702e32c4fa032c2bd31016b5b77be2eb8e24da2eb147a9393b410",
+    "rows": 241,
+    "status": "ok"
+  }
+]
