@@ -1,0 +1,12 @@
+{
+  "seed": 20261117,
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "dtype": "bfloat16",
+  "max_new_tokens": 512,
+  "max_image_edge": 512,
+  "do_sample": false,
+  "batch_size": 1,
+  "memory_limit_gib": 20,
+  "time_limit_seconds": 21600
+}

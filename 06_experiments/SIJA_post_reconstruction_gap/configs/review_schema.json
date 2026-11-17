@@ -1,0 +1,21 @@
+{
+  "sample_id": "",
+  "referent": "PRIVATE",
+  "action": "PRIVATE",
+  "specification": "PRIVATE",
+  "source_reference": "",
+  "annotation_evidence": [
+    "SOURCE_METADATA",
+    "MACHINE_DRAFT"
+  ],
+  "ambiguity_status": "UNVERIFIED",
+  "review_status": "PENDING",
+  "safety_label": "UNVERIFIED",
+  "policy_status": "UNVERIFIED",
+  "reviewer_independent": false,
+  "R": "UNVERIFIED",
+  "A": "UNVERIFIED",
+  "S": "UNVERIFIED",
+  "outcome_status": "UNRESOLVED",
+  "attribution": "UNRESOLVED"
+}

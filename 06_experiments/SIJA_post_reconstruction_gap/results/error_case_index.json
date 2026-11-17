@@ -1,0 +1,24 @@
+{
+  "verified_mechanism_failures": [],
+  "technical_format_failures": [
+    {
+      "id": "SIJA-329",
+      "condition": "strong",
+      "status": "INVALID",
+      "reason": "Missing required answer tags"
+    }
+  ],
+  "unverified_observations": [
+    {
+      "id": "SIJA-329",
+      "transition": "natural NO / draft-intent NO / matched NO",
+      "status": "UNVERIFIED"
+    },
+    {
+      "id": "SIJA-310",
+      "transition": "natural NO / draft-intent NO / matched NO",
+      "status": "UNVERIFIED"
+    }
+  ],
+  "gold_executed": false
+}

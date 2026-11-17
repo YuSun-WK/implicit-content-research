@@ -1,0 +1,29 @@
+{
+  "research_samples": 2,
+  "normal_model_samples": 0,
+  "sija_model_samples": 2,
+  "source_risk_not_independent_gold": true,
+  "completed_calls": 10,
+  "conditions": {
+    "natural": 2,
+    "draft-intent": 2,
+    "matched": 2,
+    "direct": 2,
+    "strong": 2
+  },
+  "valid_answer_n": 9,
+  "invalid_answer_n": 1,
+  "decision_counts": {
+    "NO": 9,
+    "INVALID": 1
+  },
+  "human_verified": 0,
+  "reliable_metric_denominator": 0,
+  "gap_n": null,
+  "gap_rate": null,
+  "completed_generation_seconds": 180.4139593692962,
+  "completed_generation_seconds_including_smoke": 190.64988734642975,
+  "max_completed_call_allocated_gib": 16.54743194580078,
+  "max_completed_call_reserved_gib": 16.716796875,
+  "truncated_calls": 0
+}
