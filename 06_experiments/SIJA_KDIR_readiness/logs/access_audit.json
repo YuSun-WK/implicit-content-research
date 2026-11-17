@@ -1,0 +1,78 @@
+{
+  "sija_hf.json": {
+    "id": "xianminye/SI2ESBench",
+    "sha": "4087764c55ea76946bac6634aa4d63b2ad7bb5a0",
+    "private": false,
+    "gated": false,
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "SI2ESBench.zip"
+      }
+    ],
+    "usedStorage": 1003437789
+  },
+  "safeedit_hf.json": {
+    "id": "tyodd/SafeEditBench",
+    "sha": "a254fa5ea367839be72e8db39041a7a5a43633c1",
+    "private": false,
+    "gated": "auto",
+    "usedStorage": 87890583
+  },
+  "safeedit_tree.json": {
+    "file_count": 997,
+    "bytes": 88477779,
+    "text_files": [
+      {
+        "path": ".gitattributes",
+        "size": 2504
+      },
+      {
+        "path": "README.md",
+        "size": 4675
+      },
+      {
+        "path": "data/test-00000-of-00001.parquet",
+        "size": 25775
+      },
+      {
+        "path": "eval.py",
+        "size": 5703
+      },
+      {
+        "path": "eval.sh",
+        "size": 110
+      },
+      {
+        "path": "requirements.txt",
+        "size": 39
+      },
+      {
+        "path": "test.jsonl",
+        "size": 4115523
+      }
+    ]
+  },
+  "safetypairs_search.json": [],
+  "safeedit_access.json": {
+    "cached_token_present": false,
+    "auto_terms_accepted_by_agent": false,
+    "checks": [
+      {
+        "path": "test.jsonl",
+        "error_type": "URLError",
+        "http_code": null
+      },
+      {
+        "path": "test_images/1.jpg",
+        "error_type": "TimeoutError",
+        "http_code": null
+      }
+    ]
+  }
+}

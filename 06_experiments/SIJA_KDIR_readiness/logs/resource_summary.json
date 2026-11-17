@@ -1,0 +1,9 @@
+{
+  "new_private_directory_retained_bytes_before_cleanup": 40032927,
+  "review_pack_zip_bytes": 427856,
+  "research_gpu_runs": 0,
+  "weights_downloaded": false,
+  "data_generation_run": false,
+  "paid_api_calls": 0,
+  "note": "File sizes retained, not an exact network transfer meter; includes local duplicated cached source images and package. Under 2GiB."
+}

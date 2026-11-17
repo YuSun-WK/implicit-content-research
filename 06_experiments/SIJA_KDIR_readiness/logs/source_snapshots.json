@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-17",
+  "main": "985901a5c4830ac1f46dcad4884fbeee7bb82102",
+  "open_prs": [
+    73,
+    74,
+    75,
+    76
+  ],
+  "pr75": "aa3174262ee2ab5692912f0e10eebeba8682dc29",
+  "pr76": "4bb68ea35006bc8edadba7ecbd3bb1603925afe0",
+  "pr76_fa2_snapshot": "6020ecd9b54f257b349add958495022eaa1ea693",
+  "AGENTS": "not found in main recursive tree, workspace ancestors or relevant paths",
+  "SIJA_version": "v2",
+  "SIJA_pdf_pages": 31,
+  "official_SIJA_tree": "29231d7c0c5d6fad556b4f933aff353ac9bab763",
+  "safeedit_revision": "a254fa5ea367839be72e8db39041a7a5a43633c1",
+  "safetypairs_code_tree": "4e1b2457e3946c54905735f43027698dfc95347d",
+  "research_gpu_runs": 0
+}

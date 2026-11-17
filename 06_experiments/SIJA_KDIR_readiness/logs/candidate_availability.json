@@ -1,0 +1,13 @@
+{
+  "source_dossiers": 4,
+  "complete_existing_edit_triples": 2,
+  "decoded_images": 6,
+  "independent_qualified_groups": 0,
+  "human_verified_groups": 0,
+  "dev_groups_frozen": 0,
+  "test_groups_frozen": 0,
+  "cross_dossier_dhash_flags": [],
+  "dhash_threshold": 6,
+  "dhash_is_not_semantic_proof": true,
+  "historical_sija_329_310": "EXPLORATORY_ONLY_EXCLUDED_FROM_UNSEEN_TEST"
+}

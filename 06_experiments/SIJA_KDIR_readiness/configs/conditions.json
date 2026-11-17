@@ -1,0 +1,34 @@
+{
+  "Direct-CP": {
+    "prompt_file": "prompts/Direct-CP.txt",
+    "prompt_sha256": "7b90ca2d10e299a7b66f2b5802a0a5c807e4ef10967bfc2117814a3fea0af11f",
+    "policy_sha256": "4b5cede9f7df75c5af0658e94b38f2ca2ba25514a0ca7923724732a8f60bf6e4",
+    "track": "COMMON_POLICY_INDEPENDENT_ADAPTATION",
+    "explicit_triple": false,
+    "status": "NOT_RUN"
+  },
+  "SIJA-v2-Generic-CP": {
+    "prompt_file": "prompts/SIJA-v2-Generic-CP.txt",
+    "prompt_sha256": "09112c399d8c9249242d0610b95463e4eff6e5ce9c32157804a54fa46bc1a1b8",
+    "policy_sha256": "4b5cede9f7df75c5af0658e94b38f2ca2ba25514a0ca7923724732a8f60bf6e4",
+    "track": "COMMON_POLICY_INDEPENDENT_ADAPTATION",
+    "explicit_triple": false,
+    "status": "NOT_RUN"
+  },
+  "SIJA-v2-Decomposed-Relaxed-CP": {
+    "prompt_file": "prompts/SIJA-v2-Decomposed-Relaxed-CP.txt",
+    "prompt_sha256": "ec2951f618d82572de17773ec40d1f32b4551d53ed84653b9c66704df0123943",
+    "policy_sha256": "4b5cede9f7df75c5af0658e94b38f2ca2ba25514a0ca7923724732a8f60bf6e4",
+    "track": "COMMON_POLICY_INDEPENDENT_ADAPTATION",
+    "explicit_triple": true,
+    "status": "NOT_RUN"
+  },
+  "Strong-CP": {
+    "prompt_file": "prompts/Strong-CP.txt",
+    "prompt_sha256": "b3ab34e25d0c1be8047a5863cb17deee032e47cf06a71738251c7787768f52b9",
+    "policy_sha256": "4b5cede9f7df75c5af0658e94b38f2ca2ba25514a0ca7923724732a8f60bf6e4",
+    "track": "COMMON_POLICY_INDEPENDENT_ADAPTATION",
+    "explicit_triple": false,
+    "status": "NOT_RUN"
+  }
+}
