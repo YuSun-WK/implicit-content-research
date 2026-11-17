@@ -1,0 +1,7 @@
+{"phase": "model_integrity_gate", "start": 1794883633.2604065, "end": 1794883657.5246093, "exit": 2}
+{"phase": "model_integrity_gate", "start": 1794885157.1151552, "end": 1794885185.531349, "exit": 0}
+{"phase": "model_integrity_gate", "start": 1794885326.6140149, "end": 1794885355.3893678, "exit": 0}
+{"phase": "smoke_unified", "start": 1794885355.571041, "end": 1794885757.380999, "exit": 0}
+{"phase": "smoke_evaluation_unified", "start": 1794885757.3816133, "end": 1794885757.4960155, "exit": 0}
+{"phase": "smoke_official_five_step", "start": 1794885757.6829104, "end": 1794886048.3463283, "exit": 0}
+{"phase": "smoke_evaluation_official_five_step", "start": 1794886048.3470252, "end": 1794886048.4111612, "exit": 0}

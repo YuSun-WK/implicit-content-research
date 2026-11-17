@@ -1,3 +1,5 @@
+> Follow-up 2026-11-17: all 119 missing blocks acquired; four official weight hashes pass. Local index correction was required for ready=true. GPU smoke executed; official parsing gate failed. See [resume acceptance report](H1_THINKINGGUARD_RESUME_ACCEPTANCE.md). Historical status below is preserved.
+
 # Final download closeout — supersedes the historical live snapshot below
 
 Final verification: 2026-11-16T14:08:58.006358+00:00. PID 108368 has exited. The saved traceback ends with **TimeoutError: global deadline**, consistent with the configured 2026-11-16 13:45:46 UTC transfer cutoff. Last transfer event timestamp: 2026-11-16T13:46:16.104364+00:00. No new download was launched during this status check; no process was stopped or restarted. Read-only process enumeration found no remaining owned downloader, wrapper or GPU inference process. The isolated 17900 proxy listener is absent; system sing-box was left intact.

@@ -1,0 +1,14 @@
+{
+  "cache_ready": true,
+  "all_four_official_sha256_pass": true,
+  "unified_parse_success": 10,
+  "unified_predictions": 10,
+  "official_parse_success": 0,
+  "official_predictions": 4,
+  "overall_smoke_acceptance": false,
+  "formal_36_pair_experiment": "NOT_RUN",
+  "reason": "official five-step frozen parser fails 4/4 outputs; process memory telemetry unavailable in PID namespace",
+  "pid_gpu_telemetry": "533 samples all 0 MiB: unavailable, not a real zero-memory measurement",
+  "torch_peak_gib": 7.73828125,
+  "completed_utc": "2026-11-17T03:37:26.686051+00:00"
+}

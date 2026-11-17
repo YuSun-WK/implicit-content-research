@@ -1,0 +1,16 @@
+{
+  "unified": {
+    "inference_exit": 0,
+    "records": 10,
+    "valid": 10,
+    "peak_gib": 7.73828125,
+    "evaluation_exit": 0
+  },
+  "official_five_step": {
+    "inference_exit": 0,
+    "records": 4,
+    "valid": 0,
+    "peak_gib": 7.72265625,
+    "evaluation_exit": 0
+  }
+}

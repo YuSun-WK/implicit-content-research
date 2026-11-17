@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/data/project/h1-cf-killtest/scripts/download_verified.py", line 72, in <module>
+    if missing_shards:raise RuntimeError('missing blocks retained: '+','.join(missing_shards))
+RuntimeError: missing blocks retained: model-00003-of-00004.safetensors

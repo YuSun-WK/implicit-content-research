@@ -189,7 +189,8 @@ def main():
             raise RuntimeError('CPU/disk offload detected')
         check_memory()
         revisions_path = run/'model_revisions.json'
-        metadata = {'session_id': str(uuid.uuid4()), 'model_revision': rev, 'processor_revision': rev,
+        metadata = {'local_index_provenance': json.loads((snapshot/'local_index_provenance.json').read_text()) if (snapshot/'local_index_provenance.json').exists() else None,
+            'session_id': str(uuid.uuid4()), 'model_revision': rev, 'processor_revision': rev,
             'python_version': sys.version.split()[0], 'pytorch_version': torch.__version__,
             'transformers_version': package_version('transformers'),
             'bitsandbytes_version': package_version('bitsandbytes'),
@@ -246,7 +247,8 @@ def main():
                     generated = ids[0][inputs.input_ids.shape[1]:]
                     raw = processor.decode(generated, skip_special_tokens=(a.protocol == 'unified'))
                     prediction, status = parse_output(raw, a.protocol)
-                    rec = {'run_id': run.name, 'pair_id': row['pair_id'], 'category': row['category'],
+                    rec = {'local_index_sha256': (metadata.get('local_index_provenance') or {}).get('local_index_sha256'),
+                        'run_id': run.name, 'pair_id': row['pair_id'], 'category': row['category'],
                         'split': 'test', 'side': side,
                         'image_path': row[f'{side}_hf_path'] if side != 'pair' else '',
                         'image_hash': row[f'{side}_sha256'] if side != 'pair' else '',

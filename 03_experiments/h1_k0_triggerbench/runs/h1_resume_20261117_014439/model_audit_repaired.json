@@ -1,0 +1,16 @@
+{
+  "model_id": "Sandy124/ThinkingGuard-8B",
+  "revision": "76892f9768ce828268265171f4bbc5dfb75eafc3",
+  "path": "model_snapshots/Sandy124__ThinkingGuard-8B/76892f9768ce828268265171f4bbc5dfb75eafc3",
+  "missing": [],
+  "invalid": [],
+  "partial": [],
+  "shards": [
+    "model-00001-of-00004.safetensors",
+    "model-00002-of-00004.safetensors",
+    "model-00003-of-00004.safetensors",
+    "model-00004-of-00004.safetensors"
+  ],
+  "ready": true,
+  "integrity": "fixed-revision LFS size and SHA256 plus safetensors headers"
+}
