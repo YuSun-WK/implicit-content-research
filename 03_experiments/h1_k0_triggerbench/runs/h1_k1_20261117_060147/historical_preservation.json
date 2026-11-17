@@ -1,0 +1,32 @@
+[
+  {
+    "file": "metrics_Sandy124__ThinkingGuard-8B_unified_2.json",
+    "sha256": "390bd6c63f3fc081eb35ff557e2e4a366c9638c638e58bd44aff624f82861390",
+    "unchanged_from_e485": true
+  },
+  {
+    "file": "sample_manifest.csv",
+    "sha256": "a7b531d8bafc87e9b17838190e0e7fa1fd825385f896a163ce05ff12fde49c6f",
+    "unchanged_from_e485": true
+  },
+  {
+    "file": "predictions.jsonl",
+    "sha256": "074e786d8a604662d003669cd738314ba5dae902bd08b048821a61d9d2add1fa",
+    "unchanged_from_e485": true
+  },
+  {
+    "file": "gpu_usage.csv",
+    "sha256": "0bf975920f861c0abeedee53021a125a94f4959fa0e1037380aeb0666c0beb63",
+    "unchanged_from_e485": true
+  },
+  {
+    "file": "metrics_Sandy124__ThinkingGuard-8B_official_five_step_2.json",
+    "sha256": "b25c62e7092b437c7cc0e4e9e9c24fcbeeb5806f51d3304aad12b673af76381a",
+    "unchanged_from_e485": true
+  },
+  {
+    "file": "model_revisions.json",
+    "sha256": "a01d4ff7b8b077215de2632e91166e17b45f40fce60cd41d28942b876a236597",
+    "unchanged_from_e485": true
+  }
+]

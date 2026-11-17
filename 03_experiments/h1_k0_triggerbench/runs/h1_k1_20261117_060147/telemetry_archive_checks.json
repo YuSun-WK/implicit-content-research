@@ -1,0 +1,30 @@
+[
+  {
+    "source": "validation_official/memory_samples.jsonl",
+    "archived": "validation_official/memory_samples.jsonl.gz",
+    "source_sha256": "1657bca222e9b46b340a0c6f8b24b332465ec8974154ffc8b3a19e3449191f6d",
+    "archive_sha256": "ec2fcaafa16b081adc18c2ea457a8508c9c1652c4016bcd53498003029b05b07",
+    "lossless": true
+  },
+  {
+    "source": "validation_official/gpu_usage.csv",
+    "archived": "validation_official/gpu_usage.csv.gz",
+    "source_sha256": "a384c6e4b328a6745a8df6b07d88f293d8b24e54ba4acb42192865092d219b08",
+    "archive_sha256": "f90b4c9e359a09a590b6d9b311ab5caf5f0e75ca6e7e8f839f0e37931e949bbc",
+    "lossless": true
+  },
+  {
+    "source": "formal_unified/gpu_usage.csv",
+    "archived": "formal_unified/gpu_usage.csv.gz",
+    "source_sha256": "3566dc1ad85cadee323f06af4ddefd245989d16abcffa70eec6a77f4b9a26c4d",
+    "archive_sha256": "01b20e8e8d776cc645e5066cc49f6e5b0931b24f3fa608df73aec01500084229",
+    "lossless": true
+  },
+  {
+    "source": "formal_unified/memory_samples.jsonl",
+    "archived": "formal_unified/memory_samples.jsonl.gz",
+    "source_sha256": "9c208a0aec16cee66ed0fc18d6949ca1a5a2bd1ef348e12c1d0f53523f810edf",
+    "archive_sha256": "2b4d2585b908ffb0b90c3a212f5833a090d5f99853e6e83b8ea87d265b10772b",
+    "lossless": true
+  }
+]

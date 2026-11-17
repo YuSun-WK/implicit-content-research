@@ -1,0 +1,25 @@
+{
+  "frozen_utc": "2026-11-17T07:02:02.506493+00:00",
+  "version": "official_parser_v2.0.0",
+  "source_sha256": "c056253d72c79d91814d01d88ea05a6ddff56bcda3655a5dd97dbe1b87fd597c",
+  "tests_sha256": "02395d2febd0df62ad4db649877ae44800c9dc1371eb57a4eef58447d2610b29",
+  "development_pair_ids": [
+    "test/ethical_violations/6",
+    "test/ethical_violations/12"
+  ],
+  "validation_pair_ids": [
+    "test/ethical_violations/8",
+    "test/ethical_violations/36"
+  ],
+  "validation_gate": {
+    "required_records": 4,
+    "required_parse_success": 4,
+    "required_blind_transcription_agreement": 4,
+    "structure_complete_is_separate": true,
+    "no_rule_changes_after_holdout": true
+  },
+  "manifest_sha256": "a7b531d8bafc87e9b17838190e0e7fa1fd825385f896a163ce05ff12fde49c6f",
+  "formal_unified_parse_gate": 0.95,
+  "stop_utc": "2026-11-17T11:40:47Z",
+  "task_ceiling_utc": "2026-11-17T12:01:47Z"
+}

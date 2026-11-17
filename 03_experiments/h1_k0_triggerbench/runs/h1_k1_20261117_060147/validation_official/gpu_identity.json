@@ -1,0 +1,13 @@
+{
+  "namespace_pids": [
+    424901
+  ],
+  "host_pid": 1328213,
+  "method": "unique_new_pid_and_reversible_64MiB_allocation",
+  "baseline_process_count": 0,
+  "challenge_mib": {
+    "before": 348,
+    "during": 412,
+    "after": 348
+  }
+}

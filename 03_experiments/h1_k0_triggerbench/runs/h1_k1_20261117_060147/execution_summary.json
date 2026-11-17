@@ -1,0 +1,33 @@
+{
+  "started_utc": "2026-11-17T06:01:47Z",
+  "review_completed_utc": "2026-11-17T09:39:04.587621+00:00",
+  "budget_hours": 6,
+  "unified_formal": "COMPLETED",
+  "unified_pairs": 36,
+  "unified_records": 180,
+  "unified_parse_success": 180,
+  "official_formal": "NOT_RUN",
+  "official_reason": "2/4 label extraction coverage below frozen 4/4 requirement; two ambiguous template outputs correctly remain INVALID",
+  "validation_records": 4,
+  "validation_parse_success": 2,
+  "validation_structure_complete": 4,
+  "frozen_parser_unchanged": true,
+  "history_and_labels_preserved": true,
+  "training": "NOT_RUN",
+  "Qwen_acquisition": "NOT_RUN",
+  "expansion_90": "NOT_RUN",
+  "formal_unified": {
+    "generation_seconds": 6098.051371562295,
+    "records": 180,
+    "generated_tokens": 360,
+    "mean_seconds_per_record": 33.87806317534608,
+    "memory_monitor_window_seconds": 6142.099023342133
+  },
+  "validation_official": {
+    "generation_seconds": 279.0517300639767,
+    "records": 4,
+    "generated_tokens": 1435,
+    "mean_seconds_per_record": 69.76293251599418,
+    "memory_monitor_window_seconds": 301.83260583877563
+  }
+}

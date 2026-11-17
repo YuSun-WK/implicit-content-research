@@ -1,0 +1,6 @@
+{
+  "README_sha256": "35e2d96e1633590ab2e7d9369582987b00f6d2423c207b61e664ef5566f51e9f",
+  "source": "https://huggingface.co/Sandy124/ThinkingGuard-8B/blob/76892f9768ce828268265171f4bbc5dfb75eafc3/README.md",
+  "model_card_states_trained_on_TriggerBench": true,
+  "training_test_overlap_independently_verified": false
+}

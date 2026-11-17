@@ -1,0 +1,50 @@
+{
+  "formal_unified": {
+    "samples": 4451,
+    "pid_attribution_missing": 0,
+    "errors": 0,
+    "process_peak_mib": 8338,
+    "device_upper_bound_peak_mib": 8353,
+    "torch_allocated_peak_bytes": 6756079104,
+    "torch_reserved_peak_bytes": 8308916224,
+    "identity": {
+      "namespace_pids": [
+        150837
+      ],
+      "host_pid": 4102338,
+      "method": "unique_new_pid_and_reversible_64MiB_allocation",
+      "baseline_process_count": 0,
+      "challenge_mib": {
+        "before": 348,
+        "during": 412,
+        "after": 348
+      }
+    },
+    "torch_reported_peak_allocated_gib": 7.5859375,
+    "torch_reported_peak_reserved_gib": 7.73828125
+  },
+  "validation_official": {
+    "samples": 222,
+    "pid_attribution_missing": 0,
+    "errors": 0,
+    "process_peak_mib": 8330,
+    "device_upper_bound_peak_mib": 8339,
+    "torch_allocated_peak_bytes": 6727572992,
+    "torch_reserved_peak_bytes": 8292139008,
+    "identity": {
+      "namespace_pids": [
+        424901
+      ],
+      "host_pid": 1328213,
+      "method": "unique_new_pid_and_reversible_64MiB_allocation",
+      "baseline_process_count": 0,
+      "challenge_mib": {
+        "before": 348,
+        "during": 412,
+        "after": 348
+      }
+    },
+    "torch_reported_peak_allocated_gib": 7.5859375,
+    "torch_reported_peak_reserved_gib": 7.72265625
+  }
+}

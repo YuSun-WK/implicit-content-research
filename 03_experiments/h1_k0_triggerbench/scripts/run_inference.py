@@ -71,17 +71,10 @@ def parse_output(raw, protocol):
     return verdicts[0].capitalize(), 'ok'
 
 
-def process_gpu_mib(gpu):
-    """Only bytes attributed to this PID, never the shared device total."""
-    p = subprocess.run(['nvidia-smi', '--query-compute-apps=pid,used_gpu_memory',
-                        '--format=csv,noheader,nounits', '-i', str(gpu)],
-                       capture_output=True, text=True, timeout=5, check=True)
-    total = 0
-    for line in p.stdout.splitlines():
-        fields = [x.strip() for x in line.split(',')]
-        if len(fields) == 2 and fields[0].isdigit() and int(fields[0]) == os.getpid():
-            total += int(fields[1])
-    return total
+try:
+    from scripts.gpu_monitor import process_gpu_mib, query_processes, device_used_mib, identify_host_pid
+except ModuleNotFoundError:
+    from gpu_monitor import process_gpu_mib, query_processes, device_used_mib, identify_host_pid
 
 
 def package_version(name):
@@ -107,6 +100,19 @@ def update_revision_metadata(path, model_id, protocol, details):
     path.write_text(json.dumps(data, indent=2, default=str) + '\n')
 
 
+def validate_official_gate(protocol, parser, limit_pairs, decision_path):
+    if protocol != 'official_five_step' or limit_pairs <= 2:
+        return
+    if parser != 'v2' or decision_path is None:
+        raise RuntimeError('formal official inference requires frozen-v2 validation evidence')
+    decision = json.loads(pathlib.Path(decision_path).read_text())
+    import hashlib
+    source = pathlib.Path(__file__).with_name('official_parser_v2.py')
+    if (decision.get('passed') is not True or decision.get('coverage', 0) < .95 or
+            decision.get('parser_source_sha256') != hashlib.sha256(source.read_bytes()).hexdigest()):
+        raise RuntimeError('official parser validation not passed or source hash changed')
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('run', type=pathlib.Path)
@@ -115,6 +121,8 @@ def main():
     ap.add_argument('--image-root', type=pathlib.Path, required=True)
     ap.add_argument('--model-path', type=pathlib.Path, help='verified local snapshot directory for this model and revision')
     ap.add_argument('--protocol', choices=('unified', 'official_five_step'), default='unified')
+    ap.add_argument('--official-parser', choices=('original', 'v2'), default='original')
+    ap.add_argument('--parser-validation', type=pathlib.Path)
     ap.add_argument('--max-new-tokens', type=int)
     ap.add_argument('--limit-pairs', type=int, default=36)
     a = ap.parse_args()
@@ -122,6 +130,7 @@ def main():
         ap.error('official protocol is reserved for ThinkingGuard')
     if not 1 <= a.limit_pairs <= 36:
         ap.error('limit-pairs must be 1..36')
+    validate_official_gate(a.protocol, a.official_parser, a.limit_pairs, a.parser_validation)
     max_tokens = a.max_new_tokens or (1024 if a.protocol == 'official_five_step' else 32)
     os.environ['CUDA_VISIBLE_DEVICES'] = a.gpu  # Must precede torch import and CUDA initialization.
     os.environ['HF_HUB_OFFLINE'] = '1'  # Prevent indirect hub requests by AutoProcessor.
@@ -151,11 +160,17 @@ def main():
                   if a.protocol == 'official_five_step' else
                   [('joint', 'safe'), ('joint', 'unsafe'), ('text_only', 'pair'),
                    ('image_only', 'safe'), ('image_only', 'unsafe')])
+    if device_used_mib(a.gpu) >= 100:
+        raise RuntimeError('GPU is not idle before CUDA context creation')
+    baseline_gpu_pids = query_processes(a.gpu)
     random.seed(20261105); torch.manual_seed(20261105); torch.cuda.manual_seed_all(20261105)
     if not torch.cuda.is_available():
         raise RuntimeError('CUDA unavailable')
     props = torch.cuda.get_device_properties(0)
-    torch.cuda.set_per_process_memory_fraction(min(1.0, 20*2**30/props.total_memory), 0)
+    torch.cuda.set_per_process_memory_fraction(min(1.0, 18*2**30/props.total_memory), 0)
+    identity = identify_host_pid(torch, a.gpu, baseline_gpu_pids)
+    (run/'gpu_identity.json').write_text(json.dumps(identity, indent=2))
+    torch.cuda.reset_peak_memory_stats()
     processor = AutoProcessor.from_pretrained(snapshot, local_files_only=True)
     quant = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type='nf4',
                               bnb_4bit_compute_dtype=torch.bfloat16, bnb_4bit_use_double_quant=True)
@@ -163,12 +178,21 @@ def main():
     def monitor():
         while not stop.is_set():
             try:
-                mib = process_gpu_mib(a.gpu)
-                samples.append((time.time(), mib))
-                if mib > 20*1024:
+                mib = process_gpu_mib(a.gpu, identity['host_pid'])
+                device_mib = device_used_mib(a.gpu)
+                sample = {'time': time.time(), 'process_mib': mib, 'device_upper_bound_mib': device_mib,
+                          'torch_allocated_bytes': torch.cuda.memory_allocated(), 'torch_reserved_bytes': torch.cuda.memory_reserved()}
+                samples.append((sample['time'], mib))
+                with (run/'memory_samples.jsonl').open('a') as memory_out:
+                    memory_out.write(json.dumps(sample)+'\n')
+                if (mib is not None and mib > 20*1024) or device_mib > 20*1024:
                     over_budget.set()
-            except Exception:
-                pass
+                    os._exit(88)  # Kill only this process immediately; flushed samples and predictions remain.
+            except Exception as exc:
+                with (run/'memory_samples.jsonl').open('a') as memory_out:
+                    memory_out.write(json.dumps({'time': time.time(), 'process_mib': None, 'error': type(exc).__name__})+'\n')
+                over_budget.set()
+                os._exit(89)  # Fail closed if safety telemetry fails.
             stop.wait(1)
     thread = threading.Thread(target=monitor, daemon=True); thread.start()
     def peak():
@@ -195,7 +219,8 @@ def main():
             'transformers_version': package_version('transformers'),
             'bitsandbytes_version': package_version('bitsandbytes'),
             'accelerate_version': package_version('accelerate'),
-            'protocol': a.protocol, 'model_class': model_class.__name__,
+            'protocol': a.protocol, 'official_parser': a.official_parser, 'gpu_identity': identity, 'allocator_cap_gib': 18, 'process_budget_gib': 20,
+            'model_class': model_class.__name__,
             'quantization': {'load_in_4bit': True, 'bnb_4bit_quant_type': 'nf4',
                              'bnb_4bit_compute_dtype': 'bfloat16', 'bnb_4bit_use_double_quant': True},
             'generation': {'max_new_tokens': max_tokens, 'do_sample': False},
@@ -247,7 +272,17 @@ def main():
                     generated = ids[0][inputs.input_ids.shape[1]:]
                     raw = processor.decode(generated, skip_special_tokens=(a.protocol == 'unified'))
                     prediction, status = parse_output(raw, a.protocol)
-                    rec = {'local_index_sha256': (metadata.get('local_index_provenance') or {}).get('local_index_sha256'),
+                    original_prediction, original_status = prediction, status
+                    parsed_v2 = None
+                    if a.protocol == 'official_five_step' and a.official_parser == 'v2':
+                        try:
+                            from scripts.official_parser_v2 import parse as parse_v2
+                        except ModuleNotFoundError:
+                            from official_parser_v2 import parse as parse_v2
+                        parsed_v2 = parse_v2(raw)
+                        prediction, status = parsed_v2['prediction'], parsed_v2['status']
+                    rec = {'original_parser_prediction': original_prediction, 'original_parser_status': original_status, 'official_parser_v2': parsed_v2,
+                        'local_index_sha256': (metadata.get('local_index_provenance') or {}).get('local_index_sha256'),
                         'run_id': run.name, 'pair_id': row['pair_id'], 'category': row['category'],
                         'split': 'test', 'side': side,
                         'image_path': row[f'{side}_hf_path'] if side != 'pair' else '',
@@ -257,7 +292,10 @@ def main():
                         'raw_model_output': raw, 'parsed_prediction': prediction, 'parse_status': status,
                         'inference_time': elapsed, 'prompt_id': f'{a.protocol}_{condition}_v2',
                         'max_new_tokens': max_tokens, 'do_sample': False,
-                        'generated_tokens': len(generated), 'peak_gpu_gib': peak()}
+                        'generated_tokens': len(generated), 'peak_gpu_gib': peak(),
+                        'torch_peak_allocated_gib': torch.cuda.max_memory_allocated()/2**30,
+                        'torch_peak_reserved_gib': torch.cuda.max_memory_reserved()/2**30,
+                        'peak_process_mib': max((v for _,v in samples if v is not None), default=None)}
                     out.write(json.dumps(rec, ensure_ascii=False)+'\n'); out.flush()
                     relevant.append(rec); completed.add(key)
                     check_memory()
@@ -271,6 +309,6 @@ def main():
         stop.set(); thread.join(timeout=3)
         with (run/'gpu_usage.csv').open('a') as f:
             for t, mib in samples:
-                f.write(f'{a.model_id},{t},{a.gpu},{mib}\n')
+                f.write(f'{a.model_id},{t},{a.gpu},{mib if mib is not None else "NA"}\n')
 
 if __name__=='__main__':main()

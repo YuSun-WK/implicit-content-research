@@ -1,0 +1,107 @@
+{
+  "runs": {
+    "Sandy124/ThinkingGuard-8B": {
+      "unified": [
+        {
+          "local_index_provenance": {
+            "model": "Sandy124/ThinkingGuard-8B",
+            "revision": "76892f9768ce828268265171f4bbc5dfb75eafc3",
+            "weight_bytes_unchanged": true,
+            "tensors": 750,
+            "total_tensor_bytes": 17534247392,
+            "changed_locations": 118,
+            "official_index_sha256": "520b2e05079402e9468a8701d03d1154d14b2599593afb6effa7fb60c1bff070",
+            "local_index_sha256": "4e072f2b3e4199e17d96874148d16e241db2e0d2c0a1f64c4403afaade9c4961",
+            "official_index_git_blob": "5857ec62530eb589b1876034dd5386f1d98131a6",
+            "reason": "official weight_map names 118 tensor locations in different shards from the pinned official weight files"
+          },
+          "session_id": "3673b5c9-935a-4fb2-8b5b-3eb93ab74fc9",
+          "model_revision": "76892f9768ce828268265171f4bbc5dfb75eafc3",
+          "processor_revision": "76892f9768ce828268265171f4bbc5dfb75eafc3",
+          "python_version": "3.10.19",
+          "pytorch_version": "2.9.1+cu128",
+          "transformers_version": "4.57.3",
+          "bitsandbytes_version": "0.48.2",
+          "accelerate_version": "1.12.0",
+          "protocol": "unified",
+          "official_parser": "original",
+          "gpu_identity": {
+            "namespace_pids": [
+              150837
+            ],
+            "host_pid": 4102338,
+            "method": "unique_new_pid_and_reversible_64MiB_allocation",
+            "baseline_process_count": 0,
+            "challenge_mib": {
+              "before": 348,
+              "during": 412,
+              "after": 348
+            }
+          },
+          "allocator_cap_gib": 18,
+          "process_budget_gib": 20,
+          "model_class": "AutoModelForVision2Seq",
+          "quantization": {
+            "load_in_4bit": true,
+            "bnb_4bit_quant_type": "nf4",
+            "bnb_4bit_compute_dtype": "bfloat16",
+            "bnb_4bit_use_double_quant": true
+          },
+          "generation": {
+            "max_new_tokens": 32,
+            "do_sample": false
+          },
+          "image_preprocessing": {
+            "processor": "AutoProcessor",
+            "revision": "76892f9768ce828268265171f4bbc5dfb75eafc3",
+            "mode": "RGB",
+            "settings": {
+              "_processor_class": null,
+              "size": {
+                "longest_edge": 16777216,
+                "shortest_edge": 65536
+              },
+              "min_pixels": null,
+              "max_pixels": null,
+              "data_format": "channels_first",
+              "do_convert_rgb": true,
+              "do_normalize": true,
+              "do_rescale": true,
+              "do_resize": true,
+              "image_mean": [
+                0.5,
+                0.5,
+                0.5
+              ],
+              "image_processor_type": "Qwen2VLImageProcessorFast",
+              "image_std": [
+                0.5,
+                0.5,
+                0.5
+              ],
+              "merge_size": 2,
+              "patch_size": 16,
+              "resample": 3,
+              "rescale_factor": 0.00392156862745098,
+              "temporal_patch_size": 2,
+              "crop_size": null,
+              "pad_size": null,
+              "default_to_square": true,
+              "do_center_crop": null,
+              "do_pad": null,
+              "return_tensors": null,
+              "input_data_format": null,
+              "device": null,
+              "disable_grouping": null
+            }
+          },
+          "device_map": {
+            "": "cuda:0"
+          },
+          "peak_gib_after_load": 7.716796875,
+          "peak_gib_final": 7.73828125
+        }
+      ]
+    }
+  }
+}
