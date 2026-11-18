@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "test_marker": "SYNTHETIC",
+  "engine": "Node v22.23.2 + jsdom 26.1.0",
+  "checks": [
+    "initial judgment fields empty",
+    "verbatim text via textContent",
+    "incomplete stage cannot unlock pairs",
+    "save and fresh DOM restore",
+    "JSON draft recovery",
+    "wrong package rejected",
+    "explicit submit timestamps",
+    "stage1 immutable after phase2",
+    "same-label pair allowed",
+    "JSON and CSV export",
+    "frozen state tampering rejected"
+  ],
+  "human_reviews_created": 0,
+  "real_blank_export_records_checked": 216,
+  "external_requests": 0,
+  "limitation": "DOM logic integration, not a real-browser visual or file:// policy compatibility test"
+}

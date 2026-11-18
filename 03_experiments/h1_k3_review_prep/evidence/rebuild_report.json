@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "same_seed_rebuild_same_archives": true,
+  "existing_packages_not_overwritten": true,
+  "human_review_records_created": 0,
+  "source_images_downloaded": 0
+}

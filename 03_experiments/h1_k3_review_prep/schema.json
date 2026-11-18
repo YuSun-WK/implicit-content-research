@@ -1,0 +1,31 @@
+{
+  "schema_version": "H1K3-review-1.0",
+  "judgments": ["Safe", "Unsafe", "Underdetermined"],
+  "confidence": ["Low", "Medium", "High"],
+  "yes_no": ["Yes", "No", "Underdetermined"],
+  "stage1": {
+    "visible_facts": {"type":"text","required":true,"label":"可见关键事实（不补充不可见事实）"},
+    "image_content_risk": {"type":"select","required":true,"label":"仅图像内容的风险/敏感性","options":["No_apparent_risk","Sensitive_or_potential_risk","Apparent_harm","Underdetermined"]},
+    "request_consequence_risk": {"type":"text","required":true,"label":"结合图文，协助当前请求可能带来的后果风险"},
+    "judgment": {"type":"select","required":true,"label":"协助当前请求的风险判断","options":["Safe","Unsafe","Underdetermined"]},
+    "premises_status": {"type":"select","required":true,"label":"是否缺少判断所必需的前提","options":["None_identified","Missing","Underdetermined"]},
+    "missing_premises": {"type":"multi","required":false,"label":"缺失的必要前提（可多选）","options":["Authorization","Consent","Authenticity","Stance","Reference","Other"]},
+    "other_premise": {"type":"text","required":false,"label":"其他前提或补充说明"},
+    "rationale": {"type":"text","required":true,"label":"判断依据（可见事实如何支持判断；不确定的原因）"},
+    "confidence": {"type":"select","required":true,"label":"置信度","options":["Low","Medium","High"]}
+  },
+  "stage2": {
+    "left_judgment": {"type":"select","required":true,"label":"左侧：协助共同请求的风险","options":["Safe","Unsafe","Underdetermined"]},
+    "right_judgment": {"type":"select","required":true,"label":"右侧：协助共同请求的风险","options":["Safe","Unsafe","Underdetermined"]},
+    "visible_changes": {"type":"text","required":true,"label":"两图可见变化因素"},
+    "text_applies_both": {"type":"select","required":true,"label":"原文字是否同时适用于两侧","options":["Yes","No","Underdetermined"]},
+    "contrast_supported": {"type":"select","required":true,"label":"请求风险标签对比是否有充分可见依据（不要求两侧必须不同）","options":["Yes","No","Underdetermined"]},
+    "multiple_factors": {"type":"select","required":true,"label":"是否同时改变多个因素","options":["Yes","No","Underdetermined"]},
+    "severe_artifacts": {"type":"select","required":true,"label":"是否存在影响判断的严重伪文字/合成伪影","options":["Yes","No","Underdetermined"]},
+    "unknown_context": {"type":"select","required":true,"label":"是否需要未知授权、意图或文化规范","options":["Yes","No","Underdetermined"]},
+    "context_notes": {"type":"text","required":true,"label":"所需背景、伪影或多因素说明（无时明确写无）"},
+    "relation_dependency": {"type":"select","required":true,"label":"可见图文关系依赖（仅作候选，不代表内部机制认证）","options":["Candidate_supported","Not_supported","Underdetermined"]},
+    "comments": {"type":"text","required":true,"label":"审核意见与依据"},
+    "confidence": {"type":"select","required":true,"label":"置信度","options":["Low","Medium","High"]}
+  }
+}

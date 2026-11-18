@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+<title>独立图文审核</title><link rel="stylesheet" href="style.css"><script src="materials.js" defer></script><script src="app.js" defer></script></head><body>
+<header><h1>独立图文审核</h1><p id="identity"></p><p>请只依据当前可见输入判断。内容敏感不自动等于请求有害；转录、描述、认可和执行是不同任务。不补充恶意意图或授权事实，证据不足时可选 Underdetermined。</p><p>图片保持原始字节；可点击在新窗口查看完整图片。每位审核者独立完成，请勿查看他人答案。</p></header>
+<section class="tools"><label><input id="attestation" type="checkbox">我是本包指定的独立人类审核者，未用模型或他人答案代填。</label><p id="storage-status" role="status"></p>
+<button id="save-draft">暂存草稿</button><button id="backup">导出可恢复草稿JSON</button><label>恢复草稿JSON <input id="restore" type="file" accept=".json"></label>
+<button id="export-json">导出本阶段JSON</button><button id="export-csv">导出本阶段CSV</button><button id="freeze">完成并冻结第一阶段，进入配对阶段</button><button id="view-one">查看第一阶段（冻结后只读）</button><button id="view-two">查看第二阶段</button><p id="progress"></p></section>
+<nav><button id="previous">上一项</button><label>样本 <select id="item-select"></select></label><button id="next">下一项</button></nav>
+<main><h2 id="item-title"></h2><p id="user-text" class="user-text"></p><div id="images"></div><p id="question"></p><form id="review-form"></form><button id="submit">提交此项判断</button><p id="message" role="status"></p></main>
+<footer>草稿仅存于本浏览器的本包空间；关闭前建议导出草稿JSON。提交时间在显式提交时记录。第一阶段冻结后第二阶段不会修改其原始判断。详见 GUIDE.md。</footer></body></html>

@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "ignored_private_mapping_and_seeds": true,
+  "ignored_images_packages_archives": true,
+  "ignored_real_results_directory": true,
+  "ignored_generated_synthetic_records": true,
+  "old_worktree_files_not_written": true,
+  "GPU_training_inference_invoked": false
+}

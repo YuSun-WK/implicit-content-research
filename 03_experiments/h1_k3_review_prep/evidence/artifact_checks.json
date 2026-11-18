@@ -1,0 +1,22 @@
+{
+  "archives": [
+    {
+      "name": "H1_K3_Review_Materials.zip",
+      "bytes": 212928878,
+      "sha256": "a967ac88b863645f866b4a269c903f2a81b021d70746e70c3e8b1bcce91f0574"
+    },
+    {
+      "name": "H1_K3_ReviewerA.zip",
+      "bytes": 106462884,
+      "sha256": "f2a5eca47941aab3199d3de8454ced7ef89d33c3f6a00f322efb17765825376b"
+    },
+    {
+      "name": "H1_K3_ReviewerB.zip",
+      "bytes": 106462856,
+      "sha256": "87c0cb8a66e5990ec702ae27336b5fe1a552b98c9a647b6bcfcd970a0d187489"
+    }
+  ],
+  "zip_CRC": "PASS",
+  "private_files_excluded": true,
+  "not_uploaded_to_GitHub": true
+}

@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "tests_run": 15,
+  "test_scope": [
+    "schema and completeness",
+    "missing/duplicate/version checks",
+    "SYNTHETIC rejection in real mode",
+    "independence confirmation gate",
+    "left/right canonical alignment",
+    "4 errors and 2 categories boundary",
+    "6/11 vs 5/11 boundary",
+    "Underdetermined and disagreements",
+    "adjudication version chain",
+    "JSON/CSV roundtrip",
+    "anonymous-only HTTP root and traversal rejection",
+    "Multiselect, quotes and multiline CSV roundtrip (export times may differ; submitted data must match)"
+  ],
+  "human_reviews_created": 0
+}

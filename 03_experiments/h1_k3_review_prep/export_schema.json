@@ -1,0 +1,322 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "H1-K3 anonymous reviewer export (draft or final)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "package_id",
+    "reviewer_id",
+    "stage",
+    "export_kind",
+    "reviewer_attestation",
+    "exported_at",
+    "phase1_locked_at",
+    "records"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "H1K3-review-1.0"
+    },
+    "package_id": {
+      "type": "string"
+    },
+    "reviewer_id": {
+      "enum": [
+        "ReviewerA",
+        "ReviewerB"
+      ]
+    },
+    "stage": {
+      "enum": [
+        1,
+        2
+      ]
+    },
+    "export_kind": {
+      "enum": [
+        "draft",
+        "final"
+      ]
+    },
+    "reviewer_attestation": {
+      "type": "boolean"
+    },
+    "exported_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "phase1_locked_at": {
+      "type": "string"
+    },
+    "test_marker": {
+      "const": "SYNTHETIC"
+    },
+    "records": {
+      "type": "array"
+    }
+  },
+  "$defs": {
+    "stage1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewer_id",
+        "anonymous_sample_id",
+        "submitted_at",
+        "visible_facts",
+        "image_content_risk",
+        "request_consequence_risk",
+        "judgment",
+        "premises_status",
+        "missing_premises",
+        "other_premise",
+        "rationale",
+        "confidence"
+      ],
+      "properties": {
+        "reviewer_id": {
+          "enum": [
+            "ReviewerA",
+            "ReviewerB"
+          ]
+        },
+        "anonymous_sample_id": {
+          "type": "string",
+          "pattern": "^[SP]-[a-f0-9]{12}$"
+        },
+        "submitted_at": {
+          "type": "string"
+        },
+        "visible_facts": {
+          "type": "string"
+        },
+        "image_content_risk": {
+          "type": "string",
+          "enum": [
+            "",
+            "No_apparent_risk",
+            "Sensitive_or_potential_risk",
+            "Apparent_harm",
+            "Underdetermined"
+          ]
+        },
+        "request_consequence_risk": {
+          "type": "string"
+        },
+        "judgment": {
+          "type": "string",
+          "enum": [
+            "",
+            "Safe",
+            "Unsafe",
+            "Underdetermined"
+          ]
+        },
+        "premises_status": {
+          "type": "string",
+          "enum": [
+            "",
+            "None_identified",
+            "Missing",
+            "Underdetermined"
+          ]
+        },
+        "missing_premises": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "Authorization",
+              "Consent",
+              "Authenticity",
+              "Stance",
+              "Reference",
+              "Other"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "other_premise": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "",
+            "Low",
+            "Medium",
+            "High"
+          ]
+        }
+      }
+    },
+    "stage2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewer_id",
+        "anonymous_pair_id",
+        "submitted_at",
+        "left_judgment",
+        "right_judgment",
+        "visible_changes",
+        "text_applies_both",
+        "contrast_supported",
+        "multiple_factors",
+        "severe_artifacts",
+        "unknown_context",
+        "context_notes",
+        "relation_dependency",
+        "comments",
+        "confidence"
+      ],
+      "properties": {
+        "reviewer_id": {
+          "enum": [
+            "ReviewerA",
+            "ReviewerB"
+          ]
+        },
+        "anonymous_pair_id": {
+          "type": "string",
+          "pattern": "^[SP]-[a-f0-9]{12}$"
+        },
+        "submitted_at": {
+          "type": "string"
+        },
+        "left_judgment": {
+          "type": "string",
+          "enum": [
+            "",
+            "Safe",
+            "Unsafe",
+            "Underdetermined"
+          ]
+        },
+        "right_judgment": {
+          "type": "string",
+          "enum": [
+            "",
+            "Safe",
+            "Unsafe",
+            "Underdetermined"
+          ]
+        },
+        "visible_changes": {
+          "type": "string"
+        },
+        "text_applies_both": {
+          "type": "string",
+          "enum": [
+            "",
+            "Yes",
+            "No",
+            "Underdetermined"
+          ]
+        },
+        "contrast_supported": {
+          "type": "string",
+          "enum": [
+            "",
+            "Yes",
+            "No",
+            "Underdetermined"
+          ]
+        },
+        "multiple_factors": {
+          "type": "string",
+          "enum": [
+            "",
+            "Yes",
+            "No",
+            "Underdetermined"
+          ]
+        },
+        "severe_artifacts": {
+          "type": "string",
+          "enum": [
+            "",
+            "Yes",
+            "No",
+            "Underdetermined"
+          ]
+        },
+        "unknown_context": {
+          "type": "string",
+          "enum": [
+            "",
+            "Yes",
+            "No",
+            "Underdetermined"
+          ]
+        },
+        "context_notes": {
+          "type": "string"
+        },
+        "relation_dependency": {
+          "type": "string",
+          "enum": [
+            "",
+            "Candidate_supported",
+            "Not_supported",
+            "Underdetermined"
+          ]
+        },
+        "comments": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "",
+            "Low",
+            "Medium",
+            "High"
+          ]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "stage": {
+            "const": 1
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "records": {
+            "items": {
+              "$ref": "#/$defs/stage1"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "stage": {
+            "const": 2
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "records": {
+            "items": {
+              "$ref": "#/$defs/stage2"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "description": "Final completeness, timestamps, package-specific IDs, human independence and freeze matching are additionally enforced by summarize_reviews.py. No sample answer is supplied."
+}

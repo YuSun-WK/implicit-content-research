@@ -1,0 +1,9 @@
+private/
+packages/
+artifacts/
+results/
+.tools/
+__pycache__/
+*.pyc
+tests/SYNTHETIC/generated/
+evidence/*.log
