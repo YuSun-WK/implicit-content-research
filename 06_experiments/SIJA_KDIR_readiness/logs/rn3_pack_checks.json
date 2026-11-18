@@ -1,0 +1,12 @@
+{
+  "status": "PASS_STATIC_CHECKS",
+  "old_dossiers": 4,
+  "old_images": 6,
+  "safeedit_new_pairs": 0,
+  "asset_hashes": "PASS",
+  "per_reviewer_storage_module_bundled": true,
+  "load_is_explicit": true,
+  "import_and_clean_controls_present": true,
+  "browser_interactive_test": "NOT_RUN_NO_BROWSER_AVAILABLE",
+  "zip_sha256": "27b4f223286a30a398a98546959020830af906961e13156d8518f1d43c628b5d"
+}

@@ -28,6 +28,7 @@ rejects(lambda:completed_keys([{'execution_status':'COMPLETED','id':'old','condi
 r={'execution_status':'COMPLETED','manifest_sha256':'a'*64};assert completed_keys([r])=={'a'*64};rejects(lambda:completed_keys([r,r]))
 assert grouped_metrics([],[],'Direct-CP')['GAcc']['rate'] is None
 fixture={'group_id':'g','status':'HUMAN_VERIFIED','reviewer_ids':['CPU_R1','CPU_R2'],'review_times_utc':['2000-01-01T00:00:00Z','2000-01-01T00:01:00Z'],'er_executable_on_Is':True,'no_other_violations':True,'linkage_verified':True,'gold':dict(zip(CELLS,['ALLOW','BLOCK','ALLOW','ALLOW']))}
+fixture.update(images={r:{'path':'CPU fixture only','sha256':'a'*64} for r in ('Iu','Is')},er_on_Is_evidence='CPU fixture',remaining_violations_evidence='CPU fixture',source_reference='CPU synthetic source',risk_facts='CPU synthetic fact',policy_clause='CPU synthetic policy',ambiguity='',disagreements=[],review_disagreements_resolved=True,er_instruction_origin='AUTHOR_EXECUTION_LOG',er_log_reference='CPU fixture, not a real log',r_a_s={o:{k:'CPU synthetic evidence' for k in ('referent','action','specification','instruction_evidence')} for o in ('er','en')},four_cell_outcomes={c:'CPU synthetic outcome' for c in CELLS})
 records=[dict(group_id='g',cell_id=c,condition='Direct-CP',status=fixture['gold'][c]) for c in CELLS]
 assert grouped_metrics([fixture],records,'Direct-CP')['GAcc']['k']==1
 records[0]['status']='DEFER';result=grouped_metrics([fixture],records,'Direct-CP');assert result['GAcc']['k']==0 and result['DirectionPairAcc']['k']==0 and result['output_status_counts']['DEFER']==1

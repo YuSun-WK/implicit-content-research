@@ -1,0 +1,56 @@
+{
+  "upstream_repository": "adorableChowhound/SafeGuard-VL",
+  "commit": "a21cdfe3cc2a8932ccd9ae72a1cb02220acb0025",
+  "tree": "71d19687bb0ea8e8a188abaa3cb52e45b97b534f",
+  "script": "data/safe_edit/safe_edit.py",
+  "script_blob_sha": "77ecb538d7e92c38aedf01e50dce3ba979ec39a2",
+  "script_sha256": "585a3a969a2ab7ee193f718ef8adedc30caed8feb4068db794ed333e4dd3b845",
+  "function_lines": {
+    "encode_image_to_data_uri": [
+      52,
+      58
+    ],
+    "assess_safety": [
+      61,
+      74
+    ],
+    "edit_image": [
+      77,
+      90
+    ],
+    "extract_and_save_image": [
+      93,
+      99
+    ],
+    "process_single": [
+      102,
+      133
+    ],
+    "main": [
+      136,
+      176
+    ]
+  },
+  "public_main_blob_count": 13,
+  "public_main_results_jsonl_present": false,
+  "public_main_images_present": "only assets/pipeline.png, not benchmark outputs",
+  "hf_fixed_tree_files": 997,
+  "hf_results_log_paths_found": [],
+  "declared_hf_schema": [
+    "image",
+    "image_path",
+    "safety_label",
+    "policy_name",
+    "policy"
+  ],
+  "actual_gated_metadata_read": false,
+  "original_execution_logs_found": 0,
+  "original_instructions_obtained": 0,
+  "search_scope": [
+    "fixed public main tree and script",
+    "public README dataset/resource links",
+    "cached fixed HF file tree and public schema",
+    "own project private caches and results.jsonl filename search"
+  ],
+  "not_a_global_nonexistence_claim": true
+}

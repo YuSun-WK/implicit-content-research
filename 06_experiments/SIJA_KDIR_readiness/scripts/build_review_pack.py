@@ -12,5 +12,6 @@ for r in raw:
         if not path.is_relative_to(out.resolve()):raise ValueError('Unsafe asset path')
         if hashlib.sha256(path.read_bytes()).hexdigest()!=im['sha256']:raise ValueError('Image hash mismatch')
 policy=Path(a.policy).read_text();data={'package_id':'KDIR-RN2-stage1-20261117','policy':policy,'policy_sha256':hashlib.sha256(policy.encode()).hexdigest(),'dossiers':raw}
+data['package_fingerprint']=hashlib.sha256(json.dumps(data,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
 template=(Path(__file__).parents[1]/'templates/review_template.html').read_text();html=template.replace('__DATA_JSON__',json.dumps(data,ensure_ascii=False).replace('</','<\\/'))
-(out/'index.html').write_text(html);print('Built stage-1 dossiers:',len(raw),'No model outputs embedded.')
+(out/'index.html').write_text(html);(out/'review_storage.js').write_bytes((Path(__file__).parents[1]/'templates/review_storage.js').read_bytes());print('Built stage-1 dossiers:',len(raw),'No model outputs embedded.')

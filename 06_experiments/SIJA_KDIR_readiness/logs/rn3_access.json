@@ -1,0 +1,19 @@
+{
+  "revision": "a254fa5ea367839be72e8db39041a7a5a43633c1",
+  "terms_accepted_by_agent": false,
+  "checks": [
+    {
+      "attempt": 1,
+      "network_error": "ReadTimeout",
+      "seconds": 8.142
+    },
+    {
+      "attempt": 2,
+      "network_error": "ConnectionError",
+      "seconds": 6.923
+    }
+  ],
+  "started_utc": "2026-11-18T02:39:52Z",
+  "existing_login_configured": false,
+  "content_access": "NETWORK_INCONCLUSIVE"
+}

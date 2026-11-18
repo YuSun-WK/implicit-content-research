@@ -42,8 +42,52 @@ def completed_keys(records):
             if r['manifest_sha256'] in keys:raise ValueError('Duplicate completed output')
             keys.add(r['manifest_sha256'])
     return keys
+def qualification_errors(g):
+    """Validate supplied evidence metadata; cannot establish that humans reviewed it."""
+    from datetime import datetime,timezone,timedelta
+    errors=[]
+    if not isinstance(g,dict):return ['record must be an object']
+    def text(value):return isinstance(value,str) and bool(value.strip())
+    for field in ('group_id','source_reference','risk_facts','policy_clause','er_log_reference','er_on_Is_evidence','remaining_violations_evidence'):
+        if not text(g.get(field)):errors.append(field+': nonempty evidence text required')
+    if not isinstance(g.get('ambiguity'),str):errors.append('ambiguity must be text')
+    if type(g.get('disagreements')) is not list:errors.append('disagreements must be a list')
+    if g.get('er_instruction_origin')!='AUTHOR_EXECUTION_LOG':errors.append('Original er execution evidence required; drafts need a separate proposed protocol')
+    if g.get('status')!='HUMAN_VERIFIED':errors.append('record is not independently verified')
+    for field in ('er_executable_on_Is','no_other_violations','linkage_verified','review_disagreements_resolved'):
+        if type(g.get(field)) is not bool:errors.append(field+': boolean required')
+        elif g[field] is not True:errors.append(field+': affirmative evidence required')
+    ids=g.get('reviewer_ids');times=g.get('review_times_utc')
+    valid_ids=(type(ids) is list and len(ids)>=2 and all(text(x) and x==x.strip() for x in ids))
+    if not valid_ids:errors.append('at least two nonempty reviewer identifiers required')
+    elif len(set(ids))!=len(ids):errors.append('reviewer identifiers must be distinct')
+    if type(times) is not list or not valid_ids or len(times)!=len(ids):
+        errors.append('one explicit timestamp per reviewer required')
+    else:
+        for value in times:
+            try:
+                if not isinstance(value,str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})',value):raise ValueError()
+                # RFC3339 offsets are at most 23:59; do not normalize malformed offsets.
+                if value[-1]!='Z' and (int(value[-5:-3])>23 or int(value[-2:])>59):raise ValueError()
+                parsed=datetime.fromisoformat(value.replace('Z','+00:00'))
+                if parsed.tzinfo is None or parsed>datetime.now(timezone.utc)+timedelta(minutes=5):raise ValueError()
+            except (ValueError,TypeError,OverflowError):errors.append('invalid or future review timestamp')
+    images=g.get('images')
+    for role in ('Iu','Is'):
+        image=images.get(role) if isinstance(images,dict) else None
+        if not isinstance(image,dict) or not text(image.get('path')) or not isinstance(image.get('sha256'),str) or not re.fullmatch('[0-9a-f]{64}',image['sha256']):errors.append(role+': image path and byte hash required')
+    intents=g.get('r_a_s')
+    for operation in ('er','en'):
+        intent=intents.get(operation) if isinstance(intents,dict) else None
+        for field in ('referent','action','specification','instruction_evidence'):
+            if not isinstance(intent,dict) or not text(intent.get(field)):errors.append(operation+'.'+field+': missing evidence')
+    outcomes=g.get('four_cell_outcomes')
+    if not isinstance(outcomes,dict) or set(outcomes)!=set(CELLS) or not all(text(outcomes.get(c)) for c in CELLS):errors.append('four nonempty ideal outcomes required')
+    if g.get('gold')!=dict(zip(CELLS,['ALLOW','BLOCK','ALLOW','ALLOW'])):errors.append('unambiguous K-DIR four-cell labels required')
+    return errors
+
 def eligible(g):
-    return (g.get('status')=='HUMAN_VERIFIED' and len(set(g.get('reviewer_ids',[])))>=2 and all(g.get('reviewer_ids',[])) and len(g.get('review_times_utc',[]))>=2 and bool(g.get('er_executable_on_Is')) and bool(g.get('no_other_violations')) and g.get('linkage_verified') is True and g.get('gold')==dict(zip(CELLS,['ALLOW','BLOCK','ALLOW','ALLOW'])))
+    return not qualification_errors(g)
 def wilson(k,n):
     if not n:return None
     z=1.959963984540054;p=k/n;d=1+z*z/n

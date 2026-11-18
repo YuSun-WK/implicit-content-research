@@ -1,18 +1,321 @@
 {
- "$schema":"https://json-schema.org/draft/2020-12/schema",
- "title":"K-DIR group after independent review",
- "type":"object",
- "required":["group_id","source_reference","r_a_s","risk_facts","four_cell_outcomes","policy_clause","ambiguity","status","reviewer_ids","review_times_utc","disagreements","gold","er_executable_on_Is","no_other_violations","linkage_verified"],
- "properties":{
-  "group_id":{"type":"string"},"source_reference":{"type":"string"},
-  "r_a_s":{"type":"object","required":["er","en"],"properties":{"er":{"$ref":"#/$defs/intent"},"en":{"$ref":"#/$defs/intent"}}},
-  "risk_facts":{"type":"string"},"four_cell_outcomes":{"type":"object","required":["Iu_er","Iu_en","Is_er","Is_en"]},
-  "policy_clause":{"type":"string"},"ambiguity":{"type":"string"},
-  "status":{"enum":["SOURCE_LABEL","CODEX_DRAFT","PENDING","HUMAN_VERIFIED","EXCLUDED","UNRESOLVED"]},
-  "reviewer_ids":{"type":"array","items":{"type":"string","minLength":1},"uniqueItems":true},
-  "review_times_utc":{"type":"array","items":{"type":"string","format":"date-time"}},
-  "disagreements":{"type":"array"},"gold":{"type":"object","additionalProperties":{"enum":["ALLOW","BLOCK","UNKNOWN"]}},
-  "er_executable_on_Is":{"type":"boolean"},"no_other_violations":{"type":"boolean"},"linkage_verified":{"type":"boolean"}
- },
- "$defs":{"intent":{"type":"object","required":["referent","action","specification","instruction_evidence"],"properties":{"referent":{"type":"string"},"action":{"type":"string"},"specification":{"type":"string"},"instruction_evidence":{"type":"string"}}}}
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "K-DIR complete group record v2 (validation is not proof of human review)",
+  "type": "object",
+  "required": [
+    "group_id",
+    "source_reference",
+    "r_a_s",
+    "risk_facts",
+    "four_cell_outcomes",
+    "policy_clause",
+    "ambiguity",
+    "status",
+    "reviewer_ids",
+    "review_times_utc",
+    "disagreements",
+    "gold",
+    "er_executable_on_Is",
+    "no_other_violations",
+    "linkage_verified",
+    "review_disagreements_resolved",
+    "er_instruction_origin",
+    "er_log_reference",
+    "images",
+    "er_on_Is_evidence",
+    "remaining_violations_evidence"
+  ],
+  "properties": {
+    "group_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "source_reference": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "r_a_s": {
+      "type": "object",
+      "required": [
+        "er",
+        "en"
+      ],
+      "properties": {
+        "er": {
+          "$ref": "#/$defs/intent"
+        },
+        "en": {
+          "$ref": "#/$defs/intent"
+        }
+      }
+    },
+    "risk_facts": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "four_cell_outcomes": {
+      "type": "object",
+      "required": [
+        "Iu_er",
+        "Iu_en",
+        "Is_er",
+        "Is_en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "Iu_er": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "Iu_en": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "Is_er": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "Is_en": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    },
+    "policy_clause": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "ambiguity": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "SOURCE_LABEL",
+        "CODEX_DRAFT",
+        "PENDING",
+        "HUMAN_VERIFIED",
+        "EXCLUDED",
+        "UNRESOLVED"
+      ]
+    },
+    "reviewer_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^\\S(?:.*\\S)?$"
+      },
+      "uniqueItems": true,
+      "minItems": 2
+    },
+    "review_times_utc": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "date-time",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+      },
+      "minItems": 2
+    },
+    "disagreements": {
+      "type": "array"
+    },
+    "gold": {
+      "type": "object",
+      "required": [
+        "Iu_er",
+        "Iu_en",
+        "Is_er",
+        "Is_en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "Iu_er": {
+          "enum": [
+            "ALLOW",
+            "BLOCK",
+            "UNKNOWN"
+          ]
+        },
+        "Iu_en": {
+          "enum": [
+            "ALLOW",
+            "BLOCK",
+            "UNKNOWN"
+          ]
+        },
+        "Is_er": {
+          "enum": [
+            "ALLOW",
+            "BLOCK",
+            "UNKNOWN"
+          ]
+        },
+        "Is_en": {
+          "enum": [
+            "ALLOW",
+            "BLOCK",
+            "UNKNOWN"
+          ]
+        }
+      }
+    },
+    "er_executable_on_Is": {
+      "type": "boolean"
+    },
+    "no_other_violations": {
+      "type": "boolean"
+    },
+    "linkage_verified": {
+      "type": "boolean"
+    },
+    "review_disagreements_resolved": {
+      "type": "boolean"
+    },
+    "er_instruction_origin": {
+      "enum": [
+        "AUTHOR_EXECUTION_LOG",
+        "SOURCE_PAIR_LABEL",
+        "RESEARCHER_DRAFT",
+        "CODEX_DRAFT",
+        "UNRESOLVED"
+      ]
+    },
+    "er_log_reference": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "images": {
+      "type": "object",
+      "required": [
+        "Iu",
+        "Is"
+      ],
+      "properties": {
+        "Iu": {
+          "type": "object",
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "Is": {
+          "type": "object",
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        }
+      }
+    },
+    "er_on_Is_evidence": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "remaining_violations_evidence": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    }
+  },
+  "$defs": {
+    "intent": {
+      "type": "object",
+      "required": [
+        "referent",
+        "action",
+        "specification",
+        "instruction_evidence"
+      ],
+      "properties": {
+        "referent": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "specification": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "instruction_evidence": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    }
+  },
+  "$id": "urn:kdir:review:group:v2",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "HUMAN_VERIFIED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "er_executable_on_Is": {
+            "const": true,
+            "type": "boolean"
+          },
+          "no_other_violations": {
+            "const": true,
+            "type": "boolean"
+          },
+          "linkage_verified": {
+            "const": true,
+            "type": "boolean"
+          },
+          "review_disagreements_resolved": {
+            "const": true,
+            "type": "boolean"
+          },
+          "er_instruction_origin": {
+            "const": "AUTHOR_EXECUTION_LOG"
+          }
+        }
+      }
+    }
+  ]
 }

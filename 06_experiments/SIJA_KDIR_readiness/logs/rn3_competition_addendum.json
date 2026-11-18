@@ -1,0 +1,12 @@
+{
+  "method": "MMAligner",
+  "title": "MMAligner: Safeguarding Multimodal Large Language Models through Representation Calibration",
+  "primary_source": "https://arxiv.org/abs/2608.05909",
+  "version": "v1",
+  "publication_evidence": "Author arXiv comments: To Appear in CCS 2026; publisher version not independently verified here",
+  "reading_scope": "primary abstract and metadata only",
+  "mechanism": "Calibration toward an existing refusal region with lower/upper bounds and benign preservation",
+  "role": "direct safety competitor and later representation-calibration control",
+  "limitation": "Not a substitute for policy-labelled edit-direction data; refusal rate is not GAcc",
+  "trained_or_run_this_task": false
+}

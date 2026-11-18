@@ -1,0 +1,1 @@
+{"status": "PASS", "adversarial_records": 50, "checked_layers": ["eligible", "schema_with_format_checker", "grouped_metrics", "freeze", "freeze_under_python_O"], "positive_control": "synthetic metadata only; no human activity attested", "old_string_false_admitted": true, "fixed_string_false_admitted": false, "mechanism_inference": false}
