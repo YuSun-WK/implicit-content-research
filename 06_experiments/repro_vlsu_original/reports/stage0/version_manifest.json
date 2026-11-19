@@ -1,0 +1,12 @@
+{
+  "bytes": 2215163,
+  "expected_git_blob": "09421adeb2e68eac1d5e829dcbd48848f21a0be6",
+  "expected_sha256": "9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f",
+  "git_blob": "09421adeb2e68eac1d5e829dcbd48848f21a0be6",
+  "path": "data/VLSU.csv",
+  "pinned_bytes_verified": true,
+  "reference_commit": "cbe363a26d2129ff1b526c283af0a2b7aa3d9b28",
+  "schema_version": 1,
+  "sha256": "9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f",
+  "source": "https://github.com/apple-aiml-research/ml-vlsu"
+}

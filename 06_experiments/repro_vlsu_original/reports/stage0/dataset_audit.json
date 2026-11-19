@@ -1,0 +1,95 @@
+{
+  "blank_fields": {
+    "combined_category": 2211,
+    "consensus_combined_grade": 0,
+    "consensus_text_grade": 0,
+    "image_category": 4319,
+    "image_grade": 0,
+    "prompt": 0,
+    "text_category": 4360,
+    "uuid": 0,
+    "web_path": 0
+  },
+  "checks": {
+    "git_blob": true,
+    "image_not_sure_141": true,
+    "nine_column_rows": true,
+    "observed_patterns": true,
+    "paper_patterns_observed": true,
+    "pattern_B-B-U": true,
+    "pattern_S-S-B": true,
+    "pattern_S-S-U": true,
+    "pattern_U-S-B": true,
+    "pattern_U-S-U": true,
+    "question_patterns_observed": true,
+    "release_extra_standard_patterns": true,
+    "rows": true,
+    "schema_errors": true,
+    "sha256": true,
+    "standard_patterns_observed": true,
+    "unique_prompt": true,
+    "unique_url": true,
+    "unique_uuid": true
+  },
+  "columns": [
+    "prompt",
+    "image_grade",
+    "consensus_text_grade",
+    "consensus_combined_grade",
+    "image_category",
+    "text_category",
+    "combined_category",
+    "web_path",
+    "uuid"
+  ],
+  "image_availability": "NOT RUN",
+  "labels": {
+    "consensus_combined_grade": {
+      "borderline": 3310,
+      "safe": 2189,
+      "unsafe": 2660
+    },
+    "consensus_text_grade": {
+      "borderline": 1452,
+      "safe": 4328,
+      "unsafe": 2379
+    },
+    "image_grade": {
+      "borderline": 1810,
+      "not_sure": 141,
+      "safe": 4182,
+      "unsafe": 2026
+    }
+  },
+  "nine_column_rows": 8159,
+  "observed_patterns": 25,
+  "paper_patterns_observed": 17,
+  "question_patterns_observed": 6,
+  "release_extra_standard_patterns": {
+    "B-S-S": 1,
+    "S-U-B": 1
+  },
+  "rows": 8159,
+  "schema_errors": 0,
+  "schema_version": 1,
+  "standard_patterns_observed": 19,
+  "status": "PASS",
+  "theoretical_ceilings": {
+    "E1_E2_E5_generations_reusing_direct": 40654,
+    "E1_image": 8018,
+    "E1_joint": 8159,
+    "E1_text": 8159,
+    "E2_binary_joint": 8159,
+    "E3_direct_joint": 8159,
+    "E4_image_not_sure": 141,
+    "E4_paper_patterns": 8016,
+    "E4_release_extras": 2,
+    "E5_paired_direct_cot": 8159,
+    "E6_error_decomposition": 8018,
+    "E7_behavior_joint": 8159,
+    "Figures4_5_three_valid_gold": 8018
+  },
+  "unique_prompt": 7638,
+  "unique_url": 8157,
+  "unique_uuid": 8159
+}

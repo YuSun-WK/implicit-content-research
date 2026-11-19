@@ -1,0 +1,76 @@
+schema_version: 1
+execution_status: NOT RUN
+original_paper:
+  evidence: AUTHOR-REPORTED
+  model_id: Qwen/Qwen2.5-VL-7B-Instruct
+  hf_revision: UNKNOWN
+  tokenizer_revision: UNKNOWN
+  processor_revision: UNKNOWN
+  precision: UNKNOWN
+  accelerator: NVIDIA A100-SXM4-80GB
+  accelerator_count_qwen_7b: 1
+  temperature_as_written: default
+  temperature_effective: UNKNOWN
+  image_budget_as_written: {min: 256, max: 1280, label: pixels}
+  effective_image_budget: UNKNOWN
+  max_len_api_argument: UNKNOWN
+  seed: null
+  do_sample: null
+  num_beams: null
+  stop_conditions: null
+  chat_template: null
+  message_roles_and_layout: null
+  unimodal_prompt: UNKNOWN
+  dependencies: UNKNOWN
+  f1_averaging: UNKNOWN
+  parser_and_invalid_policy: UNKNOWN
+prompts:
+  binary:
+    path: .local/prompts/binary.v1.txt
+    sha256: 3dc491176bff0fc405ee0e6b1298914e42861ff15f507a4aee0d3f7377497817
+    pdf_page: 33
+    section: D.1
+    author_max_len: 1024
+    local_max_new_tokens: 1024
+  direct:
+    path: .local/prompts/direct.v1.txt
+    sha256: 563018443eb76d980b51a1fcf9387edc042638461ce4b2633305b6d9bbafc45b
+    pdf_page: 33
+    section: D.1
+    author_max_len: 1024
+    local_max_new_tokens: 1024
+  structured_cot:
+    path: .local/prompts/structured_cot.v1.txt
+    sha256: ea5460e9a0cab074ff99d5245d9d34d2a67164088a85625e46c3e39bf5f889da
+    pdf_page: 35
+    section: D.3
+    author_max_len: 2048
+    local_max_new_tokens: 2048
+local_unquantized:
+  status: PARTIAL REPRODUCTION
+  precision: bfloat16
+  hf_revision: null
+  tokenizer_revision: null
+  processor_revision: null
+  seed: null
+  temperature: null
+  do_sample: null
+  num_beams: null
+  stop_conditions: null
+  chat_template: null
+  pixel_budget_candidate:
+    visual_tokens: {min: 256, max: 1280}
+    pixel_area: {min: 200704, max: 1003520}
+    source: Qwen public reference
+  vram_budget_gib: [16, 20]
+  vram_measured: false
+local_4bit:
+  status: NOT RUN
+  classification_if_used: RESOURCE-CONSTRAINED PARTIAL REPRODUCTION
+  enabled: false
+  backend: null
+  quantization_config: null
+  requires_unquantized_smoke_resource_failure: true
+job_plan:
+  theoretical_generations: 40654
+  gpu_job_wall_limit_hours: 6

@@ -1,0 +1,35 @@
+Environment recovery
+- Workspace root had no .git. Fetched origin in the existing clone and checked out the target branch in a new worktree.
+- Proceedings web view timed out. Direct HTTPS fetch of the proceedings PDF succeeded.
+- pdftotext was unavailable and an optional isolated pip install timed out on a Pillow wheel. Used preinstalled pypdf, Pillow, PyYAML and pytest.
+- OpenReview metadata lookup returned connection reset. Verbatim prompt redistribution permission remains unconfirmed.
+- Initial CSV audit execution detected case mismatch in pattern shorthand. Corrected the formatter to uppercase and verified assertions below on the same pinned bytes.
++ python --version
+Python 3.13.5
++ python -c 'from importlib.metadata import version; print({p: version(p) for p in ["pypdf", "Pillow", "pytest", "PyYAML"]})'
+{'pypdf': '6.16.2', 'Pillow': '11.1.0', 'pytest': '8.3.4', 'PyYAML': '6.0.2'}
++ git -C /tmp/vlsu-stage0-apple rev-parse HEAD HEAD:data/VLSU.csv
+cbe363a26d2129ff1b526c283af0a2b7aa3d9b28
+09421adeb2e68eac1d5e829dcbd48848f21a0be6
++ sha256sum /tmp/vlsu-stage0-7004194/paper.pdf /tmp/vlsu-stage0-7004194/VLSU.csv
+b38dc2e84d20899132125338b3ef8d31f54873660c2562c281c4d992c1f96aa8  /tmp/vlsu-stage0-7004194/paper.pdf
+9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f  /tmp/vlsu-stage0-7004194/VLSU.csv
++ python scripts/extract_paper_prompts.py --pdf /tmp/vlsu-stage0-7004194/paper.pdf
+3dc491176bff0fc405ee0e6b1298914e42861ff15f507a4aee0d3f7377497817  binary.v1.txt
+563018443eb76d980b51a1fcf9387edc042638461ce4b2633305b6d9bbafc45b  direct.v1.txt
+ea5460e9a0cab074ff99d5245d9d34d2a67164088a85625e46c3e39bf5f889da  structured_cot.v1.txt
++ python -
+binary: generated TXT SHA-256 matches YAML
+direct: generated TXT SHA-256 matches YAML
+structured_cot: generated TXT SHA-256 matches YAML
++ python scripts/stage0_audit_csv.py --csv /tmp/vlsu-stage0-7004194/VLSU.csv --out reports/stage0
+PASS: rows=8159, sha256=9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f
++ wc -l reports/stage0/schema_errors.jsonl
+0 reports/stage0/schema_errors.jsonl
++ python -m pytest -q
+.................................                                        [100%]
+33 passed in 0.09s
++ git diff --check
++ git diff --cached --check
++ set +x
+Execution finished with exit code 0. Image acquisition and GPU/model execution NOT RUN.
