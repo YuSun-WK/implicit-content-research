@@ -1,0 +1,21 @@
+{
+  "status": "MANUAL_DATA_ACTION_REQUIRED",
+  "authorized_fhm_confirmed": false,
+  "authorized_fhm_rows_read": 0,
+  "located_author_internvl_captions": false,
+  "located_author_gemini_captions": false,
+  "candidate_filename_matches_in_project_and_project_share": 0,
+  "archive_index_checks": {
+    "project.zip": {"entries": 30720, "matches": 0},
+    "project_priority.zip": {"entries": 19697, "matches": 0},
+    "project_slim.zip": {"entries": 26308, "matches": 0}
+  },
+  "split_statistics": {
+    "train": null,
+    "dev_seen": null,
+    "dev_unseen": null,
+    "test_seen": null,
+    "test_unseen": null
+  },
+  "official_data_route": {"url": "https://www.drivendata.org/competitions/64/hateful-memes/data/", "anonymous_http": 302, "result": "login_required"}
+}
