@@ -1,0 +1,79 @@
+Stage 1 CPU/network execution
+- The initial git fetch attempts failed with GnuTLS and DNS errors. The GitHub connector provided the task file and exact remote refs while the normal fetch was retried. A later git fetch succeeded and the branch fast-forwarded from Stage 0 0dbe4a5 to Stage 1 task 61314a0. The connector file hash matched the tracked blob.
+- The first smoke ended at its 12-request budget. The first resume was interrupted after both neutral control DNS resolutions timed out. Existing successes and failures stayed in SQLite. A later configured-resolver check was reachable, so the restart reopened transient DNS terminal entries while preserving their histories.
+- Logs below contain aggregate stdout only. URLs, UUIDs, original queries and image bytes stay private.
++ git log -2 --oneline
+61314a0 docs(vlsu-repro): add gated Stage 1 image availability and resumable download Codex task
+0dbe4a5 Audit VLSU conference protocol and pinned release on CPU
++ sha256sum /tmp/vlsu-stage0-7004194/VLSU.csv
+9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f  /tmp/vlsu-stage0-7004194/VLSU.csv
++ git -C /tmp/vlsu-stage0-apple rev-parse HEAD HEAD:data/VLSU.csv
+cbe363a26d2129ff1b526c283af0a2b7aa3d9b28
+09421adeb2e68eac1d5e829dcbd48848f21a0be6
++ python -c 'import sys,sqlite3,ssl; from importlib.metadata import version; print(sys.version.split()[0],sqlite3.sqlite_version,ssl.OPENSSL_VERSION); print({x:version(x) for x in ("Pillow","PyYAML","pytest")})'
+3.13.5 3.45.3 OpenSSL 3.0.16 11 Feb 2025
+{'Pillow': '11.1.0', 'PyYAML': '6.0.2', 'pytest': '8.3.4'}
++ python scripts/stage1_download.py --csv /tmp/vlsu-stage0-7004194/VLSU.csv --phase smoke --dry-run
+{"config": {"attempts": 4, "backoff": 2, "connect_timeout": 5, "decode_memory": 536870912, "decode_timeout": 15, "global_interval": 0.125, "host_interval": 1.0, "max_bytes": 20971520, "max_pixels": 25000000, "min_free_bytes": 1073741824, "read_timeout": 10, "redirects": 5, "request_timeout": 30, "workers": 8}, "csv_sha256": "9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f", "dry_run": true, "phase": "smoke", "python": "3.13.5", "resume": false, "selected_url": 49, "selected_uuid": 51, "utc_epoch": 1795079365.5080683}
++ VLSU_PINNED_CSV=/tmp/vlsu-stage0-7004194/VLSU.csv
++ python -m pytest -q
+...................................................................      [100%]
+67 passed in 6.18s
++ VLSU_PINNED_CSV=/tmp/vlsu-stage0-7004194/VLSU.csv
++ python -m pytest -q tests/test_stage0.py
+.................................                                        [100%]
+33 passed in 0.11s
++ git diff --check
++ git diff --cached --check
++ set +x
+
+smoke-initial
+{"config": {"attempts": 4, "backoff": 2, "connect_timeout": 5, "decode_memory": 536870912, "decode_timeout": 15, "global_interval": 0.125, "host_interval": 1.0, "max_bytes": 20971520, "max_pixels": 25000000, "min_free_bytes": 1073741824, "read_timeout": 10, "redirects": 5, "request_timeout": 30, "workers": 8}, "csv_sha256": "9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f", "dry_run": false, "phase": "smoke", "python": "3.13.5", "resume": false, "selected_url": 49, "selected_uuid": 51, "utc_epoch": 1795078877.9684317}
+{"result": "request_budget", "requests_admitted": 12, "smoke_covered": false, "smoke_pass": false}
+
+smoke-resume
+{"config": {"attempts": 4, "backoff": 2, "connect_timeout": 5, "decode_memory": 536870912, "decode_timeout": 15, "global_interval": 0.125, "host_interval": 1.0, "max_bytes": 20971520, "max_pixels": 25000000, "min_free_bytes": 1073741824, "read_timeout": 10, "redirects": 5, "request_timeout": 30, "workers": 8}, "csv_sha256": "9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f", "dry_run": false, "phase": "smoke", "python": "3.13.5", "resume": true, "selected_url": 49, "selected_uuid": 51, "utc_epoch": 1795078918.328856}
+{"result": "interrupted", "requests_admitted": 13, "smoke_covered": false, "smoke_pass": false}
+
+smoke-dns-recovery
+{"config": {"attempts": 4, "backoff": 2, "connect_timeout": 5, "decode_memory": 536870912, "decode_timeout": 15, "global_interval": 0.125, "host_interval": 1.0, "max_bytes": 20971520, "max_pixels": 25000000, "min_free_bytes": 1073741824, "read_timeout": 10, "redirects": 5, "request_timeout": 30, "workers": 8}, "csv_sha256": "9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f", "dry_run": false, "phase": "smoke", "python": "3.13.5", "resume": true, "selected_url": 49, "selected_uuid": 51, "utc_epoch": 1795079125.2956946}
+{"result": "environment_dns_unavailable", "requests_admitted": 0, "smoke_covered": false, "smoke_pass": false}
+
+smoke-dns-retry
+{"config": {"attempts": 4, "backoff": 2, "connect_timeout": 5, "decode_memory": 536870912, "decode_timeout": 15, "global_interval": 0.125, "host_interval": 1.0, "max_bytes": 20971520, "max_pixels": 25000000, "min_free_bytes": 1073741824, "read_timeout": 10, "redirects": 5, "request_timeout": 30, "workers": 8}, "csv_sha256": "9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f", "dry_run": false, "phase": "smoke", "python": "3.13.5", "resume": true, "selected_url": 49, "selected_uuid": 51, "utc_epoch": 1795079220.0447173}
+{"environment_dns_reopened_urls": 30}
+{"result": "COMPLETE", "requests_admitted": 55, "smoke_covered": true, "smoke_pass": false}
+
+smoke-cache-resume
+{"config": {"attempts": 4, "backoff": 2, "connect_timeout": 5, "decode_memory": 536870912, "decode_timeout": 15, "global_interval": 0.125, "host_interval": 1.0, "max_bytes": 20971520, "max_pixels": 25000000, "min_free_bytes": 1073741824, "read_timeout": 10, "redirects": 5, "request_timeout": 30, "workers": 8}, "csv_sha256": "9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f", "dry_run": false, "phase": "smoke", "python": "3.13.5", "resume": true, "selected_url": 49, "selected_uuid": 51, "utc_epoch": 1795079310.9024017}
+{"result": "COMPLETE", "requests_admitted": 0, "smoke_covered": true, "smoke_pass": true}
+
+full
+{"config": {"attempts": 4, "backoff": 2, "connect_timeout": 5, "decode_memory": 536870912, "decode_timeout": 15, "global_interval": 0.125, "host_interval": 1.0, "max_bytes": 20971520, "max_pixels": 25000000, "min_free_bytes": 1073741824, "read_timeout": 10, "redirects": 5, "request_timeout": 30, "workers": 8}, "csv_sha256": "9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f", "dry_run": false, "phase": "full", "python": "3.13.5", "resume": true, "selected_url": 8157, "selected_uuid": 8159, "utc_epoch": 1795079311.481256}
+{"result": "environment_dns_unavailable", "requests_admitted": 0, "smoke_covered": true, "smoke_pass": true}
+
+Full resolver recovery attempts with four workers
+
+full-dns-recovery
+{"config": {"attempts": 4, "backoff": 2, "connect_timeout": 5, "decode_memory": 536870912, "decode_timeout": 15, "global_interval": 0.25, "host_interval": 1.0, "max_bytes": 20971520, "max_pixels": 25000000, "min_free_bytes": 1073741824, "read_timeout": 10, "redirects": 5, "request_timeout": 30, "workers": 4}, "csv_sha256": "9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f", "dry_run": false, "phase": "full", "python": "3.13.5", "resume": true, "selected_url": 8157, "selected_uuid": 8159, "utc_epoch": 1795079346.4211724}
+{"environment_dns_reopened_urls": 5}
+{"result": "environment_dns_unavailable", "requests_admitted": 12, "smoke_covered": false, "smoke_pass": true}
+
+full-dns-recovery-2
+{"config": {"attempts": 4, "backoff": 2, "connect_timeout": 5, "decode_memory": 536870912, "decode_timeout": 15, "global_interval": 0.25, "host_interval": 1.0, "max_bytes": 20971520, "max_pixels": 25000000, "min_free_bytes": 1073741824, "read_timeout": 10, "redirects": 5, "request_timeout": 30, "workers": 4}, "csv_sha256": "9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f", "dry_run": false, "phase": "full", "python": "3.13.5", "resume": true, "selected_url": 8157, "selected_uuid": 8159, "utc_epoch": 1795079482.6842082}
+{"environment_dns_reopened_urls": 3}
+{"result": "environment_dns_unavailable", "requests_admitted": 20, "smoke_covered": true, "smoke_pass": true}
+
+During report verification, an empty synthetic pattern produced TypeError when formatting a null coverage rate (67 tests passed and 1 failed). Fixed the report to display N/A for a zero denominator.
+
++ VLSU_PINNED_CSV=/tmp/vlsu-stage0-7004194/VLSU.csv
++ python -m pytest -q
+....................................................................     [100%]
+68 passed in 6.02s
++ git diff --check
++ git diff --cached --check
++ python scripts/stage1_report.py --csv /tmp/vlsu-stage0-7004194/VLSU.csv
+{"attempt_seconds": {"median": 5.081, "n": 319, "p95": 9.297}, "attempted_urls": 65, "catalogued_verified_url_rerequests": 0, "classification": "NOT RUN", "cohort_counts": {"image_decoded_gold": 23, "joint_decoded": 30, "release_roster": 8159, "text_only_eligible": 8159, "three_modality_intersection": 23}, "complete_body_bytes": 2322371, "complete_body_urls": 29, "csv_sha256": "9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f", "decode_or_format_failed_urls": 1, "decoded_unique_content_hashes": 28, "decoded_urls": 28, "download_snapshot_sha256": "2e1d566d30d7d4ef131c051ad13be0150ac244b9a633d4e114006b198d27d4fd", "duplicate_url_additional_uuid": 2, "environment_dns_terminal_urls": 8, "event_reasons": {"dns_timeout": 217, "empty_body": 1, "http_403": 6, "http_404": 2, "http_406": 1, "missing_or_invalid_partial_validator": 2, "request_timeout": 38, "transport_error": 23, "unsafe_target": 2, "unsupported_content_type": 1}, "failed_urls": 30, "full_last_stop": "environment_dns_unavailable", "http_200_or_206_urls": 31, "http_failure_original_host_n": 9, "manifest_sha256": "68e232c14295bba9b0f19d169d62d9884d8fe49f7d0e3c7059c3996b692176c1", "paper_n": 8187, "release_n": 8159, "release_uuid": {"attempted_pending": 7, "coverage": 0.0036769211913224658, "decoded": 30, "failed": 30, "n": 8159, "not_attempted": 8092}, "requestable_uuid": 8159, "requested_urls": 58, "resource_limit_terminal_urls": 0, "smoke_last_stop": "COMPLETE", "smoke_pass": true, "smoke_unique_urls": 49, "smoke_uuid": {"attempted_pending": 0, "coverage": 0.5882352941176471, "decoded": 30, "failed": 21, "n": 51, "not_attempted": 0}, "status": "PARTIAL", "unattempted_urls": 8092, "unique_urls": 8157}
++ sha256sum /tmp/vlsu-stage0-7004194/VLSU.csv
+9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f  /tmp/vlsu-stage0-7004194/VLSU.csv
++ set +x
