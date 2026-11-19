@@ -1,0 +1,22 @@
+{
+  "repository": "https://github.com/surrey-nlp/TRACE.git",
+  "commit": "83ecb799f897fe275185e082ee9a669f7d04bfaa",
+  "tree": "3d9f7d150fdbdb97615f95a270d398fc214efeca",
+  "committed_at": "2025-11-11T17:30:13+00:00",
+  "license": "MIT",
+  "files": {
+    "LICENSE": "dc348396bd6f7c43b68af2bf433e1dd7bf497d220005ec1e7d9f961b3e078948",
+    "requirements.txt": "89c895fed0248ea0255b4496db2bc91754bdb9934c5b9badf2a3d0ea51edb572",
+    "clip_vitL_14_ft.py": "6aa60349b529bc8b8bad8d36d8028ef8aaa6f838efa0d59b4e6e83cd0ff099da",
+    "utils/loss_functions.py": "50b2d1b8bdab3573df44e2d73f3ad8d4532ea237663fb15d9dd9e8aa94e073c2",
+    "utils/caption_selection.py": "3687a93dd37bb263d263e9b95f74d254be4da0a62fc14b3184524b77d76bbebf",
+    "vg_caption_gen.py": "6e06bb5bfd28977c1aed3ed914cde9a6da9c4de67357d578abdd0cdac6caab52",
+    "benco_eval.py": "456c682f5b6c60ec99237fe87c178a2d2358eb6446a9165ec76a0bf75d9df2c1",
+    "README.md": "cf78f6940690328acaf74bb0cf881914e8d8f08670f7668c1cee8c98ba7e27dd"
+  },
+  "backbone": {
+    "repository": "openai/clip-vit-large-patch14",
+    "reference_revision": "32bd64288804d66eefd0ccbe215aa642df71cc41",
+    "upstream_revision": "unknown (unpinned in training code)"
+  }
+}
