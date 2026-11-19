@@ -1,0 +1,19 @@
+utc=2026-11-19T09:05:57Z
+83ecb799f897fe275185e082ee9a669f7d04bfaa
+0, NVIDIA GeForce RTX 4090, 580.82.09, 49140 MiB, 48506 MiB
+1, NVIDIA GeForce RTX 4090, 580.82.09, 49140 MiB, 34772 MiB
+2, NVIDIA GeForce RTX 4090 D, 580.82.09, 49140 MiB, 35742 MiB
+3, NVIDIA GeForce RTX 4090 D, 580.82.09, 49140 MiB, 48506 MiB
+4, NVIDIA GeForce RTX 4090 D, 580.82.09, 49140 MiB, 48506 MiB
+5, NVIDIA GeForce RTX 4090 D, 580.82.09, 49140 MiB, 48506 MiB
+6, NVIDIA GeForce RTX 4090 D, 580.82.09, 49140 MiB, 48506 MiB
+7, NVIDIA GeForce RTX 4090 D, 580.82.09, 49140 MiB, 48506 MiB
+PARAMETER_MANIFEST_WRITTEN
+experiment_mode=trace_original
+MANUAL_DATA_ACTION_REQUIRED: Authorized FHM access and provenance must be confirmed
+Command exited with non-zero status 3
+gate_wall_s=0.11 exit=3
+experiment_mode=trace_text_only_diagnostic
+MANUAL_DATA_ACTION_REQUIRED: Authorized FHM access and provenance must be confirmed
+Command exited with non-zero status 3
+gate_wall_s=0.09 exit=3
