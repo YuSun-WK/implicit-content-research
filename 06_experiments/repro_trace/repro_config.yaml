@@ -1,0 +1,23 @@
+# Set private paths and attest authorized, original inputs in an ignored local copy.
+mode: dry-run
+upstream_dir: /tmp/trace-s0-reference
+data_path: null
+image_root: null
+model_dir: null
+# For dry-run only, a pinned public CLIP config suffices.
+model_config: .local/clip-config.json
+authorization_confirmed: false
+caption_provenance_confirmed: false
+train_split: train
+dev_split: dev_seen
+threshold: fixed_0.5
+evaluate_dev: false
+microbatch: 2
+accumulation_steps: 1
+precision: bf16
+seed: 121
+max_batches: 100
+checkpoint_every: 25
+resume: null
+smoke_checkpoint: null
+output_dir: .local/run
