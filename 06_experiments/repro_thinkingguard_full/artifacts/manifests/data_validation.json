@@ -130,7 +130,6 @@
         "test/illegal_activities/52/safe",
         "test/illegal_activities/53/safe",
         "test/illegal_activities/63/unsafe",
-        "test/illegal_activities/64/unsafe",
         "test/illegal_activities/65/unsafe",
         "test/illegal_activities/66/unsafe",
         "test/illegal_activities/67/unsafe",
@@ -160,9 +159,9 @@
         "test/illegal_activities/96/safe"
       ],
       "raw_samples": 192,
-      "ready_pairs": 39,
+      "ready_pairs": 40,
       "valid_csv_pairs": 96,
-      "verified_images": 125
+      "verified_images": 126
     },
     "misinformation": {
       "missing_or_unverified": [
@@ -256,8 +255,6 @@
         "test/misinformation/48/unsafe",
         "test/misinformation/49/safe",
         "test/misinformation/49/unsafe",
-        "test/misinformation/50/safe",
-        "test/misinformation/50/unsafe",
         "test/misinformation/51/safe",
         "test/misinformation/51/unsafe",
         "test/misinformation/52/safe",
@@ -348,9 +345,9 @@
         "test/misinformation/95/unsafe"
       ],
       "raw_samples": 190,
-      "ready_pairs": 4,
+      "ready_pairs": 5,
       "valid_csv_pairs": 95,
-      "verified_images": 10
+      "verified_images": 12
     },
     "offensiveness": {
       "missing_or_unverified": [
@@ -1772,20 +1769,21 @@
   ],
   "csv_official_blobs_verified": true,
   "download_status_counts": {
-    "DOWNLOAD_FAILED": 207,
-    "MISSING": 1232,
+    "DOWNLOADED": 3,
+    "DOWNLOAD_FAILED": 205,
+    "MISSING": 1231,
     "REUSED": 297
   },
   "gpu_data_gate": false,
   "image_decode_counts": {
-    "NOT_RUN": 1439,
-    "OK": 297
+    "NOT_RUN": 1436,
+    "OK": 300
   },
-  "manifest_sha256": "4ae6e8997d33d37b2d1bfba13dcd3e5177376da1a6abeaeb5357784334877e49",
+  "manifest_sha256": "40f11bedfb87cb0005691ec861d162500e641f3fad15f1430f88c7989f2ba649",
   "revision": "3ac26e778db94a282711f463f22ba6db99643bee",
   "run_status_counts": {
-    "NOT_READY_MISSING_IMAGE": 1439,
-    "READY": 297
+    "NOT_READY_MISSING_IMAGE": 1436,
+    "READY": 300
   },
   "test_pairs": 868,
   "test_samples": 1736,

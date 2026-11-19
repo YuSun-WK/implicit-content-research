@@ -112,8 +112,22 @@ def attach_image(row, roots, image_root, checksums, tree, download):
         path.parent.mkdir(parents=True, exist_ok=True)
         temporary = path.with_suffix(path.suffix + ".partial")
         url = f"{DATASET}/resolve/{REVISION}/{quote(relative)}"
-        result = subprocess.run(["curl", "-fsSL", "--retry", "1", "--connect-timeout", "10",
-                                 "--max-time", "45", url, "-o", str(temporary)], capture_output=True, text=True)
+        started = time.monotonic()
+        result = None
+        for attempt in range(3):
+            resume = ["--continue-at", "-"] if temporary.is_file() and temporary.stat().st_size else []
+            result = subprocess.run(
+                ["curl", "-fsSL", "--connect-timeout", "5", "--max-time", "16",
+                 *resume, url, "-o", str(temporary)], capture_output=True, text=True,
+            )
+            if result.returncode == 0:
+                break
+            if result.returncode in (22, 33, 36) and resume:
+                temporary.unlink(missing_ok=True)
+            if attempt < 2:
+                time.sleep(2 ** attempt)
+        row["transfer_seconds"] = round(time.monotonic() - started, 3)
+        row["transfer_attempts"] = attempt + 1
         if result.returncode:
             row.update(download_status="DOWNLOAD_FAILED", image_decode_detail=result.stderr.strip())
             return
@@ -121,6 +135,7 @@ def attach_image(row, roots, image_root, checksums, tree, download):
             verify_image(temporary, expected)
             temporary.replace(path)
         except (OSError, ValueError, SyntaxError) as exc:
+            temporary.unlink(missing_ok=True)
             row.update(download_status="DOWNLOAD_INVALID", image_decode_detail=str(exc))
             return
         attach_image(row, roots, image_root, checksums, tree, False)
@@ -158,7 +173,9 @@ def main():
     cli.add_argument("--historical-checksums", type=Path)
     cli.add_argument("--frozen-tree", type=Path, help="JSON entries from the fixed revision, indexed by path")
     cli.add_argument("--download", action="store_true")
-    cli.add_argument("--workers", type=int, default=8)
+    cli.add_argument("--workers", type=int, default=4)
+    cli.add_argument("--priority-queues", type=Path, help="Use the frozen Smoke, Validation, Pilot order")
+    cli.add_argument("--through-stage", choices=("smoke", "validation", "pilot", "full"), default="full")
     cli.add_argument("--download-seconds", type=float, help="Stop scheduling downloads after this many seconds")
     cli.add_argument("--attempt-log", type=Path, help="Append per-file transfer statuses for resume diagnostics")
     cli.add_argument("--previous-manifest", type=Path, action="append", default=[],
@@ -193,7 +210,23 @@ def main():
     for row in test:
         attach_image(row, args.cache, args.image_root, checksums, tree, False)
     if args.download:
-        pending = [row for row in test if row["run_status"] != "READY"]
+        priority = []
+        if args.priority_queues:
+            frozen = json.loads(args.priority_queues.with_name("parser_freeze.json").read_text())
+            contents = args.priority_queues.read_bytes()
+            if digest(contents) != frozen["queue_sha256"]:
+                raise ValueError("Priority queue hash differs from the frozen Stage 1 order")
+            queues = json.loads(contents)
+            for stage in ("smoke", "validation", "pilot"):
+                priority.extend(queues[stage])
+                if stage == args.through_stage:
+                    break
+        elif args.through_stage != "full":
+            cli.error("--through-stage requires --priority-queues")
+        pending_by_uid = {row["sample_uid"]: row for row in test if row["run_status"] != "READY"}
+        pending = [pending_by_uid.pop(uid) for uid in priority if uid in pending_by_uid]
+        if args.through_stage == "full":
+            pending.extend(pending_by_uid.values())
         # A bounded batch avoids hammering an unavailable endpoint.
         stop = False
 
@@ -203,27 +236,28 @@ def main():
 
         signal.signal(signal.SIGTERM, stop_after_batch)
         start_time = time.monotonic()
-        window = max(1, args.workers * 4)
+        window = max(1, args.workers)
         with ThreadPoolExecutor(max_workers=args.workers) as pool:
             for start in range(0, len(pending), window):
                 if stop or (args.download_seconds and time.monotonic() - start_time >= args.download_seconds):
                     break
                 batch = pending[start:start + window]
+                batch_start = time.monotonic()
                 tasks = [pool.submit(attach_image, row, args.cache, args.image_root, checksums, tree, True)
                          for row in batch]
                 for task in tasks:
                     task.result()
                 print(f"Image fetch {min(start+window,len(pending))}/{len(pending)} attempted, "
-                      f"{sum(r['run_status'] == 'READY' for r in batch)}/{len(batch)} ready in batch",
+                      f"{sum(r['run_status'] == 'READY' for r in batch)}/{len(batch)} ready in {time.monotonic()-batch_start:.2f}s",
                       flush=True)
                 if args.attempt_log:
                     with args.attempt_log.open("a") as log:
                         for row in batch:
-                            log.write(json.dumps({key: row[key] for key in (
-                                "sample_uid", "download_status", "image_sha256", "image_decode_detail"
+                            log.write(json.dumps({key: row.get(key) for key in (
+                                "sample_uid", "download_status", "image_sha256", "expected_image_sha256",
+                                "image_decode_detail", "transfer_attempts", "transfer_seconds"
                             )}) + "\n")
-                if all(row["download_status"] == "DOWNLOAD_FAILED" for row in batch):
-                    break
+
 
     prior_failures = {}
     for path in args.previous_manifest:
@@ -281,9 +315,9 @@ def main():
     output.mkdir(parents=True, exist_ok=True)
     manifest = output / "test_manifest.csv"
     with manifest.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(test[0]), lineterminator="\n")
+        writer = csv.DictWriter(handle, fieldnames=[key for key in test[0] if not key.startswith("transfer_")], lineterminator="\n")
         writer.writeheader()
-        writer.writerows(test)
+        writer.writerows({key: row[key] for key in writer.fieldnames} for row in test)
     manifest_sha = digest(manifest.read_bytes())
     (output / "test_manifest.sha256").write_text(f"{manifest_sha}  test_manifest.csv\n")
     dump(output / "data_validation.json", dict(

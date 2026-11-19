@@ -1,0 +1,41 @@
+{
+  "base_commit": "12660f7b0ed5f16b6aec6d8ae26d1bf0dd3df0fd",
+  "files": {
+    "scripts/run_resumeable_inference.py": {
+      "before": "21429d1bcdbc5417b690d813bce90e6f59a68a962c58fe0225ebde6046f52fae",
+      "after": "7d9bea6854c011d1df3d14f026a691449e8470ea85ef30898f2cf5c0ea52fa0c"
+    },
+    "scripts/build_test_manifest.py": {
+      "before": "4374cb5c0c4c2006a7c218d36d2b478825b12a6d5a731ab088bf7c47f6fa72c5",
+      "after": "05795d99f8a6f04c31637d887c008cfcbf8c2b6d3d626340d47db706b821b21f"
+    },
+    "scripts/recovery_gates.py": {
+      "before": null,
+      "after": "fdb64bc4e79aabe3f5ff15b32f8f9c035d7fd4c3878a10d0b36c816bb5d16020"
+    },
+    "configs/author_five_step_nf4.yaml": {
+      "before": "8f1639d54ac052badce6e8f4bf14c7a33e944e75eeb09d876156b8606ce3d145",
+      "after": "8f1639d54ac052badce6e8f4bf14c7a33e944e75eeb09d876156b8606ce3d145"
+    },
+    "configs/author_prompt.json": {
+      "before": "6b42674197de6d39c17aa558bf5b568174e191ef314648bf2946c86b11889dd1",
+      "after": "6b42674197de6d39c17aa558bf5b568174e191ef314648bf2946c86b11889dd1"
+    },
+    "scripts/official_parser_v3.py": {
+      "before": "8ce508d2d320d84e77a14038631ae83f4443e9987447d8ef2c7ec71e6f43f4c3",
+      "after": "8ce508d2d320d84e77a14038631ae83f4443e9987447d8ef2c7ec71e6f43f4c3"
+    },
+    "tests/test_official_parser_v3.py": {
+      "before": "9c30d334f350b0f7c4db98f93f30b4a0025147d57ab1ef68ee101f4bc261508e",
+      "after": "9c30d334f350b0f7c4db98f93f30b4a0025147d57ab1ef68ee101f4bc261508e"
+    },
+    "artifacts/sample_queues.json": {
+      "before": "765db63fb590d343dad725f68d0842e923b3843b05ea6ee03e42c780d2302dd6",
+      "after": "765db63fb590d343dad725f68d0842e923b3843b05ea6ee03e42c780d2302dd6"
+    },
+    "artifacts/parser_freeze.json": {
+      "before": "2bc8bfdbf4c2fd599685f24124d4eccdb5b2777dfd8209a748f05ed671acaf2e",
+      "after": "2bc8bfdbf4c2fd599685f24124d4eccdb5b2777dfd8209a748f05ed671acaf2e"
+    }
+  }
+}

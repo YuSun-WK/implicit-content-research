@@ -15,6 +15,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from official_parser_v3 import parse
+from recovery_gates import (
+    active_processes, bind_pid, prior_summary, queue_hash, queue_ready, registry_key,
+    require_idle, run_id_valid,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -86,30 +90,21 @@ def card(uuid):
                 utilization_pct=int(busy), driver=driver)
 
 
-def audit_resource(uuid, cap_mib, deadline, log_path, peaks, started):
-    pid = str(os.getpid())
-    seen = False
+def audit_resource(uuid, pid, cap_mib, deadline, log_path, stop, job_id):
     with log_path.open("a", buffering=1) as log:
-        while time.monotonic() < deadline:
-            row = {"utc": now(), "pid": pid}
+        while not stop.is_set() and time.monotonic() < deadline:
+            row = {"utc": now(), "pid": pid, "job_id": job_id}
             fatal = None
             try:
                 row.update(card(uuid))
-                processes = [(p, m) for device, p, m in gpu_rows() if device == uuid]
-                memory = next((value for proc, value in processes if proc == pid), None)
-                row["process_mib"] = int(memory) if memory is not None else None
-                seen |= memory is not None
-                if any(proc != pid for proc, _ in processes):
+                processes = active_processes(uuid, gpu_rows)
+                row["process_mib"] = processes.get(pid)
+                if set(processes) - {pid}:
                     fatal = "OTHER_PROCESS_ON_SELECTED_GPU"
-                if row["process_mib"] is None and seen:
+                elif row["process_mib"] is None:
                     fatal = "PROCESS_MEMORY_LOST"
-                if row["process_mib"] is None and time.monotonic() - started > 45:
-                    fatal = "PROCESS_MEMORY_UNAVAILABLE"
-                if row["used_mib"] >= cap_mib or (row["process_mib"] or 0) >= cap_mib:
+                elif max(row["used_mib"], row["process_mib"]) >= cap_mib:
                     fatal = "MEMORY_LIMIT"
-                for field in ("used_mib", "process_mib"):
-                    if row[field] is not None:
-                        peaks[field] = max(peaks.get(field, 0), row[field])
             except (subprocess.SubprocessError, OSError, ValueError) as exc:
                 fatal = f"TELEMETRY_UNAVAILABLE: {exc}"
             if fatal:
@@ -118,10 +113,27 @@ def audit_resource(uuid, cap_mib, deadline, log_path, peaks, started):
             if fatal:
                 os.fsync(log.fileno())
                 os._exit(71)
-            time.sleep(0.5)
-        log.write(json.dumps({"utc": now(), "abort": "HARD_WALL_LIMIT"}) + "\n")
-        os.fsync(log.fileno())
-        os._exit(72)
+            stop.wait(1)
+        if not stop.is_set():
+            log.write(json.dumps({"utc": now(), "abort": "HARD_WALL_LIMIT", "job_id": job_id}) + "\n")
+            os.fsync(log.fileno())
+            os._exit(72)
+
+
+def verify_local(row):
+    path = Path(row["image_local_path"])
+    return path.is_file() and sha(path) == row["expected_image_sha256"]
+
+
+def register_summary(runs, base, stage, summary_path, identity):
+    path = runs / "stage_registry.json"
+    with (runs / ".stage_registry.lock").open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        registry = read(path) if path.exists() else {}
+        key = registry_key(base, stage, identity["inputs_sha256"])
+        registry[key] = {"run_id": identity["run_id"], "summary_sha256": sha(summary_path)}
+        write(path, registry)
+
 
 
 def percentile(values, quantile):
@@ -154,7 +166,7 @@ def summarize(rows, stage, peaks):
 
 def main():
     cli = argparse.ArgumentParser(description=__doc__)
-    cli.add_argument("--stage", choices=("smoke", "validation", "pilot"), required=True)
+    cli.add_argument("--stage", choices=("smoke", "validation", "pilot", "diagnostic", "full"), required=True)
     cli.add_argument("--model", type=Path, required=True)
     cli.add_argument("--gpu-uuid")
     cli.add_argument("--run-id")
@@ -174,12 +186,32 @@ def main():
     with manifest.open() as handle:
         rows = list(csv.DictReader(handle))
     entries = {r["sample_uid"]: r for r in rows}
-    ordered = queues[args.stage]
+    with (ROOT / "artifacts/dataset_source_tree.csv").open() as handle:
+        tree = {r["path"]: r["lfs_sha256"] for r in csv.DictReader(handle)}
+    diagnostic_path = ROOT / "artifacts/diagnostic_smoke_ready_v1.json"
+    diagnostic = read(diagnostic_path) if diagnostic_path.exists() else {}
+    if args.stage == "diagnostic":
+        ordered = diagnostic.get("ordered", [])
+    elif args.stage == "full":
+        ordered = list(entries)
+    else:
+        ordered = queues[args.stage]
+    stage_data = queue_ready(args.stage, entries, ordered, tree, config["dataset_revision"], verify_local)
+    global_complete = validation["gpu_data_gate"] and queue_ready(
+        "full", entries, list(entries), tree, config["dataset_revision"])["ready"]
+    if args.stage == "full":
+        stage_data["ready"] &= global_complete
     requirements = {
         "manifest": len(rows) == len(entries) == 1736 and sha(manifest) == validation["manifest_sha256"],
-        "data": validation["gpu_data_gate"] and all(entries[uid]["run_status"] == "READY" for uid in ordered),
-        "queues": sha(queue_path) == freeze["queue_sha256"] and len(ordered) == len(set(ordered))
-                  and len(ordered) == {"smoke": 6, "validation": 36, "pilot": 200}[args.stage],
+        "data": stage_data["ready"],
+        "official_tree": sha(ROOT / "artifacts/dataset_source_tree.csv")
+                         == read(ROOT / "artifacts/source_snapshot.json")["dataset"]["tree_sha256"],
+        "queues": sha(queue_path) == freeze["queue_sha256"]
+                  and not stage_data["invalid_queue"]
+                  and (args.stage != "diagnostic" or (
+                      diagnostic.get("label") == "diagnostic_smoke_ready_v1"
+                      and diagnostic.get("inputs_sha256") == queue_hash(entries, ordered)
+                      and diagnostic.get("formal_queues_sha256") == sha(queue_path))),
         "parser": sha(Path(__file__).with_name("official_parser_v3.py"))
                   == freeze["parser_sha256"] == config["parser_sha256"]
                   and sha(ROOT / "tests/test_official_parser_v3.py") == freeze["tests_sha256"],
@@ -193,20 +225,23 @@ def main():
                  and all((args.model / filename).is_file() and sha(args.model / filename) == evidence["sha256"]
                          for filename, evidence in model_audit["processor_and_configs"].items()),
     }
-    print(json.dumps(dict(stage=args.stage, queued=len(ordered), preflight=requirements), indent=2), flush=True)
+    print(json.dumps(dict(stage=args.stage, queued=len(ordered), global_test_complete=global_complete,
+                          preflight=requirements, stage_data=stage_data), indent=2), flush=True)
     if args.dry_run:
         return 0
     if not all(requirements.values()):
         return 2
     if args.preflight_only:
         return 0
-    if not args.gpu_uuid or not args.run_id or not args.run_id.replace("-", "").replace("_", "").isalnum():
+    if args.stage == "full":
+        cli.error("Full Test is available only for preflight in Stage 1")
+    if not args.gpu_uuid or not run_id_valid(args.run_id):
         cli.error("A permitted GPU UUID and an alphanumeric run ID are required")
 
-    identity_base = dict(config_sha256=sha(settings_path), manifest_sha256=sha(manifest),
+    identity_base = dict(config_sha256=sha(settings_path), source_tree_sha256=sha(ROOT / "artifacts/dataset_source_tree.csv"),
                          queues_sha256=sha(queue_path), model_audit_sha256=sha(ROOT / "artifacts/model_cache_audit.json"),
-                         runner_sha256=sha(Path(__file__)))
-    identity = dict(**identity_base, stage=args.stage, run_id=args.run_id)
+                         runner_sha256=sha(Path(__file__)), gates_sha256=sha(Path(__file__).with_name("recovery_gates.py")))
+    identity = dict(**identity_base, inputs_sha256=queue_hash(entries, ordered), stage=args.stage, run_id=args.run_id)
     out = ROOT / "runs" / args.run_id
     out.mkdir(exist_ok=True)
     lock = (out / ".lock").open("a")
@@ -223,12 +258,12 @@ def main():
             return 0 if read(prior_summary)["resource_gate"] else 3
         raise ValueError("Complete prediction journal is missing its terminal resource summary")
     benchmark_p95 = None
-    required_stages = {"smoke": [], "validation": ["smoke"], "pilot": ["smoke", "validation"]}
+    required_stages = {"diagnostic": [], "smoke": [], "validation": ["smoke"], "pilot": ["smoke", "validation"]}
+    registry_path = ROOT / "runs/stage_registry.json"
+    registry = read(registry_path) if registry_path.exists() else {}
     for stage in required_stages[args.stage]:
-        previous = ROOT / "runs" / stage / "summary.json"
-        summary = read(previous) if previous.is_file() else {}
-        if not summary.get("resource_gate") or summary.get("identity") != dict(**identity_base, stage=stage, run_id=stage):
-            raise ValueError(f"Missing passing {stage} resource gate for this configuration")
+        previous, summary = prior_summary(ROOT / "runs", registry, identity_base, stage,
+                                          queue_hash(entries, queues[stage]), read, sha)
         if stage == "validation":
             if summary["prediction_count"] != 36 or summary["coverage"] < freeze["minimum_parse_coverage"]:
                 raise ValueError("Independent A0 parse coverage did not reach 95%")
@@ -247,14 +282,8 @@ def main():
                       row["parsed_verdict"] for key, row in verdict_records.items()}
             if replay != decisions:
                 raise ValueError("Validation parser and raw-only verdict transcription disagree")
-    initial = card(args.gpu_uuid)
-    if (initial["uuid"] != args.gpu_uuid or "4090" not in initial["name"] or initial["used_mib"] > 64
-            or initial["utilization_pct"] or any(device == args.gpu_uuid for device, _, _ in gpu_rows())):
-        raise ValueError("Requested GPU is occupied or differs from the allowed GPU class")
-    for uid in ordered:
-        row = entries[uid]
-        if uid not in prior and sha(Path(row["image_local_path"])) != row["image_sha256"]:
-            raise ValueError(f"Image content changed: {uid}")
+    processes = lambda: active_processes(args.gpu_uuid, gpu_rows)
+    require_idle(args.gpu_uuid, card, processes)
     for shard in model_audit["shards"]:
         if sha(args.model / shard["name"]) != shard["sha256"]:
             raise ValueError(f"Model weight changed: {shard['name']}")
@@ -263,30 +292,57 @@ def main():
             raise ValueError(f"Environment version mismatch: {package}")
     if ".".join(map(str, sys.version_info[:3])) != config["versions"]["python"]:
         raise ValueError("Python version mismatch")
+    initial = require_idle(args.gpu_uuid, card, processes)
     if not identity_path.exists():
         write(identity_path, identity)
-    write(out / f"job-{time.time_ns()}.json", dict(
-        start_utc=now(), argv=sys.argv, gid=initial, git=subprocess.check_output(
+    job_id = str(time.time_ns())
+    write(out / f"job-{job_id}.json", dict(
+        start_utc=now(), argv=sys.argv, gid=initial, manifest_sha256=sha(manifest), git=subprocess.check_output(
             ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip(), identity=identity))
     os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu_uuid
     os.environ["HF_HUB_OFFLINE"] = "1"
 
     start = time.monotonic()
     deadline = start + config["max_wall_seconds"]
-    peaks = {}
-    thread = threading.Thread(target=audit_resource,
-                              args=(args.gpu_uuid, config["memory_cap_gib"]*1024, deadline,
-                                    out / "gpu_samples.jsonl", peaks, start), daemon=True)
-    thread.start()
     import torch
     from PIL import Image
     from transformers import AutoProcessor, BitsAndBytesConfig, Qwen3VLForConditionalGeneration
 
     if torch.version.cuda != config["versions"]["cuda"] or torch.cuda.device_count() != 1:
         raise ValueError("CUDA version or visible-device count differs")
+    require_idle(args.gpu_uuid, card, processes)
+    torch.cuda.init()
     torch.manual_seed(config["seed"])
     fraction = min(1.0, config["torch_allocator_cap_gib"] * 1024**3 / torch.cuda.get_device_properties(0).total_memory)
     torch.cuda.set_per_process_memory_fraction(fraction, 0)
+    cap_mib = config["memory_cap_gib"] * 1024
+
+    def verify_card(used):
+        if max(used, card(args.gpu_uuid)["used_mib"]) >= cap_mib:
+            raise ValueError("GPU ownership challenge exceeded budget")
+
+    def allocate():
+        probe = torch.empty(64 * 1024 * 1024, dtype=torch.uint8, device="cuda:0")
+        torch.cuda.synchronize()
+        return probe
+
+    def release():
+        torch.cuda.empty_cache()
+        torch.cuda.synchronize()
+
+    ns = next((line.split()[1:] for line in Path("/proc/self/status").read_text().splitlines()
+               if line.startswith("NSpid:")), [])
+    try:
+        binding = bind_pid(processes, allocate, release, {os.getpid(), *map(int, ns)}, verify_card)
+    except (ValueError, OSError, subprocess.SubprocessError) as exc:
+        write(out / f"gpu-binding-{job_id}.json", {"status": "BLOCKED", "reason": str(exc)})
+        raise
+    write(out / f"gpu-binding-{job_id}.json", dict(**binding, status="DONE", gpu_uuid=args.gpu_uuid))
+    monitor_stop = threading.Event()
+    thread = threading.Thread(target=audit_resource,
+                              args=(args.gpu_uuid, binding["host_pid"], cap_mib, deadline,
+                                    out / "gpu_samples.jsonl", monitor_stop, job_id), daemon=True)
+    thread.start()
     quant = dict(config["quantization"])
     quant["bnb_4bit_compute_dtype"] = torch.bfloat16
     model = Qwen3VLForConditionalGeneration.from_pretrained(
@@ -353,6 +409,8 @@ def main():
         journal(journal_path, prior)
         print(f"{args.stage} {len(prior)}/{len(ordered)} {uid} {status} "
               f"{prior[uid]['elapsed']:.2f}s", flush=True)
+    monitor_stop.set()
+    thread.join()
     telemetry = [json.loads(line) for line in (out / "gpu_samples.jsonl").read_text().splitlines()]
     observed_peaks = {
         field: max((r[field] for r in telemetry if r.get(field) is not None), default=None)
@@ -360,6 +418,10 @@ def main():
     }
     summary = summarize(prior, args.stage, observed_peaks)
     summary.update(end_utc=now(), job_wall_seconds=time.monotonic()-start, identity=identity,
+                   parse_gate=("PASS" if summary["extracted"] >= 35 else "FAILED_PARSE_GATE")
+                              if args.stage == "validation" and len(prior) == len(ordered) else "NOT_EVALUATED",
+                   torch_peak_allocated_mib=max(r["torch_peak_allocated_mib"] for r in prior.values()) if prior else None,
+                   torch_peak_reserved_mib=max(r["torch_peak_reserved_mib"] for r in prior.values()) if prior else None,
                    resource_gate=len(prior) == len(ordered) and summary["generated_count"] == len(ordered)
                    and observed_peaks["process_mib"] is not None and max(observed_peaks.values()) < 20*1024)
     write(out / "summary.json", summary)
@@ -368,6 +430,8 @@ def main():
                   "raw_output": prior[uid]["raw_output"]} for uid in sorted(
                       prior, key=lambda key: hashlib.sha256(key.encode()).digest())]
         write(out / "raw_only_review.json", blind)
+    if summary["resource_gate"] and args.stage in ("smoke", "validation"):
+        register_summary(ROOT / "runs", identity_base, args.stage, out / "summary.json", identity)
     return 0 if summary["resource_gate"] else 3
 
 
