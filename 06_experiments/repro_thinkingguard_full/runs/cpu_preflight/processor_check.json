@@ -1,0 +1,76 @@
+{
+  "python": "3.10.19",
+  "torch": "2.9.1+cu128",
+  "cuda_build": "12.8",
+  "processor": "Qwen3VLProcessor",
+  "image_size": {
+    "longest_edge": 16777216,
+    "shortest_edge": 65536
+  },
+  "image_patch_size": 16,
+  "image_merge_size": 2,
+  "markers": {
+    "<|/Intent|>": {
+      "ids": [
+        27,
+        91,
+        14,
+        11536,
+        91,
+        29
+      ],
+      "author_decode": "<|/Intent|>",
+      "raw_decode": "<|/Intent|>"
+    },
+    "<|/Entity|>": {
+      "ids": [
+        27,
+        91,
+        14,
+        3030,
+        91,
+        29
+      ],
+      "author_decode": "<|/Entity|>",
+      "raw_decode": "<|/Entity|>"
+    },
+    "<|/Attribute|>": {
+      "ids": [
+        27,
+        91,
+        14,
+        3907,
+        91,
+        29
+      ],
+      "author_decode": "<|/Attribute|>",
+      "raw_decode": "<|/Attribute|>"
+    },
+    "<|/Risk|>": {
+      "ids": [
+        27,
+        91,
+        14,
+        85307,
+        91,
+        29
+      ],
+      "author_decode": "<|/Risk|>",
+      "raw_decode": "<|/Risk|>"
+    },
+    "<|/Overall|>": {
+      "ids": [
+        27,
+        91,
+        14,
+        27489,
+        91,
+        29
+      ],
+      "author_decode": "<|/Overall|>",
+      "raw_decode": "<|/Overall|>"
+    }
+  },
+  "chat_render_sha256": "967c3b21261b46c622fba658b009d961a382bc0bc8661edfff7ab08b0d40d509",
+  "vision_auto_resolves_to": "Qwen3VLForConditionalGeneration"
+}

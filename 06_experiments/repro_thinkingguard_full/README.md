@@ -6,3 +6,7 @@
 - [CODEX_STAGE1_PROMPT.md](CODEX_STAGE1_PROMPT.md)：直接交给Codex CLI的第一阶段执行规范（只做来源/CPU核验、解析器、Smoke、门槛通过后最多100对Pilot；不运行300/868或训练）。
 
 **验收状态标记**：`PLAN_READY` 仅表示任务文档和分支已存在；`DATA_NOT_RECHECKED` 表示尚未通过服务器检查当前HF HEAD与图片；`PILOT_NOT_RUN` 表示尚未有新的GPU预测。不得把旧 36 对统一协议结果写成新 868 对五阶段结果。
+
+## Stage 1 实际执行
+
+[验收报告](STAGE1_EXECUTION_REPORT.md) 记录固定来源、Manifest、CPU 测试、图片传输和 GPU 门槛。

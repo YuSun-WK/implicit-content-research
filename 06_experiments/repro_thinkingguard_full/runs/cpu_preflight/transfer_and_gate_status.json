@@ -1,0 +1,62 @@
+{
+  "checked_utc": "2026-11-19T08:54:58.014423+00:00",
+  "first_pass": {
+    "statuses": {
+      "DOWNLOAD_FAILED": 210,
+      "REUSED": 72,
+      "DOWNLOADED": 222,
+      "MISSING": 1232
+    },
+    "curl_error_counts": {
+      "28": 190,
+      "35": 18,
+      "16": 2
+    }
+  },
+  "bounded_retry": {
+    "statuses": {
+      "DOWNLOAD_FAILED": 45,
+      "DOWNLOADED": 3,
+      "REUSED": 294,
+      "MISSING": 1394
+    },
+    "curl_error_counts": {
+      "28": 45
+    }
+  },
+  "final": {
+    "verified_test_images": 297,
+    "verified_original_cache": 72,
+    "verified_acquired_in_stage1": 225,
+    "unready_test_images": 1439,
+    "final_per_file_status_counts": {
+      "DOWNLOAD_FAILED": 207,
+      "MISSING": 1232,
+      "REUSED": 297
+    }
+  },
+  "diagnostics": {
+    "direct": "timed out",
+    "mirror": "timed out",
+    "isolated_preconfigured_routes": {
+      "N10": "0/3 verified",
+      "N11": "0/3 verified"
+    }
+  },
+  "data_gate": "BLOCKED",
+  "smoke": {
+    "status": "NOT_RUN",
+    "prediction_count": 0
+  },
+  "independent_validation": {
+    "status": "NOT_RUN",
+    "prediction_count": 0,
+    "independent_human_review": "NOT_RUN"
+  },
+  "pilot": {
+    "status": "NOT_RUN",
+    "prediction_count": 0
+  },
+  "stage1_gpu_latency_seconds": null,
+  "stage1_gpu_peak_mib": null
+}

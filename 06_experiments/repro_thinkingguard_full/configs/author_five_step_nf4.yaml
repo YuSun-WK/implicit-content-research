@@ -6,7 +6,7 @@
   "official_code_revision": "8c9426ea1025ffa69034e9f5ce07647bd3e72dc4",
   "system_prompt_sha256": "6992b7fa56f705f2901b09979e5d23587bd740b8447b29fc375f05636fff4c87",
   "prompt_config_sha256": "6b42674197de6d39c17aa558bf5b568174e191ef314648bf2946c86b11889dd1",
-  "parser_sha256": "91f68439d98e1a1b09f7ced84b17b6567711247b56016f97286970e1c278b9f2",
+  "parser_sha256": "8ce508d2d320d84e77a14038631ae83f4443e9987447d8ef2c7ec71e6f43f4c3",
   "quantization": {
     "load_in_4bit": true,
     "bnb_4bit_quant_type": "nf4",
@@ -18,7 +18,11 @@
   "do_sample": false,
   "image": {
     "mode": "RGB",
-    "resize": "pinned processor defaults"
+    "resize": "pinned processor defaults",
+    "shortest_edge": 65536,
+    "longest_edge": 16777216,
+    "patch_size": 16,
+    "merge_size": 2
   },
   "max_wall_seconds": 19000,
   "memory_cap_gib": 20,

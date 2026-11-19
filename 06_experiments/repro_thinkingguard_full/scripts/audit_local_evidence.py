@@ -1,8 +1,9 @@
 """Verify the historical worktree and repaired ThinkingGuard weight index."""
 import argparse
 import hashlib
-import importlib.util
+import runpy
 import json
+from math import prod
 import subprocess
 from collections import Counter
 from pathlib import Path
@@ -11,8 +12,11 @@ from official_parser_v3 import parse
 
 
 def sha(path):
+    digest = hashlib.sha256()
     with path.open("rb") as handle:
-        return hashlib.file_digest(handle, "sha256").hexdigest()
+        for chunk in iter(lambda: handle.read(8 * 1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def write(path, data):
@@ -35,9 +39,7 @@ def legacy_snapshot(repo):
 
 def audit_model(repo, model):
     script = repo / "03_experiments/h1_k0_triggerbench/scripts/audit_model_cache.py"
-    spec = importlib.util.spec_from_file_location("legacy_model_verifier", script)
-    verifier = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(verifier)
+    verifier = runpy.run_path(str(script))
     model_id = "Sandy124/ThinkingGuard-8B"
     official = model / "model.safetensors.index.official.json"
     repaired = model / "model.safetensors.index.json"
@@ -48,10 +50,12 @@ def audit_model(repo, model):
     official_blob = subprocess.check_output(["git", "hash-object", str(official)], text=True).strip()
     published = {row["rfilename"]: row for row in metadata["siblings"]}
     observed, shards = {}, []
-    for name, (size, expected) in verifier.SHARDS[model_id].items():
+    dtype_bytes = {"BF16": 2, "F16": 2, "F32": 4, "F64": 8, "I8": 1, "U8": 1,
+                   "I16": 2, "I32": 4, "I64": 8, "BOOL": 1}
+    for name, (size, expected) in verifier["SHARDS"][model_id].items():
         path = model / name
         keys = {key for key, location in repaired_map.items() if location == name}
-        verifier.check_safetensors_header(path, keys)
+        verifier["check_safetensors_header"](path, keys)
         with path.open("rb") as handle:
             header_size = int.from_bytes(handle.read(8), "little")
             header = json.loads(handle.read(header_size))
@@ -62,7 +66,9 @@ def audit_model(repo, model):
             key=lambda item: item[1]["data_offsets"],
         ):
             start, end = data["data_offsets"]
-            if tensor in observed or start != previous_offset or not start <= end <= data_size:
+            expected_tensor_bytes = prod(data["shape"]) * dtype_bytes[data["dtype"]]
+            if (tensor in observed or start != previous_offset or not start <= end <= data_size
+                    or end - start != expected_tensor_bytes):
                 raise ValueError(f"Invalid or duplicate tensor: {tensor}")
             observed[tensor] = name
             previous_offset = end
@@ -83,7 +89,7 @@ def audit_model(repo, model):
     ):
         raise ValueError("Repaired index provenance failed verification")
     processor = {}
-    for name in verifier.REQUIRED[model_id]:
+    for name in verifier["REQUIRED"][model_id]:
         if name == repaired.name:
             continue
         blob = subprocess.check_output(["git", "hash-object", str(model / name)], text=True).strip()

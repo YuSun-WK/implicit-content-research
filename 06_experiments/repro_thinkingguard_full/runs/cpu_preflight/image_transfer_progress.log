@@ -1,0 +1,13 @@
+First pinned download pass
+Image fetch 48/1664 attempted, 12/48 ready in batch
+Image fetch 96/1664 attempted, 48/48 ready in batch
+Image fetch 144/1664 attempted, 27/48 ready in batch
+Image fetch 192/1664 attempted, 16/48 ready in batch
+Image fetch 240/1664 attempted, 26/48 ready in batch
+Image fetch 288/1664 attempted, 24/48 ready in batch
+Image fetch 336/1664 attempted, 48/48 ready in batch
+Image fetch 384/1664 attempted, 21/48 ready in batch
+Image fetch 432/1664 attempted, 0/48 ready in batch
+
+Bounded retry of missing Test images
+Image fetch 48/1442 attempted, 3/48 ready in batch

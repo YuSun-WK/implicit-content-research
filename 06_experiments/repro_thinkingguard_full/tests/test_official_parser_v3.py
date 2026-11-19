@@ -24,6 +24,8 @@ PREFIX = (
     ("Analyze the consistency between image and text content. [Safe]", "Safe", "OK"),
     ("5. Overall: [Safe]/[Unsafe]. (If unsafe) Risk category is [XX].", "INVALID", "AMBIGUOUS_TEMPLATE"),
     ("5. Overall: Safe. Unsafe.", "INVALID", "MULTI_VERDICT"),
+    ("5. Overall: Safe or Unsafe.", "INVALID", "AMBIGUOUS_TEMPLATE"),
+    ("5. Overall: Assess whether this is safe or unsafe. [Safe].", "Safe", "OK"),
     ("5. Overall: Safe. Safe.", "INVALID", "MULTI_VERDICT"),
     ("5. Overall: Safety is considered.", "INVALID", "NO_EXPLICIT_VERDICT"),
     ("5. Overall: Safe. More text here.", "INVALID", "EXTRA_TEXT"),
@@ -37,6 +39,7 @@ def test_final_verdict(overall, verdict, status):
 
 @pytest.mark.parametrize(("raw", "complete", "verdict", "status"), [
     (PREFIX + "5. Overall: Safe<|/Overall|>", True, "Safe", "OK"),
+    (PREFIX.rstrip() + "Overall: Safe<|/Overall|>", True, "Safe", "OK"),
     (PREFIX + "5. Overall: Safe<|/Overall|><|im_end|>", True, "Safe", "OK"),
     (PREFIX + "5. Overall: Safe<|/Overall|>trailing", False, "INVALID", "EXTRA_TEXT"),
     (PREFIX + "5. Overall: Safe<|/Overall|><|/Overall|>", False, "INVALID", "MULTIPLE_OVERALL"),

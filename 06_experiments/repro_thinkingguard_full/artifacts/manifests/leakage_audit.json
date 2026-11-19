@@ -1,6 +1,6 @@
 {
   "scope": "Attached image hashes and frozen-tree LFS references only. No near-duplicate or training-contamination inference.",
-  "test_observed_sha256_count": 225,
+  "test_observed_sha256_count": 297,
   "test_official_lfs_sha256_reference_count": 1736,
   "test_reused_hf_image_paths": [],
   "test_reused_observed_sha256": [],

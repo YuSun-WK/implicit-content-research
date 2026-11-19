@@ -57,6 +57,8 @@ def score(pairs, valid_only=False, intervals=True):
         n_correct=tp+tn, n_pairs=len(pairs), n_pairs_scored=pair_denominator,
         confusion=dict(tp=tp, tn=tn, fp=fp, fn=fn), invalid=invalid,
         invalid_pairs=len(pairs)-len(valid_pairs), unsafe_precision=rate(tp, tp+fp),
+        invalid_prediction_rows=sum(v == "INVALID" for _, v in samples),
+        missing_prediction_rows=sum(v == "MISSING" for _, v in samples),
         f1_unsafe=rate(2*tp, unsafe+tp+fp),
     )
     if intervals:
