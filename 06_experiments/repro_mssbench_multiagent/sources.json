@@ -1,0 +1,14 @@
+{
+  "official_git": "https://github.com/UCSB-AI/MSSBench.git",
+  "official_commit": "1602193f49cb6925bfa3751be157d0bbf5439779",
+  "official_prompts_sha256": "1c032ec4a3396759b9e05d58a3fa1ba1e4fac327b28afffae6fbc9c10f053c07",
+  "paper": "https://proceedings.iclr.cc/paper_files/paper/2025/file/1cb57fcf7ff3f6d37eebae5becc9ea6d-Paper-Conference.pdf",
+  "dataset": "kzhou35/mssbench",
+  "dataset_revision": "12396d24157427b671d97f23a2e370fca98fdf55",
+  "combined_json_sha256": "9b426a03e9abe3519b112d4f367c73577651a554539f9c8077f4989e9b546bca",
+  "llava_original_revision": "deae57a8c0ccb0da4c2661cc1891cc9d06503d11",
+  "llava_hf_revision": "c916e6cdcd760b4cecd1dd4907f84ac649f93b23",
+  "clip_revision": "ce19dc912ca5cd21c8a653c79e251e808ccabcd1",
+  "paper_pdf_sha256": "4b7ade6e3bfa9330424861e68e81b8337f9fe2c315d55617b68561733d0dbad7",
+  "llava_native_source_commit": "c121f0432da27facab705978f83c4ada465e46fd"
+}

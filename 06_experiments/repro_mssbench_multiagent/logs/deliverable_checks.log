@@ -1,0 +1,7 @@
+Local Python syntax PASS
+Matrix width and aggregate planned calls PASS
+Manifest and Smoke pair invariants PASS
+manifest.csv rebuilt byte-for-byte 0c70d1f3381673ea73597c10d8de3e7705a04f446ae2c328263ef67e6f46a410
+smoke_pairs.csv rebuilt byte-for-byte 97af0d1cff1dcfa01059faefb4606553a2aa5e806adba183288cf4842f3fac57
+smoke_images.csv rebuilt byte-for-byte 6ee222dbcf266263309cd5df63df1d393b1467b5f8f896687386757dd167f5e5
+data_audit.json rebuilt byte-for-byte 631ffbe144e1393e1fe884bb35e9f8d06eff6d8dce692b94d48a0d1936ae66b0

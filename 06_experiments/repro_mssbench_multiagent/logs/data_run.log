@@ -1,0 +1,130 @@
+{
+  "records": {
+    "chat": 300,
+    "embodied": 76
+  },
+  "expansion": {
+    "chat": {
+      "query": {
+        "pairs": 600,
+        "inputs_by_gold_label": {
+          "safe": 600,
+          "unsafe": 600
+        },
+        "same_text_pairs": 600,
+        "different_text_pairs": 0,
+        "category_input_counts": {
+          "property": 236,
+          "harmful": 508,
+          "offensive": 268,
+          "illegal": 188
+        },
+        "subtask_input_counts": {},
+        "duplicate_image_text_label_groups": 0,
+        "duplicate_exact_pair_groups": 0,
+        "distinct_texts_by_side": {
+          "safe": 598,
+          "unsafe": 598
+        },
+        "repeated_text_groups_by_side": {
+          "safe": 2,
+          "unsafe": 2
+        }
+      },
+      "intent": {
+        "pairs": 300,
+        "inputs_by_gold_label": {
+          "safe": 300,
+          "unsafe": 300
+        },
+        "same_text_pairs": 300,
+        "different_text_pairs": 0,
+        "category_input_counts": {
+          "property": 118,
+          "harmful": 254,
+          "offensive": 134,
+          "illegal": 94
+        },
+        "subtask_input_counts": {},
+        "duplicate_image_text_label_groups": 0,
+        "duplicate_exact_pair_groups": 0,
+        "distinct_texts_by_side": {
+          "safe": 288,
+          "unsafe": 288
+        },
+        "repeated_text_groups_by_side": {
+          "safe": 9,
+          "unsafe": 9
+        }
+      }
+    },
+    "embodied": {
+      "query": {
+        "pairs": 380,
+        "inputs_by_gold_label": {
+          "safe": 380,
+          "unsafe": 380
+        },
+        "same_text_pairs": 150,
+        "different_text_pairs": 230,
+        "category_input_counts": {
+          "property": 620,
+          "harmful": 140
+        },
+        "subtask_input_counts": {
+          "Place": 460,
+          "Toggle": 100,
+          "Drop": 60,
+          "Heat": 40,
+          "Pick_Place": 100
+        },
+        "duplicate_image_text_label_groups": 0,
+        "duplicate_exact_pair_groups": 0,
+        "distinct_texts_by_side": {
+          "safe": 91,
+          "unsafe": 106
+        },
+        "repeated_text_groups_by_side": {
+          "safe": 74,
+          "unsafe": 92
+        }
+      },
+      "intent": {
+        "pairs": 76,
+        "inputs_by_gold_label": {
+          "safe": 76,
+          "unsafe": 76
+        },
+        "same_text_pairs": 27,
+        "different_text_pairs": 49,
+        "category_input_counts": {
+          "property": 124,
+          "harmful": 28
+        },
+        "subtask_input_counts": {
+          "Place": 92,
+          "Toggle": 20,
+          "Drop": 12,
+          "Heat": 8,
+          "Pick_Place": 20
+        },
+        "duplicate_image_text_label_groups": 0,
+        "duplicate_exact_pair_groups": 0,
+        "distinct_texts_by_side": {
+          "safe": 15,
+          "unsafe": 17
+        },
+        "repeated_text_groups_by_side": {
+          "safe": 13,
+          "unsafe": 15
+        }
+      }
+    }
+  },
+  "smoke": {
+    "pairs": 20,
+    "unique_paths": 40,
+    "expected_bytes": 38483771
+  },
+  "missing_remote_paths": []
+}
