@@ -1,5 +1,7 @@
 # TRACE Stage 0 · FHM ViT-L/14
 
+S1A 的最新证据、权重状态和两种独立模式见 [S1A 交接](Stage1A_Reviewer_Handoff.md) 与 [S1A 运行说明](Stage1A_Mode_Semantics.md)。下文保留 Stage 0 的历史记录。
+
 **DATA_BLOCKED · Stage 2 BLOCKED。** 已完成固定源码、参数、环境与本地数据可用性审计，包装层通过 CPU 小型 fixture。真实 FHM smoke 和短跑均待授权原件。 [门禁决策](Gate_Decision.md) · [实验状态](100_batch_report.md)
 
 - [固定版本及文件哈希](upstream_manifest.json) · [论文与代码证据](TRACE_Stage0_Code_Map.md) · [逐参数清单](parameter_manifest.csv)
