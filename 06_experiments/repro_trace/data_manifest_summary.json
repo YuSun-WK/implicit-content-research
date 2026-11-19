@@ -1,0 +1,20 @@
+{
+  "dataset": "FHM",
+  "status": "DATA_BLOCKED",
+  "authorized_row_sources_identified": 0,
+  "files_opened_as_fhm_rows": 0,
+  "official_clip_weights_found_locally": false,
+  "split_statistics": {
+    "train": null,
+    "dev_seen": null,
+    "dev_unseen": null,
+    "test_seen": null,
+    "test_unseen": null
+  },
+  "archive_index_checks": {
+    "project.zip": {"entries": 30720, "matching_candidates": 0},
+    "project_priority.zip": {"entries": 19697, "matching_candidates": 0},
+    "project_slim.zip": {"entries": 26308, "matching_candidates": 0}
+  },
+  "null_means": "No verified local split input; actual counts, labels, duplicates, caption coverage and image availability are unknown."
+}
