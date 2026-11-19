@@ -111,6 +111,9 @@ class NativeLlava:
         if placements != {"cuda:0"}:
             raise RuntimeError(f"single-device model placement violated: {placements}")
         self.model_load = {"model_load_count": self.load_count, "gpu_uuid": gpu_uuid,
+                           "parameter_devices": sorted(placements),
+                           "hf_device_map": {key: str(value) for key, value in
+                                             getattr(self.model, "hf_device_map", {}).items()},
                            "load_ms": round((perf_counter() - start) * 1000, 3),
                            **self.measurements()}
 

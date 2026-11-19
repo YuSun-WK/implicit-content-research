@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/stage1_smoke.py", line 352, in <module>
+    main()
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/stage1_smoke.py", line 292, in main
+    lock = checked_weights(args.model_root)
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/stage1_smoke.py", line 26, in checked_weights
+    lock = json.loads((root / "weights_verified.json").read_text())
+  File "/home/ubuntu/anaconda3/envs/ESTMM/lib/python3.10/pathlib.py", line 1134, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/home/ubuntu/anaconda3/envs/ESTMM/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: '.stage0-local/stage1/weights_verified.json'
+
+Exit=1; CUDA masked during readiness check

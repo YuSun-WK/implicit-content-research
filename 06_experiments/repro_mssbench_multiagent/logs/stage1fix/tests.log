@@ -1,0 +1,21 @@
+test_baselines_and_diagnostics_use_one_call_per_input (test_stage0.Stage0) ... ok
+test_chat_propagation_and_routes (test_stage0.Stage0) ... ok
+test_direction_and_independent_metrics (test_stage0.Stage0) ... ok
+test_embodied_state_uses_its_own_image (test_stage0.Stage0) ... ok
+test_malformed_first_agent_stops_before_subsequent_calls (test_stage0.Stage0) ... ok
+test_missing_and_invalid_inputs (test_stage0.Stage0) ... ok
+test_resume_preserves_failure_and_skips_only_complete_inputs (test_stage0.Stage0) ... ok
+test_changed_agent_outputs_change_rendered_downstream_prompt (test_stage1.Stage1) ... ok
+test_corrupted_assets_and_behavior_screen (test_stage1.Stage1) ... ok
+test_fixed_manifest_and_probe_denominators (test_stage1.Stage1) ... ok
+test_native_text_and_image_conversation_render (test_stage1.Stage1) ... ok
+test_process_exit_keeps_partial_trace_and_completed_key (test_stage1.Stage1) ... ok
+test_strict_gate_stops_immediately_and_retains_invalid_trace (test_stage1.Stage1) ... ok
+test_accepts_only_exact_final_http_range (test_stage1_fix.Stage1Fix) ... ok
+test_mirror_requires_official_size_hash_and_locked_revision (test_stage1_fix.Stage1Fix) ... ok
+test_probe_checks_image_expansion_and_preserves_failure (test_stage1_fix.Stage1Fix) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 2.665s
+
+OK

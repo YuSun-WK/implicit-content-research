@@ -4,8 +4,11 @@ from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import json
 from pathlib import Path
+import re
+import shutil
 import subprocess
-from urllib.parse import quote
+import tempfile
+from urllib.parse import quote, urlencode
 
 from manifest import SOURCES, relative_path
 
@@ -17,6 +20,12 @@ ARTIFACTS = {
                 "model-00002-of-00003.safetensors", "model-00003-of-00003.safetensors"}),
     "clip": ("openai/clip-vit-large-patch14-336", "clip_revision",
              {"config.json", "pytorch_model.bin", "preprocessor_config.json"}),
+}
+
+
+MIRRORS = {
+    "native": ("AI-ModelScope/llava-v1.6-vicuna-7b", "9bc88088944aefd1a04cb8e60f7799855c680b44"),
+    "clip": ("AI-ModelScope/clip-vit-large-patch14-336", "ff5f616e6203df089a05407938e295f4de2bf7ed"),
 }
 
 
@@ -55,7 +64,64 @@ def verify_file(path, entry):
     return {"path": entry["rfilename"], "bytes": size, "sha256": checksum}
 
 
-def stage_file(root, artifact, entry):
+def validate_range(headers, received, start, end, size):
+    # curl dumps the proxy/redirect headers before the final response.
+    blocks = re.split(r"\r?\n\r?\n", headers.strip())
+    final = blocks[-1].splitlines()
+    ranges = [line.split(":", 1)[1].strip() for line in final[1:]
+              if line.lower().startswith("content-range:")]
+    return (bool(re.match(r"HTTP/\S+ 206(?: |$)", final[0])) if final else False
+            ) and ranges == [f"bytes {start}-{end}/{size}"] and received == end - start + 1
+
+
+def download_ranges(part, url, size, chunk_bytes):
+    offset = part.stat().st_size if part.exists() else 0
+    if offset > size:
+        raise ValueError(f"partial file too large: {part.name}")
+    with tempfile.TemporaryDirectory(dir=part.parent) as folder:
+        block = Path(folder) / "block"
+        headers = Path(folder) / "headers"
+        while offset < size:
+            end = min(offset + chunk_bytes, size) - 1
+            for attempt in range(1, 4):
+                block.unlink(missing_ok=True)
+                headers.unlink(missing_ok=True)
+                result = subprocess.run(
+                    ["curl", "-fsSL", "--connect-timeout", "10", "--max-time", "75",
+                     "--max-filesize", str(end - offset + 1), "--range", f"{offset}-{end}",
+                     "--dump-header", str(headers), "--output", str(block), url],
+                    capture_output=True, text=True,
+                )
+                if (result.returncode == 0 and block.is_file() and headers.is_file()
+                        and validate_range(headers.read_text(), block.stat().st_size, offset, end, size)):
+                    with block.open("rb") as source, part.open("ab") as destination:
+                        shutil.copyfileobj(source, destination)
+                    offset = end + 1
+                    print(f"{part.name}: accepted range through {offset}/{size}", flush=True)
+                    break
+                print(f"{part.name}: range {offset}-{end}; attempt {attempt}; "
+                      f"curl={result.returncode}; {result.stderr.strip()}", flush=True)
+            else:
+                raise ValueError(f"range transfer stopped at {offset}/{size}: {part.name}")
+
+
+def mirror_urls(artifact, entries, manifest):
+    model, revision = MIRRORS[artifact]
+    files = {row["Path"]: row for row in manifest["Data"]["Files"] if row["Type"] == "blob"}
+    urls = {}
+    for entry in entries:
+        name = entry["rfilename"]
+        row = files[name]
+        if row["Size"] != entry["size"] or row["Revision"] != revision:
+            raise ValueError(f"mirror revision or size mismatch: {artifact}/{name}")
+        if "lfs" in entry and row["Sha256"] != entry["lfs"]["sha256"]:
+            raise ValueError(f"mirror LFS SHA256 mismatch: {artifact}/{name}")
+        query = urlencode({"Revision": revision, "FilePath": name})
+        urls[name] = f"https://modelscope.cn/api/v1/models/{model}/repo?{query}"
+    return urls
+
+
+def stage_file(root, artifact, entry, chunk_bytes=0, mirror_url=None):
     model, revision_key, _ = ARTIFACTS[artifact]
     revision = SOURCES[revision_key]
     name = entry["rfilename"]
@@ -70,8 +136,10 @@ def stage_file(root, artifact, entry):
     part = target.with_suffix(target.suffix + ".part")
     if part.is_symlink() or not part.resolve().is_relative_to(root.resolve()):
         raise ValueError("invalid partial asset path")
-    url = f"https://huggingface.co/{model}/resolve/{revision}/{quote(name)}?download=true"
-    for attempt in range(1, 4):
+    url = mirror_url or f"https://huggingface.co/{model}/resolve/{revision}/{quote(name)}?download=true"
+    if chunk_bytes:
+        download_ranges(part, url, entry["size"], chunk_bytes)
+    for attempt in range(1, 4) if not chunk_bytes else ():
         if part.exists() and part.stat().st_size == entry["size"]:
             break
         cmd = ["curl", "-fsSL", "--connect-timeout", "15", "--max-time", "900", "--speed-limit", "131072", "--speed-time", "35",
@@ -90,21 +158,35 @@ def stage_file(root, artifact, entry):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("root", type=Path)
+    parser.add_argument("--range-mib", type=int, choices=(1, 4, 16, 64), default=0,
+                        help="require exact HTTP 206 ranges for LFS artifacts")
+    parser.add_argument("--mirror-metadata", type=Path, help="directory of ModelScope listing JSON")
     args = parser.parse_args()
     root = args.root.resolve(strict=True)
     plan = {}
     for artifact in ARTIFACTS:
         metadata = json.loads((root / f"{artifact}.metadata.json").read_text())
         plan[artifact] = locked_files(metadata, artifact)
-    with ThreadPoolExecutor(max_workers=5) as pool:
-        jobs = {(artifact, entry["rfilename"]): pool.submit(stage_file, root, artifact, entry)
+    urls = {
+        key: mirror_urls(key, entries, json.loads(
+            (args.mirror_metadata / f"{key}.modelscope.json").read_text()))
+        for key, entries in plan.items()
+    } if args.mirror_metadata else {}
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        jobs = {(artifact, entry["rfilename"]): pool.submit(stage_file, root, artifact, entry,
+                                  args.range_mib * 2**20 if "lfs" in entry else 0,
+                                  urls.get(artifact, {}).get(entry["rfilename"]))
                 for artifact, entries in plan.items() for entry in entries}
         results = {artifact: [job.result() for (label, _), job in jobs.items() if label == artifact]
                    for artifact in ARTIFACTS}
     payload = {key: {"model_id": ARTIFACTS[key][0],
                      "revision": SOURCES[ARTIFACTS[key][1]], "files": files}
                for key, files in results.items()}
-    (root / "weights_verified.json").write_text(json.dumps(payload, indent=2) + "\n")
+    with tempfile.NamedTemporaryFile(mode="w", dir=root, delete=False, encoding="utf-8") as stream:
+        lock = Path(stream.name)
+        json.dump(payload, stream, indent=2)
+        stream.write("\n")
+    lock.replace(root / "weights_verified.json")
 
 
 if __name__ == "__main__":

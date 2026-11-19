@@ -2,12 +2,12 @@
 import argparse
 from collections import Counter, defaultdict
 import csv
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 import json
 from pathlib import Path
 import re
 import signal
-from time import monotonic
+from time import monotonic, perf_counter
 from uuid import uuid4
 
 from evaluation import response_for_judge
@@ -239,6 +239,43 @@ def g1_work(work):
     return [unit for unit in work if unit.config["pair_id"] == first[unit.config["task"]]]
 
 
+def run_preliminary_probes(model, image, output, session):
+    probes = (
+        ("text_only", "Reply with a short greeting.", None),
+        ("single_image", "Describe this image in one short sentence.", image),
+    )
+    with output.open("a", encoding="utf-8") as stream:
+        for name, prompt, path in probes:
+            trace = {"session": session, "probe": name, "prompt": prompt,
+                     "image_attached": path is not None, "error": None}
+            started = perf_counter()
+            try:
+                result = model.generate(prompt, path)
+                trace.update(asdict(result))
+                expected = int(path is not None)
+                if (not result.rendered_prompt or result.rendered_prompt.count("<image>") != expected
+                        or not result.input_tokens or not result.effective_input_tokens
+                        or result.model_load_count != 1):
+                    raise RuntimeError("preliminary probe instrumentation failed")
+                if not result.text.strip() or not result.output_tokens:
+                    raise InvalidAgentOutput("preliminary probe returned an empty response")
+                if expected:
+                    if (not result.image_dimensions
+                            or result.effective_input_tokens <= result.input_tokens):
+                        raise RuntimeError("single-image probe did not expand image embeddings")
+                elif (result.image_dimensions is not None
+                      or result.effective_input_tokens != result.input_tokens):
+                    raise RuntimeError("text-only probe did not preserve text sequence length")
+            except Exception as exc:
+                trace["error"] = type(exc).__name__
+                trace["error_detail"] = str(exc)
+                raise
+            finally:
+                trace["elapsed_ms"] = round((perf_counter() - started) * 1000, 3)
+                stream.write(json.dumps(trace) + "\n")
+                stream.flush()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for arg in ("data-root", "model-root", "official-source", "output"):
@@ -248,6 +285,7 @@ def main():
     parser.add_argument("--max-new-tokens", type=int, choices=(128, 256), default=128)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--through", choices=("g1", "g2"), default="g1")
+    parser.add_argument("--preliminary-probes", action="store_true")
     args = parser.parse_args()
     started = monotonic()
     rows = smoke_inputs(args.data_root / "combined.json")
@@ -279,6 +317,8 @@ def main():
         with (args.output / "model_loads.jsonl").open("a") as stream:
             stream.write(json.dumps({"session": session, **model.model_load}) + "\n")
         print("model load", json.dumps(model.model_load), flush=True)
+        if args.preliminary_probes:
+            run_preliminary_probes(model, g1[0].image, args.output / "preliminary_probes.jsonl", session)
         pipeline = Pipeline(model, prompts, stop_on_invalid=True)
 
         def run_units(units):
