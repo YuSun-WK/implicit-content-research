@@ -1,7 +1,9 @@
 # Set private paths and attest authorized, original inputs in an ignored local copy.
 mode: dry-run
+experiment_mode: trace_original
 upstream_dir: /tmp/trace-s0-reference
 data_path: null
+split_files: null
 image_root: null
 model_dir: null
 # For dry-run only, a pinned public CLIP config suffices.

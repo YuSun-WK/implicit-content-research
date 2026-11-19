@@ -41,13 +41,35 @@ def caption_state(value):
     return "missing" if value is None else "invalid"
 
 
-def image_path(root, value):
+def image_candidate(root, value):
     if not isinstance(value, str) or not value.strip():
         return None
-    candidate = (root / value).resolve()
-    if Path(value).is_absolute() or not candidate.is_relative_to(root):
+    if Path(value).is_absolute():
         return None
-    return candidate if candidate.is_file() else None
+    try:
+        candidate = (root / value).resolve()
+    except (OSError, RuntimeError, ValueError):
+        return None
+    if not candidate.is_relative_to(root):
+        return None
+    return candidate
+
+
+def image_path(root, value):
+    candidate = image_candidate(root, value)
+    return candidate if candidate is not None and candidate.is_file() else None
+
+
+def image_readable(path):
+    from PIL import Image
+    try:
+        with Image.open(path) as image:
+            image.verify()
+        with Image.open(path) as image:
+            image.load()
+    except (OSError, SyntaxError, ValueError, Image.DecompressionBombError):
+        return False
+    return True
 
 
 def label_key(label):
@@ -56,10 +78,17 @@ def label_key(label):
 
 def identity(row):
     value = row.get("id")
-    return str(value) if type(value) in (int, str) and str(value).strip() else None
+    if type(value) is int:
+        return str(value)
+    if isinstance(value, str) and value.strip():
+        value = value.strip()
+        if value.isascii() and value.isdecimal():
+            return value.lstrip("0") or "0"
+        return value
+    return None
 
 
-def summary(rows, image_root, tokenizer=None):
+def summary(rows, image_root, tokenizer=None, *, verify_splits=()):
     image_root = Path(image_root).resolve()
     result = {"dataset": "FHM", "input_rows": len(rows), "unknown_split_rows": 0, "splits": {}}
     grouped = {split: [] for split in SPLITS}
@@ -70,11 +99,27 @@ def summary(rows, image_root, tokenizer=None):
         else:
             result["unknown_split_rows"] += 1
     seen = {"id": Counter(), "image_ref": Counter()}
+    image_checks = {}
     for split, items in grouped.items():
-        images = [image_path(image_root, row.get("img")) for row in items]
+        candidates = [image_candidate(image_root, row.get("img")) for row in items]
+        images = [path if path is not None and path.is_file() else None for path in candidates]
+        resolved = Counter(path for path in images if path is not None)
+        unreadable = None
+        if split in verify_splits:
+            for path in resolved:
+                if path not in image_checks:
+                    image_checks[path] = image_readable(path)
+            unreadable = sum(count for path, count in resolved.items() if not image_checks[path])
         labels = Counter(label_key(row.get("label")) for row in items)
         ids = Counter(key for row in items if (key := identity(row)) is not None)
         refs = Counter(row["img"] for row in items if isinstance(row.get("img"), str) and row["img"].strip())
+        mismatched_ids = 0
+        for row, path in zip(items, candidates):
+            key = identity(row)
+            if key is not None and key.isascii() and key.isdecimal() and path is not None:
+                # Numeric identifiers may be zero-padded in FHM file names.
+                stem = path.stem
+                mismatched_ids += not stem.isascii() or not stem.isdecimal() or (stem.lstrip("0") or "0") != key
         exact_rows = Counter(
             hashlib.sha256(json.dumps(row, sort_keys=True).encode()).digest() for row in items
         )
@@ -84,7 +129,12 @@ def summary(rows, image_root, tokenizer=None):
             "rows": len(items),
             "labels": {key: labels[key] for key in ("0", "1", "missing_or_invalid")},
             "images_missing_or_outside_root": sum(path is None for path in images),
+            "images_invalid_path": sum(path is None for path in candidates),
+            "images_missing": sum(path is not None and image is None for path, image in zip(candidates, images)),
+            "images_unreadable": unreadable,
+            "duplicate_resolved_image_rows_beyond_first": sum(count - 1 for count in resolved.values()),
             "id_missing": len(items) - sum(ids.values()),
+            "numeric_id_image_mismatch": mismatched_ids,
             "duplicate_id_rows_beyond_first": sum(count - 1 for count in ids.values()),
             "duplicate_image_ref_rows_beyond_first": sum(count - 1 for count in refs.values()),
             "exact_duplicate_rows_beyond_first": sum(count - 1 for count in exact_rows.values()),
@@ -118,6 +168,7 @@ def main():
     parser.add_argument("--split-file", nargs=2, action="append", default=[], metavar=("SPLIT", "PATH"))
     parser.add_argument("--image-root", required=True, type=Path)
     parser.add_argument("--tokenizer", type=Path, help="Local Hugging Face CLIP tokenizer directory")
+    parser.add_argument("--verify-images", action="store_true", help="Verify and decode every referenced image")
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     if not args.data and not args.split_file:
@@ -128,7 +179,7 @@ def main():
         tokenizer = CLIPTokenizerFast.from_pretrained(args.tokenizer, local_files_only=True)
     rows = [row for path in args.data for row in read_rows(path)]
     rows.extend(row for split, path in args.split_file for row in read_rows(path, split))
-    report = summary(rows, args.image_root, tokenizer)
+    report = summary(rows, args.image_root, tokenizer, verify_splits=SPLITS if args.verify_images else ())
     if report["unknown_split_rows"]:
         report["schema_status"] = "unrecognized_split_rows"
     rendered = json.dumps(report, indent=2) + "\n"
