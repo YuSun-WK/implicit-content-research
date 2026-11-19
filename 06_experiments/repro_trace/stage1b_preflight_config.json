@@ -1,0 +1,21 @@
+{
+  "authorization_confirmed": false,
+  "bound_gpu": null,
+  "execution_status": "TRAINING_NOT_RUN",
+  "plan_only": {
+    "mode": "smoke",
+    "experiment_mode": "trace_text_only_diagnostic",
+    "train_split": "train",
+    "dev_split": "dev_seen",
+    "threshold": "fixed_0.5",
+    "precision": "bf16",
+    "microbatch": 1,
+    "accumulation_steps": 1,
+    "seed": 121,
+    "gpu_memory_budget_gib": 18,
+    "max_job_hours": 6,
+    "short_batch_cap": 100,
+    "checkpoint_every": 25
+  },
+  "environment_evidence": "stage1b_preflight.log"
+}
