@@ -351,8 +351,8 @@ def dns_controls(config):
         except Failure:
             return False
 
-    with ThreadPoolExecutor(2) as executor:
-        return any(list(executor.map(resolve_control, ("github.com", "example.com"))))
+    outcomes = [resolve_control(host) for host in ("github.com", "example.com")]
+    return all(outcomes)
 
 
 def resolver_fault_recent(db):
@@ -376,6 +376,14 @@ def reopen_environment_failures(db, urls):
             db.execute("UPDATE source SET state='queued',next=0,retry_floor=attempt WHERE url=?", (row["url"],))
             recovered += 1
     return recovered
+
+
+def run_with_dns_gate(root, db, urls, config, limiter, *, retry_environment_dns):
+    if (retry_environment_dns or resolver_fault_recent(db)) and not dns_controls(config):
+        return "environment_dns_unavailable"
+    if retry_environment_dns:
+        print(json.dumps({"environment_dns_reopened_urls": reopen_environment_failures(db, urls)}), flush=True)
+    return run(root, db, urls, config, limiter)
 
 
 def run(root, db, urls, config, limiter):
@@ -486,13 +494,8 @@ def main():
         atomic(root / "smoke_selection.json", canonical([row[0] for row in smoke]))
         limiter = Limiter(config, args.max_requests, dict(db.execute("SELECT * FROM cooldown")))
         try:
-            if (args.retry_environment_dns or resolver_fault_recent(db)) and not dns_controls(config):
-                result = "environment_dns_unavailable"
-            else:
-                if args.retry_environment_dns:
-                    print(json.dumps({"environment_dns_reopened_urls": reopen_environment_failures(db, urls)}),
-                          flush=True)
-                result = run(root, db, urls, config, limiter)
+            result = run_with_dns_gate(root, db, urls, config, limiter,
+                                       retry_environment_dns=args.retry_environment_dns)
         except sqlite3.OperationalError as error:
             if error.sqlite_errorcode != sqlite3.SQLITE_FULL:
                 raise

@@ -159,8 +159,17 @@ def build(root, out, rows):
         if kind in {"decoded", "failure", "partial_discard"} and detail.get("reason"):
             event_reasons[detail["reason"]] += 1
     durations.sort()
+    processing_exhaustive = release["decoded"] + release["failed"] == len(rows)
     summary = {
-        "status": "FULL" if release["decoded"] + release["failed"] == len(rows) and smoke_pass else "PARTIAL",
+        "status": "FULL" if processing_exhaustive and smoke_pass else "PARTIAL",
+        "processing_exhaustive": processing_exhaustive,
+        "decoded_joint_coverage": release["coverage"],
+        "error_reason_breakdown": {row["reason"]: row["url_n"] for row in failures},
+        "model_eligibility": {
+            "classification": "NOT RUN",
+            "stage2_review": "REQUIRES_REVIEW" if processing_exhaustive else "BLOCKED_PENDING_ACQUISITION",
+            "figure4_5_joint_image_text_input_ceiling": len(manifest["cohorts"]["three_modality_intersection"]),
+        },
         "csv_sha256": CSV_SHA256, "paper_n": 8187, "release_n": len(rows),
         "requestable_uuid": len(rows), "unique_urls": len(statuses),
         "duplicate_url_additional_uuid": len(rows) - len(statuses), "attempted_urls": len(attempted),
@@ -206,6 +215,9 @@ def build(root, out, rows):
         "# Stage 1 image coverage",
         "",
         f"**{summary['status']}** · Paper 8,187 (AUTHOR-REPORTED), release {len(rows):,} (PINNED CSV).",
+        "",
+        f"Processing exhaustive: **{processing_exhaustive}**. FULL means all URLs have terminal "
+        "outcomes and the acquisition smoke passed. Decoded coverage is reported independently.",
         "",
         f"Smoke gate {'PASS' if smoke_pass else 'BLOCK'}. The smoke includes {smoke['n']} UUIDs and "
         f"{summary['smoke_unique_urls']} unique URLs, with {smoke['decoded']} decoded UUIDs "

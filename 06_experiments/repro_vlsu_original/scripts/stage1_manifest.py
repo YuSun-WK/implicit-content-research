@@ -58,6 +58,24 @@ def make_manifest(rows, digests, code_sha256):
 
 def validate_predictions(records, manifest_path, expected_sha256, task, *, release_csv):
     """Verify snapshot digest, official roster membership, exact UUID coverage and gold."""
+    manifest, uuids = verified_manifest(manifest_path, expected_sha256, release_csv)
+    return validate_records(records, set(manifest["cohorts"][task]), uuids, GOLD_FIELDS[task])
+
+
+GOLD_FIELDS = {"joint_decoded": 4, "image_decoded_gold": 2, "text_only_eligible": 3}
+
+
+def validate_three_modality_predictions(records_by_task, manifest_path, expected_sha256, *, release_csv):
+    """Require all three modality ledgers on the exact frozen Figure 4/5 cohort."""
+    if records_by_task.keys() != GOLD_FIELDS.keys():
+        raise ValueError("Figure 4/5 requires joint, image and text ledgers")
+    manifest, uuids = verified_manifest(manifest_path, expected_sha256, release_csv)
+    selected = set(manifest["cohorts"]["three_modality_intersection"])
+    return {task: validate_records(records, selected, uuids, GOLD_FIELDS[task])
+            for task, records in records_by_task.items()}
+
+
+def verified_manifest(manifest_path, expected_sha256, release_csv):
     raw = manifest_path.read_bytes()
     if sha256(raw).hexdigest() != expected_sha256:
         raise ValueError("Manifest hash mismatch")
@@ -66,7 +84,7 @@ def validate_predictions(records, manifest_path, expected_sha256, task, *, relea
     uuids = {row[0]: row for row in rows}
     images = manifest["image_sha256_by_uuid"]
     if images.keys() - uuids.keys() or any(
-        len(digest) != 64 or any(c not in "0123456789abcdef" for c in digest)
+        not isinstance(digest, str) or len(digest) != 64 or any(c not in "0123456789abcdef" for c in digest)
         for digest in images.values()
     ):
         raise ValueError("Invalid image UUID or digest")
@@ -78,8 +96,10 @@ def validate_predictions(records, manifest_path, expected_sha256, task, *, relea
         digests[url] = digest
     if manifest != make_manifest(rows, digests, manifest["code_sha256"]):
         raise ValueError("Manifest does not match the pinned release and image snapshot")
-    gold_index = {"joint_decoded": 4, "image_decoded_gold": 2, "text_only_eligible": 3}[task]
-    selected = set(manifest["cohorts"][task])
+    return manifest, uuids
+
+
+def validate_records(records, selected, uuids, gold_index):
     records = list(records)
     seen = set()
     for record in records:

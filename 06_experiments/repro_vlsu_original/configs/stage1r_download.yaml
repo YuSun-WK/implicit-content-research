@@ -1,0 +1,14 @@
+workers: 4
+global_interval: 0.25
+host_interval: 1.0
+connect_timeout: 5
+read_timeout: 10
+request_timeout: 30
+redirects: 5
+attempts: 4
+backoff: 2
+max_bytes: 20971520
+max_pixels: 25000000
+min_free_bytes: 1073741824
+decode_timeout: 15
+decode_memory: 536870912

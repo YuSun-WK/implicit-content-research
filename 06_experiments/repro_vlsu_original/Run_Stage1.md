@@ -24,6 +24,8 @@ Replies, redirect chains, intermediate errors and terminal outcomes are recorded
 
 ## Recovering a resolver outage
 
+Use the [Stage 1R network gate and migration procedure](reports/stage1r/Move_Resume_Instructions.md) before attempting a live recovery.
+
 When recent attempts show a sustained resolver fault, the runner checks two public DNS controls through the same resolver without making HTTP requests. If both fail it pauses. After connectivity returns, add `--retry-environment-dns` to the smoke resume command once to reopen only terminal transient DNS failures. Previous attempts and successful objects are retained. Origin access restrictions stay terminal. Pending DNS attempts can resume under their existing budgets.
 
 ## Gates

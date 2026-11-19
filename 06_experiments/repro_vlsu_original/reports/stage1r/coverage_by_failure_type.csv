@@ -1,0 +1,10 @@
+category,reason,url_n,uuid_n,original_host_n
+format,empty_body,1,1,1
+format,unsupported_content_type,1,1,1
+http,http_403,6,6,6
+http,http_404,2,2,2
+http,http_406,1,1,1
+security,unsafe_target,2,2,2
+transport,dns_timeout,8,8,5
+transport,request_timeout,5,5,3
+transport,transport_error,4,4,4
