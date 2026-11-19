@@ -1,0 +1,11 @@
+test_atomic_serialization (test_stage0.Stage0Checks) ... ok
+test_caption_inventory (test_stage0.Stage0Checks) ... ok
+test_missing_original_caption_blocks_training (test_stage0.Stage0Checks) ... ok
+test_small_author_path_singleton (test_stage0.Stage0Checks) ... ok
+test_threshold (test_stage0.Stage0Checks) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.433s
+
+OK
+wall_s=5.84

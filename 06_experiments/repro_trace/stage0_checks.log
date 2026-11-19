@@ -1,0 +1,11 @@
+utc=2026-11-19T08:38:28Z
+83ecb799f897fe275185e082ee9a669f7d04bfaa
+PARAMETER_MANIFEST_WRITTEN
+dry_run_wall_s=5.62
+PARAMETERS total=445480710 trainable=39127813 named_tensors=642
+DATA_BLOCKED: FHM authorization and both original caption provenances must be confirmed
+Command exited with non-zero status 3
+smoke_gate_wall_s=0.09 exit=3
+No broken requirements found.
+CLIPTokenizerFast vocab_size=49408 max_length=77
+CLIPImageProcessor crop={'height': 224, 'width': 224}
