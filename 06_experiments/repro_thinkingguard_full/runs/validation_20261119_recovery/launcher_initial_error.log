@@ -1,0 +1,27 @@
+{
+  "stage": "validation",
+  "queued": 36,
+  "global_test_complete": false,
+  "preflight": {
+    "manifest": true,
+    "data": true,
+    "official_tree": true,
+    "queues": true,
+    "parser": true,
+    "prompt": true,
+    "model": true
+  },
+  "stage_data": {
+    "ready": true,
+    "invalid_queue": false,
+    "missing": [],
+    "invalid_pairs": [],
+    "total": 36
+  }
+}
+Traceback (most recent call last):
+  File "/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/run_resumeable_inference.py", line 439, in <module>
+    raise SystemExit(main())
+  File "/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/run_resumeable_inference.py", line 265, in main
+    previous, summary = prior_summary(ROOT / "runs", registry, identity_base, stage,
+UnboundLocalError: local variable 'prior_summary' referenced before assignment

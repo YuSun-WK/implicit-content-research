@@ -81,3 +81,17 @@ def test_registry_resolves_timestamped_run_and_rejects_drift(tmp_path):
     path.write_text(path.read_text() + "\n")
     with pytest.raises(ValueError):
         prior_summary(tmp_path, registry, base, "smoke", inputs, read, sha)
+
+
+def test_cli_prerequisite_is_global_and_compatibility_is_exact():
+    from run_resumeable_inference import main, prerequisite_base
+    assert "prior_summary" not in main.__code__.co_varnames
+    new = {"runner_sha256": "new", "config_sha256": "config"}
+    old = dict(new, runner_sha256="old")
+    key = registry_key(old, "smoke", "inputs")
+    registry = {key: {"summary_sha256": "verified"}}
+    compatible = {"new_runner_sha256": "new", "old_runner_sha256": "old",
+                  "smoke_summary_sha256": "verified"}
+    assert prerequisite_base(new, registry, "smoke", "inputs", compatible) == old
+    assert prerequisite_base(new, registry, "validation", "inputs", compatible) == new
+    assert prerequisite_base(new, registry, "smoke", "other", compatible) == new

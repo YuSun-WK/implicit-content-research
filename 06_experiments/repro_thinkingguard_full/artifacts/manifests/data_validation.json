@@ -18,8 +18,6 @@
         "test/ethical_violations/11/unsafe",
         "test/ethical_violations/13/safe",
         "test/ethical_violations/13/unsafe",
-        "test/ethical_violations/14/safe",
-        "test/ethical_violations/14/unsafe",
         "test/ethical_violations/15/safe",
         "test/ethical_violations/15/unsafe",
         "test/ethical_violations/16/safe",
@@ -85,9 +83,9 @@
         "test/ethical_violations/97/unsafe"
       ],
       "raw_samples": 194,
-      "ready_pairs": 35,
+      "ready_pairs": 36,
       "valid_csv_pairs": 97,
-      "verified_images": 114
+      "verified_images": 116
     },
     "illegal_activities": {
       "missing_or_unverified": [
@@ -151,7 +149,6 @@
         "test/illegal_activities/88/safe",
         "test/illegal_activities/89/safe",
         "test/illegal_activities/90/safe",
-        "test/illegal_activities/91/safe",
         "test/illegal_activities/92/safe",
         "test/illegal_activities/93/safe",
         "test/illegal_activities/94/safe",
@@ -159,15 +156,13 @@
         "test/illegal_activities/96/safe"
       ],
       "raw_samples": 192,
-      "ready_pairs": 40,
+      "ready_pairs": 41,
       "valid_csv_pairs": 96,
-      "verified_images": 126
+      "verified_images": 127
     },
     "misinformation": {
       "missing_or_unverified": [
         "test/misinformation/1/unsafe",
-        "test/misinformation/2/safe",
-        "test/misinformation/2/unsafe",
         "test/misinformation/3/unsafe",
         "test/misinformation/6/safe",
         "test/misinformation/6/unsafe",
@@ -319,8 +314,6 @@
         "test/misinformation/81/unsafe",
         "test/misinformation/83/safe",
         "test/misinformation/83/unsafe",
-        "test/misinformation/84/safe",
-        "test/misinformation/84/unsafe",
         "test/misinformation/85/safe",
         "test/misinformation/85/unsafe",
         "test/misinformation/86/safe",
@@ -345,9 +338,9 @@
         "test/misinformation/95/unsafe"
       ],
       "raw_samples": 190,
-      "ready_pairs": 5,
+      "ready_pairs": 7,
       "valid_csv_pairs": 95,
-      "verified_images": 12
+      "verified_images": 16
     },
     "offensiveness": {
       "missing_or_unverified": [
@@ -419,8 +412,6 @@
         "test/offensiveness/35/unsafe",
         "test/offensiveness/36/safe",
         "test/offensiveness/36/unsafe",
-        "test/offensiveness/37/safe",
-        "test/offensiveness/37/unsafe",
         "test/offensiveness/39/safe",
         "test/offensiveness/39/unsafe",
         "test/offensiveness/40/safe",
@@ -469,8 +460,6 @@
         "test/offensiveness/62/unsafe",
         "test/offensiveness/63/safe",
         "test/offensiveness/63/unsafe",
-        "test/offensiveness/64/safe",
-        "test/offensiveness/64/unsafe",
         "test/offensiveness/65/safe",
         "test/offensiveness/65/unsafe",
         "test/offensiveness/66/safe",
@@ -535,9 +524,9 @@
         "test/offensiveness/95/unsafe"
       ],
       "raw_samples": 190,
-      "ready_pairs": 4,
+      "ready_pairs": 6,
       "valid_csv_pairs": 95,
-      "verified_images": 8
+      "verified_images": 12
     },
     "physical_harm": {
       "missing_or_unverified": [
@@ -683,8 +672,6 @@
         "test/physical_harm/73/unsafe",
         "test/physical_harm/74/safe",
         "test/physical_harm/74/unsafe",
-        "test/physical_harm/75/safe",
-        "test/physical_harm/75/unsafe",
         "test/physical_harm/76/safe",
         "test/physical_harm/76/unsafe",
         "test/physical_harm/77/safe",
@@ -692,14 +679,12 @@
         "test/physical_harm/78/safe",
         "test/physical_harm/78/unsafe",
         "test/physical_harm/80/safe",
-        "test/physical_harm/80/unsafe",
-        "test/physical_harm/81/safe",
-        "test/physical_harm/81/unsafe"
+        "test/physical_harm/80/unsafe"
       ],
       "raw_samples": 162,
-      "ready_pairs": 4,
+      "ready_pairs": 6,
       "valid_csv_pairs": 81,
-      "verified_images": 8
+      "verified_images": 12
     },
     "privacy": {
       "missing_or_unverified": [
@@ -771,8 +756,6 @@
         "test/privacy/34/unsafe",
         "test/privacy/35/safe",
         "test/privacy/35/unsafe",
-        "test/privacy/36/safe",
-        "test/privacy/36/unsafe",
         "test/privacy/37/safe",
         "test/privacy/37/unsafe",
         "test/privacy/38/safe",
@@ -843,8 +826,6 @@
         "test/privacy/72/unsafe",
         "test/privacy/73/safe",
         "test/privacy/73/unsafe",
-        "test/privacy/74/safe",
-        "test/privacy/74/unsafe",
         "test/privacy/75/safe",
         "test/privacy/75/unsafe",
         "test/privacy/76/safe",
@@ -897,9 +878,9 @@
         "test/privacy/100/unsafe"
       ],
       "raw_samples": 200,
-      "ready_pairs": 4,
+      "ready_pairs": 6,
       "valid_csv_pairs": 100,
-      "verified_images": 8
+      "verified_images": 12
     },
     "property_damage": {
       "missing_or_unverified": [
@@ -971,8 +952,6 @@
         "test/property_damage/35/unsafe",
         "test/property_damage/36/safe",
         "test/property_damage/36/unsafe",
-        "test/property_damage/37/safe",
-        "test/property_damage/37/unsafe",
         "test/property_damage/38/safe",
         "test/property_damage/38/unsafe",
         "test/property_damage/39/safe",
@@ -1071,8 +1050,6 @@
         "test/property_damage/86/unsafe",
         "test/property_damage/87/safe",
         "test/property_damage/87/unsafe",
-        "test/property_damage/88/safe",
-        "test/property_damage/88/unsafe",
         "test/property_damage/89/safe",
         "test/property_damage/89/unsafe",
         "test/property_damage/90/safe",
@@ -1097,9 +1074,9 @@
         "test/property_damage/100/unsafe"
       ],
       "raw_samples": 200,
-      "ready_pairs": 4,
+      "ready_pairs": 6,
       "valid_csv_pairs": 100,
-      "verified_images": 8
+      "verified_images": 12
     },
     "religion_belief": {
       "missing_or_unverified": [
@@ -1119,8 +1096,6 @@
         "test/religion_belief/8/unsafe",
         "test/religion_belief/9/safe",
         "test/religion_belief/9/unsafe",
-        "test/religion_belief/10/safe",
-        "test/religion_belief/10/unsafe",
         "test/religion_belief/11/safe",
         "test/religion_belief/11/unsafe",
         "test/religion_belief/12/safe",
@@ -1225,8 +1200,6 @@
         "test/religion_belief/63/unsafe",
         "test/religion_belief/64/safe",
         "test/religion_belief/64/unsafe",
-        "test/religion_belief/65/safe",
-        "test/religion_belief/65/unsafe",
         "test/religion_belief/66/safe",
         "test/religion_belief/66/unsafe",
         "test/religion_belief/67/safe",
@@ -1277,9 +1250,9 @@
         "test/religion_belief/90/unsafe"
       ],
       "raw_samples": 180,
-      "ready_pairs": 4,
+      "ready_pairs": 6,
       "valid_csv_pairs": 90,
-      "verified_images": 8
+      "verified_images": 12
     },
     "violence": {
       "missing_or_unverified": [
@@ -1371,8 +1344,6 @@
         "test/violence/45/unsafe",
         "test/violence/46/safe",
         "test/violence/46/unsafe",
-        "test/violence/47/safe",
-        "test/violence/47/unsafe",
         "test/violence/48/safe",
         "test/violence/48/unsafe",
         "test/violence/49/safe",
@@ -1485,8 +1456,6 @@
         "test/violence/104/unsafe",
         "test/violence/105/safe",
         "test/violence/105/unsafe",
-        "test/violence/106/safe",
-        "test/violence/106/unsafe",
         "test/violence/107/safe",
         "test/violence/107/unsafe",
         "test/violence/108/safe",
@@ -1505,9 +1474,9 @@
         "test/violence/114/unsafe"
       ],
       "raw_samples": 228,
-      "ready_pairs": 4,
+      "ready_pairs": 6,
       "valid_csv_pairs": 114,
-      "verified_images": 8
+      "verified_images": 12
     }
   },
   "category_annotation_mismatches": {
@@ -1769,21 +1738,21 @@
   ],
   "csv_official_blobs_verified": true,
   "download_status_counts": {
-    "DOWNLOADED": 3,
-    "DOWNLOAD_FAILED": 205,
-    "MISSING": 1231,
-    "REUSED": 297
+    "DOWNLOADED": 11,
+    "DOWNLOAD_FAILED": 201,
+    "MISSING": 1204,
+    "REUSED": 320
   },
   "gpu_data_gate": false,
   "image_decode_counts": {
-    "NOT_RUN": 1436,
-    "OK": 300
+    "NOT_RUN": 1405,
+    "OK": 331
   },
-  "manifest_sha256": "40f11bedfb87cb0005691ec861d162500e641f3fad15f1430f88c7989f2ba649",
+  "manifest_sha256": "3f7c5b7bfd02f92963bc5f60575395c21d5aef51516426132bddcbb440cce6fe",
   "revision": "3ac26e778db94a282711f463f22ba6db99643bee",
   "run_status_counts": {
-    "NOT_READY_MISSING_IMAGE": 1436,
-    "READY": 300
+    "NOT_READY_MISSING_IMAGE": 1405,
+    "READY": 331
   },
   "test_pairs": 868,
   "test_samples": 1736,

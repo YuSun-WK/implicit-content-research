@@ -1,0 +1,7 @@
+{
+  "old_runner_sha256": "7d9bea6854c011d1df3d14f026a691449e8470ea85ef30898f2cf5c0ea52fa0c",
+  "new_runner_sha256": "be31b257294f5e8389410a8208776eda9bf176f6b1b175b4503b38fab2ac4ed3",
+  "smoke_summary_sha256": "6a6706f8893d0369d8cb43c3c149151a31cc7708b9373e422ba305d0268ca49c",
+  "old_runner_github_commit": "28de1b85104eb33f6513d3b891b2818ffb2e4a0e",
+  "reason": "Rename local completed summary variable shadowing imported prerequisite lookup. Bind compatibility to the exact recorded Smoke summary and both runner SHAs. No scoring, model, queue, prompt, or GPU guard change."
+}

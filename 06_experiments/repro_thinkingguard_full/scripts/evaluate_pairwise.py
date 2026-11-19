@@ -1,4 +1,4 @@
-"""Score the frozen Pilot queue with strict and valid-only denominators."""
+"""Score a frozen Stage 1 queue with strict and valid-only denominators."""
 import argparse
 import csv
 import json
@@ -83,9 +83,10 @@ def main():
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument("predictions", type=Path)
     cli.add_argument("output", type=Path)
+    cli.add_argument("--stage", choices=("smoke", "validation", "pilot"), default="pilot")
     args = cli.parse_args()
     queues = json.loads((ROOT / "artifacts/sample_queues.json").read_text())
-    expected = set(queues["pilot"])
+    expected = set(queues[args.stage])
     with (ROOT / "artifacts/manifests/test_manifest.csv").open() as manifest:
         rows = {r["sample_uid"]: r for r in csv.DictReader(manifest) if r["sample_uid"] in expected}
     observed = {}
@@ -101,10 +102,12 @@ def main():
                 ("gt","ground_truth"), ("side","side"), ("pair_id","pair_id"), ("image_sha","image_sha256")
             )):
                 raise ValueError(f"Prediction metadata conflicts with manifest: {uid}")
+            if prediction["identity"]["stage"] != args.stage:
+                raise ValueError(f"Prediction belongs to a different stage: {uid}")
             identities.add(json.dumps(prediction["identity"], sort_keys=True))
             observed[uid] = prediction["parsed_verdict"] if prediction["status"] == "GENERATED" else "INVALID"
     if len(identities) != 1:
-        raise ValueError("Expected one non-empty Pilot configuration")
+        raise ValueError("Expected one non-empty Stage 1 configuration")
     pairs = defaultdict(dict)
     for uid, row in rows.items():
         pairs[row["pair_id"]][row["ground_truth"]] = observed.get(uid, "MISSING")
@@ -120,7 +123,7 @@ def main():
                              if len(f1s) == 9 and all(v is not None for v in f1s) else None,
                              per_category=per_category,
                              stratified_pair_cluster_bootstrap95=bootstrap(list(by_category.values()), valid_only))
-    write(args.output, dict(predictions_observed=len(observed), expected_samples=len(rows),
+    write(args.output, dict(stage=args.stage, predictions_observed=len(observed), expected_samples=len(rows),
                            expected_pairs=len(pairs), bootstrap_reps=2000, bootstrap_seed=20261119,
                            reports=reports))
 

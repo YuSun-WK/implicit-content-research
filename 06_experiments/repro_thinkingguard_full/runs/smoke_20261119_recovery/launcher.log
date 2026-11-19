@@ -1,0 +1,30 @@
+{
+  "stage": "smoke",
+  "queued": 6,
+  "global_test_complete": false,
+  "preflight": {
+    "manifest": true,
+    "data": true,
+    "official_tree": true,
+    "queues": true,
+    "parser": true,
+    "prompt": true,
+    "model": true
+  },
+  "stage_data": {
+    "ready": true,
+    "invalid_queue": false,
+    "missing": [],
+    "invalid_pairs": [],
+    "total": 6
+  }
+}
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:03<00:09,  3.21s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:08<00:08,  4.34s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:13<00:04,  4.60s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:15<00:00,  3.79s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:15<00:00,  3.95s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+smoke 1/6 test/ethical_violations/49/safe GENERATED 56.88s
+smoke 2/6 test/ethical_violations/49/unsafe GENERATED 62.61s
+smoke 3/6 test/illegal_activities/64/safe GENERATED 57.68s
+smoke 4/6 test/illegal_activities/64/unsafe GENERATED 61.88s
+smoke 5/6 test/misinformation/50/safe GENERATED 72.06s
+smoke 6/6 test/misinformation/50/unsafe GENERATED 67.72s

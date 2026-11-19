@@ -120,6 +120,17 @@ def audit_resource(uuid, pid, cap_mib, deadline, log_path, stop, job_id):
             os._exit(72)
 
 
+def prerequisite_base(base, registry, stage, input_sha, compatibility):
+    if registry_key(base, stage, input_sha) in registry or stage != "smoke":
+        return base
+    # Preserve one already measured Smoke across the reviewed CLI lookup fix.
+    if compatibility.get("new_runner_sha256") != base["runner_sha256"]:
+        return base
+    previous = dict(base, runner_sha256=compatibility["old_runner_sha256"])
+    record = registry.get(registry_key(previous, stage, input_sha), {})
+    return previous if record.get("summary_sha256") == compatibility["smoke_summary_sha256"] else base
+
+
 def verify_local(row):
     path = Path(row["image_local_path"])
     return path.is_file() and sha(path) == row["expected_image_sha256"]
@@ -253,17 +264,20 @@ def main():
         raise ValueError("Journal exists without a run identity")
     prior = read_journal(journal_path, set(ordered), identity)
     if len(prior) == len(ordered):
-        prior_summary = out / "summary.json"
-        if prior_summary.exists():
-            return 0 if read(prior_summary)["resource_gate"] else 3
+        completed_summary = out / "summary.json"
+        if completed_summary.exists():
+            return 0 if read(completed_summary)["resource_gate"] else 3
         raise ValueError("Complete prediction journal is missing its terminal resource summary")
     benchmark_p95 = None
     required_stages = {"diagnostic": [], "smoke": [], "validation": ["smoke"], "pilot": ["smoke", "validation"]}
     registry_path = ROOT / "runs/stage_registry.json"
     registry = read(registry_path) if registry_path.exists() else {}
+    compatibility_path = ROOT / "artifacts/recovery_runner_compatibility.json"
+    compatibility = read(compatibility_path) if compatibility_path.exists() else {}
     for stage in required_stages[args.stage]:
-        previous, summary = prior_summary(ROOT / "runs", registry, identity_base, stage,
-                                          queue_hash(entries, queues[stage]), read, sha)
+        input_sha = queue_hash(entries, queues[stage])
+        base = prerequisite_base(identity_base, registry, stage, input_sha, compatibility)
+        previous, summary = prior_summary(ROOT / "runs", registry, base, stage, input_sha, read, sha)
         if stage == "validation":
             if summary["prediction_count"] != 36 or summary["coverage"] < freeze["minimum_parse_coverage"]:
                 raise ValueError("Independent A0 parse coverage did not reach 95%")
