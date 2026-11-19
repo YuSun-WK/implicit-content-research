@@ -1,0 +1,12 @@
+{
+  "stage": "smoke",
+  "queued": 6,
+  "preflight": {
+    "manifest": true,
+    "data": false,
+    "queues": true,
+    "parser": true,
+    "prompt": true,
+    "model": true
+  }
+}

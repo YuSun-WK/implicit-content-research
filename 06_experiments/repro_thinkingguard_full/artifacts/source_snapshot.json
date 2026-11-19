@@ -1,0 +1,93 @@
+{
+  "verified_at": "2026-11-19T08:39:18.944009+00:00",
+  "dataset": {
+    "url": "https://huggingface.co/datasets/Sandy124/TriggerBench",
+    "head_api": "https://huggingface.co/api/datasets/Sandy124/TriggerBench",
+    "legacy_revision": "3ac26e778db94a282711f463f22ba6db99643bee",
+    "current_revision": "3ac26e778db94a282711f463f22ba6db99643bee",
+    "selected_revision": "3ac26e778db94a282711f463f22ba6db99643bee",
+    "access_status": "DONE",
+    "private": false,
+    "gated": false,
+    "tree_entries": 5637,
+    "tree_path": "artifacts/dataset_source_tree.csv",
+    "tree_sha256": "94526e541f895be83eec74330b41a9210144ec687df53f4161a414c0fc1796c7",
+    "api_response_sha256": "0d874dc2a9012f746ad311493510019d86283c4612e783ada366515f01c73dd0",
+    "fixed_api_response_sha256": "0c7efab05e1c36bf6d996cb82cb5a920d6c18a8521103faa97523db9795ffd89",
+    "card": null
+  },
+  "model": {
+    "url": "https://huggingface.co/Sandy124/ThinkingGuard-8B",
+    "head_api": "https://huggingface.co/api/models/Sandy124/ThinkingGuard-8B",
+    "legacy_revision": "76892f9768ce828268265171f4bbc5dfb75eafc3",
+    "current_revision": "76892f9768ce828268265171f4bbc5dfb75eafc3",
+    "selected_revision": "76892f9768ce828268265171f4bbc5dfb75eafc3",
+    "access_status": "DONE",
+    "private": false,
+    "gated": false,
+    "tree_entries": 14,
+    "tree_path": "artifacts/model_source_tree.csv",
+    "tree_sha256": "e3cd83e9b88f6c1d90042360cc43ac7940aa99bc30e5861a6b81db27d12ffecc",
+    "api_response_sha256": "2db2defa8b11bbb5a6c12b7a4c757f33f0092fa74495a093c98975218382fa0b",
+    "fixed_api_response_sha256": "ead7f4183c24097c099b25cb1ef7f85ba2fe677bf1fd32685ada5a666186bd6c",
+    "card": {
+      "rfilename": "README.md",
+      "blobId": "21fdd9b2116ec4a990905f83894a45cba986ac80",
+      "size": 6132
+    },
+    "archived_tree_exact_match": true
+  },
+  "paper": {
+    "url": "https://arxiv.org/pdf/2609.36562v1",
+    "version": "2609.36562v1",
+    "type": "PDF",
+    "bytes": 4720665,
+    "sha256": "7d30b3f0cd74562843b8bbaba382cd105b85a8b8b2d29f3ec78f352b1c6dfd87",
+    "pages": 9,
+    "access_status": "DONE",
+    "public": true
+  },
+  "paper_tex": {
+    "url": "https://arxiv.org/src/2609.36562v1",
+    "type": "TeX archive",
+    "sha256": "3ac657d403107fa99efc72ced2cb048cacaddfe61988c0dc13c4698a262e6cee",
+    "files": [
+      "00README.json",
+      "acmart.cls",
+      "ACM-Reference-Format.bst",
+      "images",
+      "images/case.pdf",
+      "images/cover.pdf",
+      "images/datasets.pdf",
+      "images/framework.pdf",
+      "sigconf.bbl",
+      "sigconf.tex"
+    ],
+    "access_status": "DONE",
+    "public": true
+  },
+  "official_code": {
+    "url": "https://github.com/FroggyChen/ThinkingGuard/tree/8c9426ea1025ffa69034e9f5ce07647bd3e72dc4",
+    "revision": "8c9426ea1025ffa69034e9f5ce07647bd3e72dc4",
+    "public": true,
+    "files": {
+      "README.md": "Markdown",
+      "framework.png": "PNG",
+      "inference.py": "Python"
+    },
+    "access_status": "DONE",
+    "inference_sha256": "efeead189012c443e4ee41b278bcdfa9ccb092832019c99537520c76c63342a3",
+    "inference_bytes": 3666,
+    "pinned_equals_main_copy": true
+  },
+  "acm_supplement": {
+    "url": "https://dl.acm.org/doi/suppl/10.1145/3767308.3835707",
+    "access_status": "NOT_VERIFIED",
+    "http_status": 403
+  },
+  "target_branch": {
+    "initial_head": "231cab852d3f99b7428844c036de358002a5e2a7",
+    "h1_k3_base": "4eb98bee31a6182bcf8e1ee724679460da008686",
+    "legacy_tree_diff_empty": true
+  }
+}

@@ -1,0 +1,6 @@
+/.local/
+/images/
+__pycache__/
+.pytest_cache/
+
+/runs/*/.lock

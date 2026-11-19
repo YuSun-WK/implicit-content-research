@@ -1,0 +1,12 @@
+{
+  "parser_sha256": "91f68439d98e1a1b09f7ced84b17b6567711247b56016f97286970e1c278b9f2",
+  "prompt_config_sha256": "6b42674197de6d39c17aa558bf5b568174e191ef314648bf2946c86b11889dd1",
+  "system_prompt_sha256": "6992b7fa56f705f2901b09979e5d23587bd740b8447b29fc375f05636fff4c87",
+  "parser_version": "reproduction_parser_v3.0.0",
+  "tests_sha256": "fe4b6ddb0bd2e19137d12271c7602d64bd4270d95bd798fcf2ff6bc77ab664a9",
+  "queue_sha256": "765db63fb590d343dad725f68d0842e923b3843b05ea6ee03e42c780d2302dd6",
+  "minimum_parse_coverage": 0.95,
+  "minimum_validation_rows": 36,
+  "independent_human_review": "NOT_RUN",
+  "frozen_at": "2026-11-19T08:33:03.389734+00:00"
+}
