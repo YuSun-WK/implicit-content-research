@@ -408,6 +408,8 @@ def train(cfg, model, processor, collate, losses, rows, signature, output, torch
             timing = {i: value for i, value in timing.items() if i <= event["batch"]}
         if event["event"] == "train_batch":
             timing[event["batch"]] = event["step_s"]
+    if set(timing) != set(range(1, limit + 1)):
+        raise RuntimeError("Batch timing log does not match the completed training cursor")
     ordered = sorted(timing.values())
     record("completed", mode=cfg["mode"], batches=limit, updates=updates,
            step_p50_s=statistics.median(ordered), step_p95_s=ordered[math.ceil(len(ordered) * 0.95) - 1],

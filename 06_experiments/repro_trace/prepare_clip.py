@@ -6,6 +6,7 @@ from pathlib import Path
 import time
 
 BASE = Path(__file__).resolve().parent
+HUB_ENDPOINT = "https://huggingface.co"
 
 
 class WeightsBlocked(Exception):
@@ -73,14 +74,14 @@ def main():
         from huggingface_hub import hf_hub_download, snapshot_download
         try:
             snapshot_download(spec["repository"], revision=spec["reference_revision"], local_dir=directory,
-                              allow_patterns=list(spec["files"]), token=False)
+                              allow_patterns=list(spec["files"]), token=False, endpoint=HUB_ENDPOINT)
         except (OSError, RuntimeError, ValueError) as exc:
             report["snapshot_download_error_type"] = type(exc).__name__
         missing = [name for name in spec["files"] if not (directory / name).is_file()]
         for name in missing:
             try:
                 hf_hub_download(spec["repository"], name, revision=spec["reference_revision"],
-                                local_dir=directory, token=False)
+                                local_dir=directory, token=False, endpoint=HUB_ENDPOINT)
             except (OSError, RuntimeError, ValueError) as exc:
                 report.setdefault("file_download_errors", {})[name] = type(exc).__name__
     report["files"] = inspect_files(directory, spec)
