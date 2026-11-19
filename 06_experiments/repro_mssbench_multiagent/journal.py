@@ -6,6 +6,7 @@ import json
 import sqlite3
 
 from manifest import sha256
+from pipeline import InvalidAgentOutput
 
 IDENTITY_FIELDS = (
     "dataset_revision", "task", "pair_id", "gold_label", "text_sha256", "image_sha256",
@@ -81,6 +82,12 @@ class Journal:
                     status = "invalid"
                 else:
                     status = "complete"
+            except InvalidAgentOutput:
+                status = "invalid"
+                raise
+            except KeyboardInterrupt:
+                status = "interrupted"
+                raise
             finally:
                 with conn:
                     conn.execute("UPDATE attempts SET status=? WHERE id=?", (status, attempt))

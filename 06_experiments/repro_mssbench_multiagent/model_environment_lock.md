@@ -1,0 +1,9 @@
+# 原生模型环境 · PARTIAL，安装及权重获取未完成
+
+- 模型 `liuhaotian/llava-v1.6-vicuna-7b@deae57a8c0ccb0da4c2661cc1891cc9d06503d11` 三个 safetensors 合计 14,125,909,456 B。CLIP `openai/clip-vit-large-patch14-336@ce19dc912ca5cd21c8a653c79e251e808ccabcd1` 的 `pytorch_model.bin` 为 1,711,974,081 B。模型下载清单对固定 HF API 元数据读取字节数、LFS SHA256 或 Git blob OID，完成后原子移到最终路径。验证器要求全部文件完整。 [原模型快照](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b/tree/deae57a8c0ccb0da4c2661cc1891cc9d06503d11) · [CLIP 快照](https://huggingface.co/openai/clip-vit-large-patch14-336/tree/ce19dc912ca5cd21c8a653c79e251e808ccabcd1)
+- 原生源码 `haotian-liu/LLaVA@c121f0432da27facab705978f83c4ada465e46fd` 的 codeload 压缩包已缓存，实测 SHA256 `500b62521b39c18fbb0c6400c7430ffa75f79dddb4060ca73f3df1734a49324e`。运行按锁定 checkout 的 `PYTHONPATH` 加载，不修改源端，未装 UI 或训练工具。原生 builder 的 4-bit 分支设 NF4/FP16/双量化。单设备可见，使用 builder 的 `auto` 放置以保留其视觉塔加载路径，随后验证没有 CPU、meta 或其它 GPU 参数。 [锁定 builder](https://github.com/haotian-liu/LLaVA/blob/c121f0432da27facab705978f83c4ada465e46fd/llava/model/builder.py)
+- 系统 Python 3.10.12 缺 ensurepip。用现有 Python 二进制只读引导独立 3.10.19 venv，未修改其它实验环境。直接依赖版本见 [stage1_native_requirements.txt](stage1_native_requirements.txt)，torch 2.1.2 / torchvision 0.16.2 / Transformers 4.37.2 与原生源声明一致；完整解析和环境冻结尚未产生。CUDA 驱动报告 13.0，目标为 torch cu121 runtime。现有工作区 3.7 TiB 可用，501 GiB 可用内存，容量足够。
+- PyTorch 官方 cu121 wheel、PyPI wheel 与拆分的小依赖安装重试出现读取超时或连接重置。HF 权重 curl 与 Hugging Face Hub/Xet 路径均未交付任何完整大权重文件。当前仅有部分小文件校验成功和一个不完整 CLIP 文件，`weights_verified.json` 不存在。真实原生加载器未运行。转换版在 Stage 0 的 CPU 导入证据仍有效；当前故障是权重和依赖传输，未触发转换路线上另下大权重。
+- 已记录候选 GPU 7 的 UUID。G0 未放行，未分配 CUDA 设备。Runner 在权重 SHA 完整核验、候选卡空闲时才可加载；allocator cap 19 GiB，软件硬门槛为 20 GiB allocated/reserved 和 NVML 设备增量。
+
+[环境日志](logs/stage1/environment.log) · [下载与安装日志](logs/stage1/model_retrieval.log) · [G1 preflight](logs/stage1/g1_preflight.log)

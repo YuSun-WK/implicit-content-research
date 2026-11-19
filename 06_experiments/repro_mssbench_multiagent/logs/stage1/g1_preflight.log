@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/stage1_smoke.py", line 312, in <module>
+    main()
+    ~~~~^^
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/stage1_smoke.py", line 254, in main
+    lock = checked_weights(args.model_root)
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/stage1_smoke.py", line 26, in checked_weights
+    lock = json.loads((root / "weights_verified.json").read_text())
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/ubuntu/anaconda3/lib/python3.13/pathlib/_local.py", line 546, in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/anaconda3/lib/python3.13/pathlib/_abc.py", line 632, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/anaconda3/lib/python3.13/pathlib/_local.py", line 537, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '.stage0-local/stage1/weights_verified.json'
+exit_code=1; CUDA_VISIBLE_DEVICES masked for preflight

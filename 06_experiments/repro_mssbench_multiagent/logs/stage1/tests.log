@@ -1,0 +1,18 @@
+test_baselines_and_diagnostics_use_one_call_per_input (test_stage0.Stage0.test_baselines_and_diagnostics_use_one_call_per_input) ... ok
+test_chat_propagation_and_routes (test_stage0.Stage0.test_chat_propagation_and_routes) ... ok
+test_direction_and_independent_metrics (test_stage0.Stage0.test_direction_and_independent_metrics) ... ok
+test_embodied_state_uses_its_own_image (test_stage0.Stage0.test_embodied_state_uses_its_own_image) ... ok
+test_malformed_first_agent_stops_before_subsequent_calls (test_stage0.Stage0.test_malformed_first_agent_stops_before_subsequent_calls) ... ok
+test_missing_and_invalid_inputs (test_stage0.Stage0.test_missing_and_invalid_inputs) ... ok
+test_resume_preserves_failure_and_skips_only_complete_inputs (test_stage0.Stage0.test_resume_preserves_failure_and_skips_only_complete_inputs) ... ok
+test_changed_agent_outputs_change_rendered_downstream_prompt (test_stage1.Stage1.test_changed_agent_outputs_change_rendered_downstream_prompt) ... ok
+test_corrupted_assets_and_behavior_screen (test_stage1.Stage1.test_corrupted_assets_and_behavior_screen) ... ok
+test_fixed_manifest_and_probe_denominators (test_stage1.Stage1.test_fixed_manifest_and_probe_denominators) ... ok
+test_native_text_and_image_conversation_render (test_stage1.Stage1.test_native_text_and_image_conversation_render) ... ok
+test_process_exit_keeps_partial_trace_and_completed_key (test_stage1.Stage1.test_process_exit_keeps_partial_trace_and_completed_key) ... ok
+test_strict_gate_stops_immediately_and_retains_invalid_trace (test_stage1.Stage1.test_strict_gate_stops_immediately_and_retains_invalid_trace) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 3.184s
+
+OK

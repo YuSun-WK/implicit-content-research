@@ -23,6 +23,11 @@ class Generation:
     peak_allocated_bytes: int | None = None
     peak_reserved_bytes: int | None = None
     nvml_used_bytes: int | None = None
+    nvml_delta_bytes: int | None = None
+    effective_input_tokens: int | None = None
+    image_dimensions: tuple[int, int] | None = None
+    processor_dimensions: tuple[int, int] | None = None
+    model_load_count: int | None = None
 
 
 class VLM(Protocol):
@@ -48,10 +53,15 @@ def parsed_field(text, field):
     return None
 
 
+class InvalidAgentOutput(ValueError):
+    pass
+
+
 class Pipeline:
-    def __init__(self, model: VLM, prompts):
+    def __init__(self, model: VLM, prompts, *, stop_on_invalid=False):
         self.model = model
         self.prompts = prompts
+        self.stop_on_invalid = stop_on_invalid
 
     def run(self, task, method, text, image, emit):
         if task not in ("chat", "embodied") or method not in (
@@ -93,6 +103,8 @@ class Pipeline:
             finally:
                 trace["elapsed_ms"] = round((perf_counter() - start) * 1000, 3)
                 emit(trace)
+            if self.stop_on_invalid and trace["error"] == "invalid_agent_output":
+                raise InvalidAgentOutput(f"{role}: expected a valid structured output")
             return trace
 
         def prompt(key):
