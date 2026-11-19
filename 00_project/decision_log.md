@@ -30,3 +30,19 @@
 - P009 将 `JEYUUSBY` 下字节不同的 PDF `R78ASLE5` 移至主条目 `P3HCRLZM`；主条目原有 `I73WUKL3` 保留。两种 PDF 提取正文仅有换行差异，但仍保留两份附件供版本核验。
 - 永久清理前逐项检查回收站，55 个对象均可追溯到目标 Collection 中的重复条目或其附件，且无待删除批注。随后通过 Zotero 桌面界面清空回收站。当前 36 个主文献 Key 全部可查，回收站为 0。
 - 历史 Item Key 保留在 `zotero_mapping.csv` 供审计，但标记为永久清理，不作为可访问的馆藏条目。未直接修改 Zotero 数据库或日志；手动附件改动仅为 `8J4X7BZI` 补回缺失 PDF 文件，并已核对哈希。
+
+
+## 2026-11-19：图文联合隐含风险检测 Framework-Transfer Idea Discovery（严格初筛）
+
+- **Decision / target correction:** 本轮唯一目标是**图文联合隐含风险检测**，不是 Social Bot Detection；此前同窗口输出的 SBD 候选、No-Go 与 IDEA-011 建议全部不适用于本任务。以输入风险分级/分类为主，和自由生成响应的拒答/ASR分开评测。
+- **Verified fact / existing evidence:** 已有 P037 VLSBench（ACL 2025 Main）、P038 VLSU（ICLR 2026）、P034 CrossGuard（ACL 2026 Main）、P039 ThinkingGuard（ACM MM 2026）、P040 Meerkat-VL（ICML 2026）。按 P038 存档的公开 CSV 静态审计，严格 Safe-Safe-Unsafe 35 条；广义联合风险升级 179 条（不是全部样本）。
+- **Verified fact / fresh collision boundary:** 
+  - *EviSafe: Evidence-Grounded Safety Evaluation for Vision-Language Models*（2026-08 arXiv preprint，**非已核实顶会录用**）：已有图文证据标注、自然行为、风险证据反事实一致性评测；https://arxiv.org/abs/2608.23313 。
+  - *MTMCS-Bench*（ACL 2026 **Findings**）：已有成对安全/不安全多轮图文情境与风险升级/切换协议；https://aclanthology.org/2026.findings-acl.96/ 。
+  - *CMIE*（EMNLP 2026 Main）：已将有害图文交互本身定义为安全遗忘对象；https://aclanthology.org/2026.emnlp-main.2220/ 。
+  - *Transfer Safety Awareness for Cross-Modal Safety Drift*（EMNLP 2026 **Findings**）：冻结主干、安全方向迁移的直接先例；https://aclanthology.org/2026.findings-emnlp.638/ 。
+  - *ConceptGuard*（EMNLP 2026 Main）：图文联合隐含风险预检测与概念级安全处理已存在；https://aclanthology.org/2026.emnlp-main.2308/ 。其作者公开仓库仅有 README、requirements、权重等少量文件，不能当成完整训练/评测 release：https://github.com/Ruize-Ma/ConceptGuard 。
+  - *SingGuard*（2026 arXiv 技术报告，未核验正式 A 会）：政策输入、自适应图文风险判别已有直接竞品；当前 GitHub 缺少完整训练/评测实现：https://github.com/inclusionAI/SingGuard 。
+- **Verified fact / source-framework static code audit:** NeurIPS 2025 D&B *SpuriVerse* 官方代码有数据构建/推理/微调接口，但完整构造依赖人工核验和多种 API，当前复现代价较高（https://github.com/Anderson-Lee-Git/SpuriVerse）；NeurIPS 2025 Main *ARDS* 官方代码有 worst-subgroup 检索、选择、LLaVA 训练/评测，但训练数据与原始工程较重（https://github.com/xyang583/ARDS）；EMNLP 2026 Findings *Counterfactual Tests for Measuring Chain-of-Thought Faithfulness in Visual Language Models* 有代码/分析脚本，但不附原始及编辑后的图片（https://github.com/neuralisa/cct-vlm）。
+- **Interpretation:** “联合风险首次被发现”“有风险归因/反事实即创新”“动态政策+图文评测即创新”“换一套 worst-group 数据采样即新任务”目前都存在显著直接或近邻 novelty collision；VLSU 严格联合升级小样本、作者协议/图片可达性等问题使部分源框架无法满足低成本可信验证门槛。
+- **Decision:** 本轮**未选出新的 Scientific GO / Weak GO shortlist**；不是对所有研究空间的穷尽性否定。不生成新方法、不启动 Codex、不做训练，不用 SBD 结论覆盖本项目。若未来重开某候选，首先证明 (i) 独立金标和充分数量的目标样本，(ii) 与前述 2025–26 直接竞品的明确差异，(iii) 源仓库训练/评测主路径及单卡预算，(iv) 预注册负对照和 24–48h kill gate。工程易行与科学可发表必须分别判定。
