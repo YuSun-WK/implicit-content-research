@@ -1,0 +1,6 @@
+{
+  "source_short_train_step_p95_s": 1.0088740789797157,
+  "fixed_max_epochs": 20,
+  "conservative_planning_seconds": 1930.3405116312206,
+  "formal_timeout_seconds": 21540
+}

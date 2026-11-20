@@ -1,0 +1,10 @@
+{
+  "best-epoch-2.pt": {
+    "sha256": "caaa3c4200decebe639b5596c4fcb7e6de317eca3a132557419ebca998503fa7",
+    "bytes": 45155535
+  },
+  "last.pt": {
+    "sha256": "d715fe0ff05788a37df67d6994272800d0144c4677192c847351e0b317f83822",
+    "bytes": 135482715
+  }
+}
