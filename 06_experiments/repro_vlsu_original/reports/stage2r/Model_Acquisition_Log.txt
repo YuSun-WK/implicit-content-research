@@ -1,0 +1,10 @@
+2026-11-20 UTC Stage 2R evidence (credentials and signed URLs omitted)
+Repository branch repro/vlsu-original-20261119, base 4d243512ca31123b77d631283376a6cba92392d2.
+Stage 2R task read via GitHub connector; local git remote at the same HEAD does not contain the task file.
+Initial five partials: 284199226 bytes. Existing official metadata files are present. Free disk: 3.7 TiB.
+Official HF DNS resolved; config HEAD returned 200 with TLS verify result 0. Official LFS batch returned five objects, all on us.aws.cdn.hf.co.
+Standard hf download --max-workers 1 launched once; produced zero new weight bytes and left a zero-byte HF blob .incomplete. Session interrupted by server restart.
+Official LFS Range probes: 16 MiB and 64 MiB both returned 206, TLS verify result 0, exact Content-Range and exact byte count. Curl reported remote proxy 127.0.0.1; public CDN host was verified from the official LFS batch.
+Bounded two-worker 64 MiB resume appended two validated chunks (134217728 bytes). Subsequent chunks failed after three attempts each: curl 28 timeout or curl 35 TLS failure. No failed chunk was appended. Final partial bytes 418416954; complete verified shards 0/5.
+Current network outcome MODEL_FETCH_BLOCKED_BY_ENVIRONMENT. GPU model load and generation NOT RUN by five-shard integrity gate.
+VLSU_PINNED_CSV=/tmp/vlsu-stage0-7004194/VLSU.csv python -m pytest -q -rs: 80 passed in 7.15s.

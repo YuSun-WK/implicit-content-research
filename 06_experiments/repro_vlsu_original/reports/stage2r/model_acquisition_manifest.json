@@ -1,0 +1,57 @@
+{
+  "status": "MODEL_WEIGHTS_PARTIAL",
+  "model_id": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "revision": "cc594898137f460bfe9f0759e9844b3ce807cfb5",
+  "source": "official Hugging Face LFS",
+  "weight_shards_verified": 0,
+  "weight_shards_required": 5,
+  "expected_weight_bytes": 16584414560,
+  "partial_weight_bytes": 418416954,
+  "files": [
+    {
+      "file": "model-00001-of-00005.safetensors",
+      "expected_bytes": 3900233256,
+      "expected_sha256": "e97b877e47fde53a6c6e77aafb36e58e91ee9d95c4a3eeac6f1b5c0e6a1c986e",
+      "verified": false,
+      "partial_bytes": 107604275,
+      "complete_file_present": false
+    },
+    {
+      "file": "model-00002-of-00005.safetensors",
+      "expected_bytes": 3864726320,
+      "expected_sha256": "a9a300a43b4724eee2abe7c18ceb26768d0ab011eb0cad19d9bfd2476a24d024",
+      "verified": false,
+      "partial_bytes": 73676268,
+      "complete_file_present": false
+    },
+    {
+      "file": "model-00003-of-00005.safetensors",
+      "expected_bytes": 3864726424,
+      "expected_sha256": "111223d173e00bbee81cba1216fad28668df3476706b7fd26f4d5b50f8b3a507",
+      "verified": false,
+      "partial_bytes": 156347337,
+      "complete_file_present": false
+    },
+    {
+      "file": "model-00004-of-00005.safetensors",
+      "expected_bytes": 3864733680,
+      "expected_sha256": "ef47f634fa57d46ee134edcc09f34085a47da1e16c12a2abe0d67118be6d72ed",
+      "verified": false,
+      "partial_bytes": 72912627,
+      "complete_file_present": false
+    },
+    {
+      "file": "model-00005-of-00005.safetensors",
+      "expected_bytes": 1089994880,
+      "expected_sha256": "0c859795ad3a627a9b95bcb762e059d5b768a4a36fdd4affeff269d93fdecc67",
+      "verified": false,
+      "partial_bytes": 7876447,
+      "complete_file_present": false
+    }
+  ],
+  "gpu_model_load": "NOT RUN",
+  "direct_generated": 0,
+  "binary_generated": 0,
+  "structured_cot_generated": 0,
+  "network_result": "64 MiB Range initially 206 with exact Content-Range, subsequent chunks failed after bounded retries (curl 28 timeout and 35 TLS)."
+}
