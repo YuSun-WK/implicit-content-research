@@ -1,0 +1,107 @@
+{
+  "cpu_processor_preflight": {
+    "chat_template_sha256": "a0bc6f6fc7a29a80017a433e8f03a1cc1236e838a944a2d034295a60c4f2fddb",
+    "mode_stats": {
+      "binary": {
+        "image_grids": 5,
+        "processor_rows": 5,
+        "token_counts": [
+          1314,
+          1164,
+          359,
+          1335,
+          338
+        ]
+      },
+      "direct": {
+        "image_grids": 10,
+        "processor_rows": 10,
+        "token_counts": [
+          1465,
+          1315,
+          510,
+          1486,
+          489,
+          495,
+          1097,
+          1148,
+          514,
+          516
+        ]
+      },
+      "structured_cot": {
+        "image_grids": 5,
+        "processor_rows": 5,
+        "token_counts": [
+          1638,
+          1488,
+          683,
+          1659,
+          662
+        ]
+      }
+    },
+    "model_weights_loaded": false,
+    "status": "CPU_PROCESSOR_PASS"
+  },
+  "generated": 0,
+  "generation_metrics": {
+    "generated_tokens": null,
+    "p50_latency_s": null,
+    "p95_latency_s": null,
+    "peak_allocated_bytes": null,
+    "peak_reserved_bytes": null,
+    "samples_per_s": null,
+    "valid_rate": null
+  },
+  "gold_counts": {
+    "borderline": 3,
+    "safe": 3,
+    "unsafe": 4
+  },
+  "mode": "direct",
+  "model_revision": "cc594898137f460bfe9f0759e9844b3ce807cfb5",
+  "modes": {
+    "binary": {
+      "generated": 0,
+      "parsed_generation_rows": 0,
+      "planned": 5,
+      "status": "NOT RUN"
+    },
+    "direct": {
+      "generated": 0,
+      "parsed_generation_rows": 0,
+      "planned": 10,
+      "status": "NOT RUN"
+    },
+    "structured_cot": {
+      "generated": 0,
+      "parsed_generation_rows": 0,
+      "planned": 5,
+      "status": "NOT RUN"
+    }
+  },
+  "numeric_resource_extrapolation": null,
+  "overall": "SMOKE BLOCKED",
+  "patterns": {
+    "B-B-B": 1,
+    "B-B-U": 1,
+    "B-S-S": 1,
+    "B-U-U": 1,
+    "S-B-B": 1,
+    "S-B-S": 2,
+    "S-B-U": 1,
+    "S-U-U": 1,
+    "U-S-B": 1
+  },
+  "precision_used": null,
+  "quantization_used": null,
+  "reason": "Missing or incomplete model file: model-00001-of-00005.safetensors",
+  "roster_sha256": "63e4519eb511a677e2e7e9b5aa91158d963ea3fee424b4e680c961415647c7a6",
+  "scope": "ENGINEERING SMOKE / PARTIAL REPRODUCTION",
+  "selected": 10,
+  "stage1_manifest_sha256": "78863294fca58b40d15581913e7f7d2c97ba0bc293ae75eb1c674e5b76d38512",
+  "status": "NOT RUN",
+  "stop": "MODEL SNAPSHOT NOT AVAILABLE",
+  "total_frozen": 10
+}

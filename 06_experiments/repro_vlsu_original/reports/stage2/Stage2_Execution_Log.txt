@@ -1,0 +1,37 @@
++ git log -2 --oneline
+8900886 docs(vlsu-repro): accelerate with parallel model smoke and safe acquisition track
+0b9a852 Diagnose VLSU resolver instability and lock auditable recovery
++ sha256sum /tmp/vlsu-stage0-7004194/VLSU.csv /tmp/vlsu-stage0-7004194/paper.pdf
+9a4cd53fce796dd0c2bcae3a97c7ba6caf976c34f473aab2806cc2c325c8b74f  /tmp/vlsu-stage0-7004194/VLSU.csv
+b38dc2e84d20899132125338b3ef8d31f54873660c2562c281c4d992c1f96aa8  /tmp/vlsu-stage0-7004194/paper.pdf
++ python scripts/extract_paper_prompts.py --pdf /tmp/vlsu-stage0-7004194/paper.pdf
+3dc491176bff0fc405ee0e6b1298914e42861ff15f507a4aee0d3f7377497817  binary.v1.txt
+563018443eb76d980b51a1fcf9387edc042638461ce4b2633305b6d9bbafc45b  direct.v1.txt
+ea5460e9a0cab074ff99d5245d9d34d2a67164088a85625e46c3e39bf5f889da  structured_cot.v1.txt
++ python -m pytest -q
+........................................................................ [ 90%]
+........                                                                 [100%]
+80 passed in 7.42s
++ git diff --check
++ set +x
+
+Model transfer evidence (signed URLs and credentials omitted)
+status=206 bytes=1048576
+model-00005-of-00005.safetensors transfer_exit 52 bytes 7876447
+model-00002-of-00005.safetensors transfer_exit 18 bytes 6567404
+model-00003-of-00005.safetensors transfer_exit 52 bytes 156347337
+model-00004-of-00005.safetensors transfer_exit 28 bytes 72912627
+model-00001-of-00005.safetensors transfer_exit 28 bytes 40495411
+Verified weight shards 0 / 5
+
+CPU processor verification on frozen VLSU images
+{"chat_template_sha256": "a0bc6f6fc7a29a80017a433e8f03a1cc1236e838a944a2d034295a60c4f2fddb", "mode_stats": {"binary": {"image_grids": 5, "processor_rows": 5, "token_counts": [1314, 1164, 359, 1335, 338]}, "direct": {"image_grids": 10, "processor_rows": 10, "token_counts": [1465, 1315, 510, 1486, 489, 495, 1097, 1148, 514, 516]}, "structured_cot": {"image_grids": 5, "processor_rows": 5, "token_counts": [1638, 1488, 683, 1659, 662]}}, "model_weights_loaded": false, "status": "CPU_PROCESSOR_PASS"}
+
+Local execute command and exit status
++ rc=0
++ /home/ubuntu/anaconda3/envs/ESTMM/bin/python scripts/stage2_qwen_smoke.py --csv /tmp/vlsu-stage0-7004194/VLSU.csv --stage1-root .local/stage1 --manifest .local/stage1/snapshots/78863294fca58b40d15581913e7f7d2c97ba0bc293ae75eb1c674e5b76d38512.json --model-path .local/stage2/hf/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5 --mode direct --execute
+{"gold_counts": {"borderline": 3, "safe": 3, "unsafe": 4}, "mode": "direct", "patterns": {"B-B-B": 1, "B-B-U": 1, "B-S-S": 1, "B-U-U": 1, "S-B-B": 1, "S-B-S": 2, "S-B-U": 1, "S-U-U": 1, "U-S-B": 1}, "roster_sha256": "63e4519eb511a677e2e7e9b5aa91158d963ea3fee424b4e680c961415647c7a6", "scope": "ENGINEERING SMOKE / PARTIAL REPRODUCTION", "selected": 10, "stage1_manifest_sha256": "78863294fca58b40d15581913e7f7d2c97ba0bc293ae75eb1c674e5b76d38512", "status": "NOT RUN", "total_frozen": 10}
+{"generated": 0, "gold_counts": {"borderline": 3, "safe": 3, "unsafe": 4}, "mode": "direct", "model_revision": "cc594898137f460bfe9f0759e9844b3ce807cfb5", "patterns": {"B-B-B": 1, "B-B-U": 1, "B-S-S": 1, "B-U-U": 1, "S-B-B": 1, "S-B-S": 2, "S-B-U": 1, "S-U-U": 1, "U-S-B": 1}, "reason": "Missing or incomplete model file: model-00001-of-00005.safetensors", "roster_sha256": "63e4519eb511a677e2e7e9b5aa91158d963ea3fee424b4e680c961415647c7a6", "scope": "ENGINEERING SMOKE / PARTIAL REPRODUCTION", "selected": 10, "stage1_manifest_sha256": "78863294fca58b40d15581913e7f7d2c97ba0bc293ae75eb1c674e5b76d38512", "status": "NOT RUN", "stop": "MODEL SNAPSHOT NOT AVAILABLE", "total_frozen": 10}
++ rc=2
++ set +x
+Exit 2

@@ -1,0 +1,117 @@
+{
+  "candidate_free_mib_before_cuda_context": 48506,
+  "candidate_uuid": "GPU-e444a3f7-16b4-fe55-9dc5-829276924b28",
+  "compute_apps": [
+    {
+      "gpu_uuid": "GPU-aef04bcb-33d1-feca-fa77-da4b1b95b433",
+      "used_gpu_memory": "13728"
+    },
+    {
+      "gpu_uuid": "GPU-8acf9116-9a4f-e318-849b-46ab2f7c8a40",
+      "used_gpu_memory": "12758"
+    }
+  ],
+  "generation_vram_peak_bytes": null,
+  "gpu_job_executed": false,
+  "gpus": [
+    {
+      "driver_version": "580.82.09",
+      "index": "0",
+      "memory.free": "48506",
+      "memory.total": "49140",
+      "memory.used": "3",
+      "name": "NVIDIA GeForce RTX 4090",
+      "utilization.gpu": "0",
+      "uuid": "GPU-e444a3f7-16b4-fe55-9dc5-829276924b28"
+    },
+    {
+      "driver_version": "580.82.09",
+      "index": "1",
+      "memory.free": "34772",
+      "memory.total": "49140",
+      "memory.used": "13737",
+      "name": "NVIDIA GeForce RTX 4090",
+      "utilization.gpu": "99",
+      "uuid": "GPU-aef04bcb-33d1-feca-fa77-da4b1b95b433"
+    },
+    {
+      "driver_version": "580.82.09",
+      "index": "2",
+      "memory.free": "35742",
+      "memory.total": "49140",
+      "memory.used": "12767",
+      "name": "NVIDIA GeForce RTX 4090 D",
+      "utilization.gpu": "100",
+      "uuid": "GPU-8acf9116-9a4f-e318-849b-46ab2f7c8a40"
+    },
+    {
+      "driver_version": "580.82.09",
+      "index": "3",
+      "memory.free": "48506",
+      "memory.total": "49140",
+      "memory.used": "3",
+      "name": "NVIDIA GeForce RTX 4090 D",
+      "utilization.gpu": "0",
+      "uuid": "GPU-45decdd6-682b-4cd9-2bc3-6769eee7a81f"
+    },
+    {
+      "driver_version": "580.82.09",
+      "index": "4",
+      "memory.free": "48506",
+      "memory.total": "49140",
+      "memory.used": "3",
+      "name": "NVIDIA GeForce RTX 4090 D",
+      "utilization.gpu": "0",
+      "uuid": "GPU-d72631b6-1716-61ed-d355-8da3e5558910"
+    },
+    {
+      "driver_version": "580.82.09",
+      "index": "5",
+      "memory.free": "48506",
+      "memory.total": "49140",
+      "memory.used": "3",
+      "name": "NVIDIA GeForce RTX 4090 D",
+      "utilization.gpu": "0",
+      "uuid": "GPU-5a0ba87d-2dc2-fed4-276c-8bb93dcec495"
+    },
+    {
+      "driver_version": "580.82.09",
+      "index": "6",
+      "memory.free": "48506",
+      "memory.total": "49140",
+      "memory.used": "3",
+      "name": "NVIDIA GeForce RTX 4090 D",
+      "utilization.gpu": "0",
+      "uuid": "GPU-e2798d19-b9ec-11c5-d2b2-379a3eb58ffa"
+    },
+    {
+      "driver_version": "580.82.09",
+      "index": "7",
+      "memory.free": "48506",
+      "memory.total": "49140",
+      "memory.used": "3",
+      "name": "NVIDIA GeForce RTX 4090 D",
+      "utilization.gpu": "0",
+      "uuid": "GPU-79ea6ee8-2e76-d36e-1508-7813c1589ec1"
+    }
+  ],
+  "packages": {
+    "Pillow": "12.0.0",
+    "accelerate": null,
+    "bitsandbytes": null,
+    "huggingface-hub": "0.36.0",
+    "qwen-vl-utils": null,
+    "torch": "2.9.1",
+    "transformers": "4.57.3"
+  },
+  "torch_cuda_probe": {
+    "available": true,
+    "bf16_supported": true,
+    "device_count": 1,
+    "memory_free_total_bytes": [
+      50450989056,
+      50864390144
+    ],
+    "torch_cuda": "12.8"
+  }
+}
