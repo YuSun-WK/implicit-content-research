@@ -1,0 +1,14 @@
+test_atomic_serialization (test_stage0.Stage0Checks) ... ok
+test_caption_inventory (test_stage0.Stage0Checks) ... ok
+test_diagnostic_checkpoint_resume_and_mode_mismatch (test_stage0.Stage0Checks) ... ok
+test_image_integrity_counts (test_stage0.Stage0Checks) ... ok
+test_missing_author_captions_only_block_original (test_stage0.Stage0Checks) ... ok
+test_single_text_candidate_uses_only_classification (test_stage0.Stage0Checks) ... ok
+test_small_author_path_singleton (test_stage0.Stage0Checks) ... ok
+test_threshold (test_stage0.Stage0Checks) ... ok
+test_weights_reject_wrong_or_missing_sha (test_stage0.Stage0Checks) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.933s
+
+OK
