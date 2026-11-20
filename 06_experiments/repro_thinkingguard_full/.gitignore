@@ -6,3 +6,5 @@ __pycache__/
 /runs/*/.lock
 
 /runs/.stage_registry.lock
+
+/runs/.stage2_registry.lock

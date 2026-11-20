@@ -1,0 +1,22 @@
+{
+  "122291687f267b0fd4516a432bbbb80f8a20d680c0c96a0499abfc8d78fb4228": {
+    "run_id": "a1_smoke_20261120",
+    "summary_sha256": "8f301525be93feaa263c4dd4ee7e2acedc13c569454bfcdfbeb8871d94f9e75a"
+  },
+  "f160e88e2e20ee97c980fc92307301de6019e04bf12d8b8f48c6036d460d3988": {
+    "run_id": "a1_smoke_v1b_20261120",
+    "summary_sha256": "b554f6a841538e4905f75f9a1edd8e5b75efd78822d6220939660eecbe6278d4"
+  },
+  "f95ea6aa57e28674b9633f4e0aa2a49b9dd9d469e26cf5e6df26fdb47e0787b7": {
+    "run_id": "a1_smoke_v1c_20261120",
+    "summary_sha256": "824c2ad3e6316c7a999378efa7a6be4c3bd307178e6c408b6172581614402774"
+  },
+  "fbe97f1a1bc29f683360621132552ece9ab8ff6f8f96da840ea3cf298411a8f4": {
+    "run_id": "a1_validation_v1c_20261120",
+    "summary_sha256": "9a1ef90b3fe704f77933d1d16c068c0b874dff4c9bbd7c0b3c0bac15b6738af7"
+  },
+  "dfb594294681038438cf153d1f8cef3beef5fe43f1991c276427ac9d37323540": {
+    "run_id": "d0_smoke_20261120",
+    "summary_sha256": "6c68bfe9b2b63b4ec3d6974c3171c9da01f5a613095c11f8b9f6cb95be835e56"
+  }
+}

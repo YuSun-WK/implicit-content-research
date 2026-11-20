@@ -1,0 +1,14 @@
+{
+  "host_pid": "2910691",
+  "namespace_pids": [
+    1037114
+  ],
+  "challenge_mib": {
+    "before": 348,
+    "during": 412,
+    "after": 348
+  },
+  "method": "unique_new_host_pid_reversible_64_mib",
+  "status": "DONE",
+  "gpu_uuid": "GPU-d72631b6-1716-61ed-d355-8da3e5558910"
+}

@@ -17,6 +17,7 @@ from pathlib import Path
 from a1_parser_v1 import parse as parse_a1
 from d0_parser_v1 import parse as parse_d0
 from build_test_manifest import verify_image
+from stage2_gates import batch_ready
 from recovery_gates import (
     active_processes, bind_pid, prior_summary, queue_hash, queue_ready, registry_key,
     require_idle, run_id_valid,
@@ -190,7 +191,9 @@ def summarize(rows, stage, peaks):
 def main():
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument("--protocol", choices=("a1", "d0"), required=True)
-    cli.add_argument("--stage", choices=("smoke", "validation", "pilot"), required=True)
+    cli.add_argument("--stage", choices=("smoke", "validation", "pilot", "batch"), required=True)
+    cli.add_argument("--batch-start-pair", type=int)
+    cli.add_argument("--batch-pairs", type=int)
     cli.add_argument("--model", type=Path, required=True)
     cli.add_argument("--gpu-uuid")
     cli.add_argument("--run-id")
@@ -224,13 +227,31 @@ def main():
                        image_width=str(width), image_height=str(height),
                        image_decode_status="OK", run_status="READY",
                        image_hash_reference="HF_LFS_SHA256")
-    ordered = queues["a1_smoke" if args.stage == "smoke" else "a1_validation" if args.stage == "validation" else "pilot"]
-    stage_data = queue_ready(args.stage, entries, ordered, tree, config["dataset_revision"], verify_local)
+    expansion_path = ROOT / "artifacts/stage2_expansion_queue_v1.json"
+    expansion = read(expansion_path)
+    if args.stage == "batch":
+        if (args.protocol != "a1" or args.batch_start_pair is None or args.batch_pairs is None
+                or args.batch_start_pair < 100 or not 1 <= args.batch_pairs <= 100
+                or args.batch_start_pair + args.batch_pairs > 868):
+            cli.error("A1 batch requires a complete 1-100 pair slice after the frozen Pilot")
+        reused = {uid.rsplit("/", 1)[0] for uid in queues["a1_smoke"] + queues["a1_validation"]}
+        selected_pairs = expansion["full_pairs"][args.batch_start_pair:args.batch_start_pair + args.batch_pairs]
+        ordered = [f"{pid}/{side}" for pid in selected_pairs if pid not in reused
+                   for side in ("safe", "unsafe")]
+        stage_data = batch_ready(entries, ordered, tree, config["dataset_revision"], verify_local)
+    else:
+        if args.batch_start_pair is not None or args.batch_pairs is not None:
+            cli.error("Batch slice options require --stage batch")
+        ordered = queues["a1_smoke" if args.stage == "smoke" else "a1_validation" if args.stage == "validation" else "pilot"]
+        stage_data = queue_ready(args.stage, entries, ordered, tree, config["dataset_revision"], verify_local)
     requirements = {
         "manifest": len(rows) == len(entries) == 1736 and sha(manifest) == freeze["manifest_sha256"],
         "data": stage_data["ready"],
         "official_tree": sha(ROOT / "artifacts/dataset_source_tree.csv") == freeze["source_tree_sha256"],
         "queues": sha(queue_path) == freeze["queue_sha256"] and not stage_data["invalid_queue"],
+        "expansion": sha(expansion_path) == freeze["expansion_queue_sha256"]
+                     and expansion["pilot_pairs"] == list(dict.fromkeys(
+                         uid.rsplit("/", 1)[0] for uid in queues["pilot"])),
         "parser": sha(parser_path) == freeze["parser_sha256"] == config["parser_sha256"]
                   and sha(ROOT / f"tests/test_{args.protocol}_parser_v1.py") == freeze["tests_sha256"],
         "prompt": sha(prompt_path) == freeze["prompt_config_sha256"] == config["prompt_config_sha256"]
@@ -251,7 +272,7 @@ def main():
     if not args.gpu_uuid or not run_id_valid(args.run_id):
         cli.error("A permitted GPU UUID and an alphanumeric run ID are required")
 
-    identity_base = dict(protocol=args.protocol, prompt_sha256=sha(prompt_path), parser_sha256=sha(parser_path), config_sha256=sha(settings_path), source_tree_sha256=sha(ROOT / "artifacts/dataset_source_tree.csv"),
+    identity_base = dict(protocol=args.protocol, prompt_sha256=sha(prompt_path), parser_sha256=sha(parser_path), expansion_queue_sha256=sha(expansion_path), config_sha256=sha(settings_path), source_tree_sha256=sha(ROOT / "artifacts/dataset_source_tree.csv"),
                          queues_sha256=sha(queue_path), model_audit_sha256=sha(ROOT / "artifacts/model_cache_audit.json"),
                          runner_sha256=sha(Path(__file__)), gates_sha256=sha(Path(__file__).with_name("recovery_gates.py")))
     identity = dict(**identity_base, inputs_sha256=queue_hash(entries, ordered), stage=args.stage, run_id=args.run_id)
@@ -271,17 +292,19 @@ def main():
             return 0 if read(completed_summary)["resource_gate"] else 3
         raise ValueError("Complete prediction journal is missing its terminal resource summary")
     benchmark_p95 = None
-    required_stages = [] if args.stage == "smoke" else ["smoke"] if args.stage == "validation" or args.protocol == "d0" else ["smoke", "validation"]
+    required_stages = [] if args.stage == "smoke" else ["smoke"] if args.stage == "validation" or args.protocol == "d0" else ["smoke", "validation"] if args.stage == "pilot" else ["smoke", "validation", "pilot"]
     registry_path = ROOT / "runs/stage2_registry.json"
     registry = read(registry_path) if registry_path.exists() else {}
     for stage in required_stages:
-        stage_order = queues["a1_smoke" if stage == "smoke" else "a1_validation"]
+        stage_order = queues["a1_smoke" if stage == "smoke" else "a1_validation" if stage == "validation" else "pilot"]
         input_sha = queue_hash(entries, stage_order)
         previous, summary = prior_summary(ROOT / "runs", registry, identity_base, stage, input_sha, read, sha)
         if stage == "validation":
             if summary["prediction_count"] != 36 or summary["extracted"] < 35:
                 raise ValueError("Independent A1 parse coverage did not reach 35/36")
             benchmark_p95 = summary["latency_seconds"]["p95"]
+        if stage == "pilot" and (summary["prediction_count"] != 200 or summary["generated_count"] != 200):
+            raise ValueError("A1 Pilot is incomplete")
     processes = lambda: active_processes(args.gpu_uuid, gpu_rows)
     require_idle(args.gpu_uuid, card, processes)
     for shard in model_audit["shards"]:
@@ -440,7 +463,7 @@ def main():
                   "raw_output": prior[uid]["raw_output"]} for uid in sorted(
                       prior, key=lambda key: hashlib.sha256(key.encode()).digest())]
         write(out / "raw_only_review.json", blind)
-    if summary["resource_gate"] and args.stage in ("smoke", "validation"):
+    if summary["resource_gate"] and args.stage in ("smoke", "validation", "pilot"):
         register_stage2_summary(ROOT / "runs", identity_base, args.stage, out / "summary.json", identity)
     return 0 if summary["resource_gate"] else 3
 

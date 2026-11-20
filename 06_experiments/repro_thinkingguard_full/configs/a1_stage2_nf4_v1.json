@@ -4,8 +4,8 @@
   "model_revision": "76892f9768ce828268265171f4bbc5dfb75eafc3",
   "dataset_revision": "3ac26e778db94a282711f463f22ba6db99643bee",
   "official_code_revision": "8c9426ea1025ffa69034e9f5ce07647bd3e72dc4",
-  "system_prompt_sha256": "9a11902d8a02d30999b336f271acd43bfdfed1c8dda20cefb922014e1d281048",
-  "prompt_config_sha256": "486f69244f9542ad3d6cd8ccfc5c37beb9b75ecbcbe8b9e596e4864ef7b1ce0a",
+  "system_prompt_sha256": "cfa62914b3984b9ccc79da01d62085673b620dbf79ac5b0b4f5c88e3777be97a",
+  "prompt_config_sha256": "7fd79e5c0dd60a4b8c9352f543d2d4aa1f5d8cf548aceb02e9ec9074565f476d",
   "parser_sha256": "a67c946464b3ad1887cb4f8cc5114a4be81e687871cb1d7af804eaca04c9dd32",
   "quantization": {
     "load_in_4bit": true,

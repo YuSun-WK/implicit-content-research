@@ -1,0 +1,55 @@
+{
+  "prediction_count": 6,
+  "generated_count": 6,
+  "extracted": 0,
+  "coverage": 0.0,
+  "structure_complete": 6,
+  "ambiguous_templates": 0,
+  "hit_token_cap": 0,
+  "stage_end_marker_coverage": {
+    "Intent": 6,
+    "Entity": 6,
+    "Attribute": 6,
+    "Risk": 6,
+    "Overall": 6
+  },
+  "latency_sample_uids": [
+    "test/ethical_violations/49/safe",
+    "test/ethical_violations/49/unsafe",
+    "test/illegal_activities/64/safe",
+    "test/illegal_activities/64/unsafe",
+    "test/misinformation/50/safe",
+    "test/misinformation/50/unsafe"
+  ],
+  "latency_seconds": {
+    "p50": 65.12855684617534,
+    "p90": 91.62089102901518,
+    "p95": 91.62089102901518
+  },
+  "independent_human_review": "NOT_RUN",
+  "gpu_sample_peaks_mib": {
+    "used_mib": 8339,
+    "process_mib": 8330
+  },
+  "end_utc": "2026-11-20T15:20:15.305902+00:00",
+  "job_wall_seconds": 448.12095351400785,
+  "identity": {
+    "protocol": "a1",
+    "prompt_sha256": "7fd79e5c0dd60a4b8c9352f543d2d4aa1f5d8cf548aceb02e9ec9074565f476d",
+    "parser_sha256": "a67c946464b3ad1887cb4f8cc5114a4be81e687871cb1d7af804eaca04c9dd32",
+    "expansion_queue_sha256": "70bcc3a5275849b651553690776ed16050b15a91ecfc3dc1c511eb7ed46c3a78",
+    "config_sha256": "5cfbe749b53acb4cb84fdbcf97f6141534d9bbe533ba5e11acf5345798569eca",
+    "source_tree_sha256": "94526e541f895be83eec74330b41a9210144ec687df53f4161a414c0fc1796c7",
+    "queues_sha256": "68a1b645bdb809eb49accabc2595457f099b712e2b09a620d7f4045f809d73f8",
+    "model_audit_sha256": "6f6afcbf03d75a834316306fb0195d110938d8ab9e4c101036df9fed1ea42882",
+    "runner_sha256": "b39e0bd5151fc25f14f8ba978748036f1e5999a1e7958fe90ea66c3d457b1090",
+    "gates_sha256": "fdb64bc4e79aabe3f5ff15b32f8f9c035d7fd4c3878a10d0b36c816bb5d16020",
+    "inputs_sha256": "0afb581d23261cea839d7260484121ea6050c540e1ee88401e1a7ee84851b0aa",
+    "stage": "smoke",
+    "run_id": "a1_smoke_v1c_20261120"
+  },
+  "parse_gate": "NOT_EVALUATED",
+  "torch_peak_allocated_mib": 7768.0,
+  "torch_peak_reserved_mib": 7908.0,
+  "resource_gate": true
+}

@@ -1,0 +1,40 @@
+{
+  "protocol": "A1_FIVE_STEP_SINGLE_VERDICT_NF4_v1",
+  "seed": 20261120,
+  "model_revision": "76892f9768ce828268265171f4bbc5dfb75eafc3",
+  "dataset_revision": "3ac26e778db94a282711f463f22ba6db99643bee",
+  "official_code_revision": "8c9426ea1025ffa69034e9f5ce07647bd3e72dc4",
+  "system_prompt_sha256": "31a05af40c5fa0bb2f82f5cb253b95acd150f0a07bfbc71d95932d267d957ca3",
+  "prompt_config_sha256": "265683065f728b9cb702bba63bac3c396d00efdc09b4fb8adc9aaeb5c5b53660",
+  "parser_sha256": "a67c946464b3ad1887cb4f8cc5114a4be81e687871cb1d7af804eaca04c9dd32",
+  "quantization": {
+    "load_in_4bit": true,
+    "bnb_4bit_quant_type": "nf4",
+    "bnb_4bit_use_double_quant": true,
+    "bnb_4bit_compute_dtype": "bfloat16"
+  },
+  "batch_size": 1,
+  "max_new_tokens": 1024,
+  "do_sample": false,
+  "image": {
+    "mode": "RGB",
+    "resize": "pinned processor defaults",
+    "shortest_edge": 65536,
+    "longest_edge": 16777216,
+    "patch_size": 16,
+    "merge_size": 2
+  },
+  "max_wall_seconds": 19000,
+  "memory_cap_gib": 20,
+  "torch_allocator_cap_gib": 18,
+  "versions": {
+    "torch": "2.9.1",
+    "transformers": "4.57.3",
+    "bitsandbytes": "0.48.2",
+    "accelerate": "1.12.0",
+    "pillow": "12.0.0",
+    "safetensors": "0.7.0",
+    "python": "3.10.19",
+    "cuda": "12.8"
+  }
+}

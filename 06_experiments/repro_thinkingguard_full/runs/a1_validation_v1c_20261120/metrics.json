@@ -1,0 +1,1443 @@
+{
+  "protocol": "a1",
+  "stage": "validation",
+  "predictions_observed": 36,
+  "parse_status_counts": {
+    "NONTERMINAL_VERDICT": 35,
+    "MULTIPLE_OVERALL": 1
+  },
+  "structure_complete": 35,
+  "expected_samples": 36,
+  "expected_pairs": 18,
+  "bootstrap_reps": 2000,
+  "bootstrap_seed": 20261119,
+  "reports": {
+    "strict_full_denominator": {
+      "micro": {
+        "accuracy": 0.0,
+        "unsafe_recall": 0.0,
+        "unsafe_fnr": 1.0,
+        "safe_fpr": 0.0,
+        "pair_accuracy": 0.0,
+        "reverse_flip": 0.0,
+        "both_safe": 0.0,
+        "both_unsafe": 0.0,
+        "label_coverage": 0.0,
+        "invalid_fraction": 1.0,
+        "invalid_safe_fraction": 1.0,
+        "invalid_unsafe_fraction": 1.0,
+        "n_total": 36,
+        "n_valid": 0,
+        "n_scored": 36,
+        "n_correct": 0,
+        "n_pairs": 18,
+        "n_pairs_scored": 18,
+        "confusion": {
+          "tp": 0,
+          "tn": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        "invalid": 36,
+        "invalid_pairs": 18,
+        "unsafe_precision": null,
+        "invalid_prediction_rows": 36,
+        "missing_prediction_rows": 0,
+        "f1_unsafe": 0.0,
+        "wilson95": {
+          "accuracy": [
+            0,
+            0.09641862859445885
+          ],
+          "unsafe_recall": [
+            0,
+            0.17587922364664965
+          ],
+          "unsafe_fnr": [
+            0.8241207763533505,
+            1
+          ],
+          "safe_fpr": [
+            0,
+            0.17587922364664965
+          ],
+          "pair_accuracy": [
+            0,
+            0.17587922364664965
+          ],
+          "reverse_flip": [
+            0,
+            0.17587922364664965
+          ],
+          "both_safe": [
+            0,
+            0.17587922364664965
+          ],
+          "both_unsafe": [
+            0,
+            0.17587922364664965
+          ],
+          "label_coverage": [
+            0,
+            0.09641862859445885
+          ],
+          "invalid_fraction": [
+            0.9035813714055411,
+            0.9999999999999999
+          ],
+          "invalid_safe_fraction": [
+            0.8241207763533505,
+            1
+          ],
+          "invalid_unsafe_fraction": [
+            0.8241207763533505,
+            1
+          ]
+        }
+      },
+      "macro_f1_nine_categories": 0.0,
+      "macro_recall_nine_categories": 0.0,
+      "per_category": {
+        "ethical_violations": {
+          "accuracy": 0.0,
+          "unsafe_recall": 0.0,
+          "unsafe_fnr": 1.0,
+          "safe_fpr": 0.0,
+          "pair_accuracy": 0.0,
+          "reverse_flip": 0.0,
+          "both_safe": 0.0,
+          "both_unsafe": 0.0,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 4,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 2,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": 0.0,
+          "wilson95": {
+            "accuracy": [
+              0,
+              0.48989083645458353
+            ],
+            "unsafe_recall": [
+              0,
+              0.6576197724933345
+            ],
+            "unsafe_fnr": [
+              0.34238022750666547,
+              1
+            ],
+            "safe_fpr": [
+              0,
+              0.6576197724933345
+            ],
+            "pair_accuracy": [
+              0,
+              0.6576197724933345
+            ],
+            "reverse_flip": [
+              0,
+              0.6576197724933345
+            ],
+            "both_safe": [
+              0,
+              0.6576197724933345
+            ],
+            "both_unsafe": [
+              0,
+              0.6576197724933345
+            ],
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "illegal_activities": {
+          "accuracy": 0.0,
+          "unsafe_recall": 0.0,
+          "unsafe_fnr": 1.0,
+          "safe_fpr": 0.0,
+          "pair_accuracy": 0.0,
+          "reverse_flip": 0.0,
+          "both_safe": 0.0,
+          "both_unsafe": 0.0,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 4,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 2,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": 0.0,
+          "wilson95": {
+            "accuracy": [
+              0,
+              0.48989083645458353
+            ],
+            "unsafe_recall": [
+              0,
+              0.6576197724933345
+            ],
+            "unsafe_fnr": [
+              0.34238022750666547,
+              1
+            ],
+            "safe_fpr": [
+              0,
+              0.6576197724933345
+            ],
+            "pair_accuracy": [
+              0,
+              0.6576197724933345
+            ],
+            "reverse_flip": [
+              0,
+              0.6576197724933345
+            ],
+            "both_safe": [
+              0,
+              0.6576197724933345
+            ],
+            "both_unsafe": [
+              0,
+              0.6576197724933345
+            ],
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "misinformation": {
+          "accuracy": 0.0,
+          "unsafe_recall": 0.0,
+          "unsafe_fnr": 1.0,
+          "safe_fpr": 0.0,
+          "pair_accuracy": 0.0,
+          "reverse_flip": 0.0,
+          "both_safe": 0.0,
+          "both_unsafe": 0.0,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 4,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 2,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": 0.0,
+          "wilson95": {
+            "accuracy": [
+              0,
+              0.48989083645458353
+            ],
+            "unsafe_recall": [
+              0,
+              0.6576197724933345
+            ],
+            "unsafe_fnr": [
+              0.34238022750666547,
+              1
+            ],
+            "safe_fpr": [
+              0,
+              0.6576197724933345
+            ],
+            "pair_accuracy": [
+              0,
+              0.6576197724933345
+            ],
+            "reverse_flip": [
+              0,
+              0.6576197724933345
+            ],
+            "both_safe": [
+              0,
+              0.6576197724933345
+            ],
+            "both_unsafe": [
+              0,
+              0.6576197724933345
+            ],
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "offensiveness": {
+          "accuracy": 0.0,
+          "unsafe_recall": 0.0,
+          "unsafe_fnr": 1.0,
+          "safe_fpr": 0.0,
+          "pair_accuracy": 0.0,
+          "reverse_flip": 0.0,
+          "both_safe": 0.0,
+          "both_unsafe": 0.0,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 4,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 2,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": 0.0,
+          "wilson95": {
+            "accuracy": [
+              0,
+              0.48989083645458353
+            ],
+            "unsafe_recall": [
+              0,
+              0.6576197724933345
+            ],
+            "unsafe_fnr": [
+              0.34238022750666547,
+              1
+            ],
+            "safe_fpr": [
+              0,
+              0.6576197724933345
+            ],
+            "pair_accuracy": [
+              0,
+              0.6576197724933345
+            ],
+            "reverse_flip": [
+              0,
+              0.6576197724933345
+            ],
+            "both_safe": [
+              0,
+              0.6576197724933345
+            ],
+            "both_unsafe": [
+              0,
+              0.6576197724933345
+            ],
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "physical_harm": {
+          "accuracy": 0.0,
+          "unsafe_recall": 0.0,
+          "unsafe_fnr": 1.0,
+          "safe_fpr": 0.0,
+          "pair_accuracy": 0.0,
+          "reverse_flip": 0.0,
+          "both_safe": 0.0,
+          "both_unsafe": 0.0,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 4,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 2,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": 0.0,
+          "wilson95": {
+            "accuracy": [
+              0,
+              0.48989083645458353
+            ],
+            "unsafe_recall": [
+              0,
+              0.6576197724933345
+            ],
+            "unsafe_fnr": [
+              0.34238022750666547,
+              1
+            ],
+            "safe_fpr": [
+              0,
+              0.6576197724933345
+            ],
+            "pair_accuracy": [
+              0,
+              0.6576197724933345
+            ],
+            "reverse_flip": [
+              0,
+              0.6576197724933345
+            ],
+            "both_safe": [
+              0,
+              0.6576197724933345
+            ],
+            "both_unsafe": [
+              0,
+              0.6576197724933345
+            ],
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "privacy": {
+          "accuracy": 0.0,
+          "unsafe_recall": 0.0,
+          "unsafe_fnr": 1.0,
+          "safe_fpr": 0.0,
+          "pair_accuracy": 0.0,
+          "reverse_flip": 0.0,
+          "both_safe": 0.0,
+          "both_unsafe": 0.0,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 4,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 2,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": 0.0,
+          "wilson95": {
+            "accuracy": [
+              0,
+              0.48989083645458353
+            ],
+            "unsafe_recall": [
+              0,
+              0.6576197724933345
+            ],
+            "unsafe_fnr": [
+              0.34238022750666547,
+              1
+            ],
+            "safe_fpr": [
+              0,
+              0.6576197724933345
+            ],
+            "pair_accuracy": [
+              0,
+              0.6576197724933345
+            ],
+            "reverse_flip": [
+              0,
+              0.6576197724933345
+            ],
+            "both_safe": [
+              0,
+              0.6576197724933345
+            ],
+            "both_unsafe": [
+              0,
+              0.6576197724933345
+            ],
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "property_damage": {
+          "accuracy": 0.0,
+          "unsafe_recall": 0.0,
+          "unsafe_fnr": 1.0,
+          "safe_fpr": 0.0,
+          "pair_accuracy": 0.0,
+          "reverse_flip": 0.0,
+          "both_safe": 0.0,
+          "both_unsafe": 0.0,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 4,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 2,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": 0.0,
+          "wilson95": {
+            "accuracy": [
+              0,
+              0.48989083645458353
+            ],
+            "unsafe_recall": [
+              0,
+              0.6576197724933345
+            ],
+            "unsafe_fnr": [
+              0.34238022750666547,
+              1
+            ],
+            "safe_fpr": [
+              0,
+              0.6576197724933345
+            ],
+            "pair_accuracy": [
+              0,
+              0.6576197724933345
+            ],
+            "reverse_flip": [
+              0,
+              0.6576197724933345
+            ],
+            "both_safe": [
+              0,
+              0.6576197724933345
+            ],
+            "both_unsafe": [
+              0,
+              0.6576197724933345
+            ],
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "religion_belief": {
+          "accuracy": 0.0,
+          "unsafe_recall": 0.0,
+          "unsafe_fnr": 1.0,
+          "safe_fpr": 0.0,
+          "pair_accuracy": 0.0,
+          "reverse_flip": 0.0,
+          "both_safe": 0.0,
+          "both_unsafe": 0.0,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 4,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 2,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": 0.0,
+          "wilson95": {
+            "accuracy": [
+              0,
+              0.48989083645458353
+            ],
+            "unsafe_recall": [
+              0,
+              0.6576197724933345
+            ],
+            "unsafe_fnr": [
+              0.34238022750666547,
+              1
+            ],
+            "safe_fpr": [
+              0,
+              0.6576197724933345
+            ],
+            "pair_accuracy": [
+              0,
+              0.6576197724933345
+            ],
+            "reverse_flip": [
+              0,
+              0.6576197724933345
+            ],
+            "both_safe": [
+              0,
+              0.6576197724933345
+            ],
+            "both_unsafe": [
+              0,
+              0.6576197724933345
+            ],
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "violence": {
+          "accuracy": 0.0,
+          "unsafe_recall": 0.0,
+          "unsafe_fnr": 1.0,
+          "safe_fpr": 0.0,
+          "pair_accuracy": 0.0,
+          "reverse_flip": 0.0,
+          "both_safe": 0.0,
+          "both_unsafe": 0.0,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 4,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 2,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": 0.0,
+          "wilson95": {
+            "accuracy": [
+              0,
+              0.48989083645458353
+            ],
+            "unsafe_recall": [
+              0,
+              0.6576197724933345
+            ],
+            "unsafe_fnr": [
+              0.34238022750666547,
+              1
+            ],
+            "safe_fpr": [
+              0,
+              0.6576197724933345
+            ],
+            "pair_accuracy": [
+              0,
+              0.6576197724933345
+            ],
+            "reverse_flip": [
+              0,
+              0.6576197724933345
+            ],
+            "both_safe": [
+              0,
+              0.6576197724933345
+            ],
+            "both_unsafe": [
+              0,
+              0.6576197724933345
+            ],
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        }
+      },
+      "stratified_pair_cluster_bootstrap95": {
+        "accuracy": [
+          0.0,
+          0.0
+        ],
+        "f1_unsafe": [
+          0.0,
+          0.0
+        ],
+        "pair_accuracy": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "valid_only": {
+      "micro": {
+        "accuracy": null,
+        "unsafe_recall": null,
+        "unsafe_fnr": null,
+        "safe_fpr": null,
+        "pair_accuracy": null,
+        "reverse_flip": null,
+        "both_safe": null,
+        "both_unsafe": null,
+        "label_coverage": 0.0,
+        "invalid_fraction": 1.0,
+        "invalid_safe_fraction": 1.0,
+        "invalid_unsafe_fraction": 1.0,
+        "n_total": 36,
+        "n_valid": 0,
+        "n_scored": 0,
+        "n_correct": 0,
+        "n_pairs": 18,
+        "n_pairs_scored": 0,
+        "confusion": {
+          "tp": 0,
+          "tn": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        "invalid": 36,
+        "invalid_pairs": 18,
+        "unsafe_precision": null,
+        "invalid_prediction_rows": 36,
+        "missing_prediction_rows": 0,
+        "f1_unsafe": null,
+        "wilson95": {
+          "accuracy": null,
+          "unsafe_recall": null,
+          "unsafe_fnr": null,
+          "safe_fpr": null,
+          "pair_accuracy": null,
+          "reverse_flip": null,
+          "both_safe": null,
+          "both_unsafe": null,
+          "label_coverage": [
+            0,
+            0.09641862859445885
+          ],
+          "invalid_fraction": [
+            0.9035813714055411,
+            0.9999999999999999
+          ],
+          "invalid_safe_fraction": [
+            0.8241207763533505,
+            1
+          ],
+          "invalid_unsafe_fraction": [
+            0.8241207763533505,
+            1
+          ]
+        }
+      },
+      "macro_f1_nine_categories": null,
+      "macro_recall_nine_categories": null,
+      "per_category": {
+        "ethical_violations": {
+          "accuracy": null,
+          "unsafe_recall": null,
+          "unsafe_fnr": null,
+          "safe_fpr": null,
+          "pair_accuracy": null,
+          "reverse_flip": null,
+          "both_safe": null,
+          "both_unsafe": null,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 0,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 0,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": null,
+          "wilson95": {
+            "accuracy": null,
+            "unsafe_recall": null,
+            "unsafe_fnr": null,
+            "safe_fpr": null,
+            "pair_accuracy": null,
+            "reverse_flip": null,
+            "both_safe": null,
+            "both_unsafe": null,
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "illegal_activities": {
+          "accuracy": null,
+          "unsafe_recall": null,
+          "unsafe_fnr": null,
+          "safe_fpr": null,
+          "pair_accuracy": null,
+          "reverse_flip": null,
+          "both_safe": null,
+          "both_unsafe": null,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 0,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 0,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": null,
+          "wilson95": {
+            "accuracy": null,
+            "unsafe_recall": null,
+            "unsafe_fnr": null,
+            "safe_fpr": null,
+            "pair_accuracy": null,
+            "reverse_flip": null,
+            "both_safe": null,
+            "both_unsafe": null,
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "misinformation": {
+          "accuracy": null,
+          "unsafe_recall": null,
+          "unsafe_fnr": null,
+          "safe_fpr": null,
+          "pair_accuracy": null,
+          "reverse_flip": null,
+          "both_safe": null,
+          "both_unsafe": null,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 0,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 0,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": null,
+          "wilson95": {
+            "accuracy": null,
+            "unsafe_recall": null,
+            "unsafe_fnr": null,
+            "safe_fpr": null,
+            "pair_accuracy": null,
+            "reverse_flip": null,
+            "both_safe": null,
+            "both_unsafe": null,
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "offensiveness": {
+          "accuracy": null,
+          "unsafe_recall": null,
+          "unsafe_fnr": null,
+          "safe_fpr": null,
+          "pair_accuracy": null,
+          "reverse_flip": null,
+          "both_safe": null,
+          "both_unsafe": null,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 0,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 0,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": null,
+          "wilson95": {
+            "accuracy": null,
+            "unsafe_recall": null,
+            "unsafe_fnr": null,
+            "safe_fpr": null,
+            "pair_accuracy": null,
+            "reverse_flip": null,
+            "both_safe": null,
+            "both_unsafe": null,
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "physical_harm": {
+          "accuracy": null,
+          "unsafe_recall": null,
+          "unsafe_fnr": null,
+          "safe_fpr": null,
+          "pair_accuracy": null,
+          "reverse_flip": null,
+          "both_safe": null,
+          "both_unsafe": null,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 0,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 0,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": null,
+          "wilson95": {
+            "accuracy": null,
+            "unsafe_recall": null,
+            "unsafe_fnr": null,
+            "safe_fpr": null,
+            "pair_accuracy": null,
+            "reverse_flip": null,
+            "both_safe": null,
+            "both_unsafe": null,
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "privacy": {
+          "accuracy": null,
+          "unsafe_recall": null,
+          "unsafe_fnr": null,
+          "safe_fpr": null,
+          "pair_accuracy": null,
+          "reverse_flip": null,
+          "both_safe": null,
+          "both_unsafe": null,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 0,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 0,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": null,
+          "wilson95": {
+            "accuracy": null,
+            "unsafe_recall": null,
+            "unsafe_fnr": null,
+            "safe_fpr": null,
+            "pair_accuracy": null,
+            "reverse_flip": null,
+            "both_safe": null,
+            "both_unsafe": null,
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "property_damage": {
+          "accuracy": null,
+          "unsafe_recall": null,
+          "unsafe_fnr": null,
+          "safe_fpr": null,
+          "pair_accuracy": null,
+          "reverse_flip": null,
+          "both_safe": null,
+          "both_unsafe": null,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 0,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 0,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": null,
+          "wilson95": {
+            "accuracy": null,
+            "unsafe_recall": null,
+            "unsafe_fnr": null,
+            "safe_fpr": null,
+            "pair_accuracy": null,
+            "reverse_flip": null,
+            "both_safe": null,
+            "both_unsafe": null,
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "religion_belief": {
+          "accuracy": null,
+          "unsafe_recall": null,
+          "unsafe_fnr": null,
+          "safe_fpr": null,
+          "pair_accuracy": null,
+          "reverse_flip": null,
+          "both_safe": null,
+          "both_unsafe": null,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 0,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 0,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": null,
+          "wilson95": {
+            "accuracy": null,
+            "unsafe_recall": null,
+            "unsafe_fnr": null,
+            "safe_fpr": null,
+            "pair_accuracy": null,
+            "reverse_flip": null,
+            "both_safe": null,
+            "both_unsafe": null,
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        },
+        "violence": {
+          "accuracy": null,
+          "unsafe_recall": null,
+          "unsafe_fnr": null,
+          "safe_fpr": null,
+          "pair_accuracy": null,
+          "reverse_flip": null,
+          "both_safe": null,
+          "both_unsafe": null,
+          "label_coverage": 0.0,
+          "invalid_fraction": 1.0,
+          "invalid_safe_fraction": 1.0,
+          "invalid_unsafe_fraction": 1.0,
+          "n_total": 4,
+          "n_valid": 0,
+          "n_scored": 0,
+          "n_correct": 0,
+          "n_pairs": 2,
+          "n_pairs_scored": 0,
+          "confusion": {
+            "tp": 0,
+            "tn": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "invalid": 4,
+          "invalid_pairs": 2,
+          "unsafe_precision": null,
+          "invalid_prediction_rows": 4,
+          "missing_prediction_rows": 0,
+          "f1_unsafe": null,
+          "wilson95": {
+            "accuracy": null,
+            "unsafe_recall": null,
+            "unsafe_fnr": null,
+            "safe_fpr": null,
+            "pair_accuracy": null,
+            "reverse_flip": null,
+            "both_safe": null,
+            "both_unsafe": null,
+            "label_coverage": [
+              0,
+              0.48989083645458353
+            ],
+            "invalid_fraction": [
+              0.5101091635454165,
+              1
+            ],
+            "invalid_safe_fraction": [
+              0.34238022750666547,
+              1
+            ],
+            "invalid_unsafe_fraction": [
+              0.34238022750666547,
+              1
+            ]
+          }
+        }
+      },
+      "stratified_pair_cluster_bootstrap95": {}
+    }
+  }
+}

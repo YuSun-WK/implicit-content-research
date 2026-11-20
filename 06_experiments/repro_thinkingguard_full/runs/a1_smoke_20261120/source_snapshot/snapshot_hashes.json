@@ -1,0 +1,8 @@
+{
+  "a1_stage2_nf4_v1.json": "3f06ef424cd80ca3a539c93417410f300d092968bb26a754dca96a9856343b1b",
+  "a1_parser_v1.py": "a67c946464b3ad1887cb4f8cc5114a4be81e687871cb1d7af804eaca04c9dd32",
+  "a1_five_step_single_verdict_v1.json": "486f69244f9542ad3d6cd8ccfc5c37beb9b75ecbcbe8b9e596e4864ef7b1ce0a",
+  "stage2_inference.py": "b39e0bd5151fc25f14f8ba978748036f1e5999a1e7958fe90ea66c3d457b1090",
+  "a1_protocol_freeze.json": "59e60b529684b08a900d9f3e53d73a04ad30bed19c639995b82d23ad8d822853",
+  "test_a1_parser_v1.py": "68b14fd7ed47e520ee2185afe2c872ddea08eaf2195053f4ec7234c89317e8f8"
+}

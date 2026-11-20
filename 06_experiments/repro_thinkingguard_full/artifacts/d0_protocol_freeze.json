@@ -3,14 +3,15 @@
   "manifest_sha256": "1c87810d7642ebc00f8ee14b3f1b65d113b0702c15277d11dae8ff56b540eb45",
   "source_tree_sha256": "94526e541f895be83eec74330b41a9210144ec687df53f4161a414c0fc1796c7",
   "queue_sha256": "68a1b645bdb809eb49accabc2595457f099b712e2b09a620d7f4045f809d73f8",
-  "prompt_config_sha256": "5215d9ad438685955304cad3629ea32511b7198acbf06efa8f7aefeacabfc3c1",
-  "system_prompt_sha256": "537dd2524a7fcd480161c77c4313cb0e43604c7d2963173f90248e428155db71",
+  "prompt_config_sha256": "e7f322d09d5a1e65344d13ee6982a71dc04a8d4b17eedd7aff732307eaf4afaf",
+  "system_prompt_sha256": "1e1dcd5f99f17df69f33349084a9af98e2c922d7bc0ce0b8128d3754ccb20702",
   "parser_sha256": "9de577b4603224d7f0ea198c250fce9dc50b79f3fffd0b94ef3de5625dc0f93b",
   "tests_sha256": "2d20e0c49200c279802ee2d36ec282d8bdc71db2a5161863d5fd8eea144b57e8",
-  "config_sha256": "5b6755dddf9d1f61d076db7c68ac4a307c09322ad4f4917ffba5fc7b78ac3f65",
+  "config_sha256": "7c75e72302903d7afb82ae92e80a4fbf83f3c1c0fa81c2ce92588e905ca31ae5",
   "chat_template_sha256": "3636d0f0bd6bef02654cdffdc447b79cb2cef8ab02cc75267345946291a489e4",
   "user_wrapper_sha256": "36d39e6dad8d8767122f6219603820cf53a3e8a4f36faca16117d671447c0a7e",
   "frozen_before_independent_validation": true,
   "chat_render_reference_uid": "test/ethical_violations/49/safe",
-  "chat_render_reference_sha256": "de9d0bc31558819bcfb0a8928ce2f6a62a3ceee6e842717833062a717dbfb722"
+  "chat_render_reference_sha256": "660a0a639a8d871e994a495953b249dbaf4b8af15fd37db51c5027e092593a40",
+  "expansion_queue_sha256": "70bcc3a5275849b651553690776ed16050b15a91ecfc3dc1c511eb7ed46c3a78"
 }
