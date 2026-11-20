@@ -13,3 +13,5 @@
 作者 TRACE 固定提交仍为 `83ecb799f897fe275185e082ee9a669f7d04bfaa`，训练路径解冻文本块 4、7、10。诊断只用原文字和分类损失。论文 Table 4 的 projection-only CLIP 对照是独立协议。
 
 [正规数据入场](Stage1B_Data_Manifest.md) · [CLIP 离线校验](stage1b_clip_validation.json) · [Smoke](Stage1B_Smoke_GPU.md) · [100 Microbatch](Stage1B_100_Batch_Report.md)
+
+2026-11-20 再验收：G1 仍为 `MANUAL_DATA_ACTION_REQUIRED`，G2 离线复核通过，G4/G5 未执行。详见 [本轮门禁、日志与下一步](Stage1B_Retry_20261120.md)。

@@ -42,13 +42,13 @@ output_dir: .local/s1a-diagnostic-b1
 严格模式使用 `experiment_mode: trace_original`，以 `data_path` 传已核对的合并文件，`split_files: null`，并在核对两列确为作者生成原件后设 `caption_provenance_confirmed: true`。或者使用每个 split 均含已核对原始两列的 split-specific 文件。
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 timeout -k 10s 5h59m python run_stage0.py --config .local/s1a-smoke.yaml
+CUDA_VISIBLE_DEVICES=0 timeout -k 10s 21540s python run_stage0.py --config .local/s1a-smoke.yaml
 ```
 
 Microbatch 1 通过后，依次对 2、4 做独立一批测试；只有内存余量足够才尝试 8。每个模式和候选用独立输出目录。选定通过者后复制 YAML 为 `.local/s1a-short.yaml`，设 `mode: short`，选择与其完全匹配的 `smoke_checkpoint`，新建独立短跑目录，设 `max_batches: 100` 或更小，`checkpoint_every: 25` 或更小。默认 `threshold: fixed_0.5`，允许可选独立 Dev 校准。训练无 Test 评分入口。
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 timeout -k 10s 5h59m python run_stage0.py --config .local/s1a-short.yaml
+CUDA_VISIBLE_DEVICES=0 timeout -k 10s 21540s python run_stage0.py --config .local/s1a-short.yaml
 ```
 
 相同短跑中断后，保留同一输出目录，设 `resume` 指向其中 `last.pt`，保持相同 seed、数据及配置。Checkpoint 包含可训练参数、pending gradients、优化器、scaler、Python/torch/CUDA RNG 和批游标。每次保存都走相同的恢复代码，短跑随后沿相同种子排序继续。日志记录每批 Loss、更新批的有效 Batch 和梯度、单步耗时及完成时 p50/p95、allocated/reserved 峰值和设备空闲。步计时含本地预处理及 GPU 同步，Checkpoint 耗时可由相邻事件时间戳区分。

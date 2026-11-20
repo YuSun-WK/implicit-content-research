@@ -8,7 +8,7 @@ G1 通过后，从 `06_experiments/repro_trace/` 执行下列计划命令。私�
 
 ```bash
 CUDA_VISIBLE_DEVICES="<空闲的 4090 或 4090D 序号>" \
-  timeout -k 10s 5h59m /tmp/trace-s0-py310/bin/python \
+  timeout -k 10s 21540s /tmp/trace-s0-py310/bin/python \
   run_stage0.py --config .local/s1b-smoke.yaml
 ```
 
