@@ -1,0 +1,5 @@
+........................................................................ [ 90%]
+........                                                                 [100%]
+80 passed in 7.59s
+
+ModelScope 1.40.3 official small config download PASS. Smallest shard 135659680 bytes then ConnectionError after five retries. 0/5 verified; GPU NOT RUN.
