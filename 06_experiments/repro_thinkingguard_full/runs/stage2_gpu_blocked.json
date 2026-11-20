@@ -1,0 +1,37 @@
+{
+  "utc": "2026-11-20T06:25:01.447909+00:00",
+  "stage": "a1_smoke",
+  "status": "BLOCKED_GPU_OCCUPIED",
+  "target_uuid": "GPU-d72631b6-1716-61ed-d355-8da3e5558910",
+  "preflight": "all seven checks passed",
+  "model_loaded": false,
+  "predictions_generated": 0,
+  "gpu_rows": [
+    "0, GPU-e444a3f7-16b4-fe55-9dc5-829276924b28, NVIDIA GeForce RTX 4090, 5658, 16",
+    "1, GPU-aef04bcb-33d1-feca-fa77-da4b1b95b433, NVIDIA GeForce RTX 4090, 13737, 100",
+    "2, GPU-8acf9116-9a4f-e318-849b-46ab2f7c8a40, NVIDIA GeForce RTX 4090 D, 12767, 100",
+    "3, GPU-45decdd6-682b-4cd9-2bc3-6769eee7a81f, NVIDIA GeForce RTX 4090 D, 15225, 40",
+    "4, GPU-d72631b6-1716-61ed-d355-8da3e5558910, NVIDIA GeForce RTX 4090 D, 39292, 99",
+    "5, GPU-5a0ba87d-2dc2-fed4-276c-8bb93dcec495, NVIDIA GeForce RTX 4090 D, 24691, 10",
+    "6, GPU-e2798d19-b9ec-11c5-d2b2-379a3eb58ffa, NVIDIA GeForce RTX 4090 D, 37961, 98",
+    "7, GPU-79ea6ee8-2e76-d36e-1508-7813c1589ec1, NVIDIA GeForce RTX 4090 D, 14664, 92"
+  ],
+  "process_rows": [
+    "GPU-e444a3f7-16b4-fe55-9dc5-829276924b28, 1384015, 448",
+    "GPU-e444a3f7-16b4-fe55-9dc5-829276924b28, 1402593, 448",
+    "GPU-e444a3f7-16b4-fe55-9dc5-829276924b28, 1407990, 448",
+    "GPU-e444a3f7-16b4-fe55-9dc5-829276924b28, 1626850, 3834",
+    "GPU-e444a3f7-16b4-fe55-9dc5-829276924b28, 3101013, 450",
+    "GPU-aef04bcb-33d1-feca-fa77-da4b1b95b433, 3941867, 13728",
+    "GPU-8acf9116-9a4f-e318-849b-46ab2f7c8a40, 3968990, 12758",
+    "GPU-45decdd6-682b-4cd9-2bc3-6769eee7a81f, 2369720, 15216",
+    "GPU-d72631b6-1716-61ed-d355-8da3e5558910, 2834256, 23964",
+    "GPU-d72631b6-1716-61ed-d355-8da3e5558910, 3109248, 15314",
+    "GPU-5a0ba87d-2dc2-fed4-276c-8bb93dcec495, 2834257, 24682",
+    "GPU-e2798d19-b9ec-11c5-d2b2-379a3eb58ffa, 1384015, 6586",
+    "GPU-e2798d19-b9ec-11c5-d2b2-379a3eb58ffa, 1402593, 6584",
+    "GPU-e2798d19-b9ec-11c5-d2b2-379a3eb58ffa, 2834258, 24772",
+    "GPU-79ea6ee8-2e76-d36e-1508-7813c1589ec1, 1407990, 6272",
+    "GPU-79ea6ee8-2e76-d36e-1508-7813c1589ec1, 3101013, 8378"
+  ]
+}
