@@ -1,0 +1,35 @@
+{
+  "start_utc": "2026-11-19T14:51:07.884869+00:00",
+  "argv": [
+    "scripts/run_resumeable_inference.py",
+    "--stage",
+    "validation",
+    "--model",
+    "/home/ubuntu/data/project/h1-cf-killtest/model_snapshots/Sandy124__ThinkingGuard-8B/76892f9768ce828268265171f4bbc5dfb75eafc3",
+    "--gpu-uuid",
+    "GPU-45decdd6-682b-4cd9-2bc3-6769eee7a81f",
+    "--run-id",
+    "validation_20261119_recovery"
+  ],
+  "gid": {
+    "uuid": "GPU-45decdd6-682b-4cd9-2bc3-6769eee7a81f",
+    "name": "NVIDIA GeForce RTX 4090 D",
+    "total_mib": 49140,
+    "used_mib": 3,
+    "utilization_pct": 0,
+    "driver": "580.82.09"
+  },
+  "manifest_sha256": "3f7c5b7bfd02f92963bc5f60575395c21d5aef51516426132bddcbb440cce6fe",
+  "git": "a5e2ca9668ac8e60a5720edb3be030e667240a28",
+  "identity": {
+    "config_sha256": "8f1639d54ac052badce6e8f4bf14c7a33e944e75eeb09d876156b8606ce3d145",
+    "source_tree_sha256": "94526e541f895be83eec74330b41a9210144ec687df53f4161a414c0fc1796c7",
+    "queues_sha256": "765db63fb590d343dad725f68d0842e923b3843b05ea6ee03e42c780d2302dd6",
+    "model_audit_sha256": "6f6afcbf03d75a834316306fb0195d110938d8ab9e4c101036df9fed1ea42882",
+    "runner_sha256": "be31b257294f5e8389410a8208776eda9bf176f6b1b175b4503b38fab2ac4ed3",
+    "gates_sha256": "fdb64bc4e79aabe3f5ff15b32f8f9c035d7fd4c3878a10d0b36c816bb5d16020",
+    "inputs_sha256": "d42b45c0b7cb92991c7ec90783c98ed97ca64232234f9761b67180bc8ebd09ca",
+    "stage": "validation",
+    "run_id": "validation_20261119_recovery"
+  }
+}

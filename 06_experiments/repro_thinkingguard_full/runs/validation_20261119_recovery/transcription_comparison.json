@@ -1,0 +1,26 @@
+{
+  "records": 36,
+  "agreements": 32,
+  "differences": {
+    "33fec38f1941b795": {
+      "transcribed": "Unsafe",
+      "frozen_parser": "INVALID",
+      "parse_status": "EXTRA_TEXT"
+    },
+    "9bbf5c2012b3ade8": {
+      "transcribed": "Unsafe",
+      "frozen_parser": "INVALID",
+      "parse_status": "EXTRA_TEXT"
+    },
+    "4a1df5e2357d12db": {
+      "transcribed": "Unsafe",
+      "frozen_parser": "INVALID",
+      "parse_status": "EXTRA_TEXT"
+    },
+    "fdaa8f392ca497a1": {
+      "transcribed": "Unsafe",
+      "frozen_parser": "INVALID",
+      "parse_status": "EXTRA_TEXT"
+    }
+  }
+}

@@ -10,3 +10,5 @@
 ## Stage 1 实际执行
 
 [验收报告](STAGE1_EXECUTION_REPORT.md) 记录固定来源、Manifest、CPU 测试、图片传输和 GPU 门槛。
+
+[Stage 1 恢复执行报告](STAGE1_RECOVERY_EXECUTION_REPORT.md) 记录正式 Smoke、独立解析验证和 Pilot 停止门槛。

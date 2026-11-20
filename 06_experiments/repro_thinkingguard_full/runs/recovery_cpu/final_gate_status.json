@@ -1,0 +1,54 @@
+{
+  "smoke": {
+    "total": 6,
+    "parsed": 4,
+    "structure_complete": 6,
+    "parse_status_counts": {
+      "OK": 4,
+      "AMBIGUOUS_TEMPLATE": 2
+    },
+    "gpu_samples": 280,
+    "all_sample_latency_seconds": {
+      "p50": 61.87875874713063,
+      "p90": 72.06209886306897,
+      "p95": 72.06209886306897
+    },
+    "generation_seconds": 378.8288559028879,
+    "wall_seconds": 408.779090719996,
+    "generated_tokens": 2110,
+    "parse_gate": "NOT_EVALUATED",
+    "process_peak_mib": 8330,
+    "card_peak_mib": 8339,
+    "journal_sha256": "6731e847dce83e2bee2ebf71d5de58dd24145bed355be4857dd7c0f51aed88dd",
+    "gpu_log_sha256": "d115c2c573d46ec946c11f7a9c15695be1889f1024634126e0c674e6968af223"
+  },
+  "validation": {
+    "total": 36,
+    "parsed": 20,
+    "structure_complete": 35,
+    "parse_status_counts": {
+      "AMBIGUOUS_TEMPLATE": 11,
+      "OK": 20,
+      "EXTRA_TEXT": 5
+    },
+    "gpu_samples": 1583,
+    "all_sample_latency_seconds": {
+      "p50": 60.09719549701549,
+      "p90": 68.7625777979847,
+      "p95": 71.51462955679744
+    },
+    "generation_seconds": 2215.3574369032867,
+    "wall_seconds": 2246.11232057889,
+    "generated_tokens": 12842,
+    "parse_gate": "FAILED_PARSE_GATE",
+    "process_peak_mib": 8330,
+    "card_peak_mib": 8339,
+    "journal_sha256": "fca014018f71602aa48a1828d9efebe8e9f70dd9ddcc617e1b7d8f2065b07fea",
+    "gpu_log_sha256": "b36f176cb4adb77e7dbfb245a6a0a68454beb1d7fdb47a8ca7e51a585ef930c3"
+  },
+  "pilot": {
+    "status": "NOT_RUN",
+    "stage_data_ready": true,
+    "reason": "FAILED_PARSE_GATE in fixed A0 validation"
+  }
+}

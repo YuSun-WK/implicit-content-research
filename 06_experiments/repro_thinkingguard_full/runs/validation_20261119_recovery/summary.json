@@ -1,0 +1,55 @@
+{
+  "prediction_count": 36,
+  "generated_count": 36,
+  "extracted": 20,
+  "coverage": 0.5555555555555556,
+  "structure_complete": 35,
+  "ambiguous_templates": 11,
+  "hit_token_cap": 0,
+  "stage_end_marker_coverage": {
+    "Intent": 36,
+    "Entity": 36,
+    "Attribute": 36,
+    "Risk": 36,
+    "Overall": 36
+  },
+  "latency_sample_uids": [
+    "test/physical_harm/75/safe",
+    "test/physical_harm/75/unsafe",
+    "test/physical_harm/81/safe",
+    "test/physical_harm/81/unsafe",
+    "test/privacy/36/safe",
+    "test/religion_belief/65/unsafe",
+    "test/violence/106/safe",
+    "test/violence/106/unsafe",
+    "test/violence/47/safe",
+    "test/violence/47/unsafe"
+  ],
+  "latency_seconds": {
+    "p50": 60.09719549701549,
+    "p90": 71.51462955679744,
+    "p95": 81.38754481915385
+  },
+  "independent_human_review": "NOT_RUN",
+  "gpu_sample_peaks_mib": {
+    "used_mib": 8339,
+    "process_mib": 8330
+  },
+  "end_utc": "2026-11-19T15:28:34.048026+00:00",
+  "job_wall_seconds": 2246.11232057889,
+  "identity": {
+    "config_sha256": "8f1639d54ac052badce6e8f4bf14c7a33e944e75eeb09d876156b8606ce3d145",
+    "source_tree_sha256": "94526e541f895be83eec74330b41a9210144ec687df53f4161a414c0fc1796c7",
+    "queues_sha256": "765db63fb590d343dad725f68d0842e923b3843b05ea6ee03e42c780d2302dd6",
+    "model_audit_sha256": "6f6afcbf03d75a834316306fb0195d110938d8ab9e4c101036df9fed1ea42882",
+    "runner_sha256": "be31b257294f5e8389410a8208776eda9bf176f6b1b175b4503b38fab2ac4ed3",
+    "gates_sha256": "fdb64bc4e79aabe3f5ff15b32f8f9c035d7fd4c3878a10d0b36c816bb5d16020",
+    "inputs_sha256": "d42b45c0b7cb92991c7ec90783c98ed97ca64232234f9761b67180bc8ebd09ca",
+    "stage": "validation",
+    "run_id": "validation_20261119_recovery"
+  },
+  "parse_gate": "FAILED_PARSE_GATE",
+  "torch_peak_allocated_mib": 7768.0,
+  "torch_peak_reserved_mib": 7908.0,
+  "resource_gate": true
+}

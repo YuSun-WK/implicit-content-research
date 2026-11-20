@@ -1,0 +1,21 @@
+{
+  "stage": "pilot",
+  "queued": 200,
+  "global_test_complete": false,
+  "preflight": {
+    "manifest": true,
+    "data": true,
+    "official_tree": true,
+    "queues": true,
+    "parser": true,
+    "prompt": true,
+    "model": true
+  },
+  "stage_data": {
+    "ready": true,
+    "invalid_queue": false,
+    "missing": [],
+    "invalid_pairs": [],
+    "total": 200
+  }
+}
