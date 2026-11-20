@@ -79,41 +79,48 @@ def read_journal(journal):
                     "SELECT id,run_key,config,status FROM attempts ORDER BY id")]
 
 
-def validate_traces(config, traces, prompts):
+def validate_traces(config, traces, prompts, *, allow_invalid=False):
     method, task = config["method"], config["task"]
     roles = {
         "chat": ["intent_reasoning", "visual_understanding", "safety_judgment", "qa"],
         "embodied": ["key_object_locator", "safety_reasoning"],
     }[task] if method == "multiagent" else [method]
-    if [call["role"] for call in traces] != roles:
+    actual_roles = [call["role"] for call in traces]
+    if actual_roles != (roles[:len(traces)] if allow_invalid else roles) or not traces:
         raise ValueError("real trace role sequence differs from the pipeline")
     for call in traces:
         visual = call["role"] != "intent_reasoning"
         rendered = call["rendered_prompt"] or ""
-        if (call["error"] or not call["raw_answer"].strip()
-                or call["image_attached"] != visual or rendered.count("<image>") != int(visual)
+        if ((call["error"] and not (allow_invalid and call["error"] == "invalid_agent_output"))
+                or (not allow_invalid and not call["raw_answer"].strip())
+                or call["image_attached"] != visual or rendered.count(config.get("image_marker", "<image>")) != int(visual)
                 or call["prompt"] not in rendered or call["model_load_count"] != 1
-                or not call["input_tokens"] or not call["output_tokens"]
+                or not call["input_tokens"] or (not allow_invalid and not call["output_tokens"])
                 or not call["effective_input_tokens"]
                 or max(call[k] for k in ("peak_allocated_bytes", "peak_reserved_bytes",
                                          "nvml_delta_bytes")) >= GPU_BUDGET):
             raise ValueError(f"trace invariant failed at {call['role']}")
         if visual and tuple(call["image_dimensions"] or ()) != tuple(config["image_dimensions"]):
             raise ValueError("trace image dimensions disagree with manifest")
-    if method == "multiagent" and task == "chat":
-        intent, caption, safety, qa = traces
-        expected = {"safe": "YES", "unsafe": "NO"}[safety["parsed"]]
-        if (safety["parent_ids"] != [1, 2]
-                or not safety["prompt"].endswith(intent["parsed"] + "\nImage caption: " + caption["parsed"])
-                or qa["parent_ids"] != [3] or qa["route"] != expected
-                or not qa["prompt"].startswith(prompts[f"PROMPT_QA_AGENT_{expected}"])
-                or (expected == "NO" and not qa["prompt"].endswith(safety["raw_answer"]))):
-            raise ValueError("real Chat trace failed evidence propagation or QA routing")
-    if method == "multiagent" and task == "embodied":
+    if method == "multiagent" and task == "chat" and len(traces) >= 3:
+        intent, caption, safety = traces[:3]
+        if (safety["parent_ids"] != [1, 2] or not safety["prompt"].endswith(
+                intent["parsed"] + "\nImage caption: " + caption["parsed"])):
+            raise ValueError("real Chat trace failed evidence propagation")
+        if len(traces) == 4:
+            qa = traces[3]
+            expected = {"safe": "YES", "unsafe": "NO"}[safety["parsed"]]
+            if (qa["parent_ids"] != [3] or qa["route"] != expected
+                    or not qa["prompt"].startswith(prompts[f"PROMPT_QA_AGENT_{expected}"])
+                    or (expected == "NO" and not qa["prompt"].endswith(safety["raw_answer"]))):
+                raise ValueError("real Chat trace failed QA routing")
+    if method == "multiagent" and task == "embodied" and len(traces) == 2:
         state, response = traces
         if (response["parent_ids"] != [1]
                 or not response["prompt"].endswith("One point to consider is: " + state["parsed"])):
             raise ValueError("real Embodied trace lost upstream environment state")
+    if allow_invalid:
+        return
     if response_for_judge(task, method, traces[-1]["raw_answer"]) is None:
         raise InvalidAgentOutput("final response field cannot be extracted")
 
@@ -130,7 +137,12 @@ class ValidatedPipeline:
             traces.append(call)
             emit(call)
 
-        final = self.pipeline.run(task, method, text, image, record)
+        try:
+            final = self.pipeline.run(task, method, text, image, record)
+        except InvalidAgentOutput:
+            if self.config.get("collect_invalid"):
+                validate_traces(self.config, traces, self.pipeline.prompts, allow_invalid=True)
+            raise
         validate_traces(self.config, traces, self.pipeline.prompts)
         return final
 
@@ -239,7 +251,7 @@ def g1_work(work):
     return [unit for unit in work if unit.config["pair_id"] == first[unit.config["task"]]]
 
 
-def run_preliminary_probes(model, image, output, session):
+def run_preliminary_probes(model, image, output, session, image_marker="<image>"):
     probes = (
         ("text_only", "Reply with a short greeting.", None),
         ("single_image", "Describe this image in one short sentence.", image),
@@ -253,7 +265,7 @@ def run_preliminary_probes(model, image, output, session):
                 result = model.generate(prompt, path)
                 trace.update(asdict(result))
                 expected = int(path is not None)
-                if (not result.rendered_prompt or result.rendered_prompt.count("<image>") != expected
+                if (not result.rendered_prompt or result.rendered_prompt.count(image_marker) != expected
                         or not result.input_tokens or not result.effective_input_tokens
                         or result.model_load_count != 1):
                     raise RuntimeError("preliminary probe instrumentation failed")
@@ -286,11 +298,37 @@ def main():
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--through", choices=("g1", "g2"), default="g1")
     parser.add_argument("--preliminary-probes", action="store_true")
+    parser.add_argument("--thinkingguard-snapshot", type=Path)
     args = parser.parse_args()
     started = monotonic()
     rows = smoke_inputs(args.data_root / "combined.json")
-    lock = checked_weights(args.model_root)
+    transfer = args.thinkingguard_snapshot is not None
+    if transfer:
+        from fasttrack_qwen import ADAPTER, IMAGE_MARKER, MODEL_ID, REVISION, ThinkingGuard
+        artifacts = (args.model_root / "verified.json").read_bytes()
+        fingerprint = json.loads(artifacts)
+        if (fingerprint["model_id"], fingerprint["revision"]) != (MODEL_ID, REVISION):
+            raise ValueError("wrong substitute model lock")
+        if any((args.thinkingguard_snapshot / item["name"]).stat().st_size != item["bytes"]
+               for item in fingerprint["files"] if item["name"] != "model.safetensors.index.json"):
+            raise ValueError("one or more cached substitute model files changed size")
+        index = args.thinkingguard_snapshot / "model.safetensors.index.json"
+        if sha256(index.read_bytes()) != fingerprint["local_index_sha256"]:
+            raise ValueError("repaired index does not match verified shard headers")
+        lock = sha256(artifacts)
+    else:
+        lock = checked_weights(args.model_root)
     work = build_work(args, rows, lock)
+    if transfer:
+        for unit in work:
+            unit.config.pop("native_source_commit")
+            unit.config.pop("vision_revision")
+            unit.config.update(model_id=MODEL_ID, model_revision=REVISION, adapter_revision=ADAPTER,
+                               prompt_version=PROMPT_VERSION + "+fasttrack-invalid-v1",
+                               processor="qwen3-vl-224-native-template-v1", image_marker=IMAGE_MARKER,
+                               collect_invalid=True,
+                               quantization={**QUANTIZATION, "skip": ["visual", "lm_head"]})
+            unit.config["decoding"]["repetition_penalty"] = 1.0
     g1 = g1_work(work)
     g1_keys = {run_key(unit.config) for unit in g1}
     assert len(g1) == 12 and len(work) == 120
@@ -306,35 +344,49 @@ def main():
     signal.signal(signal.SIGALRM, timeout)
     signal.alarm(MAX_SECONDS)
     try:
-        previous = {a["key"]: a for a in read_journal(journal) if a["status"] == "complete"}
+        terminal = ("complete", "invalid") if transfer else ("complete",)
+        previous = {a["key"]: a for a in read_journal(journal) if a["status"] in terminal}
         active = g1 if args.through == "g1" else work
         if all(run_key(unit.config) in previous for unit in active):
             print("All requested work was already complete", flush=True)
             return
-        model = NativeLlava(args.model_root, args.gpu_uuid, processor=args.processor,
-                            max_new_tokens=args.max_new_tokens, seed=args.seed)
+        if transfer:
+            model = ThinkingGuard(args.thinkingguard_snapshot, args.gpu_uuid,
+                                  max_new_tokens=args.max_new_tokens, seed=args.seed)
+        else:
+            model = NativeLlava(args.model_root, args.gpu_uuid, processor=args.processor,
+                                max_new_tokens=args.max_new_tokens, seed=args.seed)
         loads.append(model.model_load)
         with (args.output / "model_loads.jsonl").open("a") as stream:
             stream.write(json.dumps({"session": session, **model.model_load}) + "\n")
         print("model load", json.dumps(model.model_load), flush=True)
         if args.preliminary_probes:
-            run_preliminary_probes(model, g1[0].image, args.output / "preliminary_probes.jsonl", session)
+            run_preliminary_probes(model, g1[0].image, args.output / "preliminary_probes.jsonl",
+                                   session, IMAGE_MARKER if transfer else "<image>")
         pipeline = Pipeline(model, prompts, stop_on_invalid=True)
 
         def run_units(units):
             for unit in units:
                 config = {**unit.config, "session": session, "gpu_uuid": args.gpu_uuid}
                 print(config["task"], config["pair_id"], config["gold_label"], config["method"], flush=True)
-                journal.run(config, ValidatedPipeline(pipeline, config), unit.text, unit.image)
+                if run_key(config) in previous:
+                    continue
+                try:
+                    journal.run(config, ValidatedPipeline(pipeline, config), unit.text, unit.image)
+                except InvalidAgentOutput as exc:
+                    if not transfer:
+                        raise
+                    print(f"model format invalid: {exc}", flush=True)
 
         run_units(g1)
-        finished = {a["key"]: a for a in read_journal(journal) if a["status"] == "complete"}
+        finished = {a["key"]: a for a in read_journal(journal) if a["status"] in terminal}
         g1_traces = []
         for unit in g1:
-            trace = finished[run_key(unit.config)]["traces"]
-            validate_traces(unit.config, trace, prompts)
+            attempt = finished[run_key(unit.config)]
+            trace = attempt["traces"]
+            validate_traces(unit.config, trace, prompts, allow_invalid=attempt["status"] == "invalid")
             g1_traces += trace
-        if len(g1_traces) != 20:
+        if not transfer and len(g1_traces) != 20:
             raise ValueError("G1 must have 20 successful model generations")
         worst_seconds = max(trace["elapsed_ms"] for trace in g1_traces) / 1000
         forecast = 2 * worst_seconds * 200

@@ -1,0 +1,1 @@
+{"session": "3686a80b-b073-491d-91d1-443f9ec6deb0", "model_load_count": 1, "gpu_uuid": "GPU-79ea6ee8-2e76-d36e-1508-7813c1589ec1", "parameter_devices": ["cuda:0"], "load_ms": 19189.65336610563, "torch": "2.9.1+cu128", "peak_allocated_bytes": 8145338368, "peak_reserved_bytes": 8262778880, "nvml_used_bytes": 9357688832, "nvml_delta_bytes": 8691974144}

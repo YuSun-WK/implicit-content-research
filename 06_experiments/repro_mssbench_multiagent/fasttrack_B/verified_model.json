@@ -1,0 +1,63 @@
+{
+  "model_id": "Sandy124/ThinkingGuard-8B",
+  "revision": "76892f9768ce828268265171f4bbc5dfb75eafc3",
+  "files": [
+    {
+      "name": "chat_template.jinja",
+      "sha256": "3636d0f0bd6bef02654cdffdc447b79cb2cef8ab02cc75267345946291a489e4",
+      "bytes": 5292
+    },
+    {
+      "name": "config.json",
+      "sha256": "5cd452860dc1e9c29dd71cc3cef7f39b338b7a40793f7a260655c2d3568f3661",
+      "bytes": 1474
+    },
+    {
+      "name": "generation_config.json",
+      "sha256": "8469742d1fce0de951c8909b26a2c0c0d8490837ce476efb114da9e0cefc4d44",
+      "bytes": 269
+    },
+    {
+      "name": "model-00001-of-00004.safetensors",
+      "sha256": "32eea4896bf5cb65467ea1d20d7441dea603329f9354e5253a8c52211757f947",
+      "bytes": 4905357176
+    },
+    {
+      "name": "model-00002-of-00004.safetensors",
+      "sha256": "b40d5eaf9ca25a5ce6bcf9f1c73cd954d417b4baffcfc6315f7962bc8e7ff26b",
+      "bytes": 4915962456
+    },
+    {
+      "name": "model-00003-of-00004.safetensors",
+      "sha256": "18892b0bc15ebd51ec02248d52b621a1b66fb98d81f14f4318799badda84f777",
+      "bytes": 4974674312
+    },
+    {
+      "name": "model-00004-of-00004.safetensors",
+      "sha256": "bf0f4158d688cfa9498e64ae473794e6c86618328b566fff6f232cd5d3976b77",
+      "bytes": 2738345504
+    },
+    {
+      "name": "model.safetensors.index.json",
+      "sha256": "520b2e05079402e9468a8701d03d1154d14b2599593afb6effa7fb60c1bff070",
+      "bytes": 67759
+    },
+    {
+      "name": "processor_config.json",
+      "sha256": "14932921ca485d458a04dafd8069fbb0a4505622a48208d19ed247115801385b",
+      "bytes": 1300
+    },
+    {
+      "name": "tokenizer.json",
+      "sha256": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+      "bytes": 7032403
+    },
+    {
+      "name": "tokenizer_config.json",
+      "sha256": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399",
+      "bytes": 10868
+    }
+  ],
+  "local_index_sha256": "4e072f2b3e4199e17d96874148d16e241db2e0d2c0a1f64c4403afaade9c4961",
+  "tensors": 750
+}
