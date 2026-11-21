@@ -1,0 +1,1 @@
+PASS: 7 parser boundaries; two-image message; triple reconstruction; explicit metadata exclusion. No inference.
