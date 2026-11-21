@@ -1,0 +1,37 @@
+{
+  "jobs": [
+    {
+      "job_id": "1795194136945224456",
+      "gpu_uuid": "GPU-d72631b6-1716-61ed-d355-8da3e5558910",
+      "start_utc": "2026-11-20T17:02:16.945341+00:00",
+      "last_telemetry_utc": "2026-11-20T17:30:15.005531+00:00",
+      "last_telemetry_elapsed_seconds": 1678.06019,
+      "terminal": "OTHER_PROCESS_ON_SELECTED_GPU",
+      "process_peak_mib": 8330,
+      "card_peak_mib": 8339,
+      "gpu_samples": 1235,
+      "job_wall_lower_bound_seconds": 1678.06019
+    },
+    {
+      "job_id": "1795223791071643546",
+      "gpu_uuid": "GPU-d72631b6-1716-61ed-d355-8da3e5558910",
+      "start_utc": "2026-11-21T01:16:31.071795+00:00",
+      "last_telemetry_utc": "2026-11-21T03:17:30.581653+00:00",
+      "last_telemetry_elapsed_seconds": 7259.509858,
+      "terminal": "COMPLETE",
+      "process_peak_mib": 8330,
+      "card_peak_mib": 8339,
+      "gpu_samples": 5321,
+      "job_wall_seconds": 7260.509851820068
+    }
+  ],
+  "total_measured_gpu_wall_lower_bound_seconds": 8938.570041820069,
+  "total_generation_seconds": 8853.800559266703,
+  "resumed_without_duplicate": true,
+  "prediction_rows": 200,
+  "process_peak_mib": 8330,
+  "card_peak_mib": 8339,
+  "gpu_samples_raw_sha256": "65349640b86626bf64195ae1c7a077d211cb0ebbc1ae07f8fa4233b1708f9b9c",
+  "gpu_samples_gzip_sha256": "4ca22563e0fb75266d59e54b10e87f63661b9e53af424ce0587392991853ff47",
+  "gpu_samples_archived_as": "gpu_samples.jsonl.gz (lossless gzip -n)"
+}

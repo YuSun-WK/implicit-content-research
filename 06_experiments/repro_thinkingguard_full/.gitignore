@@ -8,3 +8,5 @@ __pycache__/
 /runs/.stage_registry.lock
 
 /runs/.stage2_registry.lock
+
+/runs/d0_pilot100_20261120/gpu_samples.jsonl
