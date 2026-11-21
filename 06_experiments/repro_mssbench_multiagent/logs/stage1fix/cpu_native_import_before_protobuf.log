@@ -1,0 +1,41 @@
+torch 2.9.1 /home/ubuntu/anaconda3/envs/ESTMM/lib/python3.10/site-packages
+torchvision 0.24.1 /home/ubuntu/anaconda3/envs/ESTMM/lib/python3.10/site-packages
+transformers 4.37.2 /home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/.stage0-local/stage1/native-venv/lib/python3.10/site-packages
+accelerate 1.12.0 /home/ubuntu/data/project/h1-cf-killtest/.venv/lib/python3.10/site-packages
+bitsandbytes 0.48.2 /home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/.stage0-local/stage1/native-venv/lib/python3.10/site-packages
+huggingface-hub 0.23.5 /home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/.stage0-local/stage1/native-venv/lib/python3.10/site-packages
+Pillow 12.0.0 /home/ubuntu/anaconda3/envs/ESTMM/lib/python3.10/site-packages
+numpy 2.2.6 /home/ubuntu/anaconda3/envs/ESTMM/lib/python3.10/site-packages
+safetensors 0.7.0 /home/ubuntu/anaconda3/envs/ESTMM/lib/python3.10/site-packages
+tokenizers 0.15.1 /home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/.stage0-local/stage1/native-venv/lib/python3.10/site-packages
+sentencepiece 0.1.99 /home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/.stage0-local/stage1/native-venv/lib/python3.10/site-packages
+nvidia-ml-py 12.560.30 /home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/.stage0-local/stage1/native-venv/lib/python3.10/site-packages
+shortuuid 1.0.13 /home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/.stage0-local/stage1/native-venv/lib/python3.10/site-packages
+CUDA build 12.8 initialized False
+actual builder llava.model.builder LlavaLlamaForCausalLM
+native {'path': 'config.json', 'bytes': 1681, 'sha256': '7b21de0f57c8aa84d752cfb021b5018e4979a23809e29dfcf2c4d31e49b217dd'}
+native {'path': 'generation_config.json', 'bytes': 170, 'sha256': 'c0c3e65ffae56c31cd78c33b34687bcfa8cb338e6bd1bf914525e478fa4ffff6'}
+native {'path': 'model.safetensors.index.json', 'bytes': 73215, 'sha256': '3aa4216f08f95215796622b2fec456eb0caa3472b9e709b046cb386b77a1efb1'}
+native {'path': 'special_tokens_map.json', 'bytes': 438, 'sha256': '719833ff26ac897a3ec8ed946028a135de2a351470af59b4008744ab1f0ee9b7'}
+native {'path': 'tokenizer.model', 'bytes': 499723, 'sha256': '9e556afd44213b6bd1be2b850ebbbd98f5481437a8021afaf58ee7fb1818d347'}
+native {'path': 'tokenizer_config.json', 'bytes': 936, 'sha256': 'e3d348c5c498caa305b77317e0aa4157e60f49bc1fa37e061273cc0b9a5efb52'}
+clip {'path': 'config.json', 'bytes': 4757, 'sha256': '51b1c14aabcdf639c4a0370eeda1010b773bbe1df78319c7d0f5882c22ac0ac0'}
+clip {'path': 'preprocessor_config.json', 'bytes': 316, 'sha256': 'd253881f65322dc546df59cf925a408e5538b8ecb5a1b496cdd36af9992686d4'}
+Traceback (most recent call last):
+  File "<stdin>", line 18, in <module>
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/.stage0-local/stage1/native-venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 814, in from_pretrained
+    return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/.stage0-local/stage1/native-venv/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 2029, in from_pretrained
+    return cls._from_pretrained(
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/.stage0-local/stage1/native-venv/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 2261, in _from_pretrained
+    tokenizer = cls(*init_inputs, **init_kwargs)
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/.stage0-local/stage1/native-venv/lib/python3.10/site-packages/transformers/models/llama/tokenization_llama.py", line 178, in __init__
+    self.sp_model = self.get_spm_processor(kwargs.pop("from_slow", False))
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/.stage0-local/stage1/native-venv/lib/python3.10/site-packages/transformers/models/llama/tokenization_llama.py", line 208, in get_spm_processor
+    model_pb2 = import_protobuf(f"The new behaviour of {self.__class__.__name__} (with `self.legacy = False`)")
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/.stage0-local/stage1/native-venv/lib/python3.10/site-packages/transformers/convert_slow_tokenizer.py", line 43, in import_protobuf
+    raise ImportError(PROTOBUF_IMPORT_ERROR.format(error_message))
+ImportError:
+The new behaviour of LlamaTokenizer (with `self.legacy = False`) requires the protobuf library but it was not found in your environment. Checkout the instructions on the
+installation page of its repo: https://github.com/protocolbuffers/protobuf/tree/master/python#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.

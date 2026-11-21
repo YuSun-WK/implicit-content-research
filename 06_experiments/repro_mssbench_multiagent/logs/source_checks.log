@@ -1,0 +1,24 @@
+inference.py: compile PASS
+utils/gpt4_eval.py: compile PASS
+utils/infer_on_data.py: compile PASS
+utils/infer_on_multiagent.py: IndentationError: unindent does not match any outer indentation level (infer_on_multiagent.py, line 14)
+utils/prompts.py: compile PASS
+models/load_GPT4o.py: compile PASS
+models/load_LLaVA.py: compile PASS
+models/load_MiniGPT4.py: compile PASS
+models/load_Qwen_VL.py: compile PASS
+models/load_claude.py: compile PASS
+models/load_deepseek.py: compile PASS
+models/load_gemini.py: compile PASS
+models/load_mPLUG_Owl2.py: compile PASS
+import utils.infer_on_data with inert judge: IndentationError: unindent does not match any outer indentation level (infer_on_multiagent.py, line 14)
+indentation-only repair, package import: ModuleNotFoundError: No module named 'prompts'
+chat_response missing model binding: NameError: name 'model' is not defined
+embodied_response missing safe_image binding: NameError: name 'safe_image' is not defined
+original unsafe locator used safe image; state reached unsafe response
+embodied loop missing safe_imge binding: NameError: name 'safe_imge' is not defined
+multiagent JSON file created as a directory: IsADirectoryError: [Errno 21] Is a directory: '/tmp/tmpc9j92eb9/out.json'
+original Chat: 3 calls/side; no caption; judges saw query instead of intent; QA saw plain query
+multiagent output_path=None: TypeError: 'NoneType' object is not subscriptable
+baseline output parent missing: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpc9j92eb9/absent/out.json'
+baseline QC passed binary output unparsed to the response-Judge slot

@@ -1,0 +1,148 @@
+Thu Nov 19 08:30:46 UTC 2026
+Session CUDA_VISIBLE_DEVICES=<unset>
+HF_HOME=<unset>
+HF_HUB_CACHE=<unset>
+HUGGINGFACE_HUB_CACHE=<unset>
+TRANSFORMERS_CACHE=<unset>
+Thu Nov 19 08:30:46 2026
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.82.09              Driver Version: 580.82.09      CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 4090        Off |   00000000:4F:00.0 Off |                  Off |
+| 31%   34C    P8             26W /  450W |       3MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 4090        Off |   00000000:50:00.0 Off |                  Off |
+|100%   73C    P2            398W /  450W |   13737MiB /  49140MiB |    100%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA GeForce RTX 4090 D      Off |   00000000:51:00.0 Off |                  Off |
+|100%   76C    P0            360W /  425W |   12767MiB /  49140MiB |    100%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA GeForce RTX 4090 D      Off |   00000000:CC:00.0 Off |                  Off |
+| 30%   32C    P8             14W /  425W |       3MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   4  NVIDIA GeForce RTX 4090 D      Off |   00000000:CD:00.0 Off |                  Off |
+| 30%   32C    P8             16W /  425W |       3MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   5  NVIDIA GeForce RTX 4090 D      Off |   00000000:CE:00.0 Off |                  Off |
+| 30%   33C    P8             28W /  425W |       3MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   6  NVIDIA GeForce RTX 4090 D      Off |   00000000:CF:00.0 Off |                  Off |
+| 30%   31C    P8             15W /  425W |       3MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   7  NVIDIA GeForce RTX 4090 D      Off |   00000000:D0:00.0 Off |                  Off |
+| 30%   32C    P8             10W /  425W |       3MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+index, name, memory.total [MiB], memory.used [MiB], memory.free [MiB], utilization.gpu [%]
+0, NVIDIA GeForce RTX 4090, 49140 MiB, 3 MiB, 48506 MiB, 0 %
+1, NVIDIA GeForce RTX 4090, 49140 MiB, 13737 MiB, 34772 MiB, 100 %
+2, NVIDIA GeForce RTX 4090 D, 49140 MiB, 12767 MiB, 35742 MiB, 100 %
+3, NVIDIA GeForce RTX 4090 D, 49140 MiB, 3 MiB, 48506 MiB, 0 %
+4, NVIDIA GeForce RTX 4090 D, 49140 MiB, 3 MiB, 48506 MiB, 0 %
+5, NVIDIA GeForce RTX 4090 D, 49140 MiB, 3 MiB, 48506 MiB, 0 %
+6, NVIDIA GeForce RTX 4090 D, 49140 MiB, 3 MiB, 48506 MiB, 0 %
+7, NVIDIA GeForce RTX 4090 D, 49140 MiB, 3 MiB, 48506 MiB, 0 %
+Filesystem                         Size  Used Avail Use% Mounted on
+hdd/custom/default_vol-sunyu-data  4.0T  310G  3.7T   8% /home/ubuntu/data
+ssd/containers/sunyu               6.5T  163G  6.3T   3% /
+ssd/containers/sunyu               6.5T  163G  6.3T   3% /
+ssd/containers/sunyu               6.5T  163G  6.3T   3% /
+               total        used        free      shared  buff/cache   available
+Mem:           503Gi       2.0Gi       483Gi       1.0Mi        17Gi       501Gi
+Swap:          8.0Gi       0.0Ki       8.0Gi
+nvcc not on PATH
+59G	/home/ubuntu/.cache/huggingface
+/home/ubuntu/.cache/huggingface/hub/models--Qwen--Qwen3.8-27B
+/home/ubuntu/.cache/huggingface/hub/models--Sandy124--ThinkingGuard-8B
+/home/ubuntu/.cache/huggingface/hub/models--bunsenfeng--bot_classifier
+/home/ubuntu/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.1
+/home/ubuntu/.cache/huggingface/hub/models--roberta-base
+
+Default environment
+python 3.13.5
+CUDA_VISIBLE_DEVICES ''
+torch missing
+torchvision missing
+transformers missing
+accelerate missing
+bitsandbytes missing
+huggingface-hub missing
+Pillow 11.1.0
+openai missing
+tqdm 4.67.1
+sentencepiece missing
+llava missing
+nvidia-cuda-runtime-cu12 missing
+No module named 'torch'
+
+Existing environment h1-cf-killtest/.venv
+python 3.10.19
+CUDA_VISIBLE_DEVICES ''
+torch 2.9.1
+torchvision 0.24.1
+transformers 4.57.3
+accelerate 1.12.0
+bitsandbytes 0.48.2
+huggingface-hub 0.36.0
+Pillow 12.0.0
+openai missing
+tqdm 4.67.1
+sentencepiece missing
+llava missing
+nvidia-cuda-runtime-cu12 12.8.90
+torch runtime CUDA build 12.8
+torch CUDA initialized False
+
+Existing environment sija-fa2-private/venv
+python 3.13.5
+CUDA_VISIBLE_DEVICES ''
+torch missing
+torchvision missing
+transformers missing
+accelerate missing
+bitsandbytes missing
+huggingface-hub missing
+Pillow 11.1.0
+openai missing
+tqdm 4.67.1
+sentencepiece missing
+llava missing
+nvidia-cuda-runtime-cu12 missing
+No module named 'torch'
+
+Existing environment sija-fa2-private/venv310
+python 3.10.19
+CUDA_VISIBLE_DEVICES ''
+torch 2.9.1
+torchvision 0.24.1
+transformers 4.57.3
+accelerate missing
+bitsandbytes missing
+huggingface-hub 0.36.0
+Pillow 12.0.0
+openai missing
+tqdm 4.67.1
+sentencepiece missing
+llava missing
+nvidia-cuda-runtime-cu12 12.8.90
+torch runtime CUDA build 12.8
+torch CUDA initialized False
