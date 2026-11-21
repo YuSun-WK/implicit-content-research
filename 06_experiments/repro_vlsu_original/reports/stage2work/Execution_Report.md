@@ -25,5 +25,3 @@ The existing environment is /tmp/trace-s0-py310/bin/python, PyTorch 2.9.1+cu128 
 Model loaded: **NO**. Direct **0/10**; Binary **0/5**; Structured CoT **0/5**. GPU precision, token counts, parse validity, latency and peak memory are unmeasured. No paper result is claimed.
 
 Continue the current authorized transfer route, verify all weights and pinned metadata on the target, recheck one idle physical GPU UUID, and execute the unchanged runner with BF16, 20 GiB allocator budget and per-job external timeout 21,570 seconds. Run Direct10, then paired Binary5 and Structured CoT5. Preserve raw outputs and durable ledgers only in private .local storage. Expand samples only after these actual measurements are available; no throughput estimate has been invented.
-
-
