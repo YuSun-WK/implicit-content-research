@@ -1,0 +1,237 @@
+{
+  "trace_upstream_commit": "83ecb799f897fe275185e082ee9a669f7d04bfaa",
+  "ram_source_commit": "7cb804a8609e9f4b1a50b7f31436d2df40bb9481",
+  "assets": {
+    "internvl": {
+      "repository": "OpenGVLab/InternVL2_5-8B",
+      "revision": "e9e4c0dc1db56bfab10458671519b7fa3dd29463",
+      "files": {
+        "added_tokens.json": {
+          "bytes": 179,
+          "sha256": "df59e170102f8d19d3e186cc91c81006c9822ea9fe8ce2b68e7be77195c01db3",
+          "lfs_sha256_match": true
+        },
+        "config.json": {
+          "bytes": 4052,
+          "sha256": "923cb73535303a6c439c3c139dc12f1b7bddd6643dee8ddf63d0d56368d5e8d5",
+          "lfs_sha256_match": true
+        },
+        "configuration_intern_vit.py": {
+          "bytes": 5548,
+          "sha256": "22dd687a5f142985407675fc6b1dc688c2ded93e54192543ecf28ef495a6efa8",
+          "lfs_sha256_match": true
+        },
+        "configuration_internlm2.py": {
+          "bytes": 7005,
+          "sha256": "9f9e14d64be7b81068e8421fd27e1c466b3fb6aeb67725ca328e56083c3f7a60",
+          "lfs_sha256_match": true
+        },
+        "configuration_internvl_chat.py": {
+          "bytes": 4088,
+          "sha256": "20bd8ddcf5c51f9fded0e3191db2bc00a7012fd3f7912dea4277fa24f17b6e32",
+          "lfs_sha256_match": true
+        },
+        "conversation.py": {
+          "bytes": 15309,
+          "sha256": "b1b9f280e9cb9211e519e2b8071002b57cc742aadb2f49b05fa674ee3c7d83ee",
+          "lfs_sha256_match": true
+        },
+        "generation_config.json": {
+          "bytes": 115,
+          "sha256": "eac5a6b0dff266d8ce2fcf6c05880d7ff71087ca273d1fafd6fd2f53b2565d2e",
+          "lfs_sha256_match": true
+        },
+        "model-00001-of-00004.safetensors": {
+          "bytes": 4939944336,
+          "sha256": "c9815f2a1c042cb4b6db939063a7b3ea6533c2ed0ffa3b4d79ac3c7d5cb5be9c",
+          "lfs_sha256_match": true
+        },
+        "model-00002-of-00004.safetensors": {
+          "bytes": 4915914584,
+          "sha256": "fbc4b8d534056f7b700276ddc2e52a407767a7803d788144c620a357df799d6f",
+          "lfs_sha256_match": true
+        },
+        "model-00003-of-00004.safetensors": {
+          "bytes": 4915914592,
+          "sha256": "0b5544a5021413d7b7e16f3a53800806474293df5c705101926634122c6c4103",
+          "lfs_sha256_match": true
+        },
+        "model-00004-of-00004.safetensors": {
+          "bytes": 1379026920,
+          "sha256": "304352082d3656f355ccac2833ab1faef475788e1d14973c5629d5721bd09b72",
+          "lfs_sha256_match": true
+        },
+        "model.safetensors.index.json": {
+          "bytes": 51167,
+          "sha256": "9110700a238c972daba84e094fa2c79c1a7ab7595df7912f30bd5f08120e226b",
+          "lfs_sha256_match": true
+        },
+        "modeling_intern_vit.py": {
+          "bytes": 18106,
+          "sha256": "1978e330ea5533dda4d1379096aded271fc741347fc48cb4924846b56a2a6a4b",
+          "lfs_sha256_match": true
+        },
+        "modeling_internlm2.py": {
+          "bytes": 61208,
+          "sha256": "c014d933c6afdf7414791c1859c692ca4b49c925688bcc00fbd1658ef75fb0ba",
+          "lfs_sha256_match": true
+        },
+        "modeling_internvl_chat.py": {
+          "bytes": 15988,
+          "sha256": "1915c32d984aed6750e911884ad59f92504f73b799c7443121c67b9cb21fe347",
+          "lfs_sha256_match": true
+        },
+        "preprocessor_config.json": {
+          "bytes": 287,
+          "sha256": "0658115064c561026539aeeead9ed3b1a8e0cc90967df8c142849199f955d2b4",
+          "lfs_sha256_match": true
+        },
+        "special_tokens_map.json": {
+          "bytes": 844,
+          "sha256": "8cb729e6fd4c29e8c5be65cb51128735cea0ab56606a186cf8cbb30123c72eae",
+          "lfs_sha256_match": true
+        },
+        "tokenization_internlm2.py": {
+          "bytes": 8791,
+          "sha256": "e548dc777a1def2f5339cfe12de8da2d12500d664e3dafa5c585c407e4b806fa",
+          "lfs_sha256_match": true
+        },
+        "tokenization_internlm2_fast.py": {
+          "bytes": 7788,
+          "sha256": "b6dc75cb1a276a897190a003b97a65b13b68b948d64646df67e7f18392dfbb34",
+          "lfs_sha256_match": true
+        },
+        "tokenizer.model": {
+          "bytes": 1477754,
+          "sha256": "f868398fc4e05ee1e8aeba95ddf18ddcc45b8bce55d5093bead5bbf80429b48b",
+          "lfs_sha256_match": true
+        },
+        "tokenizer_config.json": {
+          "bytes": 4006,
+          "sha256": "a3c739bcdfbb942f972160124327121b8d11c609c1355e05ed9b5ce8d1b5b67a",
+          "lfs_sha256_match": true
+        }
+      },
+      "status": "VERIFIED"
+    },
+    "ram_plus": {
+      "repository": "xinyu1205/recognize-anything-plus-model",
+      "revision": "84d4aee3a0265c4e0df1f714f0572011d1bf2ec3",
+      "files": {
+        "ram_plus_swin_large_14m.pth": {
+          "bytes": 3010210801,
+          "sha256": "497c178836ba66698ca226c7895317e6e800034be986452dbd2593298d50e87d",
+          "lfs_sha256_match": true
+        },
+        "ram_plus_tag_embedding_class_4585_des_51.pth": {
+          "bytes": 478895553,
+          "sha256": "072918604bfd95a8b45596e2677453cfb4335e9dffca2a1b2cb9834decb4dba8",
+          "lfs_sha256_match": true
+        }
+      },
+      "status": "VERIFIED"
+    },
+    "grounding_dino": {
+      "repository": "IDEA-Research/grounding-dino-base",
+      "revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+      "files": {
+        "config.json": {
+          "bytes": 1737,
+          "sha256": "eda416dae6f49419ff831b1c190ec430a060b19aae688dbaf2425a075b650608",
+          "lfs_sha256_match": true
+        },
+        "model.safetensors": {
+          "bytes": 933400872,
+          "sha256": "5548f844c928c4b6f411fa8cbcc2bfa8dbbba437cb1d513975519f93c2a9ed21",
+          "lfs_sha256_match": true
+        },
+        "preprocessor_config.json": {
+          "bytes": 457,
+          "sha256": "8454179ba95e2ad22947835aad7b45862a601fc0055ab88bf1ee70892d3aea60",
+          "lfs_sha256_match": true
+        },
+        "special_tokens_map.json": {
+          "bytes": 125,
+          "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+          "lfs_sha256_match": true
+        },
+        "tokenizer.json": {
+          "bytes": 711396,
+          "sha256": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66",
+          "lfs_sha256_match": true
+        },
+        "tokenizer_config.json": {
+          "bytes": 1237,
+          "sha256": "d40ab645b68211910b9170d22433d43186a6ec8ee6fd10ba170524b25bf4fb56",
+          "lfs_sha256_match": true
+        }
+      },
+      "status": "VERIFIED"
+    },
+    "openclip_roberta": {
+      "repository": "laion/CLIP-ViT-B-32-roberta-base-laion2B-s12B-b32k",
+      "revision": "e22e1c12b0a1ba4af9fb6474626585351ea0da25",
+      "files": {
+        "open_clip_pytorch_model.bin": {
+          "bytes": 851043135,
+          "sha256": "c769254cab5d0f848a6d86947637e18823a45122613fbb934d2e0d4660bc3147",
+          "lfs_sha256_match": true
+        },
+        "preprocessor_config.json": {
+          "bytes": 315,
+          "sha256": "0a70aaa5de2ccb5e222b0e7e3ea347a3da051c3588c763cdd23b4d80bbf96b65",
+          "lfs_sha256_match": true
+        },
+        "tokenizer.json": {
+          "bytes": 1355863,
+          "sha256": "847bbeab6174d66a88898f729d52fa8d355fafe1bea101cf960dd404581df70e",
+          "lfs_sha256_match": true
+        },
+        "vocab.json": {
+          "bytes": 898823,
+          "sha256": "9e7f63c2d15d666b52e21d250d2e513b87c9b713cfa6987a82ed89e5e6e50655",
+          "lfs_sha256_match": true
+        }
+      },
+      "status": "VERIFIED"
+    },
+    "bert_tokenizer": {
+      "repository": "google-bert/bert-base-uncased",
+      "revision": "86b5e0934494bd15c9632b12f734a8a67f723594",
+      "files": {
+        "tokenizer.json": {
+          "bytes": 466062,
+          "sha256": "ce64fce797c24f68df90b40a3f74f579b336a493db14bd583fd520ea0d8c9a98",
+          "lfs_sha256_match": true
+        },
+        "tokenizer_config.json": {
+          "bytes": 48,
+          "sha256": "a025160ef0431f1a392f6f050c1310f4c5d9fb6f275932dbccba73c4d214bf10",
+          "lfs_sha256_match": true
+        },
+        "vocab.txt": {
+          "bytes": 231508,
+          "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+          "lfs_sha256_match": true
+        }
+      },
+      "status": "VERIFIED"
+    }
+  },
+  "python": "3.10.19",
+  "packages": {
+    "torch": "2.9.1",
+    "transformers": "4.57.3",
+    "tokenizers": "0.22.1",
+    "open_clip_torch": "2.26.1",
+    "timm": "0.9.16",
+    "accelerate": "1.12.0",
+    "sentencepiece": "0.2.1",
+    "fairscale": "0.4.13",
+    "protobuf": "5.29.5"
+  },
+  "internvl_inference_overlay": {
+    "transformers": "4.49.0",
+    "tokenizers": "0.21.4"
+  }
+}

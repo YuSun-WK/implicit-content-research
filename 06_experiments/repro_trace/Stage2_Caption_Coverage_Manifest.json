@@ -1,0 +1,54 @@
+{
+  "dataset": "MultiOFF",
+  "sample_policy": "complete_case_444_148_148",
+  "sample_count": 740,
+  "prompt_sha256": "e81d67de529fcf4c2adda0c90ed83da43616699c8dc399452826a7bda0c37d59",
+  "caption_source": "OpenGVLab/InternVL2_5-8B@e9e4c0dc1db56bfab10458671519b7fa3dd29463",
+  "splits": {
+    "train": {
+      "expected": 444,
+      "tags_completed": 444,
+      "grounding_completed": 444,
+      "caption_completed": 444
+    },
+    "dev": {
+      "expected": 148,
+      "tags_completed": 148,
+      "grounding_completed": 148,
+      "caption_completed": 148
+    },
+    "test": {
+      "expected": 148,
+      "tags_completed": 148,
+      "grounding_completed": 148,
+      "caption_completed": 148
+    }
+  },
+  "caption_nonempty": 740,
+  "caption_copies_original_text": 0,
+  "openclip_tokenizer_limit": 77,
+  "caption_over_77_tokens": 334,
+  "caption_token_median": 75.0,
+  "caption_token_p95": 128,
+  "caption_token_max": 246,
+  "seconds": {
+    "tags": {
+      "n": 740,
+      "mean": 0.16144408557652118,
+      "median": 0.14329940592870116,
+      "p95": 0.2551511451601982
+    },
+    "grounding": {
+      "n": 740,
+      "mean": 0.19871309161991688,
+      "median": 0.18665582197718322,
+      "p95": 0.2957738311961293
+    },
+    "caption": {
+      "n": 740,
+      "mean": 2.9811679383903438,
+      "median": 2.8618876334512606,
+      "p95": 4.663045402849093
+    }
+  }
+}

@@ -1,0 +1,31 @@
+protocol: TRACE-InternVL-only-MultiOFF-2caption
+reproduction_level: adapted
+data: MultiOFF complete-case train444/dev148/test148
+caption_candidates: [original_sentence, InternVL2_5_8B_generated]
+backbone: roberta-ViT-B-32
+backbone_pretrained: laion2b_s12b_b32k
+seed: 42
+device: single_RTX_4090
+precision: bf16
+physical_microbatch: 32
+gradient_accumulation: 4
+effective_batch_target: 128
+optimizer: AdamW
+learning_rate: 0.0001
+weight_decay: 0.01
+gradient_clip_norm: 2.0
+max_epochs: 20
+dev_model_selection: macro_f1
+early_stop_patience: 5
+classification_threshold: 0.5
+test_evaluation: once_after_dev_selection
+loss_weights:
+  classification: 1.0
+  contrastive: 0.3
+  relevance: 0.7
+checkpoint_interval_microbatches: 25
+gpu_memory_soft_limit_gib: 18
+max_single_job_seconds: 21540
+private_data_dir: ~/data/trace-assets/multioff
+private_caption_manifest: ~/data/trace-assets/multioff/trace_internvl_only/records.json
+private_assets_dir: ~/data/trace-assets/stage2-models

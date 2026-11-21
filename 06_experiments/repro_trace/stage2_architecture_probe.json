@@ -1,0 +1,24 @@
+{
+  "architecture": "TRACE-InternVL-only-MultiOFF-2caption",
+  "upstream_source_sha256": "21e4a36ec0d030d280d73de2e82bbe6ea70aa06b00a02c4d70fd71d2deb82ba3",
+  "backbone": "roberta-ViT-B-32",
+  "backbone_revision": "e22e1c12b0a1ba4af9fb6474626585351ea0da25",
+  "pretrained_sha256": "c769254cab5d0f848a6d86947637e18823a45122613fbb934d2e0d4660bc3147",
+  "open_clip_version": "2.26.1",
+  "torch_version": "2.9.1+cu128",
+  "tokenizer": "RobertaTokenizerFast",
+  "tokenizer_context_length": 77,
+  "total_parameters": 227433731,
+  "trainable_parameters": 21798146,
+  "trainable_groups": {
+    "clip_model.text": 7087872,
+    "caption_scorer": 1054209,
+    "image_projection": 527360,
+    "text_projection": 527360,
+    "cross_attn": 4198400,
+    "cross_attn_reverse": 4198400,
+    "pre_output": 4203520,
+    "classifier": 1025
+  },
+  "visual_trainable_parameters": 0
+}
