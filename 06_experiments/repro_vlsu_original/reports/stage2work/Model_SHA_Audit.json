@@ -1,0 +1,86 @@
+{
+  "status": "LOCAL_WEIGHTS_VERIFIED_SERVER_TRANSFER_INCOMPLETE",
+  "date": "2026-11-21",
+  "github_source_commit": "3df77999a2df87ef90a2e022e8eabbb317c7112e",
+  "model_id": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "hf_revision": "cc594898137f460bfe9f0759e9844b3ce807cfb5",
+  "weight_source": {
+    "repository": "https://modelscope.cn/models/Qwen/Qwen2.5-VL-7B-Instruct",
+    "source_ref": "master",
+    "metadata_replaced": false,
+    "revision_equivalence": "ALL_FIVE_WEIGHT_BYTES_MATCH_PINNED_HF_MANIFEST"
+  },
+  "local_verification": {
+    "verified_shards": 5,
+    "required_shards": 5,
+    "total_bytes": 16584414560,
+    "files": [
+      {
+        "name": "model-00001-of-00005.safetensors",
+        "expected_size": 3900233256,
+        "observed_size": 3900233256,
+        "expected_sha256": "e97b877e47fde53a6c6e77aafb36e58e91ee9d95c4a3eeac6f1b5c0e6a1c986e",
+        "observed_sha256": "e97b877e47fde53a6c6e77aafb36e58e91ee9d95c4a3eeac6f1b5c0e6a1c986e",
+        "passed": true
+      },
+      {
+        "name": "model-00002-of-00005.safetensors",
+        "expected_size": 3864726320,
+        "observed_size": 3864726320,
+        "expected_sha256": "a9a300a43b4724eee2abe7c18ceb26768d0ab011eb0cad19d9bfd2476a24d024",
+        "observed_sha256": "a9a300a43b4724eee2abe7c18ceb26768d0ab011eb0cad19d9bfd2476a24d024",
+        "passed": true
+      },
+      {
+        "name": "model-00003-of-00005.safetensors",
+        "expected_size": 3864726424,
+        "observed_size": 3864726424,
+        "expected_sha256": "111223d173e00bbee81cba1216fad28668df3476706b7fd26f4d5b50f8b3a507",
+        "observed_sha256": "111223d173e00bbee81cba1216fad28668df3476706b7fd26f4d5b50f8b3a507",
+        "passed": true
+      },
+      {
+        "name": "model-00004-of-00005.safetensors",
+        "expected_size": 3864733680,
+        "observed_size": 3864733680,
+        "expected_sha256": "ef47f634fa57d46ee134edcc09f34085a47da1e16c12a2abe0d67118be6d72ed",
+        "observed_sha256": "ef47f634fa57d46ee134edcc09f34085a47da1e16c12a2abe0d67118be6d72ed",
+        "passed": true
+      },
+      {
+        "name": "model-00005-of-00005.safetensors",
+        "expected_size": 1089994880,
+        "observed_size": 1089994880,
+        "expected_sha256": "0c859795ad3a627a9b95bcb762e059d5b768a4a36fdd4affeff269d93fdecc67",
+        "observed_sha256": "0c859795ad3a627a9b95bcb762e059d5b768a4a36fdd4affeff269d93fdecc67",
+        "passed": true
+      }
+    ]
+  },
+  "server": {
+    "authenticated": true,
+    "target_hostname": "sunyu",
+    "jump_hostname": "tiaoban",
+    "full_weight_verification": false,
+    "transfer_status": "INCOMPLETE",
+    "preserved_upload_bytes": 673054720,
+    "alternate_download": "Official ModelScope client running on authorized jump host"
+  },
+  "model_loaded": false,
+  "gpu_inference": {
+    "direct": 0,
+    "binary": 0,
+    "structured_cot": 0,
+    "status": "NOT RUN",
+    "precision": null,
+    "parse_validity": null,
+    "input_tokens": null,
+    "output_tokens": null,
+    "p50_latency_s": null,
+    "p95_latency_s": null,
+    "peak_gpu_memory_bytes": null
+  },
+  "original_paper_results_reproduced": false
+}
+
+
