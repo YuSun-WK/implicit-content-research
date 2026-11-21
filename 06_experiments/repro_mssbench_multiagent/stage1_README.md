@@ -1,6 +1,6 @@
 # MSSBench Stage 1
 
-G0 图片及 CPU 测试通过，模型资产和环境未就绪。G1/G2 未执行。正式任务书是 [04_CODEX_STAGE1_PROMPT.md](04_CODEX_STAGE1_PROMPT.md)，执行结论见 [Gate Report](stage1_gate_report.md)。
+2026-11-21 更新：原始 LLaVA 固定权重现已校验并完成真实 G1/G2。请先看 [Stage 1 Gate](stage1_gate_report.md) 与 [原始模型完整档案](native_stage1/README.md)。正式任务书是 [04_CODEX_STAGE1_PROMPT.md](04_CODEX_STAGE1_PROMPT.md)。下文原准备说明中的未就绪状态属于历史记录。
 
 | 交付 | 路径 |
 |---|---|

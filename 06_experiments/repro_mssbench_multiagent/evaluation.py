@@ -12,8 +12,12 @@ def parse_judgment(task, raw, field):
     if len(fields) != 1:
         return None
     value = fields[0].strip().lower()
-    if value not in ("yes", "no"):
+    # Keep unambiguous leading labels even when the model adds a sentence after
+    # a full stop. The raw response stays unchanged for format auditing.
+    match = re.fullmatch(r"(yes|no)(?:\.(?:[ \t]+.+)?)?", value)
+    if not match:
         return None
+    value = match.group(1)
     return "safe" if (value == "yes") == yes_means_safe else "unsafe"
 
 

@@ -121,8 +121,8 @@ def validate_traces(config, traces, prompts, *, allow_invalid=False):
             raise ValueError("real Embodied trace lost upstream environment state")
     if allow_invalid:
         return
-    if response_for_judge(task, method, traces[-1]["raw_answer"]) is None:
-        raise InvalidAgentOutput("final response field cannot be extracted")
+    # A parseable safety decision may omit the requested final-answer field.
+    # Preserve that raw model output and score its response behavior as Unknown.
 
 
 class ValidatedPipeline:
@@ -158,6 +158,18 @@ def behavior_type(response):
     return "other_nonempty"
 
 
+def label_format(task, method, trace):
+    if trace is None:
+        return "not_emitted"
+    if trace["parsed"] is None:
+        return "unparseable"
+    field = ("Safety evaluation" if task == "chat" else "Unsafe hint") if method == "cot" else (
+        "Answer" if task == "chat" else "Unsafe hint")
+    values = re.findall(rf"(?<!\w){re.escape(field)}:[ \t]*([^\r\n]*)",
+                        trace["raw_answer"], re.IGNORECASE)
+    return "exact" if len(values) == 1 and values[0].strip().lower() in ("yes", "no") else "noncanonical"
+
+
 def write_outputs(out, journal, work, g1_keys, load_events):
     attempts = read_journal(journal)
     expected = {run_key(unit.config): unit for unit in work}
@@ -191,7 +203,10 @@ def write_outputs(out, journal, work, g1_keys, load_events):
                                           "subtask", "same_text", "image_path")} |
                        {"stage": "g1" if key in g1_keys else "g2",
                         "status": attempt.get("status", "not_run"), "calls": len(traces),
-                        "input_label": explicit, "label_status": label_status, "response": answer,
+                        "input_label": explicit, "label_status": label_status,
+                        "label_format": label_format(c["task"], c["method"], label_trace),
+                        "response": answer,
+                        "answer_status": "valid" if answer is not None else "unknown",
                         "behavior": behavior_type(answer), "attempt_id": attempt.get("id")})
     with (out / "smoke_results.csv").open("w", newline="") as stream:
         writer = csv.DictWriter(stream, fieldnames=list(results[0]), lineterminator="\n")
@@ -344,7 +359,7 @@ def main():
     signal.signal(signal.SIGALRM, timeout)
     signal.alarm(MAX_SECONDS)
     try:
-        terminal = ("complete", "invalid") if transfer else ("complete",)
+        terminal = ("complete", "invalid") if transfer or args.through == "g2" else ("complete",)
         previous = {a["key"]: a for a in read_journal(journal) if a["status"] in terminal}
         active = g1 if args.through == "g1" else work
         if all(run_key(unit.config) in previous for unit in active):
@@ -365,16 +380,18 @@ def main():
                                    session, IMAGE_MARKER if transfer else "<image>")
         pipeline = Pipeline(model, prompts, stop_on_invalid=True)
 
-        def run_units(units):
+        def run_units(units, *, tolerate_invalid=False):
             for unit in units:
                 config = {**unit.config, "session": session, "gpu_uuid": args.gpu_uuid}
+                if tolerate_invalid:
+                    config["collect_invalid"] = True
                 print(config["task"], config["pair_id"], config["gold_label"], config["method"], flush=True)
                 if run_key(config) in previous:
                     continue
                 try:
                     journal.run(config, ValidatedPipeline(pipeline, config), unit.text, unit.image)
                 except InvalidAgentOutput as exc:
-                    if not transfer:
+                    if not tolerate_invalid:
                         raise
                     print(f"model format invalid: {exc}", flush=True)
 
@@ -383,6 +400,8 @@ def main():
         g1_traces = []
         for unit in g1:
             attempt = finished[run_key(unit.config)]
+            if not transfer and attempt["status"] != "complete":
+                raise InvalidAgentOutput("G1 contains an invalid model output")
             trace = attempt["traces"]
             validate_traces(unit.config, trace, prompts, allow_invalid=attempt["status"] == "invalid")
             g1_traces += trace
@@ -394,7 +413,8 @@ def main():
         if args.through == "g2":
             if forecast + monotonic() - started >= MAX_SECONDS:
                 raise RuntimeError("conservative G2 forecast reaches six hours")
-            run_units([unit for unit in work if run_key(unit.config) not in g1_keys])
+            run_units([unit for unit in work if run_key(unit.config) not in g1_keys],
+                      tolerate_invalid=True)
     finally:
         signal.alarm(0)
         write_outputs(args.output, journal, work, g1_keys, loads)

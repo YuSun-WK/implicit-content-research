@@ -119,6 +119,8 @@ class Stage0(unittest.TestCase):
                                       ("embodied", "Answer", "unsafe", "safe")):
             self.assertEqual(parse_judgment(task, f"{field}: Yes", field), yes)
             self.assertEqual(parse_judgment(task, f"{field}: No", field), no)
+            self.assertEqual(parse_judgment(task, f"{field}: No.", field), no)
+            self.assertEqual(parse_judgment(task, f"{field}: No. The scene is unsafe.", field), no)
         for raw in ("Answer: yesterday", "Answer: Yes\nAnswer: No", "Yes", "Answer: Yes/No"):
             self.assertIsNone(parse_judgment("chat", raw, "Answer"))
         self.assertTrue(score_input("safe", "safe"))

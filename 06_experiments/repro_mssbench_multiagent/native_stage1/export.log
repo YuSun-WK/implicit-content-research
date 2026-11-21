@@ -1,0 +1,49 @@
+{
+  "method_inputs": 120,
+  "complete": 118,
+  "invalid": 2,
+  "canonical_calls": 200,
+  "retry_calls": 6,
+  "all_retained_calls": 206,
+  "canonical_input_tokens": 36096,
+  "canonical_output_tokens": 25386,
+  "canonical_generation_seconds": 1905.859,
+  "peak_allocated_bytes": 5975114240,
+  "peak_reserved_bytes": 7493124096,
+  "peak_nvml_delta_bytes": 7943290880,
+  "role_calls": {
+    "base": 40,
+    "cot": 40,
+    "intent_reasoning": 20,
+    "visual_understanding": 20,
+    "safety_judgment": 20,
+    "qa": 20,
+    "key_object_locator": 20,
+    "safety_reasoning": 20
+  },
+  "qa_routes": {
+    "YES": 14,
+    "NO": 6
+  },
+  "token_cap_calls": 43,
+  "label_format": {
+    "exact": 75,
+    "noncanonical": 3,
+    "unparseable": 2
+  },
+  "answer_unknown": 7,
+  "gates": {
+    "g1": {
+      "calls": 20,
+      "input_tokens": 3666,
+      "output_tokens": 2297,
+      "generation_seconds": 209.283
+    },
+    "g2": {
+      "calls": 180,
+      "input_tokens": 32430,
+      "output_tokens": 23089,
+      "generation_seconds": 1696.576
+    }
+  }
+}

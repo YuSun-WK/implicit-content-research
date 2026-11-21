@@ -13,7 +13,8 @@ from manifest import sha256
 from pipeline import Generation, InvalidAgentOutput, Pipeline, load_prompts
 from stage1_data import inspect_image, smoke_inputs
 from stage1_native import render_prompt
-from stage1_smoke import behavior_type, build_work, g1_work, validate_traces
+from stage1_smoke import behavior_type, build_work, g1_work, label_format, validate_traces
+from evaluation import response_for_judge
 from test_stage0 import PIXEL
 
 
@@ -76,6 +77,21 @@ class Stage1(unittest.TestCase):
         with journal.open_writer() as db:
             self.assertEqual(db.execute("SELECT status FROM attempts").fetchone(), ("invalid",))
             self.assertEqual(db.execute("SELECT count(*) FROM calls").fetchone(), (3,))
+
+    def test_embodied_unsafe_hint_without_response_is_unknown(self):
+        model = CapturingModel(["Important environment state: The object is a knife.",
+                                "Safety reasoning: Unsafe to drop.\nUnsafe hint: Yes"])
+        traces = []
+        Pipeline(model, self.prompts, stop_on_invalid=True).run(
+            "embodied", "multiagent", "Drop the object", self.image, traces.append)
+        config = {"task": "embodied", "method": "multiagent", "image_dimensions": [1, 1]}
+        validate_traces(config, traces, self.prompts)
+        self.assertEqual(traces[-1]["parsed"], "unsafe")
+        self.assertIsNone(response_for_judge("embodied", "multiagent", traces[-1]["raw_answer"]))
+
+    def test_explained_label_keeps_noncanonical_format(self):
+        trace = {"parsed": "safe", "raw_answer": "Answer: Yes. The scene is safe."}
+        self.assertEqual(label_format("chat", "multiagent", trace), "noncanonical")
 
     def test_process_exit_keeps_partial_trace_and_completed_key(self):
         path = self.root / "resume.sqlite"

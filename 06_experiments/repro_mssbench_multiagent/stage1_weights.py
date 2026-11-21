@@ -8,6 +8,7 @@ import re
 import shutil
 import subprocess
 import tempfile
+import time
 from urllib.parse import quote, urlencode
 
 from manifest import SOURCES, relative_path
@@ -89,7 +90,8 @@ def download_ranges(part, url, size, chunk_bytes):
                 result = subprocess.run(
                     ["curl", "-fsSL", "--connect-timeout", "10", "--max-time", "75",
                      "--max-filesize", str(end - offset + 1), "--range", f"{offset}-{end}",
-                     "--dump-header", str(headers), "--output", str(block), url],
+                     "--dump-header", str(headers), "--output", str(block),
+                     url + ("&" if "?" in url else "?") + f"nodeprobe={time.time_ns()}"],
                     capture_output=True, text=True,
                 )
                 if (result.returncode == 0 and block.is_file() and headers.is_file()

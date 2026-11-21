@@ -1,15 +1,16 @@
-# Stage 1 Gate Report · STOP
+# Stage 1 Gate Report · 原始 LLaVA G1 PASS，G2 PARTIAL
 
-| 门槛 | 状态 | 证据 |
-|---|---|---|
-| G0 数据版本和图像 | PASS（发布版功能范围） | Table 1 的类别差异 unresolved，保留固定 HF 原标签。20 对及 40 图逐文件大小、SHA256 和 RGB 解码通过。 |
-| G0 Adapter、运行器、续跑 | PASS（CPU 契约） | 13 个 CPU 测试通过，验证原生模板 text-only/image 渲染、替换上游输出的下游敏感性、QA 路由、无效停止、实际进程中断和 manifest。 |
-| G0 真实模型就绪 | FAIL | HF 大权重传输不完整，PyTorch wheel 与依赖安装失败。真实 Adapter 入口的 CPU preflight 在 SHA 核验门槛拒绝启动。 |
-| G1 极小 GPU 探针 | FAIL（未运行） | 计划 4 个图文输入、20 次生成。实际 GPU ID 无、模型加载 0、生成 0，耗时、token 和峰值显存无测量。 |
-| G2 20 对功能 Smoke | FAIL（未运行） | G1 未通过，也无六小时外推依据。 |
+2026-11-21 在固定官方 LLaVA-1.6 Vicuna-7B 与 CLIP 权重整文件校验通过后完成真实 GPU Stage 1。详细证据、真实轨迹、分组结果及资源数值见 [原始模型门槛报告](native_stage1/native_gate_report.md) 和 [实验档案](native_stage1/README.md)。此前 G0 FAIL 是当时权重未完整下载的历史状态，现已修复；此前 ThinkingGuard 结果仍独立标记为 D 替代模型协议迁移。
 
-原生分支仍优先。公开历史没有逐条证据支持重新分类，Table 1 口径保持 unresolved；这项差异按正式任务书允许功能性 Smoke。实际 STOP 是依赖和权重传输，多次网络重置、长读超时和 Xet 未完成。没有生成日志、指标或模型失败案例可报告。Pilot 和 Full 未启动。
+| 门槛 | 结果 |
+|---|---|
+| 数据和 40 张图片 | PASS；固定 HF 发布版，论文 Table 1 类别差异保持 unresolved |
+| 原始模型权重与独立环境 | PASS；12/12 文件核验，单卡 NF4 加载成功 |
+| 纯文本和单图探针 | PASS；原始输出与图像嵌入长度已保存 |
+| G1 | PASS；2 对、4 图文输入、20 次模型生成，信息流和 QA 路由实测通过 |
+| G2 | PARTIAL；20 对、40 图文输入、200 次规范生成完成，118/120 方法×输入 complete、2/120 安全标签 invalid |
+| 资源预算 | PASS；峰值 PyTorch reserved 6.979 GiB，NVML 增量 7.398 GiB，低于 20 GiB |
+| 官方回答 Judge | 未执行；本地关键词粗筛不能代替 GPT-4o 评分 |
+| Pilot | HOLD；本轮未启动 |
 
-唯一下一步是从可稳定传输的缓存或镜像补齐并逐文件核验**同 revision 的原生权重、CLIP 和锁定 wheels**，随后只启动 G1 探针。
-
-[版本对账](table1_reconciliation.md) · [图片门槛](smoke_image_gate.md) · [Adapter 审查](model_adapter_review.md) · [模型环境](model_environment_lock.md) · [资源记录](resource_measurements.md)
+具体配置为单卡 GPU 5、batch 1、greedy、seed 0、224×224 本地图预缩放、256 max new tokens。模型使用原始权重/源码，CUDA/Torch、量化和文本解析为有记录的本地适配。43 次规范输出触及 token 上限、7 条 Embodied Multi-Agent 最终回答字段 Unknown，均不能写作成功的完整回答。输入安全标签评测与回答行为粗筛严格分开。

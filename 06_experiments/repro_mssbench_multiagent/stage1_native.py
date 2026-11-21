@@ -177,8 +177,16 @@ class NativeLlava:
         sequence = output[0]
         if sequence.numel() >= ids.shape[1] and torch.equal(sequence[:ids.shape[1]], ids[0]):
             sequence = sequence[ids.shape[1]:]
+        elif sequence.numel() and sequence[0].item() == self.tokenizer.bos_token_id:
+            # The original LLaVA override calls HF generate with inputs_embeds.
+            # Its returned sequence starts with a synthetic BOS, not the prompt.
+            sequence = sequence[1:]
         if sequence.numel() > self.max_new_tokens:
-            raise RuntimeError("unexpected continuation token accounting")
+            raise RuntimeError(
+                f"unexpected continuation token accounting: output={sequence.numel()} "
+                f"tokenized_input={ids.shape[1]} effective_input={effective[0] if effective else None} "
+                f"output_head={sequence[:8].tolist()} input_head={ids[0, :8].tolist()}"
+            )
         answer = self.tokenizer.decode(sequence, skip_special_tokens=True).strip()
         return Generation(
             answer, rendered_prompt=rendered, input_tokens=ids.numel(), output_tokens=sequence.numel(),
