@@ -1,0 +1,58 @@
+{
+  "revision": "a254fa5ea367839be72e8db39041a7a5a43633c1",
+  "order": "numeric original image stem ascending, before any model prediction",
+  "metadata_matched_pairs": 62,
+  "planned_max_pairs": 8,
+  "real_pairs_fetched": 0,
+  "selection": [
+    {
+      "plan_id": "SEB-P001",
+      "original_path": "test_images/1.jpg",
+      "edited_path": "test_images/1_edited.jpg",
+      "status": "NOT_FETCHED_ACCESS_REQUIRED"
+    },
+    {
+      "plan_id": "SEB-P002",
+      "original_path": "test_images/2.jpg",
+      "edited_path": "test_images/2_edited.jpg",
+      "status": "NOT_FETCHED_ACCESS_REQUIRED"
+    },
+    {
+      "plan_id": "SEB-P003",
+      "original_path": "test_images/3.jpg",
+      "edited_path": "test_images/3_edited.jpg",
+      "status": "NOT_FETCHED_ACCESS_REQUIRED"
+    },
+    {
+      "plan_id": "SEB-P004",
+      "original_path": "test_images/4.jpg",
+      "edited_path": "test_images/4_edited.jpg",
+      "status": "NOT_FETCHED_ACCESS_REQUIRED"
+    },
+    {
+      "plan_id": "SEB-P005",
+      "original_path": "test_images/5.jpg",
+      "edited_path": "test_images/5_edited.jpg",
+      "status": "NOT_FETCHED_ACCESS_REQUIRED"
+    },
+    {
+      "plan_id": "SEB-P006",
+      "original_path": "test_images/6.jpg",
+      "edited_path": "test_images/6_edited.jpg",
+      "status": "NOT_FETCHED_ACCESS_REQUIRED"
+    },
+    {
+      "plan_id": "SEB-P007",
+      "original_path": "test_images/7.jpg",
+      "edited_path": "test_images/7_edited.jpg",
+      "status": "NOT_FETCHED_ACCESS_REQUIRED"
+    },
+    {
+      "plan_id": "SEB-P008",
+      "original_path": "test_images/8.jpg",
+      "edited_path": "test_images/8_edited.jpg",
+      "status": "NOT_FETCHED_ACCESS_REQUIRED"
+    }
+  ],
+  "note": "Filename co-occurrence is a retrieval plan, not pairing/provenance verification."
+}

@@ -1,0 +1,44 @@
+{
+  "source_pdf_sha256": "a347729cbc091c892ecf2e2159eb3a3f365e05b3424c5c3ff9318aa2cff1e5cc",
+  "source_html_sha256": "80cd6db2c294212af4be36a6fd17a1b81b71eb8c26a3b662da440852de9dfef7",
+  "prompts": [
+    {
+      "name": "author_original_single",
+      "page": 29,
+      "sha256": "ae7ec09394d6921b373ad21929fd57a1faa4c7c27fc77213d532102986026c14",
+      "track": "AUTHOR_POLICY",
+      "status": "wording retained; HTML whitespace normalized and crosschecked with PDF single-angle tags",
+      "source_version": "arXiv:2610.23909v2"
+    },
+    {
+      "name": "author_generic_single",
+      "page": 30,
+      "sha256": "272b57bfc5a36a661c51c6ff05380bc69252a26fd55786d2554a011f454f7523",
+      "track": "AUTHOR_POLICY",
+      "status": "wording retained; HTML whitespace normalized and crosschecked with PDF single-angle tags",
+      "source_version": "arXiv:2610.23909v2"
+    },
+    {
+      "name": "author_vja_relaxed_single",
+      "page": 30,
+      "sha256": "8aab8df444c8dedfb46206308e46cec6c442368d76aff8efb404906f9149bc12",
+      "track": "AUTHOR_POLICY",
+      "status": "wording retained; HTML whitespace normalized and crosschecked with PDF single-angle tags",
+      "source_version": "arXiv:2610.23909v2"
+    },
+    {
+      "name": "author_decomposed_relaxed_single",
+      "page": 31,
+      "sha256": "1ccae01034c3f730f0633c3d9043819531dec8b89ff3565df7fca993be1fa3ae",
+      "track": "AUTHOR_POLICY",
+      "status": "wording retained; HTML whitespace normalized and crosschecked with PDF single-angle tags",
+      "source_version": "arXiv:2610.23909v2"
+    },
+    {
+      "name": "legacy_FA2_double",
+      "sha256": "c4b0d818a6038951993b1fe4c204b728a16aeb33ddf5701b07d2a23fedf4bb3f",
+      "track": "HISTORICAL_ONLY",
+      "status": "Byte-identical PR75 aa317426; real tag adaptation, not whitespace-only"
+    }
+  ]
+}

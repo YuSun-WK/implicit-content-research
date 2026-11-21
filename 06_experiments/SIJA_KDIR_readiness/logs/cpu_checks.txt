@@ -1,0 +1,1 @@
+PASS: CPU synthetic fixtures only. Manifest isolation (model/prompt/policy/images/order/preprocessing/decoding/runtime), whitelist, duplicate output, strict tags, UNKNOWN/DEFER/INVALID, N/A intent, group denominators, review gate and zero denominator. No safety inference.

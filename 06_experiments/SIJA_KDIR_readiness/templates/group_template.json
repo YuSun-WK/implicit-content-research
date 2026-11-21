@@ -1,0 +1,60 @@
+{
+  "group_id": "",
+  "source_reference": "",
+  "source_ids": [],
+  "split": "UNASSIGNED",
+  "status": "PENDING",
+  "reviewer_ids": [],
+  "review_times_utc": [],
+  "review_disagreements_resolved": false,
+  "r_a_s": {
+    "er": {
+      "referent": "",
+      "action": "",
+      "specification": "",
+      "instruction_evidence": ""
+    },
+    "en": {
+      "referent": "",
+      "action": "",
+      "specification": "",
+      "instruction_evidence": ""
+    }
+  },
+  "images": {
+    "Iu": {
+      "path": "",
+      "sha256": ""
+    },
+    "Is": {
+      "path": "",
+      "sha256": ""
+    }
+  },
+  "risk_facts": "",
+  "four_cell_outcomes": {
+    "Iu_er": "",
+    "Iu_en": "",
+    "Is_er": "",
+    "Is_en": ""
+  },
+  "policy_clause": "",
+  "ambiguity": "",
+  "disagreements": [],
+  "gold": {
+    "Iu_er": "UNKNOWN",
+    "Iu_en": "UNKNOWN",
+    "Is_er": "UNKNOWN",
+    "Is_en": "UNKNOWN"
+  },
+  "er_executable_on_Is": false,
+  "no_other_violations": false,
+  "linkage_verified": false,
+  "source_pair_cluster": "",
+  "near_duplicate_cluster": "",
+  "cue_reuse_cluster": "",
+  "er_instruction_origin": "UNRESOLVED",
+  "er_log_reference": "",
+  "er_on_Is_evidence": "",
+  "remaining_violations_evidence": ""
+}

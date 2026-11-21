@@ -1,0 +1,1 @@
+{"status":"PASS","tested":["no automatic read","per-reviewer storage","explicit load","export JSON reopen","wrong reviewer import rejected","policy/package mismatch rejected","targeted clear preserves other reviewer"],"actual_browser_clicks":"NOT_RUN","human_review_performed":false}

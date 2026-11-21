@@ -1,0 +1,11 @@
+/* Node state tests, not a real-browser interaction test. */
+const assert=require('assert'),fs=require('fs'),os=require('os'),path=require('path');
+const api=require('../templates/review_storage.js');let reads=0;const db=new Map([['KDIR-RN2-stage1-20261117','legacy first reviewer secret']]);
+const storage={getItem:k=>{reads++;return db.has(k)?db.get(k):null},setItem:(k,v)=>db.set(k,v),removeItem:k=>db.delete(k)};
+const create=()=>api.create(storage,'CPU_PACKAGE','CPU_FINGERPRINT','CPU_POLICY',['CPU_GROUP']);
+const session=create();assert.equal(reads,0,'Page initialization read old answers');
+const response={reviewer_anonymous_id:'CPU_R1',package_id:'CPU_PACKAGE',package_fingerprint:'CPU_FINGERPRINT',policy_sha256:'CPU_POLICY',stage:1,groups:[{group_id:'CPU_GROUP',review_status:'PENDING',answer:'CPU first-review fixture'}]};
+session.save('CPU_R1',response);const reopened=create();const before=reads;const second=create();assert.equal(reads,before,'Reopening auto-loaded answers');assert.equal(second.load('CPU_R2'),null);assert.deepEqual(reopened.load('CPU_R1'),response);assert.throws(()=>second.validate(response,'CPU_R2'));
+const dir=fs.mkdtempSync(path.join(os.tmpdir(),'kdir-storage-'));try{const file=path.join(dir,'export.json');fs.writeFileSync(file,JSON.stringify(response));const parsed=JSON.parse(fs.readFileSync(file,'utf8'));assert.deepEqual(reopened.validate(parsed,'CPU_R1'),response);assert.throws(()=>reopened.validate(parsed,'CPU_R2'));assert.throws(()=>reopened.validate({...parsed,package_fingerprint:'changed'},'CPU_R1'));assert.throws(()=>reopened.validate({...parsed,policy_sha256:'changed'},'CPU_R1'))}finally{fs.rmSync(dir,{recursive:true,force:true})}
+second.clear('CPU_R2');assert.deepEqual(reopened.load('CPU_R1'),response);reopened.clear('CPU_R1');assert.equal(reopened.load('CPU_R1'),null);assert.equal(db.get('KDIR-RN2-stage1-20261117'),'legacy first reviewer secret');
+console.log(JSON.stringify({status:'PASS',tested:['no automatic read','per-reviewer storage','explicit load','export JSON reopen','wrong reviewer import rejected','policy/package mismatch rejected','targeted clear preserves other reviewer'],actual_browser_clicks:'NOT_RUN',human_review_performed:false}));
