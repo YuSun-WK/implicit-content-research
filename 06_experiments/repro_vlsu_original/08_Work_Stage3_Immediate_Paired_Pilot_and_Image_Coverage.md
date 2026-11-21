@@ -35,7 +35,7 @@
 ## 第三个问题：正式原论文协议优先次序
 - 第一主线：Table1 joint binary；Table2 Qwen7 Joint Direct vs CoT配对（作者Q7报告Direct49.4/42.3、CoT52.1/51.4，binary50.0/55.3，均是作者报告的整库结果）。先为扩大数据做实验管线验收，再有代表性数据进行可比评测。
 - Figure3 17个pattern准确率是P1，但稀有组以及成功获取率必须分别显示；样本少时空项不推断。
-- Table4 image/text/joint是P1：image-only gold不同且排除141 not_sure，text-only8195? **注意正确官方数是8159**。作者没有明确给出single-modality原始prompt字节，因此若本地版本则`LOCAL ADAPTATION`，不得报与作者Table4严格同协议。若能确认官方提示再正式运行。Figure4/5需要同UUID三模态有效输出；Figure5原图报告Qwen32B，不应把Qwen7输出当作原模型原数值复现。
+- Table4 image/text/joint是P1：image-only gold不同且排除141 not_sure，text-only 8,159条全具备有效文本及标签（尚未正式运行）。。作者没有明确给出single-modality原始prompt字节，因此若本地版本则`LOCAL ADAPTATION`，不得报与作者Table4严格同协议。若能确认官方提示再正式运行。Figure4/5需要同UUID三模态有效输出；Figure5原图报告Qwen32B，不应把Qwen7输出当作原模型原数值复现。
 - 未证实细节：作者F1平均方式、数据8187 vs 8159、原图片身份、模型权重revision与预处理/采样实际参数不明；保持差异台账。本人Prompt逐字签核仍OPEN，禁止自动宣称已经人工审核。
 
 ## GitHub交付与停止条件
@@ -43,5 +43,5 @@
 - 新文件置于`reports/stage3a/`、`configs/stage3a_pilot.yaml`等**独立目录**。交付 `Stage3A_Result_Audit.md`, `stage3a_metrics.json`, `image_acquisition_status.json`, `Execution_Log.txt`，必要的最小脚本/测试与一份`Run_Stage3A.md`。所有实际GPU生成需要私有日志路径、hash、run_id，report标`RUN`/ `NOT RUN`；没有私人输出不得写虚构数值。
 - pytest当前server报告81 passed（GitHub最新单元测试与server可能不完全同步）：核对Git工作树和实际runner SHA、pytest来源；运行真实测试和`git diff --check`，不误将私有/未提交的server代码结果当成repo code版本。保存原运行输出。
 - 未触发训练、标签重标、数据改版、付费API、大模型换代。无需再下载官方Qwen模型；权重已到GPU服务器。
-- 分支 `repro/vlsu-original-20261119` 提交，不合并main。最终以简洁结论报告：真实smoke预测正确性，30人群paired pilot是否完成，样本覆盖新增量及关键pattern，是否可以进入有代表性Table1/2复现，剩余仅需用户参与的步骤。
+- 分支 `repro/vlsu-original-20261119` 提交，不合并main。最终以简洁结论报告：真实smoke预测正确性，30条样本paired pilot是否完成，样本覆盖新增量及关键pattern，是否可以进入有代表性Table1/2复现，剩余仅需用户参与的步骤。
 - **成功判据**：B1给出真实预测正确性，B2对当前实际可用上限实现三种Prompt同UUID配对，Track A从既有cache或合法真实下载推动图像可用性增长（若网络不可用真实报告原因）。不能以另一份网络诊断或空泛设计替代结果。
