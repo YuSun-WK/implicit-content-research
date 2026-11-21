@@ -5,11 +5,13 @@ caption_candidates: [original_sentence, InternVL2_5_8B_generated]
 backbone: roberta-ViT-B-32
 backbone_pretrained: laion2b_s12b_b32k
 seed: 42
+optional_repeat_seed_executed: 121
 device: single_RTX_4090
 precision: bf16
 physical_microbatch: 32
 gradient_accumulation: 4
 effective_batch_target: 128
+epoch_tail_effective_batch: 60
 optimizer: AdamW
 learning_rate: 0.0001
 weight_decay: 0.01

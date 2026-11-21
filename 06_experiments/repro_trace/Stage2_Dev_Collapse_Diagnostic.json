@@ -1,0 +1,69 @@
+{
+  "best.pt": {
+    "train": {
+      "n": 444,
+      "predicted_positive_at_0_5": 38,
+      "probability_min": 0.3048688769340515,
+      "probability_p10": 0.36931508779525757,
+      "probability_median": 0.42584405839443207,
+      "probability_p90": 0.48999157547950745,
+      "probability_max": 0.5580862164497375,
+      "mean_by_label": {
+        "0": 0.421030345351197,
+        "1": 0.438345883482246
+      }
+    },
+    "dev": {
+      "n": 148,
+      "predicted_positive_at_0_5": 8,
+      "probability_min": 0.30239108204841614,
+      "probability_p10": 0.3747906982898712,
+      "probability_median": 0.42823344469070435,
+      "probability_p90": 0.4857826232910156,
+      "probability_max": 0.5571225881576538,
+      "mean_by_label": {
+        "1": 0.43301404986465186,
+        "0": 0.4268239546608139
+      }
+    }
+  },
+  "last.pt": {
+    "train": {
+      "n": 444,
+      "predicted_positive_at_0_5": 0,
+      "probability_min": 0.2267836332321167,
+      "probability_p10": 0.2829881012439728,
+      "probability_median": 0.328529417514801,
+      "probability_p90": 0.3821414113044739,
+      "probability_max": 0.4678179919719696,
+      "mean_by_label": {
+        "0": 0.3166054896721544,
+        "1": 0.3504765610541067
+      }
+    },
+    "dev": {
+      "n": 148,
+      "predicted_positive_at_0_5": 0,
+      "probability_min": 0.20434190332889557,
+      "probability_p10": 0.28219619393348694,
+      "probability_median": 0.3372035324573517,
+      "probability_p90": 0.3775406777858734,
+      "probability_max": 0.4163219630718231,
+      "mean_by_label": {
+        "1": 0.3390274599455951,
+        "0": 0.3289193404572351
+      }
+    }
+  },
+  "last_10_updates_gradient_norm_mean": {
+    "caption_scorer": 0.3610252022743225,
+    "clip_model.text": 0.5749443680047989,
+    "image_projection": 0.15229772329330443,
+    "text_projection": 0.152387073636055,
+    "cross_attn": 0.12223758995532989,
+    "cross_attn_reverse": 0.12141043990850449,
+    "pre_output": 0.6438416361808776,
+    "classifier": 0.3609230160713196
+  },
+  "scope": "train_and_dev_only_no_test_no_retraining"
+}
