@@ -1,0 +1,25 @@
+Thu Nov 19 09:31:49 UTC 2026
+Original CUDA_VISIBLE_DEVICES=<unset>
+index, uuid, name, driver_version, memory.total [MiB], memory.used [MiB], memory.free [MiB], utilization.gpu [%]
+0, GPU-e444a3f7-16b4-fe55-9dc5-829276924b28, NVIDIA GeForce RTX 4090, 580.82.09, 49140 MiB, 3 MiB, 48506 MiB, 0 %
+1, GPU-aef04bcb-33d1-feca-fa77-da4b1b95b433, NVIDIA GeForce RTX 4090, 580.82.09, 49140 MiB, 13737 MiB, 34772 MiB, 100 %
+2, GPU-8acf9116-9a4f-e318-849b-46ab2f7c8a40, NVIDIA GeForce RTX 4090 D, 580.82.09, 49140 MiB, 12767 MiB, 35742 MiB, 0 %
+3, GPU-45decdd6-682b-4cd9-2bc3-6769eee7a81f, NVIDIA GeForce RTX 4090 D, 580.82.09, 49140 MiB, 3 MiB, 48506 MiB, 0 %
+4, GPU-d72631b6-1716-61ed-d355-8da3e5558910, NVIDIA GeForce RTX 4090 D, 580.82.09, 49140 MiB, 3 MiB, 48506 MiB, 0 %
+5, GPU-5a0ba87d-2dc2-fed4-276c-8bb93dcec495, NVIDIA GeForce RTX 4090 D, 580.82.09, 49140 MiB, 3 MiB, 48506 MiB, 0 %
+6, GPU-e2798d19-b9ec-11c5-d2b2-379a3eb58ffa, NVIDIA GeForce RTX 4090 D, 580.82.09, 49140 MiB, 3 MiB, 48506 MiB, 0 %
+7, GPU-79ea6ee8-2e76-d36e-1508-7813c1589ec1, NVIDIA GeForce RTX 4090 D, 580.82.09, 49140 MiB, 3 MiB, 48506 MiB, 0 %
+Filesystem                         Size  Used Avail Use% Mounted on
+hdd/custom/default_vol-sunyu-data  4.0T  312G  3.7T   8% /home/ubuntu/data
+ssd/containers/sunyu               6.5T  164G  6.3T   3% /
+               total        used        free      shared  buff/cache   available
+Mem:           503Gi       2.2Gi       483Gi       1.0Mi        17Gi       501Gi
+Swap:          8.0Gi       0.0Ki       8.0Gi
+default Python 3.13.5
+system Python 3.10.12
+isolated Python 3.10.19
+Package    Version
+---------- -------
+pip        23.0.1
+setuptools 79.0.1
+500b62521b39c18fbb0c6400c7430ffa75f79dddb4060ca73f3df1734a49324e  .stage0-local/stage1/llava-source.tar.gz

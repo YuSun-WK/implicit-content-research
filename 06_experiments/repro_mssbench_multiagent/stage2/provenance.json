@@ -1,0 +1,40 @@
+{
+  "protocol": "D substitute-model transfer; explicit input labels, not GPT-4o response judge",
+  "dataset_id": "kzhou35/mssbench",
+  "dataset_revision": "12396d24157427b671d97f23a2e370fca98fdf55",
+  "combined_json_sha256": "9b426a03e9abe3519b112d4f367c73577651a554539f9c8077f4989e9b546bca",
+  "manifest_csv_sha256": "0c70d1f3381673ea73597c10d8de3e7705a04f446ae2c328263ef67e6f46a410",
+  "frozen_100_pairs_sha256": "884fe2f975f797ef21749395d2635eb77cc208754ec27372bbb9cdb439b9bb12",
+  "image_audit_sha256": "1b45baa2ef48ad423526ed29487b2348055997c21eb587164c16f706b5f969c5",
+  "model_id": "Sandy124/ThinkingGuard-8B",
+  "model_revision": "76892f9768ce828268265171f4bbc5dfb75eafc3",
+  "adapter_revision": "fasttrack-thinkingguard-nf4-v1",
+  "model_verified_json_sha256": "76cb06af66856c3457d3c03f19fd47f593b1485e871ff03f73ab8965d7538e97",
+  "prompt_version": "mssbench-stage0-v1+fasttrack-invalid-v1",
+  "journal_sha256": {
+    "anchor_256": "71182ab52965bc91b9d76390a44395cc30662135df54a9f1e329d5359a49bbaa",
+    "chunk00_256": "d37cff1e68052fff5346081f982d98ae05e4400ec09c5fd0315138cabeb51edd",
+    "chunk01_256": "b305a106436f399d188c97803df834725cb14978e35b85053d054619ada56e84",
+    "chunk02_256": "abd4a1f0f9b93869d792a6dc3c9f54e632827912a2e7e62e31cd94f6e16684ff",
+    "chunk03_256": "1c8d87abcbba7ed10fc956ee7322246065ae1fd3a40ae1013ce77eb991e6ca5b",
+    "diagnostic_512": "c8f7cb438f747527e66879d215ba73d4b5a8ad4078d5fcacec813d8fc852c3fb"
+  },
+  "gpu_uuid": "GPU-79ea6ee8-2e76-d36e-1508-7813c1589ec1",
+  "local_environment": "/home/ubuntu/data/project/h1-cf-killtest/.venv",
+  "decoding_256": {
+    "max_new_tokens": 256,
+    "batch_size": 1,
+    "do_sample": false,
+    "num_beams": 1,
+    "repetition_penalty": 1.0,
+    "seed": 0
+  },
+  "decoding_512": {
+    "max_new_tokens": 512,
+    "batch_size": 1,
+    "do_sample": false,
+    "num_beams": 1,
+    "repetition_penalty": 1.0,
+    "seed": 0
+  }
+}

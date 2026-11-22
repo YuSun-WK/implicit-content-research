@@ -1,0 +1,12 @@
+test_baselines_and_diagnostics_use_one_call_per_input (test_stage0.Stage0.test_baselines_and_diagnostics_use_one_call_per_input) ... ok
+test_chat_propagation_and_routes (test_stage0.Stage0.test_chat_propagation_and_routes) ... ok
+test_direction_and_independent_metrics (test_stage0.Stage0.test_direction_and_independent_metrics) ... ok
+test_embodied_state_uses_its_own_image (test_stage0.Stage0.test_embodied_state_uses_its_own_image) ... ok
+test_malformed_first_agent_stops_before_subsequent_calls (test_stage0.Stage0.test_malformed_first_agent_stops_before_subsequent_calls) ... ok
+test_missing_and_invalid_inputs (test_stage0.Stage0.test_missing_and_invalid_inputs) ... ok
+test_resume_preserves_failure_and_skips_only_complete_inputs (test_stage0.Stage0.test_resume_preserves_failure_and_skips_only_complete_inputs) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.175s
+
+OK

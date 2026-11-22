@@ -1,0 +1,5 @@
+PASS post-run per-attempt Prompt routing, parents, exact role sequence/prefix, and vision-token expansion {('chat', 'base', 'complete'): 20, ('chat', 'cot', 'complete'): 20, ('chat', 'multiagent', 'complete'): 19, ('chat', 'multiagent', 'invalid'): 1, ('embodied', 'base', 'complete'): 20, ('embodied', 'cot', 'complete'): 20, ('embodied', 'multiagent', 'complete'): 20}
+PASS 120 method-inputs, 199 actual generation traces, both QA routes, 12 review candidates and memory cap
+Generated at the 256-token cap Counter({('base', 'base'): 21, ('cot', 'cot'): 14, ('multiagent', 'qa'): 12, ('multiagent', 'safety_judgment'): 1, ('multiagent', 'safety_reasoning'): 1})
+QA NO real example (18, 'query:chat:240:00', 'unsafe')
+GPU max total NVML used bytes 9460449280

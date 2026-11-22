@@ -1,0 +1,15 @@
+torch==2.1.2
+torchvision==0.16.2
+numpy==1.26.4
+transformers==4.37.2
+tokenizers==0.15.1
+sentencepiece==0.1.99
+accelerate==0.21.0
+peft==0.7.1
+bitsandbytes==0.43.1
+huggingface-hub==0.23.5
+safetensors==0.4.5
+Pillow==10.4.0
+shortuuid==1.0.13
+nvidia-ml-py==12.560.30
+protobuf==3.20.3

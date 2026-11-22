@@ -1,0 +1,8 @@
+test_512_has_separate_identity (test_stage2.Stage2Test.test_512_has_separate_identity) ... ok
+test_anchor_run_keys_are_reused (test_stage2.Stage2Test.test_anchor_run_keys_are_reused) ... ok
+test_frozen_pairs_and_strata (test_stage2.Stage2Test.test_frozen_pairs_and_strata) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 3.002s
+
+OK

@@ -1,0 +1,89 @@
+curl: (35) Recv failure: Connection reset by peer
+proxy https://huggingface.co/api/models/liuhaotian/llava-v1.6-vicuna-7b 000 0 0.000240 0.000000
+curl: (28) Operation timed out after 14002 milliseconds with 0 bytes received
+proxy https://pypi.org/pypi/sentencepiece/0.1.99/json 000 0 0.000272 5.237590
+curl: (28) Connection timed out after 8001 milliseconds
+direct https://huggingface.co/api/models/liuhaotian/llava-v1.6-vicuna-7b 000 0 0.000000 0.000000
+direct https://pypi.org/pypi/sentencepiece/0.1.99/json 200 48289 0.143654 0.296841
+
+Hugging Face 1 MiB ranges
+clip/config.json: attempt 1; curl=0; bytes=4757;
+native/model.safetensors.index.json: attempt 3; curl=0; bytes=73215;
+model-00002-of-00003.safetensors.part: verified range through 1048576/4947390880
+pytorch_model.bin.part: verified range through 7576111/1711974081
+model-00003-of-00003.safetensors.part: verified range through 1048576/4239524944
+model-00002-of-00003.safetensors.part: verified range through 2097152/4947390880
+model-00003-of-00003.safetensors.part: verified range through 2097152/4239524944
+pytorch_model.bin.part: verified range through 8624687/1711974081
+native/tokenizer_config.json: attempt 1; curl=28; bytes=0; curl: (28) Connection timed out after 15002 milliseconds
+model-00002-of-00003.safetensors.part: verified range through 3145728/4947390880
+native/tokenizer_config.json: attempt 2; curl=0; bytes=936;
+pytorch_model.bin.part: verified range through 9673263/1711974081
+model-00003-of-00003.safetensors.part: verified range through 3145728/4239524944
+model-00002-of-00003.safetensors.part: verified range through 4194304/4947390880
+pytorch_model.bin.part: verified range through 10721839/1711974081
+model-00003-of-00003.safetensors.part: range 3145728-4194303; attempt 1; curl=28; curl: (28) Operation timed out after 75066 milliseconds with 835161 out of 1048576 bytes received
+model-00003-of-00003.safetensors.part: verified range through 4194304/4239524944
+model-00002-of-00003.safetensors.part: range 4194304-5242879; attempt 1; curl=28; curl: (28) Operation timed out after 75891 milliseconds with 0 bytes received
+pytorch_model.bin.part: range 10721839-11770414; attempt 1; curl=28; curl: (28) Operation timed out after 75000 milliseconds with 0 bytes received
+model-00003-of-00003.safetensors.part: verified range through 5242880/4239524944
+model-00002-of-00003.safetensors.part: verified range through 5242880/4947390880
+model-00003-of-00003.safetensors.part: verified range through 6291456/4239524944
+model-00003-of-00003.safetensors.part: range 6291456-7340031; attempt 1; curl=28; curl: (28) Connection timed out after 10002 milliseconds
+model-00003-of-00003.safetensors.part: range 6291456-7340031; attempt 2; curl=35; curl: (35) Recv failure: Connection reset by peer
+model-00003-of-00003.safetensors.part: range 6291456-7340031; attempt 3; curl=28; curl: (28) Connection timed out after 10002 milliseconds
+
+modelscope-transfer.log
+native/generation_config.json: verified cache
+native/config.json: verified cache
+native/model.safetensors.index.json: verified cache
+native/special_tokens_map.json: verified cache
+native/tokenizer.model: verified cache
+native/tokenizer_config.json: verified cache
+clip/config.json: verified cache
+clip/preprocessor_config.json: verified cache
+model-00001-of-00003.safetensors.part: range 0-67108863; attempt 1; curl=28; curl: (28) Operation timed out after 75002 milliseconds with 872704 out of 67108864 bytes received
+model-00002-of-00003.safetensors.part: range 5242880-72351743; attempt 1; curl=28; curl: (28) Operation timed out after 75001 milliseconds with 9024974 out of 67108864 bytes received
+model-00003-of-00003.safetensors.part: range 6291456-73400319; attempt 1; curl=28; curl: (28) Operation timed out after 75002 milliseconds with 2485464 out of 67108864 bytes received
+pytorch_model.bin.part: range 10721839-77830702; attempt 1; curl=28; curl: (28) Operation timed out after 75001 milliseconds with 2797177 out of 67108864 bytes received
+model-00003-of-00003.safetensors.part: range 6291456-73400319; attempt 2; curl=28; curl: (28) Connection timed out after 10000 milliseconds
+model-00001-of-00003.safetensors.part: range 0-67108863; attempt 2; curl=28; curl: (28) Connection timed out after 10002 milliseconds
+pytorch_model.bin.part: range 10721839-77830702; attempt 2; curl=28; curl: (28) Connection timed out after 10002 milliseconds
+model-00002-of-00003.safetensors.part: range 5242880-72351743; attempt 2; curl=28; curl: (28) Connection timed out after 10000 milliseconds
+pytorch_model.bin.part: range 10721839-77830702; attempt 3; curl=35; curl: (35) Recv failure: Connection reset by peer
+model-00003-of-00003.safetensors.part: range 6291456-73400319; attempt 3; curl=35; curl: (35) Recv failure: Connection reset by peer
+model-00002-of-00003.safetensors.part: range 5242880-72351743; attempt 3; curl=35; curl: (35) Recv failure: Connection reset by peer
+model-00001-of-00003.safetensors.part: range 0-67108863; attempt 3; curl=28; curl: (28) Connection timed out after 10001 milliseconds
+    raise ValueError(f"range transfer stopped at {offset}/{size}: {part.name}")
+ValueError: range transfer stopped at 0/4938993632: model-00001-of-00003.safetensors.part
+
+modelscope-4m.log
+native/config.json: verified cache
+native/generation_config.json: verified cache
+native/model.safetensors.index.json: verified cache
+native/special_tokens_map.json: verified cache
+native/tokenizer.model: verified cache
+native/tokenizer_config.json: verified cache
+clip/config.json: verified cache
+clip/preprocessor_config.json: verified cache
+model-00001-of-00003.safetensors.part: range 0-4194303; attempt 1; curl=35; curl: (35) Recv failure: Connection reset by peer
+model-00002-of-00003.safetensors.part: range 5242880-9437183; attempt 1; curl=35; curl: (35) Recv failure: Connection reset by peer
+model-00003-of-00003.safetensors.part: range 6291456-10485759; attempt 1; curl=35; curl: (35) Recv failure: Connection reset by peer
+pytorch_model.bin.part: range 10721839-14916142; attempt 1; curl=35; curl: (35) Recv failure: Connection reset by peer
+model-00002-of-00003.safetensors.part: range 5242880-9437183; attempt 2; curl=35; curl: (35) Recv failure: Connection reset by peer
+model-00001-of-00003.safetensors.part: range 0-4194303; attempt 2; curl=35; curl: (35) Recv failure: Connection reset by peer
+model-00003-of-00003.safetensors.part: range 6291456-10485759; attempt 2; curl=35; curl: (35) Recv failure: Connection reset by peer
+pytorch_model.bin.part: range 10721839-14916142; attempt 2; curl=35; curl: (35) Recv failure: Connection reset by peer
+model-00002-of-00003.safetensors.part: range 5242880-9437183; attempt 3; curl=35; curl: (35) Recv failure: Connection reset by peer
+pytorch_model.bin.part: range 10721839-14916142; attempt 3; curl=35; curl: (35) Recv failure: Connection reset by peer
+model-00003-of-00003.safetensors.part: range 6291456-10485759; attempt 3; curl=35; curl: (35) Recv failure: Connection reset by peer
+model-00001-of-00003.safetensors.part: range 0-4194303; attempt 3; curl=28; curl: (28) Connection timed out after 10001 milliseconds
+    raise ValueError(f"range transfer stopped at {offset}/{size}: {part.name}")
+ValueError: range transfer stopped at 0/4938993632: model-00001-of-00003.safetensors.part
+exit=1
+
+ModelScope accepted first shard probe (response status and range only)
+HTTP/1.1 200 Connection established
+HTTP/1.1 206 Partial Content
+Content-Length: 1048576
+Content-Range: bytes 0-1048575/4938993632

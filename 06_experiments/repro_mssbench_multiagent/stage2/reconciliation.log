@@ -1,0 +1,5 @@
+PASS: frozen 100 pairs, 200 decoded/hash-matched images, 600 primary method-inputs, 60 diagnostic method-inputs
+PASS: 256 statuses {'complete': 598, 'invalid': 2} traces 1039 cap 291
+PASS: 512 statuses {'complete': 60} traces 100 cap 10
+PASS: disjoint run identities, one model load per trace, <20 GiB NVML delta, 30 review cases
+Chat QA routes: {'YES': 80, 'NO': 39}

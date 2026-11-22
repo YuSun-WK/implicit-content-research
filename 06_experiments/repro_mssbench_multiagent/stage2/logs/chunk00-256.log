@@ -1,0 +1,34 @@
+slice pairs 5 pending method-inputs 30
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:03<00:09,  3.24s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:08<00:08,  4.41s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:13<00:04,  4.76s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:15<00:00,  3.68s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:15<00:00,  3.92s/it]
+query:chat:085:00 safe base
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+query:chat:085:00 safe cot
+query:chat:085:00 safe multiagent
+query:chat:085:00 unsafe base
+query:chat:085:00 unsafe cot
+query:chat:085:00 unsafe multiagent
+query:chat:098:01 safe base
+query:chat:098:01 safe cot
+query:chat:098:01 safe multiagent
+query:chat:098:01 unsafe base
+query:chat:098:01 unsafe cot
+query:chat:098:01 unsafe multiagent
+query:chat:029:00 safe base
+query:chat:029:00 safe cot
+query:chat:029:00 safe multiagent
+query:chat:029:00 unsafe base
+query:chat:029:00 unsafe cot
+query:chat:029:00 unsafe multiagent
+query:chat:081:00 safe base
+query:chat:081:00 safe cot
+query:chat:081:00 safe multiagent
+query:chat:081:00 unsafe base
+query:chat:081:00 unsafe cot
+query:chat:081:00 unsafe multiagent
+query:chat:087:00 safe base
+query:chat:087:00 safe cot
+query:chat:087:00 safe multiagent
+query:chat:087:00 unsafe base
+query:chat:087:00 unsafe cot
+query:chat:087:00 unsafe multiagent
+slice seconds 862.515

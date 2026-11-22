@@ -1,0 +1,9 @@
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/stage1_smoke.py", line 404, in <module>
+    main()
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/stage1_smoke.py", line 354, in main
+    model = ThinkingGuard(args.thinkingguard_snapshot, args.gpu_uuid,
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/fasttrack_qwen.py", line 26, in __init__
+    self.memory = MemorySample(gpu_uuid)
+  File "/home/ubuntu/data/project/mssbench-stage0-repo/06_experiments/repro_mssbench_multiagent/stage1_native.py", line 20, in __init__
+    import pynvml
+ModuleNotFoundError: No module named 'pynvml'

@@ -1,0 +1,78 @@
+
+torch-install.log
+  Downloading https://download-r2.pytorch.org/whl/cu121/torch-2.1.2%2Bcu121-cp310-cp310-linux_x86_64.whl (2200.7 MB)
+ERROR: Exception:
+TimeoutError: The read operation timed out
+pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='download-r2.pytorch.org', port=443): Read timed out.
+
+pypi-install.log
+  WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProxyError('Cannot connect to proxy.', ConnectionResetError(104, 'Connection reset by peer'))': /packages/03/f1/13137340776dd5d5bcfd2574c9c6dfcc7618285035cd77240496e5c1a79b/torch-2.1.2-cp310-cp310-manylinux1_x86_64.whl
+  WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProxyError('Cannot connect to proxy.', ConnectionResetError(104, 'Connection reset by peer'))': /packages/03/f1/13137340776dd5d5bcfd2574c9c6dfcc7618285035cd77240496e5c1a79b/torch-2.1.2-cp310-cp310-manylinux1_x86_64.whl
+ERROR: Could not install packages due to an OSError: HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Max retries exceeded with url: /packages/03/f1/13137340776dd5d5bcfd2574c9c6dfcc7618285035cd77240496e5c1a79b/torch-2.1.2-cp310-cp310-manylinux1_x86_64.whl (Caused by ProxyError('Cannot connect to proxy.', ConnectionResetError(104, 'Connection reset by peer')))
+
+pypi-retry.log
+WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProxyError('Cannot connect to proxy.', ConnectionResetError(104, 'Connection reset by peer'))': /simple/torch/
+  Downloading torch-2.1.2-cp310-cp310-manylinux1_x86_64.whl (670.2 MB)
+ERROR: Exception:
+TimeoutError: The read operation timed out
+pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out.
+
+cpu-dependencies.log
+WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProxyError('Cannot connect to proxy.', ConnectionResetError(104, 'Connection reset by peer'))': /simple/numpy/
+WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProxyError('Cannot connect to proxy.', ConnectionResetError(104, 'Connection reset by peer'))': /simple/numpy/
+ERROR: Could not find a version that satisfies the requirement numpy==1.26.4 (from versions: none)
+ERROR: No matching distribution found for numpy==1.26.4
+
+legacy-small.log
+  Downloading nvidia_ml_py-12.560.30-py3-none-any.whl (40 kB)
+  Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.8 MB)
+ERROR: Exception:
+TimeoutError: The read operation timed out
+pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out.
+
+xet-probe.log
+'(ProtocolError('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer')), '(Request ID: 20fb08d8-7fcf-4f99-9dcc-d18173570f26)')' thrown while requesting HEAD https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b/resolve/deae57a8c0ccb0da4c2661cc1891cc9d06503d11/model-00002-of-00003.safetensors
+Retrying in 1s [Retry 1/5].
+
+Weight files and direct transport
+native/generation_config.json: attempt 1; curl=0; bytes=170;
+native/generation_config.json: 170 bytes, SHA256 c0c3e65ffae56c31cd78c33b34687bcfa8cb338e6bd1bf914525e478fa4ffff6
+native/config.json: attempt 1; curl=0; bytes=1681;
+native/config.json: 1681 bytes, SHA256 7b21de0f57c8aa84d752cfb021b5018e4979a23809e29dfcf2c4d31e49b217dd
+native/special_tokens_map.json: attempt 1; curl=35; bytes=0; curl: (35) Recv failure: Connection reset by peer
+native/model-00002-of-00003.safetensors: attempt 1; curl=28; bytes=0; curl: (28) Connection timed out after 15002 milliseconds
+native/model.safetensors.index.json: attempt 1; curl=28; bytes=0; curl: (28) Connection timed out after 15002 milliseconds
+native/special_tokens_map.json: attempt 2; curl=35; bytes=0; curl: (35) Recv failure: Connection reset by peer
+native/model-00002-of-00003.safetensors: attempt 2; curl=35; bytes=0; curl: (35) Recv failure: Connection reset by peer
+native/model.safetensors.index.json: attempt 2; curl=35; bytes=0; curl: (35) Recv failure: Connection reset by peer
+native/special_tokens_map.json: attempt 3; curl=35; bytes=0; curl: (35) Recv failure: Connection reset by peer
+native/model-00002-of-00003.safetensors: attempt 3; curl=35; bytes=0; curl: (35) Recv failure: Connection reset by peer
+native/model.safetensors.index.json: attempt 3; curl=35; bytes=0; curl: (35) Recv failure: Connection reset by peer
+native/tokenizer.model: attempt 1; curl=35; bytes=0; curl: (35) Recv failure: Connection reset by peer
+native/tokenizer_config.json: attempt 1; curl=35; bytes=0; curl: (35) Recv failure: Connection reset by peer
+clip/config.json: attempt 1; curl=35; bytes=0; curl: (35) Recv failure: Connection reset by peer
+native/tokenizer_config.json: attempt 2; curl=35; bytes=0; curl: (35) Recv failure: Connection reset by peer
+clip/config.json: attempt 2; curl=35; bytes=0; curl: (35) Recv failure: Connection reset by peer
+native/tokenizer.model: attempt 2; curl=35; bytes=0; curl: (35) Recv failure: Connection reset by peer
+native/tokenizer_config.json: attempt 3; curl=35; bytes=0; curl: (35) Recv failure: Connection reset by peer
+clip/config.json: attempt 3; curl=35; bytes=0; curl: (35) Recv failure: Connection reset by peer
+clip/preprocessor_config.json: attempt 1; curl=0; bytes=316;
+clip/preprocessor_config.json: 316 bytes, SHA256 d253881f65322dc546df59cf925a408e5538b8ecb5a1b496cdd36af9992686d4
+native/tokenizer.model: attempt 3; curl=0; bytes=499723;
+native/tokenizer.model: 499723 bytes, SHA256 9e556afd44213b6bd1be2b850ebbbd98f5481437a8021afaf58ee7fb1818d347
+native/model-00001-of-00003.safetensors: attempt 1; curl=28; bytes=0; curl: (28) Operation timed out after 900394 milliseconds with 0 bytes received
+native/model-00003-of-00003.safetensors: attempt 1; curl=28; bytes=0; curl: (28) Operation timed out after 900411 milliseconds with 0 bytes received
+native/model-00003-of-00003.safetensors: attempt 2; curl=28; bytes=0; curl: (28) Connection timed out after 15002 milliseconds
+native/model-00003-of-00003.safetensors: attempt 3; curl=28; bytes=0; curl: (28) Connection timed out after 15001 milliseconds
+clip/pytorch_model.bin: attempt 1; curl=28; bytes=6527535; curl: (28) Operation timed out after 900646 milliseconds with 6527535 out of 1711974081 bytes received
+clip/pytorch_model.bin: attempt 2; curl=28; bytes=6527535; curl: (28) Connection timed out after 15002 milliseconds
+clip/pytorch_model.bin: attempt 3; curl=28; bytes=6527535; curl: (28) Connection timed out after 15002 milliseconds
+
+Local staging file sizes
+config.json 1681
+generation_config.json 170
+preprocessor_config.json 316
+pytorch_model.bin.part 6527535
+tokenizer.model 499723
+
+Stopped final stalled shard-1 retry; no shard-1 bytes staged after the preceding 900 s timeout.
