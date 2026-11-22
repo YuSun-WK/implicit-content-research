@@ -1,4 +1,8 @@
-# TRACE Stage 0 · FHM ViT-L/14
+# TRACE 复现记录
+
+当前 MultiOFF 二候选改编复现的正式结果见 [Stage 2 训练报告](Stage2_Complete_TRACE_Training_Report.md)。2026-11-22 的 Caption 长度修复与重跑任务以 [Stage 2.1 修复协议](Stage2_1_Caption_Repair_Protocol.md)、[修复审计](Stage2_1_Caption_Repair_Audit.json)、[修复报告](Stage2_1_Caption_Repair_Report.md)和 [Stage 2.2 门禁](Stage2_2_Reviewer_Gate.md)为准。历史 FHM Stage 0 记录保留如下。
+
+## Stage 0 · FHM ViT-L/14
 
 S1A 的最新证据、权重状态和两种独立模式见 [S1A 交接](Stage1A_Reviewer_Handoff.md) 与 [S1A 运行说明](Stage1A_Mode_Semantics.md)。下文保留 Stage 0 的历史记录。
 

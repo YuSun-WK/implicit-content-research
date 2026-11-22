@@ -13,7 +13,7 @@ def p95(values):
 
 def summarize(path, require_formal=False):
     events = [json.loads(line) for line in path.read_text().splitlines()]
-    if not events or events[-1]["event"] != "completed":
+    if not events or events[-1]["event"] not in {"completed", "test_completed"}:
         raise ValueError("Run did not complete")
     batches = [event for event in events if event["event"] == "batch"]
     if not batches or any(not math.isfinite(event["loss"]) or any(
@@ -43,7 +43,7 @@ def summarize(path, require_formal=False):
                            "dev": {key: value for key, value in dev.get(number, {}).items()
                                    if key not in {"event", "elapsed_s", "phase", "epoch"}} or None})
     durations = [event["seconds"] for event in batches]
-    complete = events[-1]
+    complete = next(event for event in reversed(events) if event["event"] == "completed")
     segment_ends = [event for event in events if event["event"] in {"interrupted", "completed"}]
     segment_seconds = [event["elapsed_s"] for event in segment_ends]
     result = {"protocol": events[0]["signature"]["protocol"], "phase": events[0]["phase"],
@@ -56,6 +56,8 @@ def summarize(path, require_formal=False):
               "checkpoint_cursors": checkpoints, "cross_process_resume": any(
                   event["event"] == "resumed" for event in events),
               "epochs": epoch_rows, "best_epoch": complete.get("best_epoch")}
+    if events[-1]["event"] == "test_completed":
+        result["test_evaluation_elapsed_s"] = events[-1]["elapsed_s"]
     finals = [event for event in events if event["event"] == "final_metrics"]
     if require_formal:
         if len([event for event in finals if event["split"] == "test"]) != 1:

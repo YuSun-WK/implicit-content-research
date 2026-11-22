@@ -1,0 +1,178 @@
+{
+  "sample_count": 740,
+  "split_counts": {
+    "train": 444,
+    "dev": 148,
+    "test": 148
+  },
+  "original_over_77": 334,
+  "unchanged_originally_valid": 406,
+  "repaired": 329,
+  "remaining_over_77": 5,
+  "failed_keys": [
+    "1b757ee63f045fc7a1ed61f683581692580cd6152df82456a870b3368e333bcc",
+    "86a2f806f38f018422ace0dc8d7ae021ead001e403c49111dc574dc2b1641923",
+    "8cab3ea4285074ce8a4c7339caa3b2c59fd87be5eee24d3246bdec740b28a842",
+    "9dc1a2ed13abb17838a797f7e4cc0131033851ced7aaadba764ba01e69860045",
+    "a2da3419fcb7b6195e826a2d79708bca855db1a1a892ad824619e94ef190180f"
+  ],
+  "failed_details": [
+    {
+      "key": "1b757ee63f045fc7a1ed61f683581692580cd6152df82456a870b3368e333bcc",
+      "split": "train",
+      "old_tokens": 93,
+      "attempts": 3,
+      "attempt_token_counts": [
+        80,
+        80,
+        80
+      ],
+      "failure_reasons": [
+        "ValueError: OpenCLIP caption exceeds 77 tokens",
+        "ValueError: OpenCLIP caption exceeds 77 tokens",
+        "ValueError: OpenCLIP caption exceeds 77 tokens"
+      ]
+    },
+    {
+      "key": "86a2f806f38f018422ace0dc8d7ae021ead001e403c49111dc574dc2b1641923",
+      "split": "train",
+      "old_tokens": 110,
+      "attempts": 3,
+      "attempt_token_counts": [
+        39,
+        39,
+        33
+      ],
+      "failure_reasons": [
+        "ValueError: Output contains classification label",
+        "ValueError: Output contains classification label",
+        "ValueError: Output contains classification label"
+      ]
+    },
+    {
+      "key": "8cab3ea4285074ce8a4c7339caa3b2c59fd87be5eee24d3246bdec740b28a842",
+      "split": "train",
+      "old_tokens": 81,
+      "attempts": 3,
+      "attempt_token_counts": [
+        29,
+        29,
+        29
+      ],
+      "failure_reasons": [
+        "ValueError: Output contains classification label",
+        "ValueError: Output contains classification label",
+        "ValueError: Output contains classification label"
+      ]
+    },
+    {
+      "key": "9dc1a2ed13abb17838a797f7e4cc0131033851ced7aaadba764ba01e69860045",
+      "split": "train",
+      "old_tokens": 91,
+      "attempts": 3,
+      "attempt_token_counts": [
+        63,
+        27,
+        28
+      ],
+      "failure_reasons": [
+        "ValueError: Output contains classification label",
+        "ValueError: Output contains classification label",
+        "ValueError: Output contains classification label"
+      ]
+    },
+    {
+      "key": "a2da3419fcb7b6195e826a2d79708bca855db1a1a892ad824619e94ef190180f",
+      "split": "dev",
+      "old_tokens": 96,
+      "attempts": 3,
+      "attempt_token_counts": [
+        57,
+        57,
+        36
+      ],
+      "failure_reasons": [
+        "ValueError: Output contains classification label",
+        "ValueError: Output contains classification label",
+        "ValueError: Output contains classification label"
+      ]
+    }
+  ],
+  "originally_valid_label_keyword_count": 6,
+  "before_tokens": {
+    "n": 740,
+    "median": 75.0,
+    "p95": 128,
+    "max": 246,
+    "over_77": 334
+  },
+  "after_tokens": {
+    "n": 740,
+    "median": 52.0,
+    "p95": 75,
+    "max": 110,
+    "over_77": 5
+  },
+  "by_split": {
+    "train": {
+      "before": {
+        "n": 444,
+        "median": 73.0,
+        "p95": 124,
+        "max": 246,
+        "over_77": 188
+      },
+      "after": {
+        "n": 444,
+        "median": 52.0,
+        "p95": 75,
+        "max": 110,
+        "over_77": 4
+      }
+    },
+    "dev": {
+      "before": {
+        "n": 148,
+        "median": 77.5,
+        "p95": 133,
+        "max": 241,
+        "over_77": 74
+      },
+      "after": {
+        "n": 148,
+        "median": 52.0,
+        "p95": 75,
+        "max": 96,
+        "over_77": 1
+      }
+    },
+    "test": {
+      "before": {
+        "n": 148,
+        "median": 77.0,
+        "p95": 139,
+        "max": 169,
+        "over_77": 72
+      },
+      "after": {
+        "n": 148,
+        "median": 49.0,
+        "p95": 75,
+        "max": 77,
+        "over_77": 0
+      }
+    }
+  },
+  "attempts": {
+    "1": 325,
+    "2": 3,
+    "3": 1
+  },
+  "dataset": "MultiOFF",
+  "protocol": "TRACE-InternVL-only-MultiOFF-2caption (Adapted Reproduction)",
+  "old_manifest_sha256": "9c2b130be4579876604a7586ffc85a194106b01c67341bede39d600eed5530bf",
+  "new_manifest_sha256": "2f6d7c3fb2627f8c81e47794dd16c34763fc8bee5febc4d6536afc6e97bd1007",
+  "openclip_revision": "e22e1c12b0a1ba4af9fb6474626585351ea0da25",
+  "internvl_revision": "e9e4c0dc1db56bfab10458671519b7fa3dd29463",
+  "prompt_template_sha256": "279ba23caf01916a614f4a907e52cc0e81e4d0d7e5f557eb97e823c481595a1c"
+}

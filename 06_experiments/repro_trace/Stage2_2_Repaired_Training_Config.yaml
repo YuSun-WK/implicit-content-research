@@ -1,0 +1,30 @@
+protocol: TRACE-InternVL-only-MultiOFF-2caption
+reproduction_level: adapted
+caption_version: repaired_v2
+dataset: MultiOFF_complete_case_444_148_148
+caption_candidates: [original_sentence, repaired_InternVL2_5_8B_caption]
+backbone: roberta-ViT-B-32
+backbone_revision: e22e1c12b0a1ba4af9fb6474626585351ea0da25
+seeds: [42, 121]
+device: single_RTX_4090_or_4090D
+precision: bf16
+physical_microbatch: 32
+gradient_accumulation: 4
+optimizer: AdamW
+learning_rate: 0.0001
+weight_decay: 0.01
+gradient_clip_norm: 2.0
+max_epochs: 20
+dev_model_selection: macro_f1
+early_stop_patience: 5
+classification_threshold: 0.5
+test_evaluation: after_both_seeds_complete
+loss_weights:
+  classification: 1.0
+  contrastive: 0.3
+  relevance: 0.7
+checkpoint_interval_microbatches: 25
+gpu_memory_soft_limit_gib: 18
+max_single_job_seconds: 21540
+private_caption_manifest: ~/data/trace-assets/multioff/trace_internvl_only_repaired_v2/records.json
+admitted_caption_sha256: pending_740_of_740_caption_gate

@@ -88,11 +88,14 @@ def forward_components(model, images, tokens, labels, tau, training, torch):
 def load_rows(data_dir, caption_manifest):
     source = records(data_dir)
     state = json.loads(caption_manifest.read_text())
+    if set(state) != {row["key"] for row in source}:
+        raise ValueError("Caption manifest does not contain exactly the 740 official keys")
     rows = {split: [] for split in ("train", "dev", "test")}
     for row in source:
         caption = state.get(row["key"], {})
         if (caption.get("image_sha256") != row["image_sha256"] or
-                caption.get("split") != row["split"] or caption.get("row_number") != row["row_number"]):
+                caption.get("split") != row["split"] or caption.get("row_number") != row["row_number"] or
+                caption.get("image_name") != row["image_name"]):
             raise ValueError("Caption identity mismatch")
         generated = caption.get("caption")
         if not isinstance(generated, str) or not generated.strip() or generated.strip() == row["sentence"].strip():
@@ -104,24 +107,49 @@ def load_rows(data_dir, caption_manifest):
     return rows
 
 
+def validate_caption_lengths(rows, tokenizer):
+    """Check untruncated OpenCLIP lengths before loading the training model."""
+    counts = {split: len(items) for split, items in rows.items()}
+    if counts != {"train": 444, "dev": 148, "test": 148}:
+        raise ValueError("Unexpected MultiOFF split counts")
+    too_long = []
+    for split, items in rows.items():
+        for index, (_, _, caption, _) in enumerate(items):
+            length = len(tokenizer.encode(caption, add_special_tokens=True))
+            if length > 77:
+                too_long.append((split, index, length))
+    if too_long:
+        raise ValueError(f"OpenCLIP 77-token gate failed for {len(too_long)} captions; first={too_long[0]}")
+    return {"checked": sum(counts.values()), "over_77": 0, "splits": counts}
+
+
 def metrics(labels, scores):
     from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, precision_score, recall_score, roc_auc_score
     predictions = [int(value >= 0.5) for value in scores]
     tn, fp, fn, tp = confusion_matrix(labels, predictions, labels=[0, 1]).ravel()
+    ordered = sorted(scores)
+    quantile = lambda fraction: ordered[math.ceil(len(ordered) * fraction) - 1]
     return {"n": len(labels), "threshold": 0.5, "accuracy": accuracy_score(labels, predictions),
             "precision": precision_score(labels, predictions, zero_division=0),
             "recall": recall_score(labels, predictions, zero_division=0),
+            "macro_precision": precision_score(labels, predictions, average="macro", zero_division=0),
+            "macro_recall": recall_score(labels, predictions, average="macro", zero_division=0),
+            "offensive_precision": precision_score(labels, predictions, pos_label=1, zero_division=0),
+            "offensive_recall": recall_score(labels, predictions, pos_label=1, zero_division=0),
             "macro_f1": f1_score(labels, predictions, average="macro", zero_division=0),
             "offensive_f1": f1_score(labels, predictions, pos_label=1, zero_division=0),
             "auroc": roc_auc_score(labels, scores), "confusion": {"tn": int(tn), "fp": int(fp),
                                                              "fn": int(fn), "tp": int(tp)},
-            "predicted_positive": sum(predictions)}
+            "predicted_positive": sum(predictions), "predicted_positive_ratio": sum(predictions) / len(labels),
+            "probability": {"min": ordered[0], "p10": quantile(0.1), "median": statistics.median(ordered),
+                            "mean": statistics.mean(ordered), "p90": quantile(0.9), "max": ordered[-1]}}
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--data-dir", type=Path, required=True)
     parser.add_argument("--caption-manifest", type=Path, required=True)
+    parser.add_argument("--expected-caption-sha256", help="Fixed private Manifest SHA-256 for formal runs")
     parser.add_argument("--assets-dir", type=Path, required=True)
     parser.add_argument("--upstream-dir", type=Path, default=Path("/tmp/trace-s0-reference"))
     parser.add_argument("--output-dir", type=Path, required=True)
@@ -131,14 +159,27 @@ def main():
     parser.add_argument("--max-batches", type=int, default=100)
     parser.add_argument("--stop-after", type=int)
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--defer-test", action="store_true", help="Evaluate Test after both seeds finish")
+    parser.add_argument("--evaluate-best", action="store_true", help="Evaluate fixed best checkpoint only")
+    parser.add_argument("--peer-run-dir", type=Path, help="Other completed seed, required before deferred Test")
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
+    if args.phase == "formal" and not args.expected_caption_sha256:
+        parser.error("Formal runs require --expected-caption-sha256")
+    if args.phase == "formal" and not (args.defer_test or args.evaluate_best):
+        parser.error("Formal training must defer Test until both seeds finish")
+    if (args.defer_test or args.evaluate_best) and args.phase != "formal":
+        parser.error("Deferred Test is only available for formal runs")
+    if args.evaluate_best and (args.resume or not args.peer_run_dir):
+        parser.error("Evaluation requires --peer-run-dir and forbids --resume")
+    if args.evaluate_best and args.peer_run_dir.resolve() == args.output_dir.resolve():
+        parser.error("Peer run must be the other seed")
     if args.accumulation < 1 or args.max_batches > 100 or args.max_batches < 1:
         parser.error("Invalid accumulation or short-run limit")
-    output = local_path(args.output_dir)
-    output.mkdir(parents=True, exist_ok=args.resume)
     rows = load_rows(args.data_dir, args.caption_manifest)
     caption_hash = hashlib.sha256(args.caption_manifest.read_bytes()).hexdigest()
+    if args.expected_caption_sha256 and caption_hash != args.expected_caption_sha256:
+        raise ValueError("Caption manifest SHA-256 differs from admitted audit")
     os.environ.update(HF_HUB_OFFLINE="1", TRANSFORMERS_OFFLINE="1", CUBLAS_WORKSPACE_CONFIG=":4096:8")
     import open_clip
     from open_clip.tokenizer import HFTokenizer
@@ -157,13 +198,18 @@ def main():
     random.seed(args.seed)
     torch.manual_seed(args.seed)
     directory = args.assets_dir / "openclip_roberta" / REVISION
+    tokenizer = HFTokenizer(str(directory), context_length=77, local_files_only=True)
+    caption_gate = validate_caption_lengths(rows, tokenizer.tokenizer)
+    output = local_path(args.output_dir)
+    if args.evaluate_best and not output.is_dir():
+        raise ValueError("Formal output directory does not exist")
+    output.mkdir(parents=True, exist_ok=args.resume or args.evaluate_best)
     weight = directory / "open_clip_pytorch_model.bin"
     manifest = json.loads((directory / "asset_manifest.json").read_text())
     if manifest.get("status") != "VERIFIED" or manifest["files"][weight.name]["sha256"] != hashlib.sha256(weight.read_bytes()).hexdigest():
         raise RuntimeError("OpenCLIP pretrained weight hash gate failed")
     backbone, _, preprocess = open_clip.create_model_and_transforms(
         MODEL_NAME, pretrained=str(weight), pretrained_hf=False, device="cpu")
-    tokenizer = HFTokenizer(str(directory), context_length=77, local_files_only=True)
     classifier, source_hash = author_class(args.upstream_dir, torch)
     with redirect_stdout(io.StringIO()):
         model = classifier(backbone).to(device)
@@ -213,6 +259,30 @@ def main():
     cursor = updates = 0
     best = -1.0
     best_epoch = patience = 0
+    if args.evaluate_best:
+        own_state = torch.load(checkpoint, weights_only=True, map_location="cpu")
+        if own_state["signature"] != signature:
+            raise ValueError("Formal checkpoint signature mismatch")
+        for run_dir in (output, args.peer_run_dir):
+            run_events = [json.loads(line) for line in (run_dir / "events.jsonl").read_text().splitlines()]
+            if not any(event["event"] == "completed" for event in run_events) or not (run_dir / "best.pt").is_file():
+                raise ValueError("Both seed training runs must complete before Test")
+            peer_signature = torch.load(run_dir / "last.pt", weights_only=True, map_location="cpu")["signature"]
+            if peer_signature["caption_manifest_sha256"] != caption_hash or peer_signature["backbone_sha256"] != signature["backbone_sha256"]:
+                raise ValueError("Seed checkpoints do not share admitted captions and backbone")
+            if peer_signature["seed"] not in (42, 121):
+                raise ValueError("Unexpected formal seed")
+            if run_dir == args.peer_run_dir and peer_signature["seed"] == args.seed:
+                raise ValueError("Peer run must use the other formal seed")
+            if run_dir == output and any(event["event"] == "final_metrics" and event["split"] == "test" for event in run_events):
+                raise ValueError("Test already evaluated for this seed")
+        best_state = torch.load(output / "best.pt", weights_only=True, map_location="cpu")
+        with torch.no_grad():
+            for name, parameter in trainable.items():
+                parameter.copy_(best_state["trainable"][name])
+        log("final_metrics", best_epoch=best_state["epoch"], **evaluate("test"))
+        log("test_completed", best_epoch=best_state["epoch"], **check_budget(torch))
+        return
     if args.resume:
         cursor, updates = restore(torch, checkpoint, model, optimizer, scaler, signature)
         progress = torch.load(checkpoint, weights_only=True, map_location="cpu")["progress"]
@@ -221,6 +291,7 @@ def main():
         log("resumed", cursor=cursor, updates=updates)
     else:
         log("start", signature=signature, gpu=gpu.name, torch=str(torch.__version__),
+            caption_gate=caption_gate,
             open_clip=open_clip.__version__, trainable_parameters=sum(p.numel() for p in trainable.values()),
             total_parameters=sum(p.numel() for p in model.parameters()),
             trainable_groups={group: sum(p.numel() for name, p in trainable.items() if in_group(name, group))
@@ -306,7 +377,7 @@ def main():
         with torch.no_grad():
             for name, parameter in trainable.items():
                 parameter.copy_(state["trainable"][name])
-        for split in ("train", "dev", "test"):
+        for split in (("train", "dev") if args.defer_test else ("train", "dev", "test")):
             log("final_metrics", best_epoch=best_epoch, **evaluate(split))
     timings.sort()
     log("completed", batches=cursor, updates=updates, best_epoch=best_epoch or None,

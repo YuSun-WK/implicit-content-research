@@ -2,6 +2,8 @@
 
 从本目录运行。下列路径是本机实际使用的位置；`~/data/trace-assets/` 与 `.local/` 均不提交 Git。既有固定模型已校验时不重新下载。单卡 GPU 作业串行，单次命令以 `21540s` 限制在 5 小时 59 分钟以内。
 
+本页保留 **2026-11-21 Stage 2 历史运行命令**。Stage 2.1 增加了正式训练前的 Manifest SHA 硬门禁；今后运行这些 `--phase formal` 命令还须加入 `--expected-caption-sha256` 和 `--defer-test`，值取已验收 Manifest 的实际 SHA。两种子完成后以 `--evaluate-best --peer-run-dir` 分别评估 Test。当前 `repaired_v2` 因 5 条 Caption 未通过长度检查，不能启动正式训练。
+
 ```bash
 PY=/tmp/trace-s0-py310/bin/python
 DATA="$HOME/data/trace-assets/multioff"

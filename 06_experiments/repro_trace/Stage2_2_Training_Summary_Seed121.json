@@ -1,0 +1,12 @@
+{
+  "protocol": "TRACE-InternVL-only-MultiOFF-2caption (Adapted Reproduction)",
+  "caption_version": "repaired_v2",
+  "seed": 121,
+  "status": "BLOCKED_BEFORE_TRAINING",
+  "reason": "5 of 740 captions exceed untruncated OpenCLIP 77-token limit",
+  "real_training_microbatches": 0,
+  "real_optimizer_updates": 0,
+  "checkpoint_created": false,
+  "test_evaluated": false,
+  "train_dev_test_metrics": null
+}
