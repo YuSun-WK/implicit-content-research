@@ -1,6 +1,7 @@
 """Bounded fixed-revision Hub fetch for frozen Stage 2 images."""
 import argparse
 import csv
+import hashlib
 import json
 import shutil
 import subprocess
@@ -20,17 +21,30 @@ def main():
     ap.add_argument("--max-files", type=int, default=100)
     ap.add_argument("--one-uid", help=argparse.SUPPRESS)
     ap.add_argument("--per-file-seconds", type=int, default=75)
+    ap.add_argument("--uids-file", type=Path)
+    ap.add_argument("--retry-failed", action="store_true")
     args = ap.parse_args()
     with (ROOT / "artifacts/manifests/test_manifest.csv").open() as f:
         rows = {r["sample_uid"]: r for r in csv.DictReader(f)}
     queues = json.loads((ROOT / "artifacts/stage2_queues_v1.json").read_text())
     expansion = json.loads((ROOT / "artifacts/stage2_expansion_queue_v1.json").read_text())
+    selected = None
+    if args.uids_file:
+        selected_data = json.loads(args.uids_file.read_text())
+        if (selected_data["dataset_revision"] != REVISION
+                or selected_data["source_queue_sha256"] != hashlib.sha256(
+                    (ROOT / "artifacts/stage2_expansion_queue_v1.json").read_bytes()).hexdigest()
+                or selected_data["count"] != len(selected_data["sample_uids"])
+                or len(set(selected_data["sample_uids"])) != selected_data["count"]
+                or not set(selected_data["sample_uids"]).issubset(rows)):
+            raise ValueError("UID list differs from frozen source")
+        selected = selected_data["sample_uids"]
     ordered = ([args.one_uid] if args.one_uid else queues["a1_validation"]
-               if args.scope == "validation" else
+               if args.scope == "validation" else selected if selected is not None else
                [f"{pid}/{side}" for pid in expansion["full_pairs"] for side in ("safe", "unsafe")])
     log = ROOT / "runs/stage2_download_attempts.jsonl"
     attempted = set()
-    if args.scope == "full" and not args.one_uid and log.exists():
+    if args.scope == "full" and not args.one_uid and log.exists() and not args.retry_failed:
         attempted = {json.loads(line)["sample_uid"] for line in log.read_text().splitlines()
                      if json.loads(line)["scope"] == "full"}
     count = 0

@@ -2,12 +2,12 @@
   "dataset_revision": "3ac26e778db94a282711f463f22ba6db99643bee",
   "manifest_sha256": "1c87810d7642ebc00f8ee14b3f1b65d113b0702c15277d11dae8ff56b540eb45",
   "image_counts": {
-    "READY": 985,
-    "MISSING": 751
+    "READY": 1201,
+    "MISSING": 535
   },
   "pair_counts": {
-    "READY": 463,
-    "MISSING_IMAGE": 405
+    "READY": 581,
+    "MISSING_IMAGE": 287
   },
   "missing_samples": [
     {
@@ -36,20 +36,6 @@
         "status": "DOWNLOAD_FAILED",
         "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/misinformation/60/safe', '--max-files', '1']' timed out after 45 seconds",
         "seconds": 45
-      }
-    },
-    {
-      "sample_uid": "test/misinformation/62/safe",
-      "pair_id": "test/misinformation/62",
-      "category": "misinformation",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "637b43ee4cc7abaaa99c6f21568c6c053ed13f40738b45115aa7189c8cbbab49",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.019
       }
     },
     {
@@ -123,20 +109,6 @@
       }
     },
     {
-      "sample_uid": "test/offensiveness/20/safe",
-      "pair_id": "test/offensiveness/20",
-      "category": "offensiveness",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "2f7246465106ed7373cdcbbfe3fac14701406a50f34015b836b5b532d43f69dd",
-      "last_attempt": {
-        "source": "stage2_download_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/offensiveness/20/safe', '--max-files', '1']' timed out after 45 seconds",
-        "seconds": 45
-      }
-    },
-    {
       "sample_uid": "test/offensiveness/21/safe",
       "pair_id": "test/offensiveness/21",
       "category": "offensiveness",
@@ -160,20 +132,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/offensiveness/31/safe",
-      "pair_id": "test/offensiveness/31",
-      "category": "offensiveness",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "6499b8cdb91662a8aacc8fa830f07b46997e0f45db211ed58c663676281b07d9",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.017
-      }
-    },
-    {
       "sample_uid": "test/offensiveness/32/safe",
       "pair_id": "test/offensiveness/32",
       "category": "offensiveness",
@@ -181,20 +139,6 @@
       "status": "MISSING",
       "expected_image_sha256": "fc5dea05e5e1edcd5e7e80025fda7ebd5789ce92410526a61922ef1dcf7f3ebd",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/offensiveness/44/safe",
-      "pair_id": "test/offensiveness/44",
-      "category": "offensiveness",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "82ee510f5b5ea911cfa262908a8f7be5b4c64c6ecbeb9c963efa4dba327e7188",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 25.377
-      }
     },
     {
       "sample_uid": "test/offensiveness/45/safe",
@@ -221,20 +165,11 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "13eb232f27da201bc095ea1143f63cd0fa3f78978f79ca794f26d7b8d3517877",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/offensiveness/48/safe",
-      "pair_id": "test/offensiveness/48",
-      "category": "offensiveness",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "341ed691984905410e7e96d49018646616c3fc0ee7e3320561e65f72d64d196c",
       "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
+        "source": "stage2_download_attempts.jsonl",
         "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 25.532
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/offensiveness/47/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
       }
     },
     {
@@ -247,40 +182,17 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/offensiveness/51/safe",
-      "pair_id": "test/offensiveness/51",
-      "category": "offensiveness",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "4f3270796e37ca67f8049b242917668961bb9f8e6b89c1ef7ec072d2b8e2accd",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 25.462
-      }
-    },
-    {
       "sample_uid": "test/offensiveness/52/safe",
       "pair_id": "test/offensiveness/52",
       "category": "offensiveness",
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "6c00e7aa2fab8965c6c104070ede38afe923edcc586c99a2ee54395b3df4e997",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/offensiveness/54/safe",
-      "pair_id": "test/offensiveness/54",
-      "category": "offensiveness",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "b56ddd19764a4e4bfc7b7efd76d1f3e499ee223f001d03d354ed12df0970a612",
       "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
+        "source": "stage2_download_attempts.jsonl",
         "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.02
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/offensiveness/52/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
       }
     },
     {
@@ -290,7 +202,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "af759083634ff8bbfd932da844a958c0a63ebe82b6af7204f552b06879456f1f",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/offensiveness/56/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/offensiveness/58/safe",
@@ -338,15 +255,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/offensiveness/77/safe",
-      "pair_id": "test/offensiveness/77",
-      "category": "offensiveness",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "6b093bf5364ea1dbdd88ef6a58974dbed1ec07bb3b42d17c46f6cb0ef8f58c14",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/offensiveness/78/safe",
       "pair_id": "test/offensiveness/78",
       "category": "offensiveness",
@@ -362,15 +270,6 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "34ab053213592f64c0d9a2fbbd8effd032ca090ce3b4bcbe4602c60039dbfbb6",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/offensiveness/82/safe",
-      "pair_id": "test/offensiveness/82",
-      "category": "offensiveness",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "de59aca88a94320fbd27456577932ffb01a2c5095eaaeb8068ef017948163c4d",
       "last_attempt": null
     },
     {
@@ -437,15 +336,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/offensiveness/91/safe",
-      "pair_id": "test/offensiveness/91",
-      "category": "offensiveness",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "128fe5cda8c17b07942c1f469c7896975f8079e71a43464b68f4c3864fe73a77",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/offensiveness/92/safe",
       "pair_id": "test/offensiveness/92",
       "category": "offensiveness",
@@ -462,20 +352,6 @@
       "status": "MISSING",
       "expected_image_sha256": "8ca442f4c945971046a9813e87ca7eb4b0c6643f8a319109571b738fec71c241",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/offensiveness/94/safe",
-      "pair_id": "test/offensiveness/94",
-      "category": "offensiveness",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "14fa4ae52cdba122f218bd5d49de23d21f1e41401e5c9ccd0f9da3e0f77b3660",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 25.606
-      }
     },
     {
       "sample_uid": "test/offensiveness/2/unsafe",
@@ -514,49 +390,17 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/offensiveness/12/unsafe",
-      "pair_id": "test/offensiveness/12",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "87d92e127d160b134cee66fe23ad6b864e03a0f62c569d117978114b56041bd6",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/offensiveness/14/unsafe",
       "pair_id": "test/offensiveness/14",
       "category": "offensiveness",
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "a78e68b719f5449d4f5533c0f0ac69e7f453492002dc18b4e1f06056f84a6e85",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/offensiveness/15/unsafe",
-      "pair_id": "test/offensiveness/15",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "73380ab70ab852bc7b8dab2ef83a02d0b9e49a25332516beed5a1fb2c139a42b",
       "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
+        "source": "stage2_download_attempts.jsonl",
         "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.035
-      }
-    },
-    {
-      "sample_uid": "test/offensiveness/16/unsafe",
-      "pair_id": "test/offensiveness/16",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "a821236fa42beed61ed563ac0f52817ceac11a3693c649ef85d45a4fca28378d",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.019
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/offensiveness/14/unsafe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
       }
     },
     {
@@ -575,15 +419,6 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "3a3d75afd67980ee92f0ce3431ba8ae5c863b962cf22e698fd41edbea974e6e4",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/offensiveness/20/unsafe",
-      "pair_id": "test/offensiveness/20",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "a2fab58ddfbf057df0d0dfaba7b45cfb4c2854df71c04c24d3d5390c6e18e8d0",
       "last_attempt": null
     },
     {
@@ -650,22 +485,18 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/offensiveness/35/unsafe",
-      "pair_id": "test/offensiveness/35",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "776db0d6dc7b7172572677607857264d92d57b17e5437e75782b1de68134e20a",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/offensiveness/36/unsafe",
       "pair_id": "test/offensiveness/36",
       "category": "offensiveness",
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "a08bab9eb1ac7d5cba504e9297e96041418f4bc03310fdae25f4134aa6ea171d",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/offensiveness/36/unsafe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/offensiveness/41/unsafe",
@@ -684,29 +515,6 @@
       "status": "MISSING",
       "expected_image_sha256": "e317e77590e8329e69f3477e8882f0c4a362ac3bb616dc2d46281855fd4959bf",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/offensiveness/43/unsafe",
-      "pair_id": "test/offensiveness/43",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "5ebbf5c86d2cd01f4d0d489590f53c309bd0746391dab98ecc4e5820103c0d65",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/offensiveness/44/unsafe",
-      "pair_id": "test/offensiveness/44",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "9b2cd646783b716751f88131366f35621427ad1b3beeccdc6834d1a490789aa8",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (35) TLS connect error: error:00000000:lib(0)::reason(0)\n",
-        "seconds": 6.2
-      }
     },
     {
       "sample_uid": "test/offensiveness/45/unsafe",
@@ -733,7 +541,12 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "1bcc4195df867f9c52924228da0d0a7206b4d9504a3dbe850323d5fdeeb2c08b",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/offensiveness/47/unsafe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/offensiveness/49/unsafe",
@@ -751,30 +564,12 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "731b1524b6e1cc4521289465e26b486e2cd8e8b907ddb70db6310a4ae12e89ab",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/offensiveness/54/unsafe",
-      "pair_id": "test/offensiveness/54",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "20ec97d8bb5cb959591d870c0cbcf3cbccb772cd6441c28cad2aaecdda9deee9",
       "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
+        "source": "stage2_download_attempts.jsonl",
         "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.021
+        "error": "An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.",
+        "seconds": 58.24
       }
-    },
-    {
-      "sample_uid": "test/offensiveness/56/unsafe",
-      "pair_id": "test/offensiveness/56",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "0ce4e3e94c1efea9b22d3f20fc08e58208d957b08f5d38304b89e24e3ac0bd23",
-      "last_attempt": null
     },
     {
       "sample_uid": "test/offensiveness/58/unsafe",
@@ -822,15 +617,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/offensiveness/65/unsafe",
-      "pair_id": "test/offensiveness/65",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "abd90bf6bab723aadadfc2cf64540d4af8e35c62593e3d4baa8d4d1e99357514",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/offensiveness/67/unsafe",
       "pair_id": "test/offensiveness/67",
       "category": "offensiveness",
@@ -846,33 +632,6 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "e1ee53e0000cfa1c936c2495d64dff0badd4bea27dc23898853ee72499f3d1c6",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/offensiveness/70/unsafe",
-      "pair_id": "test/offensiveness/70",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "ef191d2e99bc426a1a630f1c449c556741d8c8b9cbeb37a9f73d68d8f39d7e29",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/offensiveness/72/unsafe",
-      "pair_id": "test/offensiveness/72",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "0008420821b0bed17fa602486c71ac9dbd46be1348128bfc5a4f885bc8d31374",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/offensiveness/73/unsafe",
-      "pair_id": "test/offensiveness/73",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "6c0d7d1a1d24e11afaeabcb028a388423864c3dcbdd6de8c3b1ec55876e41b95",
       "last_attempt": null
     },
     {
@@ -894,29 +653,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/offensiveness/76/unsafe",
-      "pair_id": "test/offensiveness/76",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "a29e4aa1340a31297d930b73285718f976cfbb34575ae158424fd5de491ca317",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.035
-      }
-    },
-    {
-      "sample_uid": "test/offensiveness/77/unsafe",
-      "pair_id": "test/offensiveness/77",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "7c8483aa3a74c3b08ce342736720fc4ebda8f79c71f9fd9d6d8b4ac29a04ffbe",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/offensiveness/78/unsafe",
       "pair_id": "test/offensiveness/78",
       "category": "offensiveness",
@@ -926,35 +662,12 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/offensiveness/79/unsafe",
-      "pair_id": "test/offensiveness/79",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "192622c3aa456f2a5851b5962f9554cc5b81739f7d98a2e8c9f7821f403cb86b",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.043
-      }
-    },
-    {
       "sample_uid": "test/offensiveness/81/unsafe",
       "pair_id": "test/offensiveness/81",
       "category": "offensiveness",
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "87b90d9b3990ce8602e626fed19730403e6a2c5553a09cd14285f67773aa5687",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/offensiveness/82/unsafe",
-      "pair_id": "test/offensiveness/82",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "095467152f081390b49db96fb5ba3e73468354bc9e95b42bca9e8b432bbdf4d8",
       "last_attempt": null
     },
     {
@@ -1021,15 +734,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/offensiveness/91/unsafe",
-      "pair_id": "test/offensiveness/91",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "4aa140b0cf7ee776738a1097875ae36c7b9e3abe98e963667cbc9f3a211de3ea",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/offensiveness/92/unsafe",
       "pair_id": "test/offensiveness/92",
       "category": "offensiveness",
@@ -1048,20 +752,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/offensiveness/94/unsafe",
-      "pair_id": "test/offensiveness/94",
-      "category": "offensiveness",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "cb3974541e8ebc23ddb1ea0eb2aa95022d810a97b23cdf354eaf2ffbca2c9e3f",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.032
-      }
-    },
-    {
       "sample_uid": "test/physical_harm/1/safe",
       "pair_id": "test/physical_harm/1",
       "category": "physical_harm",
@@ -1077,15 +767,6 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "b97dcb87e32f768c5a7b7e2ff9f10103ad5d7ac3174415d69928aea924463f5c",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/physical_harm/3/safe",
-      "pair_id": "test/physical_harm/3",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "a8a1a2fe79c8f058c4cc708192e1ce8c1bd61c8f483da46a7bd3b8f48387f785",
       "last_attempt": null
     },
     {
@@ -1107,15 +788,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/7/safe",
-      "pair_id": "test/physical_harm/7",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "6a08ca756e346723c2f6f528d97e46ee22924774453abcb0bb3b0f273b31ad81",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/physical_harm/8/safe",
       "pair_id": "test/physical_harm/8",
       "category": "physical_harm",
@@ -1131,15 +803,6 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "c3fd6a5b8b0b16ef24f2a68a2e271e41bfce5495609a536f69c79158729069b8",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/physical_harm/11/safe",
-      "pair_id": "test/physical_harm/11",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "a8e025d1b86a1c2c254515d50a93af827139760a350bc61b35cb69db50deb7ba",
       "last_attempt": null
     },
     {
@@ -1170,22 +833,18 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/16/safe",
-      "pair_id": "test/physical_harm/16",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "2ac344c7f281adb0e3df53e9eb4ffdf7a2621cf2d604a0226eff2175fbfcda52",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/physical_harm/18/safe",
       "pair_id": "test/physical_harm/18",
       "category": "physical_harm",
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "55d728ee13c7bbe260a49a4accc84f5287ec9beecd1f7ae8db439dadbda842d5",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/physical_harm/18/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/physical_harm/20/safe",
@@ -1194,7 +853,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "a60b64756b8fbc76554ba03030f1e5c04c2f0dea6dbf8e4d16920a5f92fa19fe",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/physical_harm/20/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/physical_harm/25/safe",
@@ -1233,22 +897,18 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/32/safe",
-      "pair_id": "test/physical_harm/32",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "c3b89c67e4031868733fc37b91975d803a9f8063627c366f2b1e39a0f778a6a2",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/physical_harm/33/safe",
       "pair_id": "test/physical_harm/33",
       "category": "physical_harm",
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "0c22547c4eb88c5d2ee0fd8146b2ecccc11c1193c6a73336f756b9ba43fab1ec",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "(MaxRetryError(\"HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/datasets/Sandy124/TriggerBench/xet-read-token/3ac26e778db94a282711f463f22ba6db99643bee (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protoc",
+        "seconds": 19.13
+      }
     },
     {
       "sample_uid": "test/physical_harm/35/safe",
@@ -1260,15 +920,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/37/safe",
-      "pair_id": "test/physical_harm/37",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "43d2b6c2a27b5254389c5b2b09e77c5a658782e896e5fce7c1d1902a951d94af",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/physical_harm/38/safe",
       "pair_id": "test/physical_harm/38",
       "category": "physical_harm",
@@ -1276,20 +927,6 @@
       "status": "MISSING",
       "expected_image_sha256": "5b44485d2609d5cccb21662b493c93c52530471e34e2d12a4071d3b46375f5a1",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/physical_harm/39/safe",
-      "pair_id": "test/physical_harm/39",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "f9cb53419a4ba76187d0ab38134160282a5c87295eb1001d6d2fcc239cbe8bee",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.023
-      }
     },
     {
       "sample_uid": "test/physical_harm/42/safe",
@@ -1310,20 +947,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/45/safe",
-      "pair_id": "test/physical_harm/45",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "daf4f45e39843ebdf6f72e46e18e3c0778dab9e323010618e49c145b0b5f1fca",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5000 milliseconds\n",
-        "seconds": 10.031
-      }
-    },
-    {
       "sample_uid": "test/physical_harm/46/safe",
       "pair_id": "test/physical_harm/46",
       "category": "physical_harm",
@@ -1342,20 +965,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/48/safe",
-      "pair_id": "test/physical_harm/48",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "47ea2da96bc33722222f40cbe3057c4f4dff6aa45ff4f19531e6fdb481962150",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 25.551
-      }
-    },
-    {
       "sample_uid": "test/physical_harm/49/safe",
       "pair_id": "test/physical_harm/49",
       "category": "physical_harm",
@@ -1365,27 +974,18 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/50/safe",
-      "pair_id": "test/physical_harm/50",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "8ca0db0c1077af403c00b8337ab1df547535ef91fdbb2c6c24d33e24c7e30197",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 25.635
-      }
-    },
-    {
       "sample_uid": "test/physical_harm/54/safe",
       "pair_id": "test/physical_harm/54",
       "category": "physical_harm",
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "be22da04ec646ee3fa0b06dc613f6b5d8d254e81442239e8bf3cf59df4f69416",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/physical_harm/54/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/physical_harm/56/safe",
@@ -1397,20 +997,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/57/safe",
-      "pair_id": "test/physical_harm/57",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "6d7a75e1733564d7ac045808c80afdad300a2ff840fe5b385eaeab24e571864b",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (35) Recv failure: Connection reset by peer\n",
-        "seconds": 5.066
-      }
-    },
-    {
       "sample_uid": "test/physical_harm/58/safe",
       "pair_id": "test/physical_harm/58",
       "category": "physical_harm",
@@ -1418,43 +1004,6 @@
       "status": "MISSING",
       "expected_image_sha256": "5a4bf0ea16379461e79e97e2d441cea8d10ac277179c1c71f5495e2b8b1fad5d",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/physical_harm/59/safe",
-      "pair_id": "test/physical_harm/59",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "be3ab804da50c1097cc34b58241593080883e1b2a960cab46bb8b78a6f0209db",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.023
-      }
-    },
-    {
-      "sample_uid": "test/physical_harm/60/safe",
-      "pair_id": "test/physical_harm/60",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "81f17ac0b9e2fc438881cd802c0dbf1f06cd26427964922c3ad3334fb336dc7a",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/physical_harm/61/safe",
-      "pair_id": "test/physical_harm/61",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "387f524bb31df1b94cd052ff2873c1a174aa9a8bad90fffe6dacda95209e974b",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.018
-      }
     },
     {
       "sample_uid": "test/physical_harm/62/safe",
@@ -1475,43 +1024,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/65/safe",
-      "pair_id": "test/physical_harm/65",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "394f92c52162934b0dd6c8d3782cfcd81394c16c145922239f2b1face0dfce3e",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (35) TLS connect error: error:00000000:lib(0)::reason(0)\n",
-        "seconds": 9.847
-      }
-    },
-    {
-      "sample_uid": "test/physical_harm/67/safe",
-      "pair_id": "test/physical_harm/67",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "d6f0446e87a98414b0841b0388cc4244a99f1a187e2f958159910a892ff6fcbc",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/physical_harm/69/safe",
-      "pair_id": "test/physical_harm/69",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "ef1d12972df5ca22a5e73ee8211609b23371f37a40d5b6d7254ccaea00ae88ec",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.057
-      }
-    },
-    {
       "sample_uid": "test/physical_harm/72/safe",
       "pair_id": "test/physical_harm/72",
       "category": "physical_harm",
@@ -1521,22 +1033,18 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/74/safe",
-      "pair_id": "test/physical_harm/74",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "f3746166952586b5bd22b564f45c6fe93f26be822b4fd891772674a0fd6a01db",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/physical_harm/76/safe",
       "pair_id": "test/physical_harm/76",
       "category": "physical_harm",
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "82ae95805f0800bc7364c0f5de9346ecaa3f3cad12ba0ce5cab50d5056c7a52b",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/physical_harm/76/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/physical_harm/77/safe",
@@ -1554,15 +1062,6 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "43439f91ec3258fa22e87c5b536c3ff733686ab5fb92bda67086ec95231b6793",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/physical_harm/80/safe",
-      "pair_id": "test/physical_harm/80",
-      "category": "physical_harm",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "02925c94728f31fd3d038dc332e8fe1110c0fe8e5ae3fc531e08594dc048e062",
       "last_attempt": null
     },
     {
@@ -1584,15 +1083,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/3/unsafe",
-      "pair_id": "test/physical_harm/3",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "5d89e48cb9d674d21000f5b82b45ce8b2720642cfd016760ba9c92525199908e",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/physical_harm/4/unsafe",
       "pair_id": "test/physical_harm/4",
       "category": "physical_harm",
@@ -1611,15 +1101,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/7/unsafe",
-      "pair_id": "test/physical_harm/7",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "3cb4835b83090e65c29fe61fa5c67774c6553851e8a6156e004eccc56acddd97",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/physical_harm/8/unsafe",
       "pair_id": "test/physical_harm/8",
       "category": "physical_harm",
@@ -1635,15 +1116,6 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "990a08f332fb6c54ae52fe3441dd0f869585a48fcb7eeca8f8457082e6bb4286",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/physical_harm/11/unsafe",
-      "pair_id": "test/physical_harm/11",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "a288b86d2e83b77bef45d9408e97548cb73e010581c74433b2c8fff8abf01c57",
       "last_attempt": null
     },
     {
@@ -1674,45 +1146,18 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/16/unsafe",
-      "pair_id": "test/physical_harm/16",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "ab35611c51ccd9ce9912a6de7f55a31ae6fcd17dbca24dad9e16c08bde240191",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/physical_harm/18/unsafe",
-      "pair_id": "test/physical_harm/18",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "ea227590d186f94076948cbf64a34bd55ec4cae1dffb0dd971d76ca22bbe7b36",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/physical_harm/19/unsafe",
-      "pair_id": "test/physical_harm/19",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "6ee1719f96e862040fbcfc0e3949b57fdca5dc8fdc50a8533698aa8c8e96d4b1",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 25.035
-      }
-    },
-    {
       "sample_uid": "test/physical_harm/20/unsafe",
       "pair_id": "test/physical_harm/20",
       "category": "physical_harm",
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "dded9bfaf2fe55214e339fc241b37fe0f166729ad0421636356bcd77aae2b61f",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.",
+        "seconds": 39.202
+      }
     },
     {
       "sample_uid": "test/physical_harm/25/unsafe",
@@ -1751,39 +1196,12 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/32/unsafe",
-      "pair_id": "test/physical_harm/32",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "8b8c4190fa5bbcdf9c1b68ed9075e3576445f43842046bfcf1b20c310bfc5d75",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/physical_harm/33/unsafe",
-      "pair_id": "test/physical_harm/33",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "eb4a2423d8a640f8fea9eddbeee885e7ef3a7ce410e7f9265e909a8b6b6b5ea4",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/physical_harm/35/unsafe",
       "pair_id": "test/physical_harm/35",
       "category": "physical_harm",
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "1a6344e5fa3d3b13bf4a7911b4b64ef9cddeacc32af65886611777343bd9b0aa",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/physical_harm/37/unsafe",
-      "pair_id": "test/physical_harm/37",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "5fadc9fa33682dae352b4fd17ec78e81a441925b6f515d14a47315db0eaab012",
       "last_attempt": null
     },
     {
@@ -1814,20 +1232,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/45/unsafe",
-      "pair_id": "test/physical_harm/45",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "2d14bfc07b6c50fbb17169034da8f1b0e24cd756780243d8aa724a692eea45c2",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.026
-      }
-    },
-    {
       "sample_uid": "test/physical_harm/46/unsafe",
       "pair_id": "test/physical_harm/46",
       "category": "physical_harm",
@@ -1855,29 +1259,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/50/unsafe",
-      "pair_id": "test/physical_harm/50",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "716cd141b9d86ba3a6715bae2d19c35faee3680a42f6ae59e28a22d593d53180",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.026
-      }
-    },
-    {
-      "sample_uid": "test/physical_harm/54/unsafe",
-      "pair_id": "test/physical_harm/54",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "9d3e5181fceeed7404f882e19c34c9ed5b37ce157d94de04a1b9cfb51c80a758",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/physical_harm/56/unsafe",
       "pair_id": "test/physical_harm/56",
       "category": "physical_harm",
@@ -1887,35 +1268,12 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/57/unsafe",
-      "pair_id": "test/physical_harm/57",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "ced2503ae80ab718f8203a5037415228001cafcb620883071c4a3e5ed0b7d9e7",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.023
-      }
-    },
-    {
       "sample_uid": "test/physical_harm/58/unsafe",
       "pair_id": "test/physical_harm/58",
       "category": "physical_harm",
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "ae39da10ea6317098d6beb0a7cf6b191bd68bce4fbb7adbdb04fb7c984e9ea9c",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/physical_harm/60/unsafe",
-      "pair_id": "test/physical_harm/60",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "970823603f4290ddd5b479051e19fbc4f24dcebdbd0dee5ce5469b82f82129f7",
       "last_attempt": null
     },
     {
@@ -1937,40 +1295,17 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/65/unsafe",
-      "pair_id": "test/physical_harm/65",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "683576d25ef47defde9c486a2e83a5945e070df8e60c70cc47c0bce916301d6e",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (35) Recv failure: Connection reset by peer\n",
-        "seconds": 10.016
-      }
-    },
-    {
       "sample_uid": "test/physical_harm/67/unsafe",
       "pair_id": "test/physical_harm/67",
       "category": "physical_harm",
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "46a3aeb7740788dd532ce1fcce2a760e8eb6524a6bbcc30c0f2c594ca8fc9a99",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/physical_harm/69/unsafe",
-      "pair_id": "test/physical_harm/69",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "c3455a602583850672595c2c6d0d1cbdcd94e2c31f45be3b301bbc9dc53581a6",
       "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
+        "source": "stage2_download_attempts.jsonl",
         "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 25.543
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/physical_harm/67/unsafe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
       }
     },
     {
@@ -1983,22 +1318,18 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/74/unsafe",
-      "pair_id": "test/physical_harm/74",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "fc95d062b514f722a03455c1995066c0c633b07e3559b18895c7c762b62539ff",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/physical_harm/76/unsafe",
       "pair_id": "test/physical_harm/76",
       "category": "physical_harm",
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "64fb421beaf44756bf9cbd38501ea5f25cb412cb890137ecb093917c0cabe80a",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/physical_harm/76/unsafe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/physical_harm/77/unsafe",
@@ -2019,15 +1350,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/physical_harm/80/unsafe",
-      "pair_id": "test/physical_harm/80",
-      "category": "physical_harm",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "f3a7dcf8c5814cbdeb815dbc0f1f00321af50f719ba7100fddb90418e46c5b31",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/privacy/1/safe",
       "pair_id": "test/privacy/1",
       "category": "privacy",
@@ -2043,30 +1365,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "b5e4c22b59ce6f6ee2d6aea02aac1265ef4c884bd91e9992af32f42a010b01ba",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/5/safe",
-      "pair_id": "test/privacy/5",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "5c6bfea12fed814b29ce4c22a6346fb9aa5c20e23d32ca39c3edad27326ab5a6",
       "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
+        "source": "stage2_download_attempts.jsonl",
         "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.043
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/privacy/4/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
       }
-    },
-    {
-      "sample_uid": "test/privacy/6/safe",
-      "pair_id": "test/privacy/6",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "342b6eeaf46c24ee9f63bb55bb1ad8a9434321f4c3e1f0c1d607ea9c81f92d15",
-      "last_attempt": null
     },
     {
       "sample_uid": "test/privacy/7/safe",
@@ -2105,15 +1409,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/privacy/13/safe",
-      "pair_id": "test/privacy/13",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "96e1037464b085c6ff8a32e680ef8bd4e4a61cda45c7a76d107635faf65b2533",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/privacy/14/safe",
       "pair_id": "test/privacy/14",
       "category": "privacy",
@@ -2130,34 +1425,6 @@
       "status": "MISSING",
       "expected_image_sha256": "ef0d28a22140036fc7a01e50017879de011a2a9c77a46bb5b1b276cfa5cbd175",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/16/safe",
-      "pair_id": "test/privacy/16",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "9f795e6dda2d718bf6cadbd9e83555b531f4b218691e2558e1db2b164c8269b0",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.022
-      }
-    },
-    {
-      "sample_uid": "test/privacy/17/safe",
-      "pair_id": "test/privacy/17",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "3e0ab2e982f795227d45f96ddcb7a599c37631ee1a61cf8b3ef1d2e7ac6783d6",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 5.047
-      }
     },
     {
       "sample_uid": "test/privacy/18/safe",
@@ -2205,29 +1472,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/privacy/28/safe",
-      "pair_id": "test/privacy/28",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "fa4cf780dc72c881f435397c945421c037daf1b4eca5aa813719ce064ca12f61",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.027
-      }
-    },
-    {
-      "sample_uid": "test/privacy/29/safe",
-      "pair_id": "test/privacy/29",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "f50f9bf06804cfb2aa63ee6523fa351578dc83ccb38c5642cd367663f9896b05",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/privacy/30/safe",
       "pair_id": "test/privacy/30",
       "category": "privacy",
@@ -2237,44 +1481,12 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/privacy/31/safe",
-      "pair_id": "test/privacy/31",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "4de8d567b75a02b7feb9c5b764c7c18d681988629145f504d2010abfc6601d3b",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.017
-      }
-    },
-    {
       "sample_uid": "test/privacy/35/safe",
       "pair_id": "test/privacy/35",
       "category": "privacy",
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "e22c78c49c5224fefc25093cf6501eae49f5d31221a46145da9aa006e5e2ac93",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/37/safe",
-      "pair_id": "test/privacy/37",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "b40eec8d5fa59d4b39912635ef6ee80dfbac1804ee446f1506f33abcf17f032e",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/38/safe",
-      "pair_id": "test/privacy/38",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "5626374f0cb463ab4fa526d226e5f7ead2408da844659c49edc7c80994d66fb3",
       "last_attempt": null
     },
     {
@@ -2296,15 +1508,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/privacy/42/safe",
-      "pair_id": "test/privacy/42",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "972a6aa37eff60e1cf32893ea69d8e5d131c027c97a2c6134cabe20799509c78",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/privacy/43/safe",
       "pair_id": "test/privacy/43",
       "category": "privacy",
@@ -2323,31 +1526,18 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/privacy/45/safe",
-      "pair_id": "test/privacy/45",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "d00a70e221c81a3da8ea08ef51ef501a26bbf560b28675299992be573fd112ca",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/46/safe",
-      "pair_id": "test/privacy/46",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "a7ef9686aa55d34c494434d4c30084bf60b10cc2a04e56be43ff5915e297ee53",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/privacy/47/safe",
       "pair_id": "test/privacy/47",
       "category": "privacy",
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "5c3273054c87819f91fd4fb4a18e89ee6ea8b89ab3068268476b78020e876d28",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/privacy/47/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/privacy/48/safe",
@@ -2413,15 +1603,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/privacy/58/safe",
-      "pair_id": "test/privacy/58",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "9104415a7eb790251356baa0bcc39369435bccc13ff4b5c23c9b5c6ebcaef454",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/privacy/59/safe",
       "pair_id": "test/privacy/59",
       "category": "privacy",
@@ -2455,7 +1636,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "6ba26842b1341cb75b537679eb031e74798b8e823a1c018640b7a135d133fb86",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/privacy/63/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/privacy/64/safe",
@@ -2474,20 +1660,6 @@
       "status": "MISSING",
       "expected_image_sha256": "76f551af3aca8534a7191521c0f9bffb66524dae230dc0f3f8596802eb190bf6",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/68/safe",
-      "pair_id": "test/privacy/68",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "355af2284477fb577bfebb56903fedff53146b3445ac15bc538e26ff650cfb2d",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.712
-      }
     },
     {
       "sample_uid": "test/privacy/69/safe",
@@ -2535,15 +1707,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/privacy/78/safe",
-      "pair_id": "test/privacy/78",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "d11084faf87bbdd38d5284424183f7216f4af7bcebc2adc75eba3425c3df1b51",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/privacy/79/safe",
       "pair_id": "test/privacy/79",
       "category": "privacy",
@@ -2578,29 +1741,6 @@
       "status": "MISSING",
       "expected_image_sha256": "03181444b85b4513f49503ca18b3a068f9398145c87f978e372bb160fb2994b8",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/85/safe",
-      "pair_id": "test/privacy/85",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "41610c9f0dc9d9317b007773cc0a6a1faa34087910d5ed9266ffb22798368693",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/87/safe",
-      "pair_id": "test/privacy/87",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "372556aaac200442916e3bf407f627d32905120a19e2ef1955ca7de75a9c484f",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.026
-      }
     },
     {
       "sample_uid": "test/privacy/88/safe",
@@ -2648,30 +1788,12 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/privacy/97/safe",
-      "pair_id": "test/privacy/97",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "d89f131276adcf80de4333886d3f1a8cd4583fcbf6625d674a07f946ae2d6af4",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/privacy/98/safe",
       "pair_id": "test/privacy/98",
       "category": "privacy",
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "5375472c385fe2fedfdeedd798b45efab86e1bdd4159d5902c5122b999d1eb52",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/100/safe",
-      "pair_id": "test/privacy/100",
-      "category": "privacy",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "5026ccf1af621b2f3992a9a0fee331b7414cab013a573a8832d3956dff4c8471",
       "last_attempt": null
     },
     {
@@ -2690,16 +1812,12 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "8df0a359a0bd6f059a4b004415bb66457d2f1f8fa36df03d5f58fda70232883d",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/6/unsafe",
-      "pair_id": "test/privacy/6",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "524589ebf31c68e28d188b5b425e238bcbd205ee0876867895ea1ca1828e0447",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.",
+        "seconds": 41.636
+      }
     },
     {
       "sample_uid": "test/privacy/7/unsafe",
@@ -2738,15 +1856,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/privacy/13/unsafe",
-      "pair_id": "test/privacy/13",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "25640b2d41f12c818d4e7ffdfa252057b02fb4633028fc18dd5b3dcc567f2f8c",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/privacy/14/unsafe",
       "pair_id": "test/privacy/14",
       "category": "privacy",
@@ -2763,20 +1872,6 @@
       "status": "MISSING",
       "expected_image_sha256": "98e7499baa941b4ed5957c9c6133ee899c96f9fa37c48e73a4f98d38b13f1cc3",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/16/unsafe",
-      "pair_id": "test/privacy/16",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "b53ed2e4dc7c130fb82cf11edd9775f4fbf6d5b089022475eb11d6c653ef54a2",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.022
-      }
     },
     {
       "sample_uid": "test/privacy/18/unsafe",
@@ -2824,29 +1919,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/privacy/28/unsafe",
-      "pair_id": "test/privacy/28",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "31114e72cb2a8bfe6620d5c575180f881b43e91ad8cb98cedfe0980ae042dbcc",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.033
-      }
-    },
-    {
-      "sample_uid": "test/privacy/29/unsafe",
-      "pair_id": "test/privacy/29",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "98f942e769909934d5e5f878bbfe57abfedff66260eeb2b5bc19bc5ec54c59fe",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/privacy/30/unsafe",
       "pair_id": "test/privacy/30",
       "category": "privacy",
@@ -2856,44 +1928,12 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/privacy/31/unsafe",
-      "pair_id": "test/privacy/31",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "187ccf426c983bf5022cc273eb661d5c876e3443f256c984191d3bfaa8c00a0a",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.03
-      }
-    },
-    {
       "sample_uid": "test/privacy/35/unsafe",
       "pair_id": "test/privacy/35",
       "category": "privacy",
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "6e17af4bcb71234783913d4e8f62a5a213abc8cc5017576a4929faa15bc79f78",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/37/unsafe",
-      "pair_id": "test/privacy/37",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "4d20b09b04efad87fd08af3f475cdd8398e6c732fffe2cc26400a165bbb9791b",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/38/unsafe",
-      "pair_id": "test/privacy/38",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "fc51a8ca0dddd9dbe3f20a8018140f745f971c82f6268b53b1d65f7758c9f41e",
       "last_attempt": null
     },
     {
@@ -2915,15 +1955,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/privacy/42/unsafe",
-      "pair_id": "test/privacy/42",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "180daa825ed6d42862b56917880c215cb3dd7b54b2b31565b1849783a320d1ed",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/privacy/43/unsafe",
       "pair_id": "test/privacy/43",
       "category": "privacy",
@@ -2939,33 +1970,6 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "b91472fd124f9ee0aee04d8812183b574231139a535b41dd9d715acfbf332a88",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/45/unsafe",
-      "pair_id": "test/privacy/45",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "ea349e56d684344ffc88b2f41b8568e663c45ccc551f7a571e8edc9433a59121",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/46/unsafe",
-      "pair_id": "test/privacy/46",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "9bc3fdeb5fa4c4d373cba73463863a021021830f0b2244825e463715efa73f00",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/47/unsafe",
-      "pair_id": "test/privacy/47",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "3afc44ade01feffd55af286c46e3b7fb20878e43a443a65ddeee6de9f5c772a4",
       "last_attempt": null
     },
     {
@@ -3032,15 +2036,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/privacy/58/unsafe",
-      "pair_id": "test/privacy/58",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "38756682cc8a521674927e2e34d36e5aea85dd5aea26033ac2ce718d6356d85c",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/privacy/59/unsafe",
       "pair_id": "test/privacy/59",
       "category": "privacy",
@@ -3068,15 +2063,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/privacy/63/unsafe",
-      "pair_id": "test/privacy/63",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "c0de3f50ff6cb774c21848d5566527abaac9aeddbea5991dc1c31fc4302eda8e",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/privacy/64/unsafe",
       "pair_id": "test/privacy/64",
       "category": "privacy",
@@ -3093,20 +2079,6 @@
       "status": "MISSING",
       "expected_image_sha256": "700d25ee112625058a89f15869cb7df9bac6da0846d907928b535760dd3cc8de",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/68/unsafe",
-      "pair_id": "test/privacy/68",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "bef318921513fb2999522c64c7c2f22070aa2a899c78a46b13af6e72c313fe57",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.026
-      }
     },
     {
       "sample_uid": "test/privacy/69/unsafe",
@@ -3160,7 +2132,12 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "46a305d8788dbf10edd71cd72b40f405457dd13deba471acf4dd52d0b526782b",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/privacy/78/unsafe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/privacy/79/unsafe",
@@ -3197,29 +2174,6 @@
       "status": "MISSING",
       "expected_image_sha256": "1d58b735f76ef734f860654decc90f9ef2e276f5129880770e992101995cfb8a",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/85/unsafe",
-      "pair_id": "test/privacy/85",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "19778e30816e8b7d6c6b0a1dc1d49d5b683a061383f2dae91136264e136c2ed2",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/87/unsafe",
-      "pair_id": "test/privacy/87",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "dc4b3072ed2ea3706b4563c07e7ad3b73f519288a65e867c9e6cbb5729055c0d",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 6.373
-      }
     },
     {
       "sample_uid": "test/privacy/88/unsafe",
@@ -3267,15 +2221,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/privacy/97/unsafe",
-      "pair_id": "test/privacy/97",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "13565137089bc4232600a22a110d154089d5dcf7baa36a444210fcbf9166a9b7",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/privacy/98/unsafe",
       "pair_id": "test/privacy/98",
       "category": "privacy",
@@ -3283,29 +2228,6 @@
       "status": "MISSING",
       "expected_image_sha256": "28cadd9de23110ed685a114396acd87d7dacd81dae22cb58151a8e7e95aadd94",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/privacy/100/unsafe",
-      "pair_id": "test/privacy/100",
-      "category": "privacy",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "aeb7d321bd22e5749465b6f954c6b8a7fdde2c81b4411fe0b12bd19e1b6fea87",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/1/safe",
-      "pair_id": "test/property_damage/1",
-      "category": "property_damage",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "fc5b119fc56fdcdcff7bebab7ae1e19dfc5fd1158481d1949e4089dbd2ef9b61",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.684
-      }
     },
     {
       "sample_uid": "test/property_damage/5/safe",
@@ -3332,15 +2254,6 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "88459a2e2eeeb11c83eb69d62c796fa37fedb26f280abcf3ff5ac1ef77a789bc",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/10/safe",
-      "pair_id": "test/property_damage/10",
-      "category": "property_damage",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "fc3a0a7a845aaec52c99f69b91f7a63bd63ef5996d8fc866a6916318a87a8636",
       "last_attempt": null
     },
     {
@@ -3407,15 +2320,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/property_damage/24/safe",
-      "pair_id": "test/property_damage/24",
-      "category": "property_damage",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "08b555f5599202b00511907c80676a8b13a17c9749b6ad26a61be9242f55b4c1",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/property_damage/27/safe",
       "pair_id": "test/property_damage/27",
       "category": "property_damage",
@@ -3443,38 +2347,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/property_damage/32/safe",
-      "pair_id": "test/property_damage/32",
-      "category": "property_damage",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "e072bc6a7bf3bac9b428a60124bb476875fc02070b92db53e6a908cec9c379c1",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/33/safe",
-      "pair_id": "test/property_damage/33",
-      "category": "property_damage",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "4db55a1d4a91dd9587f44b6ee7542b42bd27d52556399ab1c9cc72ebb910730c",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/34/safe",
-      "pair_id": "test/property_damage/34",
-      "category": "property_damage",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "9ce56bb89e02fff33e50a511cfe7b0470930a15d9a24db7e4d7d6ad5d2f279da",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.026
-      }
-    },
-    {
       "sample_uid": "test/property_damage/35/safe",
       "pair_id": "test/property_damage/35",
       "category": "property_damage",
@@ -3499,15 +2371,6 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "edb34048f93b01b68eeb6ab358324479ed926a028796917c4c68dcd351587757",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/41/safe",
-      "pair_id": "test/property_damage/41",
-      "category": "property_damage",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "9cc362645662e270b32689a42a1366a979ae83b939d35c025020e66ac9b228a3",
       "last_attempt": null
     },
     {
@@ -3553,29 +2416,6 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "d31c878d6f8255fa21389fb202ce194f52ba11b2ca0c0bf097f576f794269ae7",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/48/safe",
-      "pair_id": "test/property_damage/48",
-      "category": "property_damage",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "4d40b9e6fe49c7116713443d61595b7a7ac3402e1cbff718a5c648520e44bea3",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.027
-      }
-    },
-    {
-      "sample_uid": "test/property_damage/51/safe",
-      "pair_id": "test/property_damage/51",
-      "category": "property_damage",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "ca383bdba5380502ffaa0e2aa110636fdf2bd4cead31cb91057cc5e55889c87f",
       "last_attempt": null
     },
     {
@@ -3630,7 +2470,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "969783c44a6f6fab79faa36f5d39771bf591abca4aa2e44e6afb8f3950138680",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/property_damage/60/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/property_damage/62/safe",
@@ -3648,24 +2493,6 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "da7a4e098440d91cb8532086431f07544172f634cbca80388deab9bdba8138e0",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/65/safe",
-      "pair_id": "test/property_damage/65",
-      "category": "property_damage",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "115a81f0ad1bd2933691e968d465b5bac9103ef3565bd800c1f1e724755bb59b",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/66/safe",
-      "pair_id": "test/property_damage/66",
-      "category": "property_damage",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "21bd3148941364b55018d8b5c2c85285424068ccbc199ac887553b31b57e5a21",
       "last_attempt": null
     },
     {
@@ -3702,7 +2529,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "e14be84cdc8ab00b199e684c42bc8752b384a0350c04a84a9a28bd8824ede8c2",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/property_damage/70/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/property_damage/71/safe",
@@ -3729,15 +2561,6 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "a08ec63d8096d60fb66af189e6678957285085fa982ae240b8a675b7de2c4b31",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/74/safe",
-      "pair_id": "test/property_damage/74",
-      "category": "property_damage",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "716aa6152c896bc3cd6c24d52f956f8678543e1c2e2811c2f72b339eac2ae70f",
       "last_attempt": null
     },
     {
@@ -3801,16 +2624,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "9acc2b083b00bd4d7e8ba466ba0cb526421a90c5a9377de2aa81628a35a5a215",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/83/safe",
-      "pair_id": "test/property_damage/83",
-      "category": "property_damage",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "4baf4d54b8f4584cdf1abe29c70eef8cf27a9573bc31bb28c57d0802b7a7581a",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/property_damage/81/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/property_damage/84/safe",
@@ -3828,7 +2647,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "3204e7413a97a81a35ef5f5fd08cfa4bc67865153397e67a8b680b8ad2a1e83d",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/property_damage/86/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/property_damage/89/safe",
@@ -3855,7 +2679,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "81d823aa7802b057ced9694c89e2df14cd88fde892bb5139e759b28f24702418",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.",
+        "seconds": 57.165
+      }
     },
     {
       "sample_uid": "test/property_damage/96/safe",
@@ -3873,29 +2702,6 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "5e79c44b3c64990cec0e9c45d85db7b42a36a406ee76334a831b888aa79b7c4e",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/1/unsafe",
-      "pair_id": "test/property_damage/1",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "929607b06c3e810626300689eae60d58c4d937da4fa38c86828c3c661ced6da5",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.033
-      }
-    },
-    {
-      "sample_uid": "test/property_damage/2/unsafe",
-      "pair_id": "test/property_damage/2",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "f7cc1e6e9bf1cc7a2ff88babcfb26143286b9cf7c7d6a7787ea749fdbeb30a6a",
       "last_attempt": null
     },
     {
@@ -3926,15 +2732,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/property_damage/10/unsafe",
-      "pair_id": "test/property_damage/10",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "24ab112afc5b320051b035e63f9616224175f216b9fa0616626ff5f1c76c62fb",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/property_damage/11/unsafe",
       "pair_id": "test/property_damage/11",
       "category": "property_damage",
@@ -3960,20 +2757,6 @@
       "status": "MISSING",
       "expected_image_sha256": "458cd4333b7d76d7bc705e1592c9e1daf23b95379f11ef740edf63daa822d7b9",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/14/unsafe",
-      "pair_id": "test/property_damage/14",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "1c2b3cc20789e8812bbb6892d53ca86d1f85c33fc8696c385ce36d52b04ee6b8",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Operation timed out after 20494 milliseconds with 38298 out of 1343998 bytes received\n",
-        "seconds": 26.013
-      }
     },
     {
       "sample_uid": "test/property_damage/18/unsafe",
@@ -4012,15 +2795,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/property_damage/24/unsafe",
-      "pair_id": "test/property_damage/24",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "f6e4f6bf66593226beb714f26ee1fdda3d79801715e3eaa52e465132e9981462",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/property_damage/27/unsafe",
       "pair_id": "test/property_damage/27",
       "category": "property_damage",
@@ -4048,38 +2822,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/property_damage/32/unsafe",
-      "pair_id": "test/property_damage/32",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "d32771f8aed86b9fcb7921d4c5a7dad425546839cec01af7612d59553ab0f9fc",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/33/unsafe",
-      "pair_id": "test/property_damage/33",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "3d90ae4f34dd40d4d68ac303175ecb5f9368a5050777560d21c17a64cc968d0b",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/34/unsafe",
-      "pair_id": "test/property_damage/34",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "f28430c99b214e67e64cf4722ecb0103ceb29f7f5fbf55b3ebb8c49d7e9d4ef3",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.012
-      }
-    },
-    {
       "sample_uid": "test/property_damage/35/unsafe",
       "pair_id": "test/property_damage/35",
       "category": "property_damage",
@@ -4105,29 +2847,6 @@
       "status": "MISSING",
       "expected_image_sha256": "318d647e2a0ae93670ab0e55b33b32e98120d5813ba772a5a58fbd6404742193",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/41/unsafe",
-      "pair_id": "test/property_damage/41",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "df3e79a8af1d783bb23e013311b96da99d71b2366e5778e9a23d630ca7409027",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/42/unsafe",
-      "pair_id": "test/property_damage/42",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "4f2e1c4237cd0da1db6120562b19c236bb059bdfe654c58f10f4c2a50d306bb6",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.819
-      }
     },
     {
       "sample_uid": "test/property_damage/43/unsafe",
@@ -4172,29 +2891,6 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "f52b25c126890f23ab9d101f3a13c22633266952004027a497e6e244826a49c5",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/48/unsafe",
-      "pair_id": "test/property_damage/48",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "fb9d733b0aefbfb0b9ce4ce617077755787ca0a275c722a607c75dd2abde5afb",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.019
-      }
-    },
-    {
-      "sample_uid": "test/property_damage/51/unsafe",
-      "pair_id": "test/property_damage/51",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "4819c76d30eea4b871be57294701d4a16b370a1984dce1df076b399659055a8b",
       "last_attempt": null
     },
     {
@@ -4249,7 +2945,12 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "f791363d554f340803f3dcabe59f11abf2a217d1bfa4d86c5640455a05102112",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/property_damage/60/unsafe', '--max-files', '1']' timed out after 60 second",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/property_damage/62/unsafe",
@@ -4267,38 +2968,6 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "2ca7afc7ac41b88ed16e2c75dcf521e794294539d4f69fa94ede60a6d48b4e8f",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/64/unsafe",
-      "pair_id": "test/property_damage/64",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "d64d3437eeb03cc181ad096fa466ccd6e8bb933ac6686d0d3e0d3e5128a87b08",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 25.722
-      }
-    },
-    {
-      "sample_uid": "test/property_damage/65/unsafe",
-      "pair_id": "test/property_damage/65",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "a7c57bcbc7368dc4b3d182c36ddd5236b8466147c649fd1adcbaf67b6820770f",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/66/unsafe",
-      "pair_id": "test/property_damage/66",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "795266643ec852c9f67df79f114c6fc4678b951cea90c23821702f558f5adeab",
       "last_attempt": null
     },
     {
@@ -4335,7 +3004,12 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "21c05ccfa6ef62f558aeb25e77a5a45a3736d5f9ed5d2d2bebc1ec4cf59ab4dd",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.",
+        "seconds": 55.11
+      }
     },
     {
       "sample_uid": "test/property_damage/71/unsafe",
@@ -4371,7 +3045,12 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "abd99e3d58cd5033b6cf6da22752fa34986e956ad9c185a969960feb4502cf57",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/property_damage/74/unsafe', '--max-files', '1']' timed out after 60 second",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/property_damage/75/unsafe",
@@ -4428,24 +3107,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/property_damage/81/unsafe",
-      "pair_id": "test/property_damage/81",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "964825c5e76832eb748229a23d5f506d630f2c09aa67df931ad0f9b2eb514719",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/83/unsafe",
-      "pair_id": "test/property_damage/83",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "8a8cf37cd2e1b06f71ba9ff1304ee6b7314087d3979d7ff41ff5085be2bc1f72",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/property_damage/84/unsafe",
       "pair_id": "test/property_damage/84",
       "category": "property_damage",
@@ -4461,7 +3122,12 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "a5a2d972134a41d2ba95abf1171ed0d7bf6e1383cee9d9ed8dc85234f25f47c7",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.",
+        "seconds": 53.41
+      }
     },
     {
       "sample_uid": "test/property_damage/89/unsafe",
@@ -4479,15 +3145,6 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "72903d1c58057b7f0d072ef3acbda092977f0a43d52396cc1f54e016eabe1e5b",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/property_damage/94/unsafe",
-      "pair_id": "test/property_damage/94",
-      "category": "property_damage",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "522d20fb67b5ffc5a39891c0cf354b322e611783d25eb6e937cefbe046d71c07",
       "last_attempt": null
     },
     {
@@ -4545,15 +3202,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/religion_belief/8/safe",
-      "pair_id": "test/religion_belief/8",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "49b15543a3f947517908adcd1841c52eb5e4662dd57a522c5b9664c7ab25b80d",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/religion_belief/13/safe",
       "pair_id": "test/religion_belief/13",
       "category": "religion_belief",
@@ -4570,20 +3218,6 @@
       "status": "MISSING",
       "expected_image_sha256": "7b2ccc838bd18bb8a3351532c288786a502dbfac19254f0e51650cf279c63093",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/15/safe",
-      "pair_id": "test/religion_belief/15",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "60e47f6f6aee219561571f5aaab4b3448e71c3ded42a00d579817fdb3da6791d",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.025
-      }
     },
     {
       "sample_uid": "test/religion_belief/16/safe",
@@ -4610,7 +3244,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "ec866e2eb723cc1a29da0f0312e3e7fe93f657d3a214ae76267c4573a94a1ac0",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/religion_belief/18/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/religion_belief/19/safe",
@@ -4619,7 +3258,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "5b65a447c6ce9d47519a9272e1d9afeedf45678dd2be8cbebfb859e1ff19b6bc",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/religion_belief/19/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/religion_belief/20/safe",
@@ -4629,38 +3273,6 @@
       "status": "MISSING",
       "expected_image_sha256": "68b868d26efd59d25474560524bec1a8bba754fd3592c04fd1d7bc54e2d7b806",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/21/safe",
-      "pair_id": "test/religion_belief/21",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "94748538932d1da08924ba63c46e14c0094e27172088c6921683c01b7a6bec9b",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/23/safe",
-      "pair_id": "test/religion_belief/23",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "df7f2efd26154e39754dc5e73f2f7ccdf4f5fd3f12558e6c677f5b415d79b985",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/25/safe",
-      "pair_id": "test/religion_belief/25",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "e71d781e218868fa13bf105138633daa7860003acd8198a96065f61377978e57",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.66
-      }
     },
     {
       "sample_uid": "test/religion_belief/26/safe",
@@ -4681,53 +3293,12 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/religion_belief/28/safe",
-      "pair_id": "test/religion_belief/28",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "911e622a8d7147bf3aa1690d9af556fea13d8eafe6d5ad0c301fbd0357feba92",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/32/safe",
-      "pair_id": "test/religion_belief/32",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "d77718c222d63de79d257093b445b3eac67764d5efd54766c3ed355b789df2e1",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/religion_belief/33/safe",
       "pair_id": "test/religion_belief/33",
       "category": "religion_belief",
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "fc44b877438f4b3604b3d84bec8841a9b0cd39e4fcc564f5386210efe3a7ac80",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/34/safe",
-      "pair_id": "test/religion_belief/34",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "acd8a39bdc01220414802cdebdbef031aa5accf5fd3aedee0bda01296b8c8fca",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.032
-      }
-    },
-    {
-      "sample_uid": "test/religion_belief/35/safe",
-      "pair_id": "test/religion_belief/35",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "807fc6c008e990aa47a7ff52faad03bfdcd74d7dbe0c5c11fe94c1fe8d1cc904",
       "last_attempt": null
     },
     {
@@ -4767,34 +3338,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/religion_belief/45/safe",
-      "pair_id": "test/religion_belief/45",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "ac66b40a047c76ee90555804c64cdc5a7a54737c9fccff294d9a6c43d2f7bcfc",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.018
-      }
-    },
-    {
-      "sample_uid": "test/religion_belief/46/safe",
-      "pair_id": "test/religion_belief/46",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "d2f05dacb35219beb648fd0ce6ac084223c152e8c4905987c302582552fc4ca5",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.02
-      }
-    },
-    {
       "sample_uid": "test/religion_belief/47/safe",
       "pair_id": "test/religion_belief/47",
       "category": "religion_belief",
@@ -4810,7 +3353,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "6cabdcb6b4e7ffa6bdaf25b4495e73b5ead994c68ad843dfa8b30e60b974bf05",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.",
+        "seconds": 52.561
+      }
     },
     {
       "sample_uid": "test/religion_belief/49/safe",
@@ -4820,20 +3368,6 @@
       "status": "MISSING",
       "expected_image_sha256": "3296692655f72e3bb2f093075539d40687e6cc8663c91977f3b718e1751e53db",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/50/safe",
-      "pair_id": "test/religion_belief/50",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "d57b854deb7e67b3468985788912fe191d7b3dce65cc8feb57d0b617c5ff4dfa",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.02
-      }
     },
     {
       "sample_uid": "test/religion_belief/51/safe",
@@ -4863,15 +3397,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/religion_belief/56/safe",
-      "pair_id": "test/religion_belief/56",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "8e5e9d0707111193eab1a1aa543c114e7d12d70492882b550d3509ff2aeb0d44",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/religion_belief/57/safe",
       "pair_id": "test/religion_belief/57",
       "category": "religion_belief",
@@ -4888,20 +3413,6 @@
       "status": "MISSING",
       "expected_image_sha256": "00b2c1b4ccf6be81d49347cfa22081d603a9bb6ed67596430961f3cde0269361",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/59/safe",
-      "pair_id": "test/religion_belief/59",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "34ddf07a39d7783228a83d23dc70cf806a605a24a8c7d8c40da1de9d224fd3dd",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 25.679
-      }
     },
     {
       "sample_uid": "test/religion_belief/60/safe",
@@ -4940,29 +3451,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/religion_belief/68/safe",
-      "pair_id": "test/religion_belief/68",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "e17501024762d42e494338b1068c9f122162bc644b4c1cdae6f18b17e5a2abe1",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/69/safe",
-      "pair_id": "test/religion_belief/69",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "3af82fde8a2a7c22b25642e080b1c1c7ec9aadf6dcfa8d4d6be98d46794204fe",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.031
-      }
-    },
-    {
       "sample_uid": "test/religion_belief/70/safe",
       "pair_id": "test/religion_belief/70",
       "category": "religion_belief",
@@ -4981,64 +3469,18 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/religion_belief/73/safe",
-      "pair_id": "test/religion_belief/73",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "2d0170921dec10791e002f6910606ad6c634d8567eb39c80296e60da7b7a7623",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/74/safe",
-      "pair_id": "test/religion_belief/74",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "3fc93947fd0a26304f4246de478d99a603f8bba8faab3be16b5137299b2ccb4c",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.036
-      }
-    },
-    {
-      "sample_uid": "test/religion_belief/75/safe",
-      "pair_id": "test/religion_belief/75",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "4adb3a9be4fd5303ff9c4e753d7cc1b6b2dc8df894c88623d82d13fb5259bcd2",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.031
-      }
-    },
-    {
-      "sample_uid": "test/religion_belief/78/safe",
-      "pair_id": "test/religion_belief/78",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "c4ee9d24a3a1524a7ae48664800c826fadf12a519b12fb7056da27d63a176a1c",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.028
-      }
-    },
-    {
       "sample_uid": "test/religion_belief/79/safe",
       "pair_id": "test/religion_belief/79",
       "category": "religion_belief",
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "c3997169e23eff21a95f83ddca7f801482222a61e8800d894e05bf9ff67e8603",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/religion_belief/79/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/religion_belief/80/safe",
@@ -5068,15 +3510,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/religion_belief/84/safe",
-      "pair_id": "test/religion_belief/84",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "0d83c6a361ebdc76f1dda52f5f30e6932422faed44d5431982f2834a1607a984",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/religion_belief/85/safe",
       "pair_id": "test/religion_belief/85",
       "category": "religion_belief",
@@ -5093,38 +3526,6 @@
       "status": "MISSING",
       "expected_image_sha256": "2eec1bf8c9758724742c56cdca68690cfa61e6a5c42381c8019d047809307bcf",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/87/safe",
-      "pair_id": "test/religion_belief/87",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "f64fa16b222981103aa82c7fdffe0064719530584c7bbd5e9c926d221bb24a82",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/88/safe",
-      "pair_id": "test/religion_belief/88",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "d6ec035c88a89569b4ece496ffa97abca1ebb0df658fb85fc0a0c6bd6f2fcf35",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/89/safe",
-      "pair_id": "test/religion_belief/89",
-      "category": "religion_belief",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "70c7f14f61b276723ba3bea249350e6956b007325463dcb18fba05bcab470035",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.024
-      }
     },
     {
       "sample_uid": "test/religion_belief/1/unsafe",
@@ -5163,29 +3564,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/religion_belief/8/unsafe",
-      "pair_id": "test/religion_belief/8",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "9139271bf26080d65ea2fff2557ff3f026ef38ce73c900995a79cd531452be5b",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/9/unsafe",
-      "pair_id": "test/religion_belief/9",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "50aa0654117027826c456112dc0e84e2363f19ad2c645d5d7fc7e3df2f1db33c",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.019
-      }
-    },
-    {
       "sample_uid": "test/religion_belief/13/unsafe",
       "pair_id": "test/religion_belief/13",
       "category": "religion_belief",
@@ -5202,20 +3580,6 @@
       "status": "MISSING",
       "expected_image_sha256": "f67291aa634d4bc3d837d01fd2c92c43bc223edf7b97cb27b2c681a40cc3f946",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/15/unsafe",
-      "pair_id": "test/religion_belief/15",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "2254c50b35fdbf3ac8fabc0936f6a75987416e64b08f246bacf2d9aa0a852e3b",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.017
-      }
     },
     {
       "sample_uid": "test/religion_belief/16/unsafe",
@@ -5242,7 +3606,12 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "8c28b03a0fa4e48a7de3da1e1be468299766ba37fd5c82fb8544dd403bdbc44a",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/religion_belief/18/unsafe', '--max-files', '1']' timed out after 60 second",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/religion_belief/19/unsafe",
@@ -5251,7 +3620,12 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "f51621e0da8ffa9d6d208eb81ce95e330c6a07516f50fe2d1fab4fb2721969c7",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/religion_belief/19/unsafe', '--max-files', '1']' timed out after 60 second",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/religion_belief/20/unsafe",
@@ -5261,38 +3635,6 @@
       "status": "MISSING",
       "expected_image_sha256": "f4a532325ee495f97e8a6a62f0e790f624b7838dd4d04afdfd9966b10795a1ae",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/21/unsafe",
-      "pair_id": "test/religion_belief/21",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "775f76ff36e62fce0dadc4fd6596bf2683ed39ff561ae99f53909533f9e2ba3d",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/23/unsafe",
-      "pair_id": "test/religion_belief/23",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "04bf65c2371bd0d13971d14f1d9a7f872fa20baf417a3ed20a6a1667d558fbd6",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/25/unsafe",
-      "pair_id": "test/religion_belief/25",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "ac552b5a36eeb1460f1d93d2a0f0fccbc95eca3e4951e792f3b3b922753912aa",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.03
-      }
     },
     {
       "sample_uid": "test/religion_belief/26/unsafe",
@@ -5313,22 +3655,18 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/religion_belief/28/unsafe",
-      "pair_id": "test/religion_belief/28",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "b485162fe28e0a54f81b9b0d1fe70502a2ee45a26dedfb72f8ec2ac4928baead",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/religion_belief/32/unsafe",
       "pair_id": "test/religion_belief/32",
       "category": "religion_belief",
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "2733f1e756f378c0b2e44b166173889d1316923d3dd8e8e0816e6074443efa86",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/religion_belief/32/unsafe', '--max-files', '1']' timed out after 60 second",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/religion_belief/33/unsafe",
@@ -5337,29 +3675,6 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "5df22b69929c8ddaf9cb73a068907e93c8e2d91eb59d5f8f2c046c719ace5444",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/34/unsafe",
-      "pair_id": "test/religion_belief/34",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "954dd066ad630bcee78f5186bead61fa2ab8d14034b8140dc7c4039f53fb17e3",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.04
-      }
-    },
-    {
-      "sample_uid": "test/religion_belief/35/unsafe",
-      "pair_id": "test/religion_belief/35",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "27edf328e4295707cc777a49bb6844fec97db22a5937e06c073a78863c4ee6b7",
       "last_attempt": null
     },
     {
@@ -5414,7 +3729,12 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "055cb38ae4c833466724fa730ba69c1e4a462690edba192faa283849e11076f1",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.",
+        "seconds": 33.807
+      }
     },
     {
       "sample_uid": "test/religion_belief/49/unsafe",
@@ -5424,20 +3744,6 @@
       "status": "MISSING",
       "expected_image_sha256": "e5d137bec2c97e0ead5b4c6e2a687109efee6b25981050b5d101dba5ee3420b6",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/50/unsafe",
-      "pair_id": "test/religion_belief/50",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "524e321ac308f840f2cdea5bf0a7badd2383219f66d2fe7d1894bb38d70dfb17",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.014
-      }
     },
     {
       "sample_uid": "test/religion_belief/51/unsafe",
@@ -5467,15 +3773,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/religion_belief/56/unsafe",
-      "pair_id": "test/religion_belief/56",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "5979c5a19f7e792fe0ea2b73bfb961549b88208a31db8eb6b44ebfab6cab95fc",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/religion_belief/57/unsafe",
       "pair_id": "test/religion_belief/57",
       "category": "religion_belief",
@@ -5492,20 +3789,6 @@
       "status": "MISSING",
       "expected_image_sha256": "00ffc85743c7619e0e95c584d7412c141a8f37be1084a218a99694786887ce34",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/59/unsafe",
-      "pair_id": "test/religion_belief/59",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "1123ba93a97b62ebc45166aa71fb8b6acec158157b3dd77ab551cfd7cbc6a639",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (35) TLS connect error: error:00000000:lib(0)::reason(0)\n",
-        "seconds": 5.864
-      }
     },
     {
       "sample_uid": "test/religion_belief/60/unsafe",
@@ -5544,29 +3827,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/religion_belief/68/unsafe",
-      "pair_id": "test/religion_belief/68",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "722e756d6d304abe828887460f9a2f3342926cd1aa548d0212154f0b2d544f7a",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/69/unsafe",
-      "pair_id": "test/religion_belief/69",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "339996bf5d43488750d5a46c4697c78dcc47b1bf1884f7d410bfd345aff6733c",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (35) Recv failure: Connection reset by peer\n",
-        "seconds": 7.38
-      }
-    },
-    {
       "sample_uid": "test/religion_belief/70/unsafe",
       "pair_id": "test/religion_belief/70",
       "category": "religion_belief",
@@ -5582,66 +3842,6 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "9dfba00be20667ff45b4e27ca7cb170a4c12369b925b0f8e783ba291a0a3c989",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/73/unsafe",
-      "pair_id": "test/religion_belief/73",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "d2ab46db652d4ccacab77a3671048572ddbb36be53fd92873a72ddae3c46b1c0",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/74/unsafe",
-      "pair_id": "test/religion_belief/74",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "732d70f11d9cddb6b469440bd926a835d06b7eb7393a816ab2d37eb431303871",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.028
-      }
-    },
-    {
-      "sample_uid": "test/religion_belief/75/unsafe",
-      "pair_id": "test/religion_belief/75",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "4928877563e7ba672d1dd732c7668c59da826e9cb13f421a2ae1e187c539eb04",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 5.083
-      }
-    },
-    {
-      "sample_uid": "test/religion_belief/78/unsafe",
-      "pair_id": "test/religion_belief/78",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "7daac5137becfd7af450daa78f8e4e3e763877779561fe5e8da15fbf6a939e3f",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.032
-      }
-    },
-    {
-      "sample_uid": "test/religion_belief/79/unsafe",
-      "pair_id": "test/religion_belief/79",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "4188e3add8c125cab81b84445df2f20f3db0d6beb650001a750e33aa1cab846e",
       "last_attempt": null
     },
     {
@@ -5672,15 +3872,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/religion_belief/84/unsafe",
-      "pair_id": "test/religion_belief/84",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "b1cf5c0fc21f43e8393fcae57f435696bb0ed010f2fd4dbd00bae01859c04773",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/religion_belief/85/unsafe",
       "pair_id": "test/religion_belief/85",
       "category": "religion_belief",
@@ -5705,29 +3896,11 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "b73989db321852e44e8afee23a6a6bd0e7eaaea21128cfe1a7e0d53fa214cb45",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/88/unsafe",
-      "pair_id": "test/religion_belief/88",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "bf34cc5d33d0f2e04fc1641d1a5dd21291dd3207f9e0a021df04cf8b76c2c733",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/religion_belief/89/unsafe",
-      "pair_id": "test/religion_belief/89",
-      "category": "religion_belief",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "5a6a34e0787d231e7215b7545d29d82186e99d5f5c453a198d0c8b905ab8efd8",
       "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
+        "source": "stage2_download_attempts.jsonl",
         "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.04
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/religion_belief/87/unsafe', '--max-files', '1']' timed out after 60 second",
+        "seconds": 60
       }
     },
     {
@@ -5765,20 +3938,6 @@
       "status": "MISSING",
       "expected_image_sha256": "d2b2503e839db3754b2769a407c7fcf41f20b930ffe26f38a1491dccfc77f981",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/6/safe",
-      "pair_id": "test/violence/6",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "88665633b2a2e2ec743b2cd75320e5d207966db955da36dac5e02a48013f68a3",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.022
-      }
     },
     {
       "sample_uid": "test/violence/7/safe",
@@ -5826,15 +3985,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/violence/16/safe",
-      "pair_id": "test/violence/16",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "a3a66268905362a16d278ca5e340e2566323ae61eb2cae19ae9e8c6bf9b096a4",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/violence/17/safe",
       "pair_id": "test/violence/17",
       "category": "violence",
@@ -5853,20 +4003,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/violence/21/safe",
-      "pair_id": "test/violence/21",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "93ddadcbd342e749dc8dceeec553197f4c18eba39db934b40eeb6de8f9661017",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.033
-      }
-    },
-    {
       "sample_uid": "test/violence/23/safe",
       "pair_id": "test/violence/23",
       "category": "violence",
@@ -5882,15 +4018,6 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "e44a1df77631fb114f875a7986984446887e556e26d1afda8b34accd35f961ae",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/25/safe",
-      "pair_id": "test/violence/25",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "32477be3f4d4b925bfe8ad0fe2f928d79973a2efa29cc86847a5ead6dd486b13",
       "last_attempt": null
     },
     {
@@ -6011,15 +4138,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/violence/43/safe",
-      "pair_id": "test/violence/43",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "5f51b2c5b408151f5631ec68da69a7b4c9b95891b321129f7f21e265fc0728fc",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/violence/45/safe",
       "pair_id": "test/violence/45",
       "category": "violence",
@@ -6056,34 +4174,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/violence/51/safe",
-      "pair_id": "test/violence/51",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "1c9330cd7ccb91406e76c5bfc0f466a75cf5adcb24e6a7cb587a99e6966778d5",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.017
-      }
-    },
-    {
-      "sample_uid": "test/violence/52/safe",
-      "pair_id": "test/violence/52",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "77bf9ec1e44e6d81e88d16200a5a7f1e8b619fe247560d5b1370eb2786775822",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.033
-      }
-    },
-    {
       "sample_uid": "test/violence/53/safe",
       "pair_id": "test/violence/53",
       "category": "violence",
@@ -6108,7 +4198,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "94b0bf5c0da55a1ceb40d9a6a1c6b6f4d813eb6dbfc5f68bbd3a61aa8aba9171",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/violence/57/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/violence/59/safe",
@@ -6129,15 +4224,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/violence/62/safe",
-      "pair_id": "test/violence/62",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "a381cdded3bde69d773ba843a473f9dedc713946544d95fa4633f14a42ddffc8",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/violence/63/safe",
       "pair_id": "test/violence/63",
       "category": "violence",
@@ -6145,20 +4231,6 @@
       "status": "MISSING",
       "expected_image_sha256": "2a4ae992e5273d6c04331cfa2194b6367c739a2ec9d325936bdcbed2eb04c118",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/64/safe",
-      "pair_id": "test/violence/64",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "77558e68b8701b52e99258651f0c44b1506ccdeaa89dd5bdd889e103dec1706f",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.018
-      }
     },
     {
       "sample_uid": "test/violence/66/safe",
@@ -6203,7 +4275,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "e731a5850eeed0eb4a8bdda1eb0f5ff9caa78d8fa8ef1fb9a0575d87ee3b8273",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/violence/71/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/violence/72/safe",
@@ -6212,24 +4289,6 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "315a886c92da38a242800df96e22c43a2e4cffdf05ae9eba5ec864a6d2bfde11",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/73/safe",
-      "pair_id": "test/violence/73",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "a59cac036a2fd48d22359085d4ca88a7c2acb2c1cedfe6c783c4abbd0c708485",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/74/safe",
-      "pair_id": "test/violence/74",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "4e6bec7154c57716dacb64632814b50587845b95bda85144a43bb28a916e5f89",
       "last_attempt": null
     },
     {
@@ -6242,15 +4301,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/violence/80/safe",
-      "pair_id": "test/violence/80",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "c56b5e0300561cf76f0c45ec4b4a05cf8f2ffe0af8801d6081db98f340cdfdf3",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/violence/81/safe",
       "pair_id": "test/violence/81",
       "category": "violence",
@@ -6258,20 +4308,6 @@
       "status": "MISSING",
       "expected_image_sha256": "166f0855c359302703f7288d030c363096010cb9c0b9dffb9eb5c4ed352e45aa",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/82/safe",
-      "pair_id": "test/violence/82",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "d2f91cf3e4af3729d1a68b38bd90124133fca74f65faec72f4f57375780e5403",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 25.89
-      }
     },
     {
       "sample_uid": "test/violence/84/safe",
@@ -6379,7 +4415,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "fa6eb741800d31abc04251cbe1cd190001c54dc9ababe38148ca23fe070d87a9",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.",
+        "seconds": 39.252
+      }
     },
     {
       "sample_uid": "test/violence/100/safe",
@@ -6391,49 +4432,12 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/violence/101/safe",
-      "pair_id": "test/violence/101",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "6620030706b6a89602b56f347dafe81d7139e6d74323a9e856fe329f9c644f8f",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.029
-      }
-    },
-    {
-      "sample_uid": "test/violence/103/safe",
-      "pair_id": "test/violence/103",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "61664e4b5dca3f5fea748507b333a210a5d52f852bdfcd1d25d0b49e495ebceb",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (35) Recv failure: Connection reset by peer\n",
-        "seconds": 10.01
-      }
-    },
-    {
       "sample_uid": "test/violence/104/safe",
       "pair_id": "test/violence/104",
       "category": "violence",
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "aac7641ef4666d637ecd6fe833228b78bb9aacf607f89c5aa09b0544d05e6d0c",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/105/safe",
-      "pair_id": "test/violence/105",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "068ffdb2ad77f13bce4ad43e9aab3f26e4d32a1a8f6e97badaf27dc6202641f5",
       "last_attempt": null
     },
     {
@@ -6452,24 +4456,6 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "2b5181f0e391c37c4d383cc4e17990ceae321c6a327a6d80256c53dff3c4e0af",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/109/safe",
-      "pair_id": "test/violence/109",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "1dccd3f031018267f58bf7d54dbcf6ff5008f94771794106d91bb39aecbf8ac5",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/110/safe",
-      "pair_id": "test/violence/110",
-      "category": "violence",
-      "side": "safe",
-      "status": "MISSING",
-      "expected_image_sha256": "e2c5e13f3ed0c6f0f046f57beffbdaebe5c3f40a0d48666e382e09c9f828cf25",
       "last_attempt": null
     },
     {
@@ -6497,7 +4483,12 @@
       "side": "safe",
       "status": "MISSING",
       "expected_image_sha256": "b971f57c3639b26ac23c20dccd44ed7112644baef3779a6222ddcebb124a25da",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/violence/113/safe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/violence/114/safe",
@@ -6590,15 +4581,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/violence/16/unsafe",
-      "pair_id": "test/violence/16",
-      "category": "violence",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "77a3ee37838803942876f2468ea6a72e3c684b671423abd6c83716d67bcc53ca",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/violence/17/unsafe",
       "pair_id": "test/violence/17",
       "category": "violence",
@@ -6641,7 +4623,12 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "954c33272d52678d7a67f2c1d741725a678d70f7eee84f72de1201e815717e4b",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "Command '['/home/ubuntu/data/project/h1-cf-killtest/.venv/bin/python', '/home/ubuntu/data/project/thinkingguard-stage1/06_experiments/repro_thinkingguard_full/scripts/stage2_download.py', '--scope', 'full', '--one-uid', 'test/violence/25/unsafe', '--max-files', '1']' timed out after 60 seconds",
+        "seconds": 60
+      }
     },
     {
       "sample_uid": "test/violence/26/unsafe",
@@ -6743,20 +4730,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/violence/39/unsafe",
-      "pair_id": "test/violence/39",
-      "category": "violence",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "97f1917c5156ba6e82289137786cfb369479527da09f26435e64a928aa8edb16",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.034
-      }
-    },
-    {
       "sample_uid": "test/violence/41/unsafe",
       "pair_id": "test/violence/41",
       "category": "violence",
@@ -6772,15 +4745,6 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "214e35ff582a359c865bf2bbac2d412ffa649fcf4963b50a32bf7528fe7e9f83",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/43/unsafe",
-      "pair_id": "test/violence/43",
-      "category": "violence",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "7bae03cf1f31df4bf192b4d8cdfdc0c9d25b096fcc236fd10e290e1d3e1f4e82",
       "last_attempt": null
     },
     {
@@ -6844,7 +4808,12 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "a19c4fa60af6f5074b062ed03a4d32bce7efe2ef3f899831885ea099dc96991f",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.",
+        "seconds": 52.653
+      }
     },
     {
       "sample_uid": "test/violence/59/unsafe",
@@ -6865,15 +4834,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/violence/62/unsafe",
-      "pair_id": "test/violence/62",
-      "category": "violence",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "09d1a97d84347d4e1d59eec25e93f8b7d01cd398df2e084e9b1b94efeba5a702",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/violence/63/unsafe",
       "pair_id": "test/violence/63",
       "category": "violence",
@@ -6883,20 +4843,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/violence/64/unsafe",
-      "pair_id": "test/violence/64",
-      "category": "violence",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "4f411850b6a2825b98f4b118500a47ef868556a75afd411876c72e426b337bc2",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.019
-      }
-    },
-    {
       "sample_uid": "test/violence/66/unsafe",
       "pair_id": "test/violence/66",
       "category": "violence",
@@ -6904,20 +4850,6 @@
       "status": "MISSING",
       "expected_image_sha256": "b72da73bcfd0693e537687e2273945b78264ff22cb25940020b873f41f653b79",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/67/unsafe",
-      "pair_id": "test/violence/67",
-      "category": "violence",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "03068ceff69b9cfe25fcc134d43e776b88c42672ac3350bbe62889d3aa94cfee",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5002 milliseconds\n",
-        "seconds": 10.019
-      }
     },
     {
       "sample_uid": "test/violence/68/unsafe",
@@ -6953,7 +4885,12 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "94a84172922e492f9b66bd57ded5d3ea3f9b37f90c810aa613e3456c15b40adb",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.",
+        "seconds": 58.245
+      }
     },
     {
       "sample_uid": "test/violence/72/unsafe",
@@ -6962,24 +4899,6 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "9b1b7e4928f489657932de668d8e1d9d3b476df2eb5f92c0a15de9d9cfcbc257",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/73/unsafe",
-      "pair_id": "test/violence/73",
-      "category": "violence",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "be993558ef3042a3ec22d6ddfd7b2827a46e782a7e0286798a38df97774fb2d6",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/74/unsafe",
-      "pair_id": "test/violence/74",
-      "category": "violence",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "c8cfbc317ee86b2d6b077ea2bd1ce2ac8f195a1a15aca8a138cc0afbb90ecca1",
       "last_attempt": null
     },
     {
@@ -6992,15 +4911,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/violence/80/unsafe",
-      "pair_id": "test/violence/80",
-      "category": "violence",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "8032b58235a73f213489acef2077a0c150a7d174613626fdbb9b6899dd70859f",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/violence/81/unsafe",
       "pair_id": "test/violence/81",
       "category": "violence",
@@ -7008,20 +4918,6 @@
       "status": "MISSING",
       "expected_image_sha256": "7572d6011bc4941d5b41ae3770c2be110d6e82c835fc1441ebb54d6e9519293e",
       "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/82/unsafe",
-      "pair_id": "test/violence/82",
-      "category": "violence",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "4a34915f3a6becad6fd8786e36816221fbe44078a8b317d2879ec23a3cab83e3",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (28) Connection timed out after 5001 milliseconds\n",
-        "seconds": 10.032
-      }
     },
     {
       "sample_uid": "test/violence/84/unsafe",
@@ -7129,7 +5025,12 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "cfa1911fc91efa171cf28843573528d30713af324c31b576bda087e60fa5098a",
-      "last_attempt": null
+      "last_attempt": {
+        "source": "stage2_download_attempts.jsonl",
+        "status": "DOWNLOAD_FAILED",
+        "error": "(ProtocolError('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer')), '(Request ID: d6cbafb8-bfe2-4f4a-9c93-6d3ffd006d6a)')",
+        "seconds": 36.858
+      }
     },
     {
       "sample_uid": "test/violence/100/unsafe",
@@ -7141,35 +5042,12 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/violence/101/unsafe",
-      "pair_id": "test/violence/101",
-      "category": "violence",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "4a4dca4aa28b6f1dc2baa450dc6419e1374b3f3d2a69cd09234cf058032535db",
-      "last_attempt": {
-        "source": "stage2_curl_attempts.jsonl",
-        "status": "DOWNLOAD_FAILED",
-        "error": "curl: (35) Recv failure: Connection reset by peer\n",
-        "seconds": 6.595
-      }
-    },
-    {
       "sample_uid": "test/violence/104/unsafe",
       "pair_id": "test/violence/104",
       "category": "violence",
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "baabdd53d010aaf53a20e32cb3dba69400860b25c7ae9fda8932005662709e04",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/105/unsafe",
-      "pair_id": "test/violence/105",
-      "category": "violence",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "84390a13e5864ee5f4b20a0fc3ef46d76ef1d12fe3c2b0ea33e407574be6cfac",
       "last_attempt": null
     },
     {
@@ -7191,24 +5069,6 @@
       "last_attempt": null
     },
     {
-      "sample_uid": "test/violence/109/unsafe",
-      "pair_id": "test/violence/109",
-      "category": "violence",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "471906a5ef4f5c2e35a03d50b18ba0efc6214518d72eb6c3d17555bba00d7e0e",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/110/unsafe",
-      "pair_id": "test/violence/110",
-      "category": "violence",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "d6a2066e24bb447eace3b65cdd606186a000c26f6fab3cf8b0f0afcb0089b243",
-      "last_attempt": null
-    },
-    {
       "sample_uid": "test/violence/111/unsafe",
       "pair_id": "test/violence/111",
       "category": "violence",
@@ -7224,15 +5084,6 @@
       "side": "unsafe",
       "status": "MISSING",
       "expected_image_sha256": "45fa9c89c320eb92e68959f5080e861a1ed5e84d595cbf429616bb3c04291be1",
-      "last_attempt": null
-    },
-    {
-      "sample_uid": "test/violence/113/unsafe",
-      "pair_id": "test/violence/113",
-      "category": "violence",
-      "side": "unsafe",
-      "status": "MISSING",
-      "expected_image_sha256": "69bee31cb27235f35a3ba4951a3c42df1b0d65c56e8d47c85e15d9ca92c27f99",
       "last_attempt": null
     },
     {
@@ -7254,32 +5105,32 @@
       "MISSING_IMAGE": 1
     },
     "misinformation": {
-      "READY": 89,
-      "MISSING_IMAGE": 6
+      "READY": 90,
+      "MISSING_IMAGE": 5
     },
     "offensiveness": {
-      "READY": 31,
-      "MISSING_IMAGE": 64
+      "READY": 52,
+      "MISSING_IMAGE": 43
     },
     "physical_harm": {
-      "MISSING_IMAGE": 52,
-      "READY": 29
+      "MISSING_IMAGE": 33,
+      "READY": 48
     },
     "privacy": {
-      "MISSING_IMAGE": 68,
-      "READY": 32
+      "MISSING_IMAGE": 49,
+      "READY": 51
     },
     "property_damage": {
-      "MISSING_IMAGE": 67,
-      "READY": 33
+      "READY": 49,
+      "MISSING_IMAGE": 51
     },
     "religion_belief": {
-      "MISSING_IMAGE": 63,
-      "READY": 27
+      "MISSING_IMAGE": 40,
+      "READY": 50
     },
     "violence": {
-      "MISSING_IMAGE": 84,
-      "READY": 30
+      "MISSING_IMAGE": 65,
+      "READY": 49
     }
   }
 }

@@ -188,12 +188,22 @@ def summarize(rows, stage, peaks):
                 independent_human_review="NOT_RUN", gpu_sample_peaks_mib=peaks)
 
 
+def batch_pair_order(protocol, selected_pairs, queues):
+    if protocol == "d0":
+        return list(selected_pairs)
+    if protocol == "a1":
+        reused = {uid.rsplit("/", 1)[0] for uid in queues["a1_smoke"] + queues["a1_validation"]}
+        return [pid for pid in selected_pairs if pid not in reused]
+    raise ValueError(f"Unknown batch protocol: {protocol}")
+
+
 def main():
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument("--protocol", choices=("a1", "d0"), required=True)
     cli.add_argument("--stage", choices=("smoke", "validation", "pilot", "batch"), required=True)
     cli.add_argument("--batch-start-pair", type=int)
     cli.add_argument("--batch-pairs", type=int)
+    cli.add_argument("--batch-queue", type=Path)
     cli.add_argument("--model", type=Path, required=True)
     cli.add_argument("--gpu-uuid")
     cli.add_argument("--run-id")
@@ -230,17 +240,32 @@ def main():
     expansion_path = ROOT / "artifacts/stage2_expansion_queue_v1.json"
     expansion = read(expansion_path)
     if args.stage == "batch":
-        if (args.protocol != "a1" or args.batch_start_pair is None or args.batch_pairs is None
+        if (args.batch_start_pair is None or args.batch_pairs is None
                 or args.batch_start_pair < 100 or not 1 <= args.batch_pairs <= 100
                 or args.batch_start_pair + args.batch_pairs > 868):
-            cli.error("A1 batch requires a complete 1-100 pair slice after the frozen Pilot")
-        reused = {uid.rsplit("/", 1)[0] for uid in queues["a1_smoke"] + queues["a1_validation"]}
+            cli.error("Batch requires a complete 1-100 pair slice after the frozen Pilot")
+        if args.protocol == "d0" and not args.batch_queue:
+            cli.error("D0 batch requires a frozen --batch-queue")
         selected_pairs = expansion["full_pairs"][args.batch_start_pair:args.batch_start_pair + args.batch_pairs]
-        ordered = [f"{pid}/{side}" for pid in selected_pairs if pid not in reused
-                   for side in ("safe", "unsafe")]
+        expected_pairs = batch_pair_order(args.protocol, selected_pairs, queues)
+        if args.batch_queue:
+            frozen_batch = read(args.batch_queue)
+            if (frozen_batch.get("protocol") != args.protocol
+                    or frozen_batch.get("start_pair") != args.batch_start_pair
+                    or frozen_batch.get("slice_pairs") != args.batch_pairs
+                    or frozen_batch.get("expansion_queue_sha256") != sha(expansion_path)
+                    or frozen_batch.get("manifest_sha256") != freeze["manifest_sha256"]
+                    or not frozen_batch.get("selected_pairs")
+                    or frozen_batch["selected_pairs"] != [pid for pid in expected_pairs
+                        if pid in set(frozen_batch["selected_pairs"]) ]):
+                raise ValueError("Frozen batch does not match the official queue slice")
+            selected = frozen_batch["selected_pairs"]
+        else:
+            selected = expected_pairs
+        ordered = [f"{pid}/{side}" for pid in selected for side in ("safe", "unsafe")]
         stage_data = batch_ready(entries, ordered, tree, config["dataset_revision"], verify_local)
     else:
-        if args.batch_start_pair is not None or args.batch_pairs is not None:
+        if args.batch_start_pair is not None or args.batch_pairs is not None or args.batch_queue:
             cli.error("Batch slice options require --stage batch")
         ordered = queues["a1_smoke" if args.stage == "smoke" else "a1_validation" if args.stage == "validation" else "pilot"]
         stage_data = queue_ready(args.stage, entries, ordered, tree, config["dataset_revision"], verify_local)
@@ -275,11 +300,24 @@ def main():
     identity_base = dict(protocol=args.protocol, prompt_sha256=sha(prompt_path), parser_sha256=sha(parser_path), expansion_queue_sha256=sha(expansion_path), config_sha256=sha(settings_path), source_tree_sha256=sha(ROOT / "artifacts/dataset_source_tree.csv"),
                          queues_sha256=sha(queue_path), model_audit_sha256=sha(ROOT / "artifacts/model_cache_audit.json"),
                          runner_sha256=sha(Path(__file__)), gates_sha256=sha(Path(__file__).with_name("recovery_gates.py")))
-    identity = dict(**identity_base, inputs_sha256=queue_hash(entries, ordered), stage=args.stage, run_id=args.run_id)
+    batch_identity = ({"batch_queue_sha256": sha(args.batch_queue) if args.batch_queue else None,
+                       "batch_start_pair": args.batch_start_pair, "batch_slice_pairs": args.batch_pairs,
+                       "batch_gates_sha256": sha(Path(__file__).with_name("stage2_gates.py"))}
+                      if args.stage == "batch" else {})
+    identity = dict(**identity_base, inputs_sha256=queue_hash(entries, ordered), stage=args.stage,
+                    run_id=args.run_id, **batch_identity)
     out = ROOT / "runs" / args.run_id
     out.mkdir(exist_ok=True)
     lock = (out / ".lock").open("a")
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    if args.stage == "batch" and args.batch_queue:
+        snapshot = out / "batch_queue_snapshot.json"
+        if snapshot.exists() and sha(snapshot) != identity["batch_queue_sha256"]:
+            raise ValueError("Frozen batch snapshot changed between attempts")
+        if not snapshot.exists():
+            atomic_write(snapshot, args.batch_queue.read_text())
+            if sha(snapshot) != identity["batch_queue_sha256"]:
+                raise ValueError("Frozen batch copy failed")
     identity_path, journal_path = out / "identity.json", out / "predictions.jsonl"
     if identity_path.exists() and (not args.resume or read(identity_path) != identity):
         raise ValueError("Existing run requires --resume with the same configuration")
@@ -292,18 +330,38 @@ def main():
             return 0 if read(completed_summary)["resource_gate"] else 3
         raise ValueError("Complete prediction journal is missing its terminal resource summary")
     benchmark_p95 = None
-    required_stages = [] if args.stage == "smoke" else ["smoke"] if args.stage == "validation" or args.protocol == "d0" else ["smoke", "validation"] if args.stage == "pilot" else ["smoke", "validation", "pilot"]
+    required_stages = ([] if args.stage == "smoke" else ["smoke"] if args.stage == "validation"
+                       else ["smoke", "validation"] if args.protocol == "a1" and args.stage == "pilot"
+                       else ["smoke", "validation", "pilot"] if args.protocol == "a1"
+                       else ["smoke"] if args.stage == "pilot" else ["smoke", "pilot"])
     registry_path = ROOT / "runs/stage2_registry.json"
     registry = read(registry_path) if registry_path.exists() else {}
     for stage in required_stages:
         stage_order = queues["a1_smoke" if stage == "smoke" else "a1_validation" if stage == "validation" else "pilot"]
         input_sha = queue_hash(entries, stage_order)
-        previous, summary = prior_summary(ROOT / "runs", registry, identity_base, stage, input_sha, read, sha)
+        prereq_base = identity_base
+        if args.protocol == "d0" and args.stage == "batch":
+            compat = read(ROOT / "artifacts/d0_batch_runner_compatibility.json")
+            if (compat["old_runner_sha256"] != "b39e0bd5151fc25f14f8ba978748036f1e5999a1e7958fe90ea66c3d457b1090"
+                    or compat["new_runner_sha256"] != identity_base["runner_sha256"]
+                    or compat["prompt_sha256"] != identity_base["prompt_sha256"]
+                    or compat["parser_sha256"] != identity_base["parser_sha256"]
+                    or compat["config_sha256"] != identity_base["config_sha256"]
+                    or compat["model_audit_sha256"] != identity_base["model_audit_sha256"]
+                    or compat["source_tree_sha256"] != identity_base["source_tree_sha256"]
+                    or compat["queues_sha256"] != identity_base["queues_sha256"]
+                    or compat["expansion_queue_sha256"] != identity_base["expansion_queue_sha256"]
+                    or compat["gates_sha256"] != identity_base["gates_sha256"]
+                    or compat["patch_sha256"] != sha(ROOT / "docs/d0_batch_runner_diff.patch")):
+                raise ValueError("D0 reviewed runner compatibility mismatch")
+            prereq_base = dict(identity_base, runner_sha256=compat["old_runner_sha256"])
+        previous, summary = prior_summary(ROOT / "runs", registry, prereq_base, stage, input_sha, read, sha)
         if stage == "validation":
             if summary["prediction_count"] != 36 or summary["extracted"] < 35:
                 raise ValueError("Independent A1 parse coverage did not reach 35/36")
             benchmark_p95 = summary["latency_seconds"]["p95"]
-        if stage == "pilot" and (summary["prediction_count"] != 200 or summary["generated_count"] != 200):
+        if stage == "pilot" and (summary["prediction_count"] != 200 or summary["generated_count"] != 200
+                                 or (args.protocol == "d0" and summary["extracted"] != 200)):
             raise ValueError("A1 Pilot is incomplete")
     processes = lambda: active_processes(args.gpu_uuid, gpu_rows)
     require_idle(args.gpu_uuid, card, processes)
@@ -457,6 +515,10 @@ def main():
                    torch_peak_reserved_mib=max(r["torch_peak_reserved_mib"] for r in prior.values()) if prior else None,
                    resource_gate=len(prior) == len(ordered) and summary["generated_count"] == len(ordered)
                    and observed_peaks["process_mib"] is not None and max(observed_peaks.values()) < 20*1024)
+    if args.stage == "batch":
+        summary.update(batch_start_pair=args.batch_start_pair, batch_slice_pairs=args.batch_pairs,
+                       selected_pairs=len(ordered)//2,
+                       coverage_in_progress=len(ordered)//2 < args.batch_pairs)
     write(out / "summary.json", summary)
     if args.protocol == "a1" and args.stage == "validation" and len(prior) == len(ordered):
         blind = [{"review_id": hashlib.sha256((str(config["seed"]) + uid).encode()).hexdigest()[:16],

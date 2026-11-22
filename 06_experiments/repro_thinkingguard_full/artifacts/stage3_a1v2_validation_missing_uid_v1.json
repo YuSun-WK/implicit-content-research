@@ -1,0 +1,8 @@
+{
+  "dataset_revision": "3ac26e778db94a282711f463f22ba6db99643bee",
+  "source_queue_sha256": "70bcc3a5275849b651553690776ed16050b15a91ecfc3dc1c511eb7ed46c3a78",
+  "sample_uids": [
+    "test/religion_belief/68/safe"
+  ],
+  "count": 1
+}

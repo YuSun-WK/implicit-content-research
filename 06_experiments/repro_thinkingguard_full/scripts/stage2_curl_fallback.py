@@ -1,6 +1,7 @@
 """Bounded fixed-revision curl fallback in frozen expansion order."""
 import argparse
 import csv
+import hashlib
 import json
 import subprocess
 import time
@@ -17,13 +18,27 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--max-files", type=int, default=80)
     ap.add_argument("--max-seconds", type=int, default=600)
+    ap.add_argument("--uids-file", type=Path)
+    ap.add_argument("--retry-failed", action="store_true")
     args = ap.parse_args()
     with (ROOT / "artifacts/manifests/test_manifest.csv").open() as f:
         rows = {r["sample_uid"]: r for r in csv.DictReader(f)}
     expansion = json.loads((ROOT / "artifacts/stage2_expansion_queue_v1.json").read_text())
-    ordered = [f"{pid}/{side}" for pid in expansion["full_pairs"] for side in ("safe", "unsafe")]
+    if args.uids_file:
+        selected = json.loads(args.uids_file.read_text())
+        if (selected["dataset_revision"] != REVISION
+                or selected["source_queue_sha256"] != hashlib.sha256(
+                    (ROOT / "artifacts/stage2_expansion_queue_v1.json").read_bytes()).hexdigest()
+                or selected["count"] != len(selected["sample_uids"])
+                or len(set(selected["sample_uids"])) != selected["count"]
+                or not set(selected["sample_uids"]).issubset(rows)):
+            raise ValueError("UID list differs from frozen source")
+        ordered = selected["sample_uids"]
+    else:
+        ordered = [f"{pid}/{side}" for pid in expansion["full_pairs"] for side in ("safe", "unsafe")]
     log = ROOT / "runs/stage2_curl_attempts.jsonl"
-    attempted = {json.loads(line)["sample_uid"] for line in log.read_text().splitlines()} if log.exists() else set()
+    attempted = ({json.loads(line)["sample_uid"] for line in log.read_text().splitlines()}
+                 if log.exists() and not args.retry_failed else set())
     start = time.monotonic()
     count = 0
     for uid in ordered:

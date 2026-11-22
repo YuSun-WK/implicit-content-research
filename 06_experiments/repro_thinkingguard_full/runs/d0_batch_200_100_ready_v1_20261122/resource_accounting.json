@@ -1,0 +1,24 @@
+{
+  "jobs": [
+    {
+      "job_id": "1795315240411525269",
+      "start_utc": "2026-11-22T02:40:40.411600+00:00",
+      "last_telemetry_utc": "2026-11-22T04:38:56.228590+00:00",
+      "last_telemetry_elapsed_seconds": 7095.81699,
+      "terminal": "COMPLETE",
+      "gpu_uuid": "GPU-d72631b6-1716-61ed-d355-8da3e5558910",
+      "gpu_samples": 4773,
+      "process_peak_mib": 8330,
+      "card_peak_mib": 8339,
+      "job_wall_seconds": 7096.350695388857
+    }
+  ],
+  "prediction_rows": 186,
+  "total_generation_seconds": 7058.15837217262,
+  "total_measured_gpu_wall_lower_bound_seconds": 7096.350695388857,
+  "process_peak_mib": 8330,
+  "card_peak_mib": 8339,
+  "gpu_samples_raw_sha256": "9e52d89fdb0b843da068f760ff6d66f2bc568bb8f69918d6d73a1523c249a346",
+  "gpu_samples_gzip_sha256": "62b5a981fe2a084c0aa1097c54588f8ae9f21f248416aaa2def230daf8b7c87e",
+  "gpu_samples_archived_as": "gpu_samples.jsonl.gz (lossless gzip mtime=0)"
+}
