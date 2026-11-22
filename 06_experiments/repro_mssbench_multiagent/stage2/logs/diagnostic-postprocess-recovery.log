@@ -1,0 +1,5 @@
+2026-11-22 UTC: 512-token pilot and remainder GPU invocations completed. Journal contains 60 complete, 0 invalid canonical method-inputs and 100 Agent calls. The orchestration shell then failed at line 41 because the script was edited while Bash was reading it. No GPU work was repeated. Manual recovery commands executed:
+python stage2_export.py --tokens 512 --pair-ids-file stage2/diagnostic_10_pair_ids.txt
+python stage2_diagnostic.py compare
+python stage2_verify.py > stage2/trace_verification_all.log
+All commands exited 0; the complete journal and exported traces reconcile.

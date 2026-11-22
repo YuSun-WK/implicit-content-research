@@ -1,0 +1,16 @@
+slice pairs 10 pending method-inputs 12
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:03<00:09,  3.30s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:08<00:08,  4.46s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:13<00:04,  4.80s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:15<00:00,  3.70s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:15<00:00,  3.95s/it]
+query:chat:184:01 safe base
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+query:chat:184:01 safe cot
+query:chat:184:01 safe multiagent
+query:chat:184:01 unsafe base
+query:chat:184:01 unsafe cot
+query:chat:184:01 unsafe multiagent
+query:embodied:073:01 safe base
+query:embodied:073:01 safe cot
+query:embodied:073:01 safe multiagent
+query:embodied:073:01 unsafe base
+query:embodied:073:01 unsafe cot
+query:embodied:073:01 unsafe multiagent
+slice seconds 372.13
