@@ -1,0 +1,26 @@
+{
+  "published_rows": {
+    "causal_risky": 75,
+    "decoupled_benign": 75,
+    "selective_risky": 104
+  },
+  "usable_groups": {
+    "mixed": 75,
+    "all_reject": 52
+  },
+  "usable_rows": 254,
+  "unique_pixels": 127,
+  "panel_images": {
+    "mixed": 75,
+    "all_reject": 52
+  },
+  "overlap_panel_images": 0,
+  "excluded_groups": 0,
+  "excluded_reasons": {},
+  "dataset_revision": "c89d9e597149e22f34fc7c09e5e02125c2e1a521",
+  "parquet_sha256": {
+    "causal_risky": "7351b8ddfda9bb7c09ca7a4a46d85e4d3502da225780748304e59bbb870ed982",
+    "decoupled_benign": "10dfb255bf21e7f753a239603919e02b988fa6c50256e14b723a0828a9ef3ee1",
+    "selective_risky": "e1c533fc53a9153ab240e747644eb4f0a227abdcf17ff59187dbc9b2cb1338e4"
+  }
+}
