@@ -1,0 +1,20 @@
+flowchart TD
+  A["GPT Chat 制定任务：用户陈述/部分确认"] --> B["GitHub 任务文档：已确认"]
+  B --> C["用户把 Prompt 发给 Codex CLI：用户陈述"]
+  C --> D["Codex 在本地 Git 仓库 fetch/pull 或复用：已确认"]
+  D --> E["Codex 写代码/配置到 Git 或仓库外目录：已确认"]
+  E --> F{"Shell 命令启动：已确认"}
+  F --> G1["前台 Python/脚本 + Codex 持久会话：已确认"]
+  F --> G2["Shell worker & + wait：已确认"]
+  F --> G3["nohup 后台：个别已确认"]
+  G1 --> H["Python 进程与 GPU/CPU：已确认"]
+  G2 --> H
+  G3 --> H
+  H --> I["轮询会话/日志/ps/GPU/SQLite：因项目而异"]
+  I --> J["结果文件与 Checkpoint：因项目而异"]
+  J --> K["退出码/计数/摘要复算：部分确认"]
+  K --> L["git status/diff/add/commit/push：历史命令已确认"]
+  L --> M["GitHub 分支及 Draft PR：已确认；PR 创建者命令无法确认"]
+  M --> N["Chat 审计：用户陈述/历史逐次行为未全面确认"]
+  T["tmux 承载 Codex CLI：当前已确认"] -.-> C
+  S["Slurm：已读 Codex 命令未发现"] -.-> F
