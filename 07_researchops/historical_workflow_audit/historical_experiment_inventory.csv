@@ -1,5 +1,11 @@
-experiment,pr,state,method_inputs_or_scores,github_evidence,server_history,status
-ASIMOV shortlist safety,80,closed_unmerged,820 score rows,README recompute scores,unavailable,reported complete
-EMBGuard external validation,81,closed_unmerged,254 scores per model,README report metrics scores,unavailable,reported complete
-MSSBench Stage 2 256,79,open_draft,600 method inputs 1039 calls,script batch log results traces,unavailable,598 complete 2 invalid
-MSSBench Stage 2 512,79,open_draft,60 method inputs 100 calls,script orchestration and recovery logs,unavailable,reported complete after recovery
+experiment,date_utc,command_summary,run_mode,gpu,session_or_pid,log_or_result_path,status,evidence_id,scope_note
+TRACE formal seed42,2026-11-21,stage2_train.py --phase formal --seed 42,foreground Codex unified exec,one GPU,session 92493,trace-stage0/06_experiments/repro_trace/.local/s2-formal-seed42/events.jsonl,exit0 and summary replayed,E015 E020 E021,real MultiOFF
+TRACE formal seed121,2026-11-21,stage2_train.py --phase formal --seed 121,foreground Codex unified exec,one GPU,session 23469,trace-stage0/06_experiments/repro_trace/.local/s2-formal-seed121/events.jsonl,exit0 and summary replayed,E015 E020 E021,real MultiOFF
+MSSBench 256,2026-11-22,WAIT_FOR_PID=2590188 bash stage2_run_remaining.sh,foreground script via Codex exec cell,one GPU,cell g5:305,mssbench-stage0-repo/.stage0-local/stage2/B-thinkingguard/batch.log,terminal counts checked outer cell exit unconfirmed,E017 E023,real result
+ASIMOV manual workers,2026-11-20,three worker commands in shell with & and wait,shell parallel workers under unified exec,unconfirmed,session 51443,historical ASIMOV worker logs path current directory absent,outer exit0 PR scores uploaded,E016 E022 E025,worker individual exits not independently checked
+ASIMOV Qwen workers,2026-11-20/21,dev and test worker commands with & and wait,shell parallel workers,unconfirmed,not retained in inventory,historical ASIMOV worker logs path current directory absent,PR scores uploaded individual exits unconfirmed,E018 E022 E025,representative task group
+EMBGuard workers,2026-11-20/21,worker commands with shell &,shell parallel workers,unconfirmed,not retained in inventory,historical EMBGuard worker logs path current directory absent,PR individual scores uploaded,E018 E026 E025,representative task group
+HumanShift Round014b,2026-09-20,three seed commands with & and wait,shell parallel workers,three GPU seeds,not retained in inventory,HumanShift local run records,not independently checked,E018,cross project example
+PA Gate1 Kill Test,2026-10-10,four condition commands with & and wait,shell parallel workers,unconfirmed,not retained in inventory,project run records,not independently checked,E018,cross project example
+HumanShift E3 CPU,2026-09-16,nohup run_phase2a_e3.py --device cpu --seeds 2025,detached nohup background,CPU,PID not found in history,/tmp/humanshift_e3_seed2025.log historical path,final exit unconfirmed,E018,cross project example
+VLSU Stage2,2026-11,not launched,not applicable,not applicable,not applicable,vlsu-original-repro/reports/stage2/Inference_Run_Summary.json,NOT RUN,E024,excluded from run mode denominator

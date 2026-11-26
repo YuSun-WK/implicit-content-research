@@ -1,4 +1,7 @@
-experiment,pr,code,config,report,summary_metrics,raw_scores_or_traces,process_logs,run_command,precise_runtime_code_version,server_only
-ASIMOV,80,uploaded,partial,uploaded,uploaded,uploaded,not_found_in_pr,partial,unconfirmed,unconfirmed
-EMBGuard,81,uploaded,uploaded,uploaded,uploaded,uploaded,not_found_in_pr,partial,unconfirmed,unconfirmed
-MSSBench Stage2,79,uploaded,uploaded,uploaded,uploaded,uploaded,uploaded,uploaded,unconfirmed,SQLite journals and images described but current state unconfirmed
+experiment,commit_or_pr,code,config,report,summary_metrics,raw_metrics,sample_predictions_or_scores,process_logs,run_command,version_manifest,server_only,evidence_id
+ASIMOV,PR80,已上传,无法确认,已上传,已上传,已上传,已上传,未发现,无法确认,无法确认,历史日志路径当前目录未找到,E016 E022 E025
+EMBGuard,PR81,已上传,已上传,已上传,已上传,已上传,已上传,未发现,已上传,无法确认,历史日志路径当前目录未找到,E018 E026 E025
+MSSBench,PR79,已上传,已上传,已上传,已上传,已上传,已上传,已上传,已上传,已上传,SQLite及中间日志仅服务器,E017 E023
+TRACE,repro/trace branch,已上传,已上传,已上传,已上传,已上传,未发现,已上传,已上传,已上传,Caption Checkpoint 权重仅服务器,E015 E020 E021
+VLSU,repro/vlsu branch,已上传,已上传,已上传,不适用,不适用,不适用,无法确认,不适用,无法确认,Stage2 NOT RUN,E024
+H1-K0,experiments/h1-k0 branch,已上传,已上传,已上传,无法确认,无法确认,无法确认,已上传,无法确认,无法确认,本地 runs 与模型快照仅服务器,E019 E027

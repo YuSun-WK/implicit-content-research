@@ -1,9 +1,9 @@
-# 服务器与本次执行环境的访问核验
+# 目标服务器与目录
 
-- 用户已在自己的本机验证两跳 SSH 可连接。本报告**不将当前审计环境的失败解释成服务器故障**。
-- 最初 Windows Work 执行环境尝试跳板、直连目标与 ProxyJump，均返回端口连接被拒绝；当时没有已打开的服务器终端窗口。
-- 随后切换到本次 Linux 隔离环境，默认 SSH 首先报系统配置文件权限错误；用 `ssh -F /dev/null` 绕过配置后，连接跳板机返回 `Network is unreachable`。两次尝试均未到达密码认证。该隔离环境只允许有限目标网络，不能进入实验室内网。
-- 因此尚未检查服务器上的 `hostname`、Codex 版本、`tmux`、`screen`、Slurm、进程、GPU、`~/.codex`、Shell history 或本地 Git 状态。
-- 远端归档中的 `/home/ubuntu/data/project` 和 MSSBench `.stage0-local/` 仅是文件记录的历史路径，当前服务器存在性未实测。
+2026-11-26 实测：hostname=sunyu，用户 ubuntu，工作目录 /home/ubuntu/data/project，网卡含 192.168.191.243；本轮没有 SSH 跳转。[E011] Codex 路径 /home/ubuntu/bin/codex，版本 codex-cli 0.169.0。tmux 与 screen 可执行；sbatch/squeue/sacct/gh 不在 PATH。这仅是安装状态，不代表历史使用。[E011,E013]
 
-**下一步：** 在用户已验证能连通两跳 SSH 的那台本机运行 Work 的只读调查，或提供该本机已登录的服务器终端。无需再次在聊天中传送密码、私钥或令牌。
+~/.codex/sessions 有 81 个 JSONL；首建日期 2026-09-11 至 11-19，部分会话恢复后持续写入到 11-25。文件包含 custom_tool_call、工具结果、会话 ID、退出码；只提取脱敏科研操作。~/.codex/config.toml 存在，仅查看键名；auth.json 未打开。当前科研 tmux pane 名称：killtest、killtest_SIJA、mssbench_fuxian、thinkingguard_fuxian、trace_fuxian、vlsu、vlsu_fuxian；pane 当前程序均为 codex。多个 Codex 实例当前并存，但未证明同时写同一目录。[E012,E013]
+
+~/.bash_history 有 684 行，包含 tmux 194 个匹配行、screen 2、codex 43、sbatch 0；Shell history 不是 Codex 工具调用的完整记录。项目目录最大深度 5 与 HumanShift 最大深度 3 未发现 AGENTS.md；本结论不覆盖更深或其他目录。[E013,E019]
+
+本机可见主要目录树见 [总报告](REPORT_zh.md)。TRACE 当前两份 Git 副本分别位于 trace-stage0 与 implicit-content-research-trace；前者本地 commit 7470be2，远端 TRACE 分支曾观察到 0f50a5f，不能把当前本地 HEAD 当作所有历史运行 SHA。mssbench-stage0-repo 本地 0de6e89；H1 目录不是根 Git 仓库。[E019] 当前进程/目录状态不能反推历史执行状态。

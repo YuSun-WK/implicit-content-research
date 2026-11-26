@@ -1,5 +1,10 @@
-experiment,inner_execution,outer_process_manager,codex_session_mode,gpu,exit_or_completion_check,evidence_id
-ASIMOV,unknown,unconfirmed,unconfirmed,unconfirmed,CPU recompute available,E002
-EMBGuard,pilot worker finish scripts documented,unconfirmed,unconfirmed,unconfirmed,score status and metrics JSON,E003 E004
-MSSBench Stage2 256,Python chunk with redirected logs,unconfirmed,unconfirmed,single GPU UUID,SQLite terminal count and batch export,E006 E007
-MSSBench Stage2 512,Python pilot and remainder,unconfirmed,unconfirmed,single GPU UUID,postprocessing recovery and verification,E008 E009
+mode_dimension,mode,confirmed_command_calls,representative_task_groups,outcome,evidence_id,denominator_note
+outer_shell,foreground long command,not exhaustively enumerated,TRACE seed42 TRACE seed121 MSSBench,confirmed present,E015 E017,3 of 9 representative launched groups
+outer_shell,background workers with & and wait,9 matching launch commands,ASIMOV manual ASIMOV Qwen EMBGuard HumanShift Round014b PA Gate1,confirmed present,E016 E018,5 of 9 representative launched groups; calls include retries
+outer_shell,detached nohup,1 matching launch command,HumanShift E3 CPU,confirmed present,E018,1 of 9 representative launched groups
+outer_shell,tmux launched experiment,0 found in examined Codex commands,none,not found,E012 E013,CLI itself currently runs inside tmux
+outer_shell,screen launched experiment,0 found in examined Codex commands,none,not found,E012 E013,screen installed
+scheduler,Slurm submission,0 found in examined Codex commands,none,not found,E012 E013,Slurm commands absent from PATH
+codex_tool,Codex unified persistent session,3 directly traced,TRACE seed42 TRACE seed121 ASIMOV manual,confirmed present,E015 E016,overlaps outer shell classes
+codex_tool,Codex exec cell,1 directly traced,MSSBench 256,confirmed present,E017,final cell wait not found
+unknown,other or unclassified,not exhaustively enumerated,other historical experiments,unknown,E012,81 sessions are not all experiments
