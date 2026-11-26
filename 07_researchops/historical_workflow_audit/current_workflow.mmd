@@ -1,0 +1,9 @@
+flowchart TD
+  A["Chat 任务讨论"] --> B["GitHub 任务/分支：部分确认"]
+  B --> C["Codex CLI 取任务：无法确认"]
+  C --> D["本地 Git 与代码：部分确认"]
+  D --> E["Shell/Python/GPU：MSSBench 部分确认"]
+  E --> F["日志/SQLite/结果：MSSBench 已确认"]
+  F --> G["结果检查：各项目程度不同"]
+  G --> H["Git commit/push/PR：PR 已确认，命令未知"]
+  H --> I["Chat 审计：历史行为无法确认"]
