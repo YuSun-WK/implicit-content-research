@@ -1,6 +1,6 @@
 # 历史科研工作流审计：阶段性摘要（2026-11-26）
 
-**状态：GitHub 侧调查完成部分样本；服务器侧未接通，禁止视为完整历史审计。**
+**状态：GitHub 侧调查完成部分样本；本次隔离执行环境无法访问实验室内网；用户本机已验证两跳 SSH 可连，禁止视为完整历史审计。**
 
 1. **仓库如何拉取？** 无法确认历史 Codex 使用 clone、pull、fetch 还是复用本地仓库。GitHub PR 只能证明上传结果，不能证明服务器上的取任务命令。
 2. **代码在哪里？** 已确认 GitHub 中存在 `06_experiments/ASIMOV_shortlist_safety/`、`06_experiments/EMBGuard_shortlist_external/`、`06_experiments/repro_mssbench_multiagent/`。EMBGuard 文档记载本地运行路径 `/home/ubuntu/data/project`；MSSBench 脚本引用本地项目和虚拟环境。路径来自归档，当前服务器是否仍存在未核实。
