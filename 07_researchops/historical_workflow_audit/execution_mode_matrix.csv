@@ -1,0 +1,5 @@
+experiment,inner_execution,outer_process_manager,codex_session_mode,gpu,exit_or_completion_check,evidence_id
+ASIMOV,unknown,unconfirmed,unconfirmed,unconfirmed,CPU recompute available,E002
+EMBGuard,pilot worker finish scripts documented,unconfirmed,unconfirmed,unconfirmed,score status and metrics JSON,E003 E004
+MSSBench Stage2 256,Python chunk with redirected logs,unconfirmed,unconfirmed,single GPU UUID,SQLite terminal count and batch export,E006 E007
+MSSBench Stage2 512,Python pilot and remainder,unconfirmed,unconfirmed,single GPU UUID,postprocessing recovery and verification,E008 E009
