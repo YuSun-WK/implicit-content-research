@@ -1,0 +1,4 @@
+experiment,pr,code,config,report,summary_metrics,raw_scores_or_traces,process_logs,run_command,precise_runtime_code_version,server_only
+ASIMOV,80,uploaded,partial,uploaded,uploaded,uploaded,not_found_in_pr,partial,unconfirmed,unconfirmed
+EMBGuard,81,uploaded,uploaded,uploaded,uploaded,uploaded,not_found_in_pr,partial,unconfirmed,unconfirmed
+MSSBench Stage2,79,uploaded,uploaded,uploaded,uploaded,uploaded,uploaded,uploaded,unconfirmed,SQLite journals and images described but current state unconfirmed
