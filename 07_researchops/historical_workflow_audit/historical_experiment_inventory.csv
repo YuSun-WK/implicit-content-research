@@ -1,0 +1,5 @@
+experiment,pr,state,method_inputs_or_scores,github_evidence,server_history,status
+ASIMOV shortlist safety,80,closed_unmerged,820 score rows,README recompute scores,unavailable,reported complete
+EMBGuard external validation,81,closed_unmerged,254 scores per model,README report metrics scores,unavailable,reported complete
+MSSBench Stage 2 256,79,open_draft,600 method inputs 1039 calls,script batch log results traces,unavailable,598 complete 2 invalid
+MSSBench Stage 2 512,79,open_draft,60 method inputs 100 calls,script orchestration and recovery logs,unavailable,reported complete after recovery
